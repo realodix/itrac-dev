@@ -5,6 +5,7 @@
 @section('content')
     <div class="max-w-7xl mx-auto mb-12">
         <div class="flex flex-wrap mt-6 lg:mt-8 px-4 sm:p-6">
+            aaa
             <div class="md:w-9/12">
                 <div class="text-xl sm:text-2xl lg:text-3xl font-bold mb-4">{!! $url->title !!}</div>
 
@@ -27,6 +28,7 @@
         </div>
 
         <div class="common-card-style flex flex-wrap mt-6 sm:mt-0 px-4 py-5 sm:p-6">
+            bbb
             @if (config('urlhub.qrcode'))
                 <div class="w-full md:w-1/4 flex justify-center">
                     <img class="qrcode h-fit" src="{{$qrCode->getDataUri()}}" alt="QR Code">

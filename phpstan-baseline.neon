@@ -1,0 +1,66 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\CommentController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\CommentController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\CommentController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\CommentController\\:\\:index\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\CommentController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\CommentController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\CommentController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\IssueController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/IssueController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\IssueController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/IssueController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\IssueController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/IssueController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\IssueController\\:\\:show\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/IssueController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\IssueController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/IssueController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\IssueController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Controllers/IssueController.php

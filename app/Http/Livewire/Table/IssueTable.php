@@ -82,13 +82,16 @@ final class IssueTable extends PowerGridComponent
     public function addColumns(): PowerGridEloquent
     {
         return PowerGrid::eloquent()
-            ->addColumn('ids', function (Issue $issue) {
+            ->addColumn('ids', function () {
                 return Blade::render('@svg(\'icon-dashboard\')');
             })
             ->addColumn('title', function (Issue $issue) {
                 return
                     '<span class="font-semibold">'.$issue->title.'</span> </br>'
                     .'#'.$issue->id.' by '.$issue->author->name;
+            })
+            ->addColumn('comments', function () {
+                return Blade::render('@svg(\'icon-dashboard\')');
             });
     }
 
@@ -110,16 +113,20 @@ final class IssueTable extends PowerGridComponent
     {
         return [
             Column::add()
-                // ->title('ID')
                 ->field('ids')
-                ->headerAttribute('hidden'),
+                ->headerAttribute('hidden')
+                ->bodyAttribute('!w-4'),
 
             Column::add()
-                // ->title('Title')
                 ->field('title')
                 ->sortable()
                 ->searchable()
                 ->headerAttribute('hidden'),
+
+            Column::add()
+                ->field('comments')
+                ->headerAttribute('hidden')
+                ->bodyAttribute('!w-4'),
         ];
     }
 }

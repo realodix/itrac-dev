@@ -53,14 +53,6 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function url()
-    {
-        return $this->hasMany(Url::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function issue()
     {
         return $this->hasMany(Issue::class);

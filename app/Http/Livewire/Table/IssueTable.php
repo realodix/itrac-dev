@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Table;
 
 use App\Models\Issue;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Blade;
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
@@ -33,7 +34,6 @@ final class IssueTable extends PowerGridComponent
     {
         return [
             Header::make()
-                ->showToggleColumns()
                 ->showSearchInput(),
             Footer::make()
                 ->showPerPage()
@@ -86,12 +86,16 @@ final class IssueTable extends PowerGridComponent
                 return Blade::render('@svg(\'icon-dashboard\')');
             })
             ->addColumn('title', function (Issue $issue) {
+                /** @var \Carbon\Carbon */
+                $createdAt = $issue->created_at;
+                $timeForHumans = $createdAt->diffForHumans(['options' => Carbon::ONE_DAY_WORDS]);
+
                 return
-                    '<span class="font-semibold">'.$issue->title.'</span> </br>'
-                    .'#'.$issue->id.' by '.$issue->author->name;
+                    '<a href="'.route('issue.show', $issue->id).'" class="block font-semibold">'.$issue->title.'</a>'
+                    .'#'.$issue->id.' opened on '.$timeForHumans.' by <a href="#">'.$issue->author->name.'</a>';
             })
             ->addColumn('comments', function () {
-                return Blade::render('@svg(\'icon-dashboard\')');
+                return Blade::render('@svg(\'icon-dashboard\')').' 12';
             });
     }
 

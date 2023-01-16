@@ -113,9 +113,7 @@
                         class="nav-item {{(request()->route()->getName() === 'dashboard') ? 'border-l-2 border-uh-indigo-400':''}}">
                         @svg('icon-dashboard', 'mr-1') {{__('Dashboard')}}</a>
                 @endif
-                <a href="{{route('dashboard.allurl')}}"
-                    class="nav-item {{(request()->route()->getName() === 'dashboard.allurl') ? 'border-l-2 border-uh-indigo-400':''}}">
-                    @svg('icon-link', 'mr-1') {{__('URL List')}}</a>
+
                 <a href="{{route('user.index')}}"
                     class="nav-item {{(request()->route()->getName() === 'user.index') ? 'border-l-2 border-uh-indigo-400':''}}">
                     @svg('icon-users', 'mr-1') {{__('User List')}}</a>
@@ -166,16 +164,6 @@
     @if (request()->is('admin*'))
         <nav class="bg-white border-t border-slate-900/10 pt-1">
             <div class="hidden sm:flex max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 croll-smooth hover:scroll-auto">
-                <a href="{{route('dashboard.issue')}}"
-                    class="mr-8 py-3 font-semibold hover:text-slate-700 transition duration-100 ease-in-out border-b-2 border-transparent
-                        {{(request()->route()->getName() === 'dashboard.issue') ?
-                        'text-slate-800 border-uh-indigo-400' :
-                        'text-slate-500 hover:border-slate-300'}}"
-                >
-                    @svg('icon-dashboard', 'mr-1')
-                    <span class="">{{__('Issues')}}</span>
-                </a>
-
                 <a href="{{route('dashboard')}}"
                     class="mr-8 py-3 font-semibold hover:text-slate-700 transition duration-100 ease-in-out border-b-2 border-transparent
                         {{(request()->route()->getName() === 'dashboard') ?
@@ -187,15 +175,6 @@
                 </a>
 
                 @role('admin')
-                    <a href="{{route('dashboard.allurl')}}"
-                        class="mr-8 py-3 font-semibold hover:text-slate-700 transition duration-100 ease-in-out border-b-2 border-transparent
-                            {{(request()->route()->getName() === 'dashboard.allurl') ?
-                            'text-slate-800 border-uh-indigo-400' :
-                            'text-slate-500 hover:border-slate-300'}}"
-                    >
-                        @svg('icon-link', 'mr-1')
-                        <span class="">{{__('URL List')}}</span>
-                    </a>
                     <a href="{{route('user.index')}}"
                         class="mr-8 py-3 font-semibold hover:text-slate-700 transition duration-100 ease-in-out border-b-2 border-transparent
                             {{(request()->route()->getName() === 'user.index') ?

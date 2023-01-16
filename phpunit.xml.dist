@@ -22,6 +22,8 @@
     >
         <include>
             <directory suffix=".php">./app</directory>
+            <directory suffix=".php">./database</directory>
+            <directory suffix=".php">./routes</directory>
         </include>
     </coverage>
 

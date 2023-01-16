@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-// use App\Models\Issue;
+use App\Models\Comment;
+use App\Models\Issue;
 use Illuminate\Http\Request;
 
 class IssueController extends Controller
@@ -40,12 +41,14 @@ class IssueController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(int $id)
     {
-        //
+        $issue = Issue::findOrFail($id);
+        $comment = Comment::where('issue_id', $id)->get();
+
+        return view('issue.show', compact('issue', 'comment'));
     }
 
     /**

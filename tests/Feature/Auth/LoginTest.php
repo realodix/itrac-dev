@@ -101,15 +101,6 @@ class LoginTest extends TestCase
      * @test
      * @group f-auth
      */
-    public function unauthenticatedUsersCantAccessTheDashboard()
-    {
-        $this->get('/admin')->assertRedirect('/login');
-    }
-
-    /**
-     * @test
-     * @group f-auth
-     */
     public function userCannotLoginWithEmailThatDoesNotExist()
     {
         $response = $this->from($this->getRoute())

@@ -11,13 +11,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class IssueFactory extends Factory
 {
     /**
-     * The name of the factory's corresponding model.
-     *
-     * @var class-string<Issue>
-     */
-    protected $model = Issue::class;
-
-    /**
      * Define the model's default state.
      *
      * @return array<string, mixed>

@@ -47,4 +47,14 @@ class Comment extends Model
     | General Functions
     |---------------------------------------------------------------------------
     */
+
+    public function isAuthor(): bool
+    {
+        return $this->issue->author_id === $this->author_id;
+    }
+
+    public function labelAuthor(): string
+    {
+        return $this->isAuthor() ? 'Reporter' : '';
+    }
 }

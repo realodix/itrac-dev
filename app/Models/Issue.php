@@ -50,6 +50,16 @@ class Issue extends Model
     |---------------------------------------------------------------------------
     */
 
+    public function status(): string
+    {
+        return $this->isClosed() ? 'Closed' : 'Open';
+    }
+
+    public function isClosed(): bool
+    {
+        return $this->closed_by !== null;
+    }
+
     public function commentCount(): int
     {
         return $this->comments()->count();

@@ -20,7 +20,7 @@ class IssueFactory extends Factory
         return [
             'author_id'   => rand(1, 2),
             'title'       => fake()->words(3, true),
-            'description' => fake()->paragraph(),
+            'description' => fake()->paragraphs(nb: 3, asText: true),
         ];
     }
 }

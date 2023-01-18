@@ -5,7 +5,7 @@ main {
 }
 
 .frontend, .backend, .auth {
-  @apply bg-bg-primary font-sans text-gray-900 antialiased;
+  @apply bg-gray-100 font-sans text-gray-900 antialiased;
 }
 
 .navbar {
@@ -58,5 +58,23 @@ main {
         @apply bg-uh-indigo-600 hover:bg-uh-indigo-700 active:bg-uh-indigo-600;
       }
     }
+  }
+}
+
+.header-meta {
+  border-bottom: 1px solid #d0d7de;
+  @apply mb-4 pb-2;
+}
+
+.comment {
+  @apply bg-white;
+
+  &-header {
+    @apply bg-gray-200;
+    @apply px-4 py-2;
+  }
+
+  &-body {
+    @apply px-4 py-2;
   }
 }

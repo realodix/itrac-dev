@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('issue_id')
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->string('text');
+            $table->longText('text');
             $table->timestamps();
         });
     }

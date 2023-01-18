@@ -94,8 +94,10 @@ final class IssueTable extends PowerGridComponent
                     '<a href="'.route('issue.show', $issue->id).'" class="block font-semibold">'.$issue->title.'</a>'
                     .'#'.$issue->id.' opened on '.$timeForHumans.' by <a href="#">'.$issue->author->name.'</a>';
             })
-            ->addColumn('comments', function () {
-                return Blade::render('@svg(\'icon-dashboard\')').' 12';
+            ->addColumn('comments', function (Issue $issue) {
+                $comment = $issue->commentCount();
+
+                return Blade::render('@svg(\'icon-dashboard\')').$comment;
             });
     }
 

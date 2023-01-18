@@ -49,4 +49,9 @@ class Issue extends Model
     | General Functions
     |---------------------------------------------------------------------------
     */
+
+    public function commentCount(): int
+    {
+        return $this->comments()->count();
+    }
 }

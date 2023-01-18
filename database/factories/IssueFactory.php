@@ -19,8 +19,8 @@ class IssueFactory extends Factory
     {
         return [
             'author_id'   => rand(1, 2),
-            'title'       => 'Judul',
-            'description' => 'Artikel',
+            'title'       => fake()->words(3, true),
+            'description' => fake()->paragraph(),
         ];
     }
 }

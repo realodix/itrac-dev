@@ -20,7 +20,7 @@ class CommentFactory extends Factory
         return [
             'author_id' => rand(1, 2),
             'issue_id'  => rand(1, 2),
-            'text'      => 'Komentar',
+            'text'      => fake()->paragraph(),
         ];
     }
 }

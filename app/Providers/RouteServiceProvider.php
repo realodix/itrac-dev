@@ -71,10 +71,6 @@ class RouteServiceProvider extends ServiceProvider
         Route::bind('user_hashId', function (string $value) {
             return $this->hashidsDecoder(User::class, $value);
         });
-
-        Route::bind('su_hashId', function (string $value) {
-            return $this->hashidsDecoder(\App\Models\Url::class, $value);
-        });
     }
 
     /**

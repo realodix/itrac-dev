@@ -20,6 +20,7 @@
             <div class="comment md:w-8/12 justify-between">
                 <div class="issue mb-8 bg-white">
                     <div class="comment-header">
+                        <img src="{{ Avatar::create($issue->author->name)->toBase64() }}" class="h-8 inline-block" />
                         <b>{{$issue->author->name}}</b> commented {{$issue->created_at->diffForHumans()}}
                     </div>
                     <div class="comment-body">
@@ -29,6 +30,7 @@
 
                 @foreach($issue->comments->sortBy('created_at') as $comment)
                     <div class="comment-header mt-4">
+                        <img src="{{ Avatar::create($issue->author->name)->toBase64() }}" class="h-8 inline-block" />
                         <b>{{$comment->author->name}}</b> commented
                         <a id="comment-{{$comment->id}}" href="#comment-{{$comment->id}}" title="{{$comment->created_at->isoFormat('MMM DD, OY, HH:mm A zz')}}">
                             {{$comment->created_at->diffForHumans()}}

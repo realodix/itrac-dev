@@ -53,7 +53,7 @@ class Comment extends Model
         return $this->issue->author_id === $this->author_id;
     }
 
-    public function labelAuthor(): string
+    public function userRole(): string
     {
         return $this->isAuthor() ? 'Reporter' : '';
     }

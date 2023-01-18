@@ -27,7 +27,10 @@
                     <div class="comment-header">
                         <b>{{$comment->author->name}}</b> commented
                         <a id="comment-{{$comment->id}}" href="#comment-{{$comment->id}}">{{$comment->created_at->diffForHumans()}}</a>
-                        || {{$comment->labelAuthor()}}
+
+                        @if ($comment->isAuthor())
+                            <span class="py-px px-1 border border-gray-600 rounded text-sm text-gray-600">{{$comment->userRole()}}</span>
+                        @endif
                     </div>
                     <div class="comment-body">
                         {{$comment->text}}

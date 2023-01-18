@@ -50,18 +50,55 @@ class Issue extends Model
     |---------------------------------------------------------------------------
     */
 
+    /**
+     * Get the status of the issue.
+     */
     public function status(): string
     {
         return $this->isClosed() ? 'Closed' : 'Open';
     }
 
-    public function isClosed(): bool
-    {
-        return $this->closed_by !== null;
-    }
-
+    /**
+     * Get the number of comments.
+     */
     public function commentCount(): int
     {
         return $this->comments()->count();
+    }
+
+    /**
+     * Get the participants of the issue.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment>
+     */
+    public function participant()
+    {
+        return $this->comments()
+            ->select('author_id')
+            ->distinct();
+    }
+
+    /**
+     * Count the number of participants.
+     */
+    public function participantCount(): int
+    {
+        return $this->participant()->count('author_id');
+    }
+
+    /**
+     * Determine if the issue is authored by the current user.
+     */
+    public function isAuthor(): bool
+    {
+        return $this->author_id === auth()->id();
+    }
+
+    /**
+     * Determine if the issue is closed.
+     */
+    public function isClosed(): bool
+    {
+        return $this->closed_by !== null;
     }
 }

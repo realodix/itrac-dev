@@ -62,19 +62,23 @@ main {
 }
 
 .header-meta {
-  border-bottom: 1px solid #d0d7de;
+  @apply border-b border-slate-300;
   @apply mb-4 pb-2;
 }
 
 .comment {
-  /* @apply bg-white; */
+  @apply bg-white shadow-md rounded-md;
 
   &-header {
     @apply bg-gray-200;
-    @apply px-4 py-2;
+    @apply px-4 py-2 rounded-t-md;
   }
 
   &-body {
-    @apply px-4 py-2;
+    @apply px-4 py-2 rounded-b-md;
   }
+}
+.discussion-sidebar-item + .discussion-sidebar-item {
+	@apply mt-4;
+	@apply border-t border-slate-300;
 }

@@ -17,21 +17,29 @@
         </div>
 
         <div class="issue_bucket flex">
-            <div class="comment md:w-8/12 justify-between">
-                <div class="issue mb-8 bg-white shadow-md">
+            <div class="md:w-8/12 justify-between">
+                <div class="comment mb-8">
                     <div class="comment-header">
                         <img src="{{ Avatar::create($issue->author->name)->toBase64() }}" class="h-8 inline-block" />
-                        <b>{{$issue->author->name}}</b> commented {{$issue->created_at->diffForHumans()}}
+                        <b>{{$issue->author->name}}</b> commented
+                        <a id="issue-{{$issue->id}}" href="#issue-{{$issue->id}}" title="{{$issue->created_at->isoFormat('MMM DD, OY, HH:mm A zz')}}">
+                            {{$issue->created_at->diffForHumans()}}
+                        </a>
                     </div>
                     <div class="comment-body">
                         {{$issue->description}}
                     </div>
+                    {{-- @if ($issue->isAuthor())
+                        <div class="comment-footer">
+                            <a href="{{route('issue.edit', $issue)}}" class="btn btn-primary">Edit</a>
+                        </div>
+                    @endif --}}
                 </div>
 
                 @foreach($issue->comments->sortBy('created_at') as $comment)
-                    <div class="shadow-md">
+                    <div class="comment">
                         <div class="comment-header mt-4">
-                            <img src="{{ Avatar::create($issue->author->name)->toBase64() }}" class="h-8 inline-block" />
+                            <img src="{{ Avatar::create($comment->author->name)->toBase64() }}" class="h-8 inline-block" />
                             <b>{{$comment->author->name}}</b> commented
                             <a id="comment-{{$comment->id}}" href="#comment-{{$comment->id}}" title="{{$comment->created_at->isoFormat('MMM DD, OY, HH:mm A zz')}}">
                                 {{$comment->created_at->diffForHumans()}}
@@ -46,9 +54,17 @@
                     </div>
                 @endforeach
             </div>
-            <div class="md:w-2/12 px-4 py-2">
-                {{-- {{$issue->description}} --}}
-                b
+            <div class="md:w-4/12 px-4 py-2">
+                <div class="participation discussion-sidebar-item">
+                    <div class="">
+                        {{$issue->participantCount()}} participants
+                    </div>
+                    <div class="">
+                        @foreach ($issue->participant()->get() as $participant)
+                            <img src="{{ Avatar::create($participant->author->name)->toBase64() }}" class="h-8 inline-block" title="{{$participant->author->name}}"/>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </div>

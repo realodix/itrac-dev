@@ -48,11 +48,17 @@ class Comment extends Model
     |---------------------------------------------------------------------------
     */
 
+    /**
+     * Determine if the comment was written by the issue author.
+     */
     public function isAuthor(): bool
     {
         return $this->issue->author_id === $this->author_id;
     }
 
+    /**
+     * Get the role of the comment author.
+     */
     public function userRole(): string
     {
         return $this->isAuthor() ? 'Reporter' : '';

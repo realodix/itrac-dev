@@ -2,20 +2,20 @@
 
 namespace Database\Factories;
 
-use App\Models\Issue;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Issue>
+ * @extends Factory<Comment>
  */
-class IssueFactory extends Factory
+class CommentFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
-     * @var class-string<Issue>
+     * @var class-string<Comment>
      */
-    protected $model = Issue::class;
+    protected $model = Comment::class;
 
     /**
      * Define the model's default state.
@@ -25,9 +25,9 @@ class IssueFactory extends Factory
     public function definition()
     {
         return [
-            'author_id'   => rand(1, 2),
-            'title'       => 'Judul',
-            'description' => 'Artikel',
+            'author_id' => rand(1, 2),
+            'issue_id'  => rand(1, 2),
+            'text'      => 'Komentar',
         ];
     }
 }

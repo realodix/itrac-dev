@@ -14,6 +14,7 @@
                 &middot; {{$issue->comments->count()}} comments
             </div>
         </div>
+
         <div class="issue_bucket flex">
             <div class="comment md:w-8/12 justify-between">
                 <div class="comment-header">

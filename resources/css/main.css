@@ -67,7 +67,7 @@ main {
 }
 
 .comment {
-  @apply bg-white;
+  /* @apply bg-white; */
 
   &-header {
     @apply bg-gray-200;

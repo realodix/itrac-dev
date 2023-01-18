@@ -3,7 +3,7 @@
 @section('css_class', 'frontend home')
 
 @section('content')
-    <div class="max-w-7xl mx-auto sm:pt-10">
+    <div class="max-w-7xl mx-auto sm:pt-10 mb-12">
         <div class="header-meta">
             <div class="text-3xl mb-2">{{$issue->title}}</div>
             <div class="mb-2">
@@ -18,7 +18,7 @@
 
         <div class="issue_bucket flex">
             <div class="comment md:w-8/12 justify-between">
-                <div class="issue mb-8 bg-white">
+                <div class="issue mb-8 bg-white shadow-md">
                     <div class="comment-header">
                         <img src="{{ Avatar::create($issue->author->name)->toBase64() }}" class="h-8 inline-block" />
                         <b>{{$issue->author->name}}</b> commented {{$issue->created_at->diffForHumans()}}
@@ -29,18 +29,20 @@
                 </div>
 
                 @foreach($issue->comments->sortBy('created_at') as $comment)
-                    <div class="comment-header mt-4">
-                        <img src="{{ Avatar::create($issue->author->name)->toBase64() }}" class="h-8 inline-block" />
-                        <b>{{$comment->author->name}}</b> commented
-                        <a id="comment-{{$comment->id}}" href="#comment-{{$comment->id}}" title="{{$comment->created_at->isoFormat('MMM DD, OY, HH:mm A zz')}}">
-                            {{$comment->created_at->diffForHumans()}}
-                        </a>
-                        @if ($comment->isAuthor())
-                            <span class="py-px px-1 border border-gray-600 rounded text-sm text-gray-600">{{$comment->userRole()}}</span>
-                        @endif
-                    </div>
-                    <div class="comment-body bg-white">
-                        {{$comment->text}}
+                    <div class="shadow-md">
+                        <div class="comment-header mt-4">
+                            <img src="{{ Avatar::create($issue->author->name)->toBase64() }}" class="h-8 inline-block" />
+                            <b>{{$comment->author->name}}</b> commented
+                            <a id="comment-{{$comment->id}}" href="#comment-{{$comment->id}}" title="{{$comment->created_at->isoFormat('MMM DD, OY, HH:mm A zz')}}">
+                                {{$comment->created_at->diffForHumans()}}
+                            </a>
+                            @if ($comment->isAuthor())
+                                <span class="py-px px-1 border border-gray-600 rounded text-sm text-gray-600 float-right">{{$comment->userRole()}}</span>
+                            @endif
+                        </div>
+                        <div class="comment-body bg-white">
+                            {{$comment->text}}
+                        </div>
                     </div>
                 @endforeach
             </div>

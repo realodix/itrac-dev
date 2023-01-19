@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Facade;
 
 return [
-    'name'        => env('APP_NAME', 'UrlHub'),
+    'name'        => env('APP_NAME', 'Issue tracker'),
     'version'     => 'v1.0.0-alpha.8-dev',
-    'description' => env('APP_DESCRIPTION', 'Simplify your links'),
+    'description' => env('APP_DESCRIPTION', 'Issue tracker web application based on the Laravel PHP Framework.'),
 
     /*
     |--------------------------------------------------------------------------

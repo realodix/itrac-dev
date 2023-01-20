@@ -80,6 +80,8 @@ class IssueController extends Controller
      */
     public function destroy(Issue $issue)
     {
+        $this->authorize('forceDelete', $issue);
+
         Issue::destroy($issue->id);
 
         return redirect()->route('home');

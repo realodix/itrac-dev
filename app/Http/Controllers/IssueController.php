@@ -43,10 +43,10 @@ class IssueController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function show(int $id)
+    public function show(Issue $issue)
     {
-        $issue = Issue::findOrFail($id);
-        $comment = Comment::where('issue_id', $id)->get();
+        $issue = Issue::findOrFail($issue->id);
+        $comment = Comment::where('issue_id', $issue->id)->get();
 
         return view('issue.show', compact('issue', 'comment'));
     }
@@ -76,12 +76,11 @@ class IssueController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
-     * @return int
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(int $id)
+    public function destroy(Issue $issue)
     {
-        Issue::destroy($id);
+        Issue::destroy($issue->id);
 
         return redirect()->route('home');
     }

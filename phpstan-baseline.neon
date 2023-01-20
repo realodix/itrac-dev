@@ -6,11 +6,6 @@ parameters:
 			path: app/Http/Controllers/CommentController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\CommentController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
-			count: 1
-			path: app/Http/Controllers/CommentController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\CommentController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
 			count: 1
 			path: app/Http/Controllers/CommentController.php
@@ -37,11 +32,6 @@ parameters:
 
 		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\IssueController\\:\\:create\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
-			count: 1
-			path: app/Http/Controllers/IssueController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\IssueController\\:\\:destroy\\(\\) should return int but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
 			count: 1
 			path: app/Http/Controllers/IssueController.php
 

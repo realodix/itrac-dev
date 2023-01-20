@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\User\ChangePasswordController;
 use App\Http\Controllers\Dashboard\User\UserController;
@@ -7,8 +8,9 @@ use App\Http\Controllers\IssueController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'issue.index')->name('home');
-Route::get('/issues/{issue_id}', [IssueController::class, 'show'])->name('issue.show');
-Route::get('/issues/{issue_id}/delete', [IssueController::class, 'destroy'])->name('issue.delete');
+Route::get('/issues/{issue}', [IssueController::class, 'show'])->name('issue.show');
+Route::get('/issues/{issue}/delete', [IssueController::class, 'destroy'])->name('issue.delete');
+Route::get('/issues/comment/{comment}/delete', [CommentController::class, 'destroy'])->name('issue.comment.delete');
 
 Route::namespace('Dashboard')->prefix('admin')->group(function () {
     Route::middleware('auth')->group(function () {

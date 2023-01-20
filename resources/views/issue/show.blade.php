@@ -45,8 +45,14 @@
                                 {{$comment->created_at->diffForHumans()}}
                             </a>
                             @if ($comment->isAuthor())
-                                <span class="py-px px-1 border border-gray-600 rounded text-sm text-gray-600 float-right">{{$comment->userRole()}}</span>
+                                <span class="py-px px-1 border border-gray-600 rounded text-sm text-gray-600">{{$comment->userRole()}}</span>
                             @endif
+
+                            @auth
+                                @if ($comment->isAuthor() || auth()->user()->hasRole('admin'))
+                                    <a href="{{route('issue.comment.delete', $comment)}}" class="font-semibold">Delete</a>
+                                @endif
+                            @endauth
                         </div>
                         <div class="comment-body bg-white">
                             {{$comment->text}}
@@ -65,11 +71,15 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="participation discussion-sidebar-item">
-                    <div class="">
-                        <a href="{{route('issue.delete', $issue)}}" class="font-semibold">Delete issue</a>
-                    </div>
-                </div>
+                @auth
+                    @if ($issue->isAuthor() || auth()->user()->hasRole('admin'))
+                        <div class="participation discussion-sidebar-item">
+                            <div class="">
+                                <a href="{{route('issue.delete', $issue)}}" class="font-semibold">Delete issue</a>
+                            </div>
+                        </div>
+                    @endif
+                @endauth
             </div>
         </div>
     </div>

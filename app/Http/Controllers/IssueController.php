@@ -77,10 +77,12 @@ class IssueController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return int
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
-        //
+        Issue::destroy($id);
+
+        return redirect()->route('home');
     }
 }

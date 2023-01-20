@@ -56,13 +56,18 @@
             </div>
             <div class="md:w-4/12 px-4 py-2">
                 <div class="participation discussion-sidebar-item">
-                    <div class="">
+                    <div class="mb-2">
                         {{$issue->participantCount()}} participants
                     </div>
                     <div class="">
                         @foreach ($issue->participant()->get() as $participant)
-                            <img src="{{ Avatar::create($participant->author->name)->toBase64() }}" class="h-8 inline-block" title="{{$participant->author->name}}"/>
+                            <img src="{{ Avatar::create($participant->author->name)->toBase64() }}" class="h-8 inline-block w-7 h-7 mb-1" title="{{$participant->author->name}}"/>
                         @endforeach
+                    </div>
+                </div>
+                <div class="participation discussion-sidebar-item">
+                    <div class="">
+                        <a href="{{route('issue.delete', $issue)}}" class="font-semibold">Delete issue</a>
                     </div>
                 </div>
             </div>

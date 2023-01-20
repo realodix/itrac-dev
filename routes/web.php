@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'issue.index')->name('home');
 Route::get('/issues/{issue_id}', [IssueController::class, 'show'])->name('issue.show');
+Route::get('/issues/{issue_id}/delete', [IssueController::class, 'destroy'])->name('issue.delete');
 
 Route::namespace('Dashboard')->prefix('admin')->group(function () {
     Route::middleware('auth')->group(function () {

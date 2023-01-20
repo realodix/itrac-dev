@@ -5,7 +5,7 @@ main {
 }
 
 .frontend, .backend, .auth {
-  @apply bg-gray-100 font-sans text-gray-900 antialiased;
+  @apply bg-slate-100 font-sans text-gray-900 antialiased;
 }
 
 .navbar {
@@ -67,10 +67,10 @@ main {
 }
 
 .comment {
-  @apply bg-white shadow-md rounded-md;
+  @apply bg-white shadow rounded-md;
 
   &-header {
-    @apply bg-gray-200;
+    @apply bg-slate-200;
     @apply px-4 py-2 rounded-t-md;
   }
 
@@ -78,7 +78,12 @@ main {
     @apply px-4 py-2 rounded-b-md;
   }
 }
-.discussion-sidebar-item + .discussion-sidebar-item {
-	@apply mt-4;
-	@apply border-t border-slate-300;
+
+.discussion-sidebar-item {
+	@apply pt-4;
+
+  & + .discussion-sidebar-item {
+    @apply mt-4;
+    @apply border-t border-slate-300;
+  }
 }

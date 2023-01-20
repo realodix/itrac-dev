@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Multiple with factory
-        \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(15)->create();
         \App\Models\Issue::factory(3)->create();
-        \App\Models\Comment::factory(15)->create();
+        \App\Models\Comment::factory(50)->create();
     }
 }

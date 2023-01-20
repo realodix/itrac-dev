@@ -41,7 +41,7 @@ parameters:
 			path: app/Http/Controllers/IssueController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\IssueController\\:\\:destroy\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
+			message: "#^Method App\\\\Http\\\\Controllers\\\\IssueController\\:\\:destroy\\(\\) should return int but returns Illuminate\\\\Http\\\\RedirectResponse\\.$#"
 			count: 1
 			path: app/Http/Controllers/IssueController.php
 

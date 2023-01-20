@@ -5,7 +5,7 @@
 @section('content')
     <div class="max-w-7xl mx-auto sm:pt-10 mb-12">
         <div class="header-meta">
-            <div class="text-3xl mb-2">{{$issue->title}}</div>
+            <div class="text-3xl mb-2">#{{$issue->id}} - {{$issue->title}}</div>
             <div class="mb-2">
                 <span class="mr-4 py-1 px-2 border bg-green-600 border-green-600 rounded-md text-md text-white">
                     @svg('icon-dashboard')

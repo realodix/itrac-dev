@@ -9,6 +9,7 @@
         "blade-ui-kit/blade-icons": "^1.4",
         "doctrine/dbal": "^3.5",
         "endroid/qr-code": "^4.6",
+        "filament/forms": "^2.16",
         "guzzlehttp/guzzle": "^7.3",
         "laravel/fortify": "^1.13",
         "laravel/framework": "^9.45",

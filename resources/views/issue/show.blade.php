@@ -11,7 +11,7 @@
                     @svg('icon-dashboard')
                     {{$issue->status()}}
                 </span>
-                <b>{{$issue->author->name}}</b> opened this issue {{$issue->created_at->diffForHumans()}}
+                <b>{{$issue->author->name}}</b> opened this issue <span title="{{$issue->created_at->isoFormat('MMM DD, OY, HH:mm A zz')}}">{{$issue->created_at->diffForHumans()}}</span>
                 &middot; {{$issue->comments->count()}} comments
             </div>
         </div>
@@ -61,7 +61,7 @@
                     </div>
                     <div class="">
                         @foreach ($issue->participant()->get() as $participant)
-                            <img src="{{ Avatar::create($participant->author->name)->toBase64() }}" class="h-8 inline-block w-7 h-7 mb-1" title="{{$participant->author->name}}"/>
+                            <img src="{{ Avatar::create($participant->author->name)->toBase64() }}" class="inline-block w-7 h-7 mb-1" title="{{$participant->author->name}}"/>
                         @endforeach
                     </div>
                 </div>

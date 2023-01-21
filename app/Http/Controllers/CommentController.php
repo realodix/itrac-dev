@@ -77,6 +77,8 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
+        $this->authorize('forceDelete', $comment);
+
         Comment::destroy($comment->id);
 
         return redirect()->back();

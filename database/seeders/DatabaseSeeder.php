@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Comment;
+use App\Models\Issue;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,12 +19,15 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
+            IssueSeeder::class,
+            CommentSeeder::class,
             RolesAndPermissionsSeeder::class,
         ]);
 
         // Multiple with factory
-        \App\Models\User::factory(15)->create();
-        \App\Models\Issue::factory(3)->create();
-        \App\Models\Comment::factory(50)->create();
+        Issue::factory(3)
+            ->for(User::factory()->create(), 'authors')
+            ->has(Comment::factory(25))
+            ->create();
     }
 }

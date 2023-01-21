@@ -52,7 +52,7 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function issue()
+    public function issues()
     {
         return $this->hasMany(Issue::class, 'author_id');
     }
@@ -60,7 +60,7 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function comment()
+    public function comments()
     {
         return $this->hasMany(Comment::class, 'author_id');
     }

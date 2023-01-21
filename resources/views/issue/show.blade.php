@@ -67,7 +67,7 @@
                     </div>
                     <div class="">
                         @foreach ($issue->participant()->get() as $participant)
-                            <img src="{{ Avatar::create($participant->author->name)->toBase64() }}" class="inline-block w-7 h-7 mb-1" title="{{$participant->author->name}}"/>
+                            <img src="{{ Avatar::create($participant->authors->name)->toBase64() }}" class="inline-block w-7 h-7 mb-1" title="{{$participant->authors->name}}"/>
                         @endforeach
                     </div>
                 </div>

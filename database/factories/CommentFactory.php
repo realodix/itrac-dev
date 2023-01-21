@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Comment;
+use App\Models\Issue;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -11,6 +13,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class CommentFactory extends Factory
 {
     /**
+     * The name of the factory's corresponding model.
+     *
+     * @var class-string<Comment>
+     */
+    protected $model = Comment::class;
+
+    /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
@@ -18,8 +27,8 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'author_id' => rand(1, 15),
-            'issue_id'  => rand(2, 3),
+            'author_id' => User::factory(),
+            'issue_id'  => Issue::factory(),
             'text'      => fake()->paragraph(),
         ];
     }

@@ -29,7 +29,7 @@ class Comment extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function author()
+    public function authors()
     {
         return $this->belongsTo(User::class, 'author_id');
     }

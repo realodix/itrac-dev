@@ -41,7 +41,7 @@
         "laravel/tinker": "Required to use the tinker console command.",
         "nyholm/psr7": "Required to use PSR-7 bridging features."
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {

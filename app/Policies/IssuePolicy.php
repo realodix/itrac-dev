@@ -77,6 +77,7 @@ class IssuePolicy
      */
     public function forceDelete(User $user, Issue $issue)
     {
-        return $user->id === $issue->author_id || $user->hasRole('admin');
+        return $user->id === $issue->author_id
+            || $user->hasRole('admin');
     }
 }

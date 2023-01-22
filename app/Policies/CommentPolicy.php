@@ -77,6 +77,8 @@ class CommentPolicy
      */
     public function forceDelete(User $user, Comment $comment)
     {
-        return $user->id === $comment->author_id || $user->hasRole('admin');
+        return $user->id === $comment->author_id // Comment author
+            || $user->id === $comment->issue->author_id // Issue author
+            || $user->hasRole('admin');
     }
 }

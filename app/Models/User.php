@@ -79,7 +79,7 @@ class User extends Authenticatable
     /**
      * Assign the given role to the user.
      *
-     * @param string $role
+     * @return self
      */
     public function assignRoleAsAdmin()
     {

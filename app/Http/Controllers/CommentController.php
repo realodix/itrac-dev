@@ -81,6 +81,6 @@ class CommentController extends Controller
 
         Comment::destroy($comment->id);
 
-        return redirect()->back();
+        return redirect()->route('issue.show', $comment->issue->id);
     }
 }

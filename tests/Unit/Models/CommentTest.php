@@ -4,6 +4,7 @@ namespace Tests\Unit\Models;
 
 use App\Models\Comment;
 use App\Models\Issue;
+use App\Models\User;
 use Tests\TestCase;
 
 class CommentTest extends TestCase
@@ -15,7 +16,7 @@ class CommentTest extends TestCase
     public function belongsToUser()
     {
         $c = Comment::factory()
-            ->for(Issue::factory()->create())
+            ->for(User::factory()->create(), 'author')
             ->create();
 
         $this->assertTrue($c->author()->exists());

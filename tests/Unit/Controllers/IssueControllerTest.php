@@ -15,9 +15,7 @@ class IssueControllerTest extends TestCase
      */
     public function user_can_delete_a_issue()
     {
-        $issue = Issue::factory()
-            ->for(User::factory()->create(), 'author')
-            ->create();
+        $issue = Issue::factory()->create();
 
         $this->actingAs($issue->author)
             ->get(route('issue.delete', $issue))

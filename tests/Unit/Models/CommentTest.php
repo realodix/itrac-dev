@@ -16,7 +16,7 @@ class CommentTest extends TestCase
     public function belongsToUser()
     {
         $c = Comment::factory()
-            ->for(User::factory()->create(), 'author')
+            ->for(User::factory(), 'author')
             ->create();
 
         $this->assertTrue($c->author()->exists());

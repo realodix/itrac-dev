@@ -18,12 +18,11 @@ class CommentPolicyTest extends TestCase
      */
     public function authorCanDeleteComment()
     {
-        $user = User::factory()->create();
-        $comment = Comment::factory()->create(['author_id' => $user->id]);
+        $comment = Comment::factory()->create();
 
-        $this->assertTrue($user->can('forceDelete', $comment));
+        $this->assertTrue($comment->author->can('forceDelete', $comment));
 
-        $response = $this->actingAs($user)
+        $response = $this->actingAs($comment->author)
             ->get(route('issue.comment.delete', $comment));
         $response->assertStatus(302);
     }
@@ -37,13 +36,11 @@ class CommentPolicyTest extends TestCase
      */
     public function issueAuthorCanDeleteComment()
     {
-        $user = User::factory()->create();
-        $issue = Issue::factory()->create(['author_id' => $user->id]);
-        $comment = Comment::factory()->create(['issue_id' => $issue->id]);
+        $comment = Comment::factory()->create();
 
-        $this->assertTrue($user->can('forceDelete', $comment));
+        $this->assertTrue($comment->author->can('forceDelete', $comment));
 
-        $response = $this->actingAs($user)
+        $response = $this->actingAs($comment->author)
             ->get(route('issue.comment.delete', $comment));
         $response->assertStatus(302);
     }

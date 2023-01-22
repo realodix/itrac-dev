@@ -15,9 +15,7 @@ class CommentControllerTest extends TestCase
      */
     public function user_can_delete_a_comment()
     {
-        $comment = Comment::factory()
-            ->for(User::factory()->create(), 'author')
-            ->create();
+        $comment = Comment::factory()->create();
 
         $this->actingAs($comment->author)
             ->get(route('issue.comment.delete', $comment))

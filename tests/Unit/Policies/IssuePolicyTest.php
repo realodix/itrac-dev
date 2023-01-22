@@ -35,9 +35,8 @@ class IssuePolicyTest extends TestCase
      */
     public function adminCanDeleteIssue()
     {
-        $user = User::factory()->create();
-        $user->assignRole('admin');
         $issue = Issue::factory()->create();
+        $user = $issue->author->assignRole('admin');
 
         $this->assertTrue($user->can('forceDelete', $issue));
 

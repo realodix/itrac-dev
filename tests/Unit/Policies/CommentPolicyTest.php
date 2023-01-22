@@ -55,7 +55,7 @@ class CommentPolicyTest extends TestCase
     public function adminCanDeleteComment()
     {
         $comment = Comment::factory()->create();
-        $user = $comment->author->assignRole('admin');
+        $user = $comment->author->assignRoleAsAdmin();
 
         $this->assertTrue($user->can('forceDelete', $comment));
 

@@ -65,4 +65,19 @@ class IssuePolicyTest extends TestCase
             ->get(route('issue.delete', $issue));
         $response->assertForbidden();
     }
+
+    /**
+     * Guest cannot delete the issue.
+     * Guest is the user who is not logged in.
+     *
+     * @test
+     * @group u-policy
+     */
+    public function guestCannotDeleteIssue()
+    {
+        $issue = Issue::factory()->create();
+
+        $response = $this->get(route('issue.delete', $issue));
+        $response->assertForbidden();
+    }
 }

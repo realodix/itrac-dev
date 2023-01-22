@@ -86,4 +86,19 @@ class CommentPolicyTest extends TestCase
             ->get(route('issue.comment.delete', $comment));
         $response->assertForbidden();
     }
+
+     /**
+      * Guest cannot delete the comment.
+      * Guest is the user who is not logged in.
+      *
+      * @test
+      * @group u-policy
+      */
+     public function guestCannotDeleteComment()
+     {
+         $comment = Comment::factory()->create();
+
+         $response = $this->get(route('issue.comment.delete', $comment));
+         $response->assertForbidden();
+     }
 }

@@ -17,12 +17,11 @@ class IssuePolicyTest extends TestCase
      */
     public function authorCanDeleteIssue()
     {
-        $user = User::factory()->create();
-        $issue = Issue::factory()->create(['author_id' => $user->id]);
+        $issue = Issue::factory()->create();
 
-        $this->assertTrue($user->can('forceDelete', $issue));
+        $this->assertTrue($issue->author->can('forceDelete', $issue));
 
-        $response = $this->actingAs($user)
+        $response = $this->actingAs($issue->author)
             ->get(route('issue.delete', $issue));
         $response->assertStatus(302);
     }

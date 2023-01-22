@@ -34,10 +34,6 @@ trait Auth
 
     private function getAdminRole()
     {
-        // create permissions
-        Permission::create(['name' => $this->adminRole]);
-
-        // create roles and assign created permissions
         $adminRole = Role::create(['name' => $this->adminRole]);
         $adminRole->givePermissionTo(Permission::all());
 

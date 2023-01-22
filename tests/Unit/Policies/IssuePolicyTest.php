@@ -21,6 +21,10 @@ class IssuePolicyTest extends TestCase
         $issue = Issue::factory()->create(['author_id' => $user->id]);
 
         $this->assertTrue($user->can('forceDelete', $issue));
+
+        $response = $this->actingAs($user)
+            ->get(route('issue.delete', $issue));
+        $response->assertStatus(302);
     }
 
     /**
@@ -37,6 +41,10 @@ class IssuePolicyTest extends TestCase
         $issue = Issue::factory()->create();
 
         $this->assertTrue($user->can('forceDelete', $issue));
+
+        $response = $this->actingAs($user)
+            ->get(route('issue.delete', $issue));
+        $response->assertStatus(302);
     }
 
     /**
@@ -52,5 +60,9 @@ class IssuePolicyTest extends TestCase
         $issue = Issue::factory()->create();
 
         $this->assertFalse($user->can('forceDelete', $issue));
+
+        $response = $this->actingAs($user)
+            ->get(route('issue.delete', $issue));
+        $response->assertForbidden();
     }
 }

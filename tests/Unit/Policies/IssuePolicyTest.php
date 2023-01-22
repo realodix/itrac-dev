@@ -36,11 +36,11 @@ class IssuePolicyTest extends TestCase
     public function adminCanDeleteIssue()
     {
         $issue = Issue::factory()->create();
-        $user = $issue->author->assignRole('admin');
+        $adminUser = $this->admin();
 
-        $this->assertTrue($user->can('forceDelete', $issue));
+        $this->assertTrue($adminUser->can('forceDelete', $issue));
 
-        $response = $this->actingAs($user)
+        $response = $this->actingAs($adminUser)
             ->get(route('issue.delete', $issue));
         $response->assertStatus(302);
     }
@@ -52,7 +52,7 @@ class IssuePolicyTest extends TestCase
      * @test
      * @group u-policy
      */
-    public function notAuthorCannotDeleteIssue()
+    public function nonAuthorCannotDeleteIssue()
     {
         $user = User::factory()->create();
         $issue = Issue::factory()->create();

@@ -55,11 +55,11 @@ class CommentPolicyTest extends TestCase
     public function adminCanDeleteComment()
     {
         $comment = Comment::factory()->create();
-        $user = $comment->author->assignRole('admin');
+        $adminUser = $this->admin();
 
-        $this->assertTrue($user->can('forceDelete', $comment));
+        $this->assertTrue($adminUser->can('forceDelete', $comment));
 
-        $response = $this->actingAs($user)
+        $response = $this->actingAs($adminUser)
             ->get(route('issue.comment.delete', $comment));
         $response->assertStatus(302);
     }
@@ -71,7 +71,7 @@ class CommentPolicyTest extends TestCase
      * @test
      * @group u-policy
      */
-    public function notAuthorCannotDeleteComment()
+    public function nonAuthorCannotDeleteComment()
     {
         $user = User::factory()->create();
         $comment = Comment::factory()->create();

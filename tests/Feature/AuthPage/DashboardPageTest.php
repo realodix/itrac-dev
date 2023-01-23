@@ -12,7 +12,7 @@ class DashboardPageTest extends TestCase
      */
     public function dCanAccessPage()
     {
-        $response = $this->actingAs($this->admin())
+        $response = $this->actingAs($this->normalUser())
             ->get(route('dashboard'));
 
         $response->assertOk();

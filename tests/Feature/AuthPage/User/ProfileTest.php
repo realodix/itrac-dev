@@ -39,7 +39,7 @@ class ProfileTest extends TestCase
     public function adminCanAccessOtherUsersProfilePages()
     {
         $response = $this->actingAs($this->admin())
-            ->get($this->getRoute($this->nonAdmin()->name));
+            ->get($this->getRoute($this->normalUser()->name));
 
         $response->assertOk();
     }
@@ -48,9 +48,9 @@ class ProfileTest extends TestCase
      * @test
      * @group f-user
      */
-    public function nonAdminCantAccessOtherUsersProfilePages()
+    public function normalUserCantAccessOtherUsersProfilePages()
     {
-        $response = $this->actingAs($this->nonAdmin())
+        $response = $this->actingAs($this->normalUser())
             ->get($this->getRoute($this->admin()->name));
 
         $response->assertForbidden();
@@ -81,11 +81,11 @@ class ProfileTest extends TestCase
      * @test
      * @group f-user
      */
-    public function nonAdminCantChangeOtherUsersEmail()
+    public function normalUserCantChangeOtherUsersEmail()
     {
         $user = User::factory()->create(['email' => 'user2@urlhub.test']);
 
-        $response = $this->actingAs($this->nonAdmin())
+        $response = $this->actingAs($this->normalUser())
             ->from($this->getRoute($user->name))
             ->post($this->postRoute($user->id), [
                 'email' => 'new_email_user2@urlhub.test',
@@ -164,7 +164,7 @@ class ProfileTest extends TestCase
         $response = $this->actingAs($user)
             ->from($this->getRoute($user->name))
             ->post($this->postRoute($user->id), [
-                'email' => $this->nonAdmin()->email,
+                'email' => $this->normalUser()->email,
             ]);
 
         $response

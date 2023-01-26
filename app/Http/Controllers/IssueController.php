@@ -43,10 +43,10 @@ class IssueController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function show(Issue $issue)
+    public function show($id)
     {
-        $issue = Issue::findOrFail($issue->id);
-        $comment = Comment::where('issue_id', $issue->id)->get();
+        $issue = Issue::findOrFail($id);
+        $comment = $issue->comments()->get();
 
         return view('issue.show', compact('issue', 'comment'));
     }

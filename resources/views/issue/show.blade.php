@@ -55,7 +55,7 @@
                             @endauth
                         </div>
                         <div class="comment-body bg-white">
-                            {{$comment->text}}
+                            <x-markdown flavor="github">{{$comment->text}}</x-markdown>
                         </div>
                     </div>
                 @endforeach

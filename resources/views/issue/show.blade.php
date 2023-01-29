@@ -78,8 +78,6 @@
                 @else
                     You need to <a href="{{route('login')}}" class="text-blue-600">log in</a> before you can comment.
                 @endif
-
-
             </div>
             <div class="md:w-4/12 px-4 py-2">
                 <div class="participation discussion-sidebar-item">

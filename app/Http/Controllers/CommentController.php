@@ -29,7 +29,7 @@ class CommentController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created comment in storage.
      *
      * @return \Illuminate\Http\RedirectResponse
      */

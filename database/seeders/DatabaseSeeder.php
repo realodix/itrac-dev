@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            RolesAndPermissionsSeeder::class,
             UserSeeder::class,
             IssueSeeder::class,
             CommentSeeder::class,
-            RolesAndPermissionsSeeder::class,
         ]);
 
         // Multiple with factory

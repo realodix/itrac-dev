@@ -86,9 +86,7 @@ final class IssueTable extends PowerGridComponent
                 return Blade::render('@svg(\'icon-dashboard\')');
             })
             ->addColumn('title', function (Issue $issue) {
-                /** @var \Carbon\Carbon */
-                $createdAt = $issue->created_at;
-                $timeForHumans = $createdAt->diffForHumans(['options' => Carbon::ONE_DAY_WORDS]);
+                $timeForHumans = $issue->created_at->diffForHumans(['options' => Carbon::ONE_DAY_WORDS]);
 
                 return
                     '<a href="'.route('issue.show', $issue->id).'" class="block font-semibold">'.$issue->title.'</a>'

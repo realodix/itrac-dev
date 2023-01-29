@@ -19,8 +19,11 @@ class CommentTest extends TestCase
             ->for(User::factory(), 'author')
             ->create();
 
+        /** @var \App\Models\User */
+        $author = $c->author()->first();
+
         $this->assertTrue($c->author()->exists());
-        $this->assertEquals($c->author_id, $c->author()->first()->id);
+        $this->assertEquals($c->author_id, $author->id);
         $this->assertEquals(1, $c->author()->count());
     }
 
@@ -34,8 +37,11 @@ class CommentTest extends TestCase
             ->for(Issue::factory()->create())
             ->create();
 
+        /** @var \App\Models\User */
+        $author = $c->author()->first();
+
         $this->assertTrue($c->author()->exists());
-        $this->assertEquals($c->author_id, $c->author()->first()->id);
+        $this->assertEquals($c->author_id, $author->id);
         $this->assertEquals(1, $c->author()->count());
     }
 }

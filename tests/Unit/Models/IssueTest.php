@@ -19,8 +19,11 @@ class IssueTest extends TestCase
             ->has(Comment::factory())
             ->create();
 
+        /** @var \App\Models\Comment */
+        $comment = $issue->comments->first();
+
         $this->assertTrue($issue->comments()->exists());
-        $this->assertEquals($issue->id, $issue->comments()->first()->issue_id);
+        $this->assertEquals($issue->id, $comment->issue_id);
         $this->assertEquals(1, $issue->comments()->count());
     }
 
@@ -34,8 +37,11 @@ class IssueTest extends TestCase
             ->for(User::factory()->create(), 'author')
             ->create();
 
+        /** @var \App\Models\User */
+        $author = $issue->author()->first();
+
         $this->assertTrue($issue->author()->exists());
-        $this->assertEquals($issue->author_id, $issue->author()->first()->id);
+        $this->assertEquals($issue->author_id, $author->id);
         $this->assertEquals(1, $issue->author()->count());
     }
 }

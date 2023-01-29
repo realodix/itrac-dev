@@ -75,7 +75,10 @@ class ProfileTest extends TestCase
             ->assertRedirect($this->getRoute($user->name))
             ->assertSessionHas('flash_success');
 
-        $this->assertSame('new_user_email@urlhub.test', $user->fresh()->email);
+        /** @var \App\Models\User */
+        $userFresh = $user->fresh();
+
+        $this->assertSame('new_user_email@urlhub.test', $userFresh->email);
     }
 
     /**

@@ -68,10 +68,11 @@ main {
 }
 
 .comment {
-  @apply bg-white shadow rounded-md;
+  @apply mt-4 rounded-t-md rounded-b-md;
+  @apply bg-white border border-gray-300;
 
   &-header {
-    @apply bg-slate-200;
+    @apply bg-slate-100 border-b border-gray-300;
     @apply px-4 py-2 rounded-t-md;
   }
 

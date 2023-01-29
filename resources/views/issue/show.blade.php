@@ -50,6 +50,7 @@
 
                             @auth
                                 @if ($comment->isAuthor() || auth()->user()->hasRole('admin'))
+                                    <a href="{{route('issue.comment.edit', $comment)}}" class="font-semibold">Edit</a>
                                     <a href="{{route('issue.comment.delete', $comment)}}" class="font-semibold">Delete</a>
                                 @endif
                             @endauth

@@ -42,7 +42,7 @@ class IssueController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(int $id)
     {
         $issue = Issue::findOrFail($id);
         $comment = $issue->comments()->get();

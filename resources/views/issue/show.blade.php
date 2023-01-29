@@ -66,7 +66,11 @@
                     @csrf
                     <x-easy-mde name="comment_text"/>
 
-                    <x-form-button>Submit</x-form-button>
+                    <x-form-button
+                        class="pointer-events-auto ml-8 rounded-md bg-indigo-600 py-2 px-3 text-[0.8125rem] font-semibold leading-5 text-white hover:bg-indigo-500"
+                    >
+                        Submit
+                    </x-form-button>
                 </x-form>
             </div>
             <div class="md:w-4/12 px-4 py-2">

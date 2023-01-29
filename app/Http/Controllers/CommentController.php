@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Issue;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -32,9 +33,15 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Issue $issue)
     {
-        //
+        Comment::create([
+            'issue_id' => $issue->id,
+            'text' => $request->comment_text,
+            'author_id' => auth()->user()->id,
+        ]);
+
+        return redirect()->route('issue.show', $issue->id);
     }
 
     /**

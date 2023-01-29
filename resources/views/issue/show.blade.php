@@ -62,7 +62,12 @@
 
                 <br>
 
-                <x-easy-mde name="about"/>
+                <x-form action="{{ route('issue.comment.store', $issue->id) }}">
+                    @csrf
+                    <x-easy-mde name="comment_text"/>
+
+                    <x-form-button>Submit</x-form-button>
+                </x-form>
             </div>
             <div class="md:w-4/12 px-4 py-2">
                 <div class="participation discussion-sidebar-item">

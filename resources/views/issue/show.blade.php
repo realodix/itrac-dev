@@ -62,18 +62,24 @@
 
                 <br>
 
-                <x-form action="{{ route('issue.comment.store', $issue->id) }}">
-                    @csrf
-                    <x-easy-mde name="comment_text"/>
+                @if (auth()->check())
+                    <x-form action="{{ route('issue.comment.store', $issue->id) }}">
+                        @csrf
+                        <x-easy-mde name="comment_text"/>
 
-                    <x-form-button
-                        class="bg-slate-900 hover:bg-slate-700 dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400
-                            focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50
-                            text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto "
-                    >
-                        Submit
-                    </x-form-button>
-                </x-form>
+                        <x-form-button
+                            class="bg-slate-900 hover:bg-slate-700 dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400
+                                focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50
+                                text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto "
+                        >
+                            Submit
+                        </x-form-button>
+                    </x-form>
+                @else
+                    You need to <a href="{{route('login')}}" class="text-blue-600">log in</a> before you can comment.
+                @endif
+
+
             </div>
             <div class="md:w-4/12 px-4 py-2">
                 <div class="participation discussion-sidebar-item">

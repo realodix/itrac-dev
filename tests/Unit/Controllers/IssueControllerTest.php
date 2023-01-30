@@ -82,8 +82,8 @@ class IssueControllerTest extends TestCase
             ->post(
                 route('issue.update', $issue),
                 [
-                    'issue_title' => 'new title',
-                    'issue_description' => 'new description'
+                    'title' => 'new title',
+                    'description' => 'new description'
                 ]
             )
             ->assertRedirect(route('issue.show', $issue));

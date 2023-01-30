@@ -72,10 +72,7 @@ class IssueController extends Controller
      */
     public function update(Request $request, Issue $issue)
     {
-        $issue->update([
-            'title'       => $request->issue_title,
-            'description' => $request->issue_description,
-        ]);
+        $issue->update($request->all());
 
         return redirect()->route('issue.show', $issue);
     }

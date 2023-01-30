@@ -50,8 +50,8 @@
 
                             @auth
                                 @if ($comment->isAuthor() || auth()->user()->hasRole('admin'))
-                                    <a href="{{route('issue.comment.edit', $comment)}}" class="font-semibold">Edit</a>
-                                    <a href="{{route('issue.comment.delete', $comment)}}" class="font-semibold">Delete</a>
+                                    <a href="{{route('comment.edit', $comment)}}" class="font-semibold">Edit</a>
+                                    <a href="{{route('comment.delete', $comment)}}" class="font-semibold">Delete</a>
                                 @endif
                             @endauth
                         </div>
@@ -64,7 +64,7 @@
                 <br>
 
                 @if (auth()->check())
-                    <x-form action="{{ route('issue.comment.store', $issue->id) }}">
+                    <x-form action="{{ route('comment.store', $issue->id) }}">
                         @csrf
                         <x-easy-mde name="comment_text"/>
 

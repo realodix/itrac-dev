@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'issue.index')->name('home');
 Route::get('/issues/{id}', [IssueController::class, 'show'])->name('issue.show');
 Route::get('/issues/{issue}/delete', [IssueController::class, 'destroy'])->name('issue.delete');
-Route::post('/issues/{issue}/comment', [CommentController::class, 'store'])->name('issue.comment.store');
-Route::get('/comment/{comment}/delete', [CommentController::class, 'destroy'])->name('issue.comment.delete');
-Route::get('/comment/{comment}/edit', [CommentController::class, 'edit'])->name('issue.comment.edit');
-Route::post('/comment/{comment}/edit', [CommentController::class, 'update'])->name('issue.comment.update');
+Route::post('/issues/{issue}/comment', [CommentController::class, 'store'])->name('comment.store');
+Route::get('/comment/{comment}/delete', [CommentController::class, 'destroy'])->name('comment.delete');
+Route::get('/comment/{comment}/edit', [CommentController::class, 'edit'])->name('comment.edit');
+Route::post('/comment/{comment}/edit', [CommentController::class, 'update'])->name('comment.update');
 
 Route::namespace('Dashboard')->prefix('admin')->group(function () {
     Route::middleware('auth')->group(function () {

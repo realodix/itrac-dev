@@ -6,7 +6,7 @@
     <div class="max-w-7xl mx-auto sm:pt-10 mb-12">
         <div class="issue_bucket flex">
             <div class="md:w-8/12 justify-between">
-                <x-form action="{{ route('issue.comment.update', $comment->id) }}">
+                <x-form action="{{ route('comment.update', $comment->id) }}">
                 @csrf
                     <x-easy-mde name="comment_text">
                         {{$comment->text}}

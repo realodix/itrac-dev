@@ -31,8 +31,8 @@
                             @endif
                         @endauth
                     </div>
-                    <div class="comment-body">
-                        {!!$issueDescription!!}
+                    <div class="comment-body prose lg:prose-xl">
+                        {!! $issueDescription !!}
                     </div>
                 </div>
 

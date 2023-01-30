@@ -20,21 +20,27 @@ class IssueController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
-        //
+        return view('issue.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        $issue = Issue::create([
+            'author_id'   => auth()->id(),
+            'title'       => $request->issue_title,
+            'description' => $request->issue_description,
+        ]);
+
+        return redirect()->route('issue.show', $issue);
     }
 
     /**

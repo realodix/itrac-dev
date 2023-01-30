@@ -7,7 +7,7 @@
         <div class="common-card-style p-4">
             <div class="flex mb-8">
                 <div class="w-full text-right">
-                    <a href="{{ url('./') }}" target="_blank" title="{{__('New Issue')}}" class="btn">
+                    <a href="{{ route('issue.create') }}" title="{{__('New Issue')}}" class="btn">
                         @svg('icon-add-link', '!h-[1.5em] mr-1')
                         {{__('New Issue')}}
                     </a>

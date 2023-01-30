@@ -21,20 +21,23 @@ class IssueControllerTest extends TestCase
             ->assertViewIs('issue.index');
     }
 
-    // /**
-    //  * User can create a issue.
-    //  *
-    //  * @test
-    //  */
-    // public function user_can_create_a_issue()
-    // {
-    //     $issue = Issue::factory()->make();
+    /**
+     * User can create a issue.
+     *
+     * @test
+     */
+    public function user_can_create_a_issue()
+    {
+        $issue = Issue::factory()->make();
 
-    //     $this->actingAs($issue->author)
-    //         ->post(route('issue.store'), $issue->toArray())
-    //         ->assertRedirect(route('home'));
-    //     $this->assertDatabaseHas('issues', $issue->toArray());
-    // }
+        $response = $this->actingAs($issue->author)
+            ->post(
+                route('issue.store'),
+                ['issue_title' => $issue->title, 'issue_description' => $issue->description]
+            );
+        $i = Issue::where('title', $issue->title)->latest()->first();
+        $response->assertRedirectToRoute('issue.show', $i->id);
+    }
 
     /**
      * User can see the issue show page.

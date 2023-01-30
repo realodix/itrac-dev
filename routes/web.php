@@ -8,6 +8,8 @@ use App\Http\Controllers\IssueController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'issue.index')->name('home');
+Route::get('/issues/create', [IssueController::class, 'create'])->name('issue.create');
+Route::post('/issues/create', [IssueController::class, 'store'])->name('issue.store');
 Route::get('/issues/{issue}', [IssueController::class, 'show'])->name('issue.show');
 Route::get('/issues/{issue}/edit', [IssueController::class, 'edit'])->name('issue.edit');
 Route::post('/issues/{issue}/edit', [IssueController::class, 'update'])->name('issue.update');

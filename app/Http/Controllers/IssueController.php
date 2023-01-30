@@ -64,6 +64,8 @@ class IssueController extends Controller
      */
     public function edit(Issue $issue)
     {
+        $this->authorize('update', $issue);
+
         return view('issue.edit', compact('issue'));
     }
 
@@ -74,6 +76,8 @@ class IssueController extends Controller
      */
     public function update(Request $request, Issue $issue)
     {
+        $this->authorize('update', $issue);
+
         $issue->update($request->all());
 
         return redirect()->route('issue.show', $issue);

@@ -49,33 +49,3 @@ parameters:
 			message: "#^Method App\\\\Policies\\\\CommentPolicy\\:\\:viewAny\\(\\) should return bool\\|Illuminate\\\\Auth\\\\Access\\\\Response but return statement is missing\\.$#"
 			count: 1
 			path: app/Policies/CommentPolicy.php
-
-		-
-			message: "#^Method App\\\\Policies\\\\IssuePolicy\\:\\:create\\(\\) should return bool\\|Illuminate\\\\Auth\\\\Access\\\\Response but return statement is missing\\.$#"
-			count: 1
-			path: app/Policies/IssuePolicy.php
-
-		-
-			message: "#^Method App\\\\Policies\\\\IssuePolicy\\:\\:delete\\(\\) should return bool\\|Illuminate\\\\Auth\\\\Access\\\\Response but return statement is missing\\.$#"
-			count: 1
-			path: app/Policies/IssuePolicy.php
-
-		-
-			message: "#^Method App\\\\Policies\\\\IssuePolicy\\:\\:restore\\(\\) should return bool\\|Illuminate\\\\Auth\\\\Access\\\\Response but return statement is missing\\.$#"
-			count: 1
-			path: app/Policies/IssuePolicy.php
-
-		-
-			message: "#^Method App\\\\Policies\\\\IssuePolicy\\:\\:update\\(\\) should return bool\\|Illuminate\\\\Auth\\\\Access\\\\Response but return statement is missing\\.$#"
-			count: 1
-			path: app/Policies/IssuePolicy.php
-
-		-
-			message: "#^Method App\\\\Policies\\\\IssuePolicy\\:\\:view\\(\\) should return bool\\|Illuminate\\\\Auth\\\\Access\\\\Response but return statement is missing\\.$#"
-			count: 1
-			path: app/Policies/IssuePolicy.php
-
-		-
-			message: "#^Method App\\\\Policies\\\\IssuePolicy\\:\\:viewAny\\(\\) should return bool\\|Illuminate\\\\Auth\\\\Access\\\\Response but return statement is missing\\.$#"
-			count: 1
-			path: app/Policies/IssuePolicy.php

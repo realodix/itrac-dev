@@ -20,10 +20,14 @@ class IssueController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * User must be logged in to create an issue.
+     *
      * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
+        $this->middleware('auth');
+
         return view('issue.create');
     }
 

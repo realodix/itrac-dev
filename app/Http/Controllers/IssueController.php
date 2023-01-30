@@ -8,16 +8,6 @@ use Illuminate\Http\Request;
 class IssueController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index()
-    {
-        return view('backend.issue');
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * User must be logged in to create an issue.

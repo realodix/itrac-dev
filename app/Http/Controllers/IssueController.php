@@ -52,7 +52,7 @@ class IssueController extends Controller
             [
                 'issue'   => $issue,
                 'comment' => $issue->comments()->get(),
-                'issueDescription' => $this->markdownService->handle($issue->description),
+                'markdownService' => $this->markdownService,
             ]
         );
     }

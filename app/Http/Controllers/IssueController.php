@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Issue;
+use App\Services\MarkdownService;
 use Illuminate\Http\Request;
 
 class IssueController extends Controller
 {
+    public function __construct(
+        public MarkdownService $markdownService
+    ) {
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -42,9 +48,13 @@ class IssueController extends Controller
      */
     public function show(Issue $issue)
     {
-        $comment = $issue->comments()->get();
-
-        return view('issue.show', compact('issue', 'comment'));
+        return view('issue.show',
+            [
+                'issue'   => $issue,
+                'comment' => $issue->comments()->get(),
+                'issueDescription' => $this->markdownService->handle($issue->description),
+            ]
+        );
     }
 
     /**

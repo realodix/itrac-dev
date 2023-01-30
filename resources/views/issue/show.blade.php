@@ -32,10 +32,7 @@
                         @endauth
                     </div>
                     <div class="comment-body">
-                        <x-markdown
-                            flavor="github"
-                            :options="['renderer' => ['block_separator' => '<br>']]"
-                        >{!!$issue->description!!}</x-markdown>
+                        {!!$issueDescription!!}
                     </div>
                 </div>
 

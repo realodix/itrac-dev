@@ -2,17 +2,21 @@
 
 namespace App\Services;
 
-use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\GithubFlavoredMarkdownConverter;
 
 class MarkdownService
 {
     public function __construct(
-        public CommonMarkConverter $converter
+        public GithubFlavoredMarkdownConverter $converter
     ) {
     }
 
     /**
+     * Converts Markdown to HTML.
+     *
      * @return \League\CommonMark\Output\RenderedContentInterface
+     *
+     * @throws \RuntimeException
      */
     public function handle(string $markdown)
     {

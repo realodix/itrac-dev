@@ -31,7 +31,7 @@
                             @endif
                         @endauth
                     </div>
-                    <div class="comment-body prose lg:prose-xl">
+                    <div class="comment-body markdown">
                         {!! $issueDescription !!}
                     </div>
                 </div>
@@ -56,10 +56,7 @@
                             @endauth
                         </div>
                         <div class="comment-body bg-white">
-                            <x-markdown
-                                flavor="github"
-                                :options="['renderer' => ['block_separator' => '<br>']]"
-                            >{!!$comment->text!!}</x-markdown>
+                            <x-markdown flavor="github" class="markdown">{!!$comment->text!!}</x-markdown>
                         </div>
                     </div>
                 @endforeach

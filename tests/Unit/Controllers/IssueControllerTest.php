@@ -81,13 +81,20 @@ class IssueControllerTest extends TestCase
         $this->actingAs($issue->author)
             ->post(
                 route('issue.update', $issue),
-                ['issue_title' => 'new title', 'issue_description' => 'new description']
+                [
+                    'issue_title' => 'new title',
+                    'issue_description' => 'new description'
+                ]
             )
             ->assertRedirect(route('issue.show', $issue));
 
         $this->assertDatabaseHas(
             'issues',
-            ['id' => $issue->id, 'title' => 'new title', 'description' => 'new description']
+            [
+                'id' => $issue->id,
+                'title' => 'new title',
+                'description' => 'new description'
+            ]
         );
     }
 

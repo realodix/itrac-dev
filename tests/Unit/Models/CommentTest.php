@@ -3,7 +3,6 @@
 namespace Tests\Unit\Models;
 
 use App\Models\Comment;
-use App\Models\Issue;
 use App\Models\User;
 use Tests\TestCase;
 
@@ -30,9 +29,7 @@ class CommentTest extends TestCase
      */
     public function belongsToIssue()
     {
-        $c = Comment::factory()
-            ->for(Issue::factory()->create())
-            ->create();
+        $c = Comment::factory()->create();
 
         $this->assertTrue($c->author()->exists());
         $this->assertEquals($c->author_id, $c->author->id);

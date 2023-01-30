@@ -19,12 +19,11 @@ class UserTest extends TestCase
             ->has(Issue::factory())
             ->create();
 
-        /** @var \App\Models\Issue */
-        $issue = $user->issues->first();
+        $issue = $user->issues->firstOrFail();
 
         $this->assertTrue($user->issues()->exists());
         $this->assertEquals($user->id, $issue->author_id);
-        $this->assertEquals(1, $user->issues()->count());
+        $this->assertEquals(1, $user->issues->count());
     }
 
     /**
@@ -37,11 +36,10 @@ class UserTest extends TestCase
             ->has(Comment::factory())
             ->create();
 
-        /** @var \App\Models\Comment */
-        $comment = $user->comments->first();
+        $comment = $user->comments->firstOrFail();
 
         $this->assertTrue($user->comments()->exists());
         $this->assertEquals($user->id, $comment->author_id);
-        $this->assertEquals(1, $user->comments()->count());
+        $this->assertEquals(1, $user->comments->count());
     }
 }

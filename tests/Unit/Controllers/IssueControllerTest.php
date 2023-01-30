@@ -35,7 +35,7 @@ class IssueControllerTest extends TestCase
                 route('issue.store'),
                 ['issue_title' => $issue->title, 'issue_description' => $issue->description]
             );
-        $i = Issue::where('title', $issue->title)->latest()->first();
+        $i = Issue::where('title', $issue->title)->latest()->firstOrFail();
         $response->assertRedirectToRoute('issue.show', $i->id);
     }
 
@@ -83,7 +83,7 @@ class IssueControllerTest extends TestCase
                 route('issue.update', $issue),
                 [
                     'title' => 'new title',
-                    'description' => 'new description'
+                    'description' => 'new description',
                 ]
             )
             ->assertRedirect(route('issue.show', $issue));
@@ -93,7 +93,7 @@ class IssueControllerTest extends TestCase
             [
                 'id' => $issue->id,
                 'title' => 'new title',
-                'description' => 'new description'
+                'description' => 'new description',
             ]
         );
     }

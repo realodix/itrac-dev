@@ -70,8 +70,7 @@ class RegisterTest extends TestCase
             'password_confirmation' => 'i-love-laravel',
         ]);
 
-        /** @var \App\Models\User */
-        $user = User::whereName('John Doe')->first();
+        $user = User::whereName('John Doe')->firstOrFail();
 
         $response->assertRedirect($this->successfulRegistrationRoute());
         $this->assertCount(1, User::all());

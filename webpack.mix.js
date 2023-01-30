@@ -6,8 +6,7 @@ mix.postCss('resources/css/main.css', 'public/css', [
   ])
   .sass('resources/sass/backend.scss', 'css/backend.css')
   .sass('resources/sass/frontend.scss', 'css/frontend.css')
-  .js('resources/js/frontend.js', 'js/frontend.js')
-  .js('resources/js/backend.js', 'js/backend.js');
+  .js('resources/js/main.js', 'js/main.js');
 
 mix.extract()
   .version()

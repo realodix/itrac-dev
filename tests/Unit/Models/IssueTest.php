@@ -37,11 +37,8 @@ class IssueTest extends TestCase
             ->for(User::factory()->create(), 'author')
             ->create();
 
-        /** @var \App\Models\User */
-        $author = $issue->author()->first();
-
         $this->assertTrue($issue->author()->exists());
-        $this->assertEquals($issue->author_id, $author->id);
+        $this->assertEquals($issue->author_id, $issue->author->id);
         $this->assertEquals(1, $issue->author()->count());
     }
 }

@@ -8,7 +8,7 @@ use App\Http\Controllers\IssueController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'issue.index')->name('home');
-Route::get('/issues/{id}', [IssueController::class, 'show'])->name('issue.show');
+Route::get('/issues/{issue}', [IssueController::class, 'show'])->name('issue.show');
 Route::get('/issues/{issue}/delete', [IssueController::class, 'destroy'])->name('issue.delete');
 Route::post('/issues/{issue}/comment', [CommentController::class, 'store'])->name('comment.store');
 Route::get('/comment/{comment}/delete', [CommentController::class, 'destroy'])->name('comment.delete');

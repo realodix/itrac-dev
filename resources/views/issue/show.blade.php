@@ -31,10 +31,10 @@
                             @endif
                         @endauth
                     </div>
-                    <div class="comment-body">
+                    <div class="comment-body prose lg:prose-xl">
                         <x-markdown
                             flavor="github"
-                            :options="['renderer' => ['block_separator' => '<br>']]"
+                            {{-- :options="['renderer' => ['block_separator' => '<br>']]" --}}
                         >{!!$issue->description!!}</x-markdown>
                     </div>
                 </div>

@@ -21,17 +21,7 @@ parameters:
 			path: app/Http/Controllers/IssueController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\IssueController\\:\\:edit\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
-			count: 1
-			path: app/Http/Controllers/IssueController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\IssueController\\:\\:store\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
-			count: 1
-			path: app/Http/Controllers/IssueController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\IssueController\\:\\:update\\(\\) should return Illuminate\\\\Http\\\\Response but return statement is missing\\.$#"
 			count: 1
 			path: app/Http/Controllers/IssueController.php
 

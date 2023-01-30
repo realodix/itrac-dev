@@ -25,9 +25,14 @@
                         <a id="issue-{{$issue->id}}" href="#issue-{{$issue->id}}" title="{{$issue->created_at->isoFormat('MMM DD, OY, HH:mm A zz')}}">
                             {{$issue->created_at->diffForHumans()}}
                         </a>
+                        @auth
+                            @if ($issue->isAuthor() || auth()->user()->hasRole('admin'))
+                                <a href="{{route('issue.edit', $issue)}}" class="font-semibold">Edit</a>
+                            @endif
+                        @endauth
                     </div>
                     <div class="comment-body">
-                        {{$issue->description}}
+                        <x-markdown flavor="github">{{$issue->description}}</x-markdown>
                     </div>
                     {{-- @if ($issue->isAuthor())
                         <div class="comment-footer">

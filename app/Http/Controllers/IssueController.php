@@ -52,23 +52,26 @@ class IssueController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(Issue $issue)
     {
-        //
+        return view('issue.edit', compact('issue'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Issue $issue)
     {
-        //
+        $issue->update([
+            'title'       => $request->issue_title,
+            'description' => $request->issue_description,
+        ]);
+
+        return redirect()->route('issue.show', $issue);
     }
 
     /**

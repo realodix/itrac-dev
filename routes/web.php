@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'issue.index')->name('home');
 Route::get('/issues/{issue}', [IssueController::class, 'show'])->name('issue.show');
+Route::get('/issues/{issue}/edit', [IssueController::class, 'edit'])->name('issue.edit');
+Route::post('/issues/{issue}/edit', [IssueController::class, 'update'])->name('issue.update');
 Route::get('/issues/{issue}/delete', [IssueController::class, 'destroy'])->name('issue.delete');
 Route::post('/issues/{issue}/comment', [CommentController::class, 'store'])->name('comment.store');
 Route::get('/comment/{comment}/delete', [CommentController::class, 'destroy'])->name('comment.delete');

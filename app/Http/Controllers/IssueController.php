@@ -72,7 +72,7 @@ class IssueController extends Controller
      */
     public function update(Request $request, Issue $issue)
     {
-        $issue->update($request->toArray());
+        $issue->update($request->all());
 
         return redirect()->route('issue.show', $issue);
     }

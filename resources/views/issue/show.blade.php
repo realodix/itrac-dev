@@ -32,13 +32,8 @@
                         @endauth
                     </div>
                     <div class="comment-body">
-                        <x-markdown flavor="github">{{$issue->description}}</x-markdown>
+                        <x-markdown flavor="github" :options="['renderer' => ['block_separator' => '<br>']]">{!!$issue->description!!}</x-markdown>
                     </div>
-                    {{-- @if ($issue->isAuthor())
-                        <div class="comment-footer">
-                            <a href="{{route('issue.edit', $issue)}}" class="btn btn-primary">Edit</a>
-                        </div>
-                    @endif --}}
                 </div>
 
                 @foreach($issue->comments->sortBy('created_at') as $comment)
@@ -61,7 +56,7 @@
                             @endauth
                         </div>
                         <div class="comment-body bg-white">
-                            <x-markdown flavor="github">{{$comment->text}}</x-markdown>
+                            <x-markdown flavor="github" :options="['renderer' => ['block_separator' => '<br>']]">{!!$comment->text!!}</x-markdown>
                         </div>
                     </div>
                 @endforeach

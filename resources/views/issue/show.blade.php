@@ -32,7 +32,10 @@
                         @endauth
                     </div>
                     <div class="comment-body">
-                        <x-markdown flavor="github" :options="['renderer' => ['block_separator' => '<br>']]">{!!$issue->description!!}</x-markdown>
+                        <x-markdown
+                            flavor="github"
+                            :options="['renderer' => ['block_separator' => '<br>']]"
+                        >{!!$issue->description!!}</x-markdown>
                     </div>
                 </div>
 
@@ -56,7 +59,10 @@
                             @endauth
                         </div>
                         <div class="comment-body bg-white">
-                            <x-markdown flavor="github" :options="['renderer' => ['block_separator' => '<br>']]">{!!$comment->text!!}</x-markdown>
+                            <x-markdown
+                                flavor="github"
+                                :options="['renderer' => ['block_separator' => '<br>']]"
+                            >{!!$comment->text!!}</x-markdown>
                         </div>
                     </div>
                 @endforeach

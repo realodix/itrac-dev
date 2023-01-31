@@ -6,16 +6,11 @@ use Illuminate\View\Component;
 
 class easymde extends Component
 {
-    /** @var string */
-    public $name;
+    public string $name;
 
-    /** @var string */
-    public $id;
+    public string $id;
 
-    /** @var array */
-    public $options;
-
-    // protected static $assets = ['alpine', 'easy-mde'];
+    public array $options;
 
     public function __construct(string $name, string $id = null, array $options = [])
     {

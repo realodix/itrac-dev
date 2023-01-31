@@ -65,8 +65,9 @@
 
                 @if (auth()->check())
                     <x-form action="{{ route('comment.store', $issue->id) }}">
-                        @csrf
-                        <x-easy-mde name="comment_text" :options="['minHeight' => '180px']" placeholder="Leave a comment" required/>
+                    @csrf
+                        <textarea name="comment_text" id="easy-mde-markdown-editor" placeholder="Leave a comment" required></textarea>
+                        {{-- <x-easy-mde name="comment_text" :options="['minHeight' => '180px']" placeholder="Leave a comment" required/> --}}
 
                         <x-form-button
                             class="bg-slate-900 hover:bg-slate-700 dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400

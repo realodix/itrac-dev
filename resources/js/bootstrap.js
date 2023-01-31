@@ -12,32 +12,28 @@ import EasyMDE from 'easymde';
 window.axios = axios;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+/**
+ * EasyMDE
+ *
+ * Embeddable JavaScript Markdown editor
+ */
+window.EasyMDE = EasyMDE;
+new EasyMDE({
+    element: document.getElementById('easy-mde-markdown-editor'),
+    minHeight: '150px',
+    forceSync: true,
+    toolbar: [
+        'bold', 'italic', 'heading',
+        '|', 'code','quote', 'unordered-list', 'ordered-list',
+        '|', 'link', 'image',
+        '|', 'preview', 'side-by-side', 'fullscreen',
+        '|', 'guide'
+    ]
+});
 
 /**
  * Alpine.js
  */
-
 window.Alpine = Alpine;
-window.EasyMDE = EasyMDE;
 
 Alpine.start();
-
-
-
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
-
-// import Echo from 'laravel-echo';
-
-// import Pusher from 'pusher-js';
-// window.Pusher = Pusher;
-
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
-// });

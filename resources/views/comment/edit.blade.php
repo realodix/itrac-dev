@@ -8,7 +8,7 @@
             <div class="md:w-8/12 justify-between">
                 <x-form action="{{ route('comment.update', $comment->id) }}">
                 @csrf
-                    <x-easy-mde name="comment_text">
+                    <x-easy-mde name="comment_text" placeholder="Leave a comment">
                         {{$comment->text}}
                     </x-easy-mde>
 

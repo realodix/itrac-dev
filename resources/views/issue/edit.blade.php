@@ -10,7 +10,7 @@
                 @csrf
                     <x-input name="title" value="{{$issue->title}}" class="form-input" placeholder="Title"/>
                     <br>
-                    <x-easy-mde name="description">
+                    <x-easy-mde name="description" placeholder="Leave a comment">
                         {{$issue->description}}
                     </x-easy-mde>
 

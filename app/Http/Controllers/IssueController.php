@@ -29,7 +29,7 @@ class IssueController extends Controller
     {
         if ($request->issue_title === null) {
             // If the user didn't provide a title, we'll generate one for them.
-            $request->issue_title = 'No title provided';
+            $request->issue_title = 'No title';
         }
 
         $issue = Issue::create([

@@ -9,6 +9,7 @@
     <title>{{config('app.name').' - '.config('app.description')}}</title>
 
     @livewireStyles
+    @powerGridStyles
     <link rel="stylesheet" media="all" href="{!! mix('css/main.css') !!}" />
     <link rel="stylesheet" media="all" href="{!! mix('css/frontend.css') !!}" />
 </head>
@@ -22,6 +23,7 @@
     <script src="{!! mix('js/vendor.js') !!}"></script>
     <script src="{!! mix('js/main.js') !!}"></script>
     @livewireScripts
+    @powerGridScripts
 </body>
 
 </html>

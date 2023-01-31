@@ -6,7 +6,7 @@
   @apply prose !max-w-fit;
 
   .hljs {
-    @apply p-0;
+    @apply bg-inherit p-0;
   }
 }
 

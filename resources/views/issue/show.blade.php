@@ -66,7 +66,7 @@
                 @if (auth()->check())
                     <x-form action="{{ route('comment.store', $issue->id) }}">
                         @csrf
-                        <x-easy-mde name="comment_text" :options="['minHeight' => '180px']"/>
+                        <x-easy-mde name="comment_text" :options="['minHeight' => '180px']" required/>
 
                         <x-form-button
                             class="bg-slate-900 hover:bg-slate-700 dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400

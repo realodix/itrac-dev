@@ -8,14 +8,12 @@ import EasyMDE from 'easymde';
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
-
 window.axios = axios;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
- * EasyMDE
- *
- * Embeddable JavaScript Markdown editor
+ * EasyMDE - Embeddable JavaScript Markdown editor
+ * https://github.com/Ionaru/easy-markdown-editor
  */
 window.EasyMDE = EasyMDE;
 new EasyMDE({
@@ -33,6 +31,7 @@ new EasyMDE({
 
 /**
  * Alpine.js
+ * https://alpinejs.dev/
  */
 window.Alpine = Alpine;
 

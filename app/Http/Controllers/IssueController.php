@@ -50,7 +50,7 @@ class IssueController extends Controller
     {
         return view('issue.show',
             [
-                'issue'   => $issue,
+                'issue' => $issue,
                 'markdownService' => $this->markdownService,
             ]
         );

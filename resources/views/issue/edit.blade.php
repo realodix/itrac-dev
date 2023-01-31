@@ -8,7 +8,7 @@
             <div class="md:w-8/12 justify-between">
                 <x-form action="{{ route('issue.update', $issue->id) }}">
                 @csrf
-                    <x-input name="title" value="{{$issue->title}}" class="form-input"/>
+                    <x-input name="title" value="{{$issue->title}}" class="form-input" placeholder="Title"/>
                     <br>
                     <x-easy-mde name="description">
                         {{$issue->description}}

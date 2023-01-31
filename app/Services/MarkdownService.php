@@ -22,17 +22,9 @@ class MarkdownService
      */
     public function handle(string $markdown)
     {
-        return $this->converter()->convert($markdown);
-    }
+        $markdownConverter = new MarkdownConverter($this->env());
 
-    /**
-     * Returns the converter.
-     *
-     * @return \League\CommonMark\MarkdownConverter
-     */
-    private function converter()
-    {
-        return new MarkdownConverter($this->env());
+        return $markdownConverter->convert($markdown);
     }
 
     /**

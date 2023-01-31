@@ -22,9 +22,9 @@ class easymde extends Component
     public function options(): array
     {
         return array_merge([
-            'forceSync' => true,
+            'forceSync'    => true,
             'spellChecker' => false,
-            'minHeight' => '150px',
+            'minHeight'    => '150px',
             'toolbar' => [
                 'bold', 'italic', 'heading',
                 '|', 'code', 'quote', 'unordered-list', 'ordered-list',

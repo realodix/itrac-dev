@@ -8,11 +8,6 @@ use Illuminate\Http\Request;
 
 class IssueController extends Controller
 {
-    public function __construct(
-        public MarkdownService $markdownService
-    ) {
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -32,6 +27,14 @@ class IssueController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->issue_title === null) {
+            // If the user didn't provide a title, we'll generate one for them.
+            /** @var \App\Models\Issue */
+            $i = Issue::latest()->first();
+
+            $request->issue_title = 'Issue '.($i->id + 1);
+        }
+
         $issue = Issue::create([
             'author_id'   => auth()->id(),
             'title'       => $request->issue_title,
@@ -51,7 +54,7 @@ class IssueController extends Controller
         return view('issue.show',
             [
                 'issue' => $issue,
-                'markdownService' => $this->markdownService,
+                'markdownService' => app(MarkdownService::class),
             ]
         );
     }

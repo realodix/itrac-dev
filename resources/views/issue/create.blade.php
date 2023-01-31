@@ -8,7 +8,7 @@
             <div class="md:w-8/12 justify-between">
                 <x-form action="{{ route('issue.create') }}">
                 @csrf
-                    <x-input name="issue_title" placeholder="Title" class="form-input" required/>
+                    <x-input name="issue_title" placeholder="Title" class="form-input"/>
                     <br>
                     <x-easy-mde name="issue_description" required/>
 

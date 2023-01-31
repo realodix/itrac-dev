@@ -12,7 +12,7 @@ window.axios = axios;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
- * EasyMDE - Embeddable JavaScript Markdown editor
+ * EasyMDE
  * https://github.com/Ionaru/easy-markdown-editor
  */
 window.EasyMDE = EasyMDE;

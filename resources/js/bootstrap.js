@@ -17,7 +17,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  */
 // window.EasyMDE = EasyMDE;
 new EasyMDE({
-    element: document.getElementById('easy-mde-markdown-editor'),
+    element: document.getElementById('easymde-markdown-editor'),
     minHeight: '150px',
     forceSync: true,
     toolbar: [

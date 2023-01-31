@@ -10,9 +10,10 @@
                 @csrf
                     <x-input name="title" value="{{$issue->title}}" class="form-input" placeholder="Title"/>
                     <br>
-                    <x-easy-mde name="description" placeholder="Leave a comment">
+
+                    <textarea name="comment_text" id="easymde-markdown-editor" placeholder="Leave a comment" required>
                         {{$issue->description}}
-                    </x-easy-mde>
+                    </textarea>
 
                     <x-form-button
                         class="bg-slate-900 hover:bg-slate-700 dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400

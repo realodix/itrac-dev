@@ -10,7 +10,7 @@
                 @csrf
                     <x-input name="issue_title" placeholder="Title" class="form-input"/>
                     <br>
-                    <x-easy-mde name="issue_description" placeholder="Leave a comment" required/>
+                    <textarea name="comment_text" id="easymde-markdown-editor" placeholder="Leave a comment" required></textarea>
 
                     <x-form-button
                         class="bg-slate-900 hover:bg-slate-700 dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400

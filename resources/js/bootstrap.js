@@ -2,8 +2,7 @@ import _ from 'lodash';
 import Alpine from 'alpinejs';
 import axios from 'axios';
 import EasyMDE from 'easymde';
-import hljs from 'highlight.js';
-hljs.highlightAll();
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -11,19 +10,19 @@ hljs.highlightAll();
  */
 
 window.axios = axios;
-
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-window.EasyMDE = EasyMDE;
+
 /**
  * Alpine.js
  */
 
 window.Alpine = Alpine;
+window.EasyMDE = EasyMDE;
 
 Alpine.start();
 
-;
+
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

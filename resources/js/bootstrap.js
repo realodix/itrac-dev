@@ -2,8 +2,8 @@ import _ from 'lodash';
 import Alpine from 'alpinejs';
 import axios from 'axios';
 import EasyMDE from 'easymde';
-
-
+import hljs from 'highlight.js';
+hljs.highlightAll();
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

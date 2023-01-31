@@ -1,5 +1,6 @@
 @import 'base.css';
 @import '~easymde/dist/easymde.min.css';
+@import '~highlight.js/styles/github.css';
 
 main {
   @apply sm:mt-10;

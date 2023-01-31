@@ -4,7 +4,12 @@
 
 .markdown {
   @apply prose !max-w-fit;
+
+  .hljs {
+    @apply p-0;
+  }
 }
+
 /*
  * Components
  */

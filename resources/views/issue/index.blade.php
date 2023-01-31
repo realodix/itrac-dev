@@ -3,7 +3,7 @@
 @section('css_class', 'frontend home')
 
 @section('content')
-    <div class="max-w-7xl mx-auto pt-16 sm:pt-28">
+    <div class="max-w-7xl mx-auto pt-16">
         <div class="common-card-style p-4">
             <div class="flex mb-8">
                 <div class="w-full text-right">

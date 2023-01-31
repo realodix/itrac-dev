@@ -11,6 +11,9 @@
                     <textarea name="comment_text" id="easymde-markdown-editor" placeholder="Leave a comment" required>
                         {{$comment->text}}
                     </textarea>
+                    <x-easy-mde name="comment_text" placeholder="Leave a comment">
+                        {{$comment->text}}
+                    </x-easy-mde>
 
                     <x-form-button
                         class="bg-slate-900 hover:bg-slate-700 dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400

@@ -76,14 +76,12 @@
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                     <a href="{{route('login')}}"
                         class="text-xl font-medium text-gray-500 hover:text-gray-900 mr-8">{{__('Log in')}}</a>
-                    @if (Route::has('register') and Config::get('urlhub.registration'))
-                        <a href="{{route('register')}}"
-                            class="text-xl font-medium text-white bg-uh-indigo-600 hover:bg-uh-indigo-700 active:bg-uh-indigo-600
-                                px-4 py-2 rounded-md transition ease-in-out duration-150"
-                        >
-                            {{__('Sign up')}}
-                        </a>
-                    @endif
+                    <a href="{{route('register')}}"
+                        class="text-xl font-medium text-white bg-uh-indigo-600 hover:bg-uh-indigo-700 active:bg-uh-indigo-600
+                            px-4 py-2 rounded-md transition ease-in-out duration-150"
+                    >
+                        {{__('Sign up')}}
+                    </a>
                 </div>
             @endauth
             {{-- Hamburger --}}
@@ -151,11 +149,9 @@
                 <a href="{{route('login')}}" class="block pl-3 pr-4 py-2 font-medium transition">
                     {{__('Log in')}}
                 </a>
-                @if (Route::has('register') and Config::get('urlhub.registration'))
-                    <a href="{{route('register')}}" class="block pl-3 pr-4 py-2 font-medium transition">
-                        {{__('Sign up')}}
-                    </a>
-                @endif
+                <a href="{{route('register')}}" class="block pl-3 pr-4 py-2 font-medium transition">
+                    {{__('Sign up')}}
+                </a>
             </div>
         @endauth
     </div> {{-- End Responsive Navigation Menu --}}

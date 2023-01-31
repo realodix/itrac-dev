@@ -8,12 +8,9 @@
             <div class="md:w-8/12 justify-between">
                 <x-form action="{{ route('comment.update', $comment->id) }}">
                 @csrf
-                    <textarea name="comment_text" id="easymde-markdown-editor" placeholder="Leave a comment" required>
+                    <x-easymde name="comment_text" placeholder="Leave a comment">
                         {{$comment->text}}
-                    </textarea>
-                    <x-easy-mde name="comment_text" placeholder="Leave a comment">
-                        {{$comment->text}}
-                    </x-easy-mde>
+                    </x-easymde>
 
                     <x-form-button
                         class="bg-slate-900 hover:bg-slate-700 dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400

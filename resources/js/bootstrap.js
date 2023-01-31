@@ -14,20 +14,11 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /**
  * EasyMDE
  * https://github.com/Ionaru/easy-markdown-editor
+ *
+ * Digunakan pada blade components
  */
 window.EasyMDE = EasyMDE;
-new EasyMDE({
-    element: document.getElementById('easymde-markdown-editor'),
-    minHeight: '150px',
-    forceSync: true,
-    toolbar: [
-        'bold', 'italic', 'heading',
-        '|', 'code','quote', 'unordered-list', 'ordered-list',
-        '|', 'link', 'image',
-        '|', 'preview', 'side-by-side', 'fullscreen',
-        '|', 'guide'
-    ]
-});
+
 
 /**
  * Alpine.js

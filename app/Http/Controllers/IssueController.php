@@ -51,7 +51,6 @@ class IssueController extends Controller
         return view('issue.show',
             [
                 'issue'   => $issue,
-                'comment' => $issue->comments()->get(),
                 'markdownService' => $this->markdownService,
             ]
         );

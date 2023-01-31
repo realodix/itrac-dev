@@ -1,11 +1,11 @@
 {
-    "name": "realodix/urlhub",
-    "description": "URL shortener web application based on the Laravel PHP Framework.",
+    "name": "realodix/issue-tracker",
+    "description": "Issue tracking app for common projects.",
     "license": "MIT",
     "type": "project",
-    "keywords": ["laravel", "url-shortener", "shorten-urls", "shorturl"],
+    "keywords": ["laravel", "tracker", "issue-tracker"],
     "require": {
-        "php": "^8.0.2",
+        "php": "^8.1",
         "blade-ui-kit/blade-icons": "^1.5",
         "blade-ui-kit/blade-ui-kit": "^0.3.4",
         "doctrine/dbal": "^3.5",

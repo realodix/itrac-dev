@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
 
         User::factory()->create([
             'name'       => 'admin',
-            'email'      => 'admin@urlhub.test',
+            'email'      => 'admin@realodix.test',
             'password'   => Hash::make('admin'),
             'created_at' => $now,
             'updated_at' => $now,
@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
 
         User::factory()->create([
             'name'       => 'user',
-            'email'      => 'user@urlhub.test',
+            'email'      => 'user@realodix.test',
             'password'   => Hash::make('user'),
             'created_at' => $now,
             'updated_at' => $now,

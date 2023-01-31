@@ -63,12 +63,12 @@ class ProfileTest extends TestCase
      */
     public function adminCanChangeOtherUsersEmail()
     {
-        $user = User::factory()->create(['email' => 'user_email@realodix.test']);
+        $user = User::factory()->create(['email' => 'user_email@example.com']);
 
         $response = $this->actingAs($this->adminUser())
             ->from($this->getRoute($user->name))
             ->post($this->postRoute($user->id), [
-                'email' => 'new_user_email@realodix.test',
+                'email' => 'new_user_email@example.com',
             ]);
 
         $response
@@ -78,7 +78,7 @@ class ProfileTest extends TestCase
         /** @var \App\Models\User */
         $userFresh = $user->fresh();
 
-        $this->assertSame('new_user_email@realodix.test', $userFresh->email);
+        $this->assertSame('new_user_email@example.com', $userFresh->email);
     }
 
     /**
@@ -87,16 +87,16 @@ class ProfileTest extends TestCase
      */
     public function normalUserCantChangeOtherUsersEmail()
     {
-        $user = User::factory()->create(['email' => 'user2@realodix.test']);
+        $user = User::factory()->create(['email' => 'user2@example.com']);
 
         $response = $this->actingAs($this->normalUser())
             ->from($this->getRoute($user->name))
             ->post($this->postRoute($user->id), [
-                'email' => 'new_email_user2@realodix.test',
+                'email' => 'new_email_user2@example.com',
             ]);
 
         $response->assertForbidden();
-        $this->assertSame('user2@realodix.test', $user->email);
+        $this->assertSame('user2@example.com', $user->email);
     }
 
     /**

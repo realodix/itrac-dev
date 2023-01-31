@@ -23,6 +23,7 @@ class easymde extends Component
     {
         return array_merge([
             'forceSync' => true,
+            'spellChecker' => false,
             'minHeight' => '150px',
             'toolbar' => [
                 'bold', 'italic', 'heading',

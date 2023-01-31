@@ -29,9 +29,7 @@ class IssueController extends Controller
     {
         if ($request->issue_title === null) {
             // If the user didn't provide a title, we'll generate one for them.
-            $i = Issue::latest()->first();
-
-            $request->issue_title = 'Issue '.($i->id + 1);
+            $request->issue_title = 'No title provided';
         }
 
         $issue = Issue::create([

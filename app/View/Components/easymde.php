@@ -26,11 +26,11 @@ class easymde extends Component
             'minHeight' => '150px',
             'toolbar' => [
                 'bold', 'italic', 'heading',
-                '|', 'code','quote', 'unordered-list', 'ordered-list',
+                '|', 'code', 'quote', 'unordered-list', 'ordered-list',
                 '|', 'link', 'image',
                 '|', 'preview', 'side-by-side', 'fullscreen',
-                '|', 'guide'
-            ]
+                '|', 'guide',
+            ],
         ], $this->options);
     }
 

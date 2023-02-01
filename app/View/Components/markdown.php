@@ -49,9 +49,9 @@ class markdown extends Component
     {
         $environment = app(Environment::class)
             ->addExtension(new Extension\CommonMark\CommonMarkCoreExtension)
+            ->addExtension(new Extension\GithubFlavoredMarkdownExtension)
             ->addExtension(new \ElGigi\CommonMarkEmoji\EmojiExtension)
-            ->addExtension(new \Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension($this->theme))
-            ->addExtension(new Extension\GithubFlavoredMarkdownExtension);
+            ->addExtension(new \Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension($this->theme));
 
         return $environment;
     }

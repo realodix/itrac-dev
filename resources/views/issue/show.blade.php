@@ -32,7 +32,7 @@
                         @endauth
                     </div>
                     <div class="comment-body markdown">
-                        {!! $markdownService->handle($issue->description) !!}
+                        <x-markdown>{!! $issue->description !!}</x-markdown>
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@
                             @endauth
                         </div>
                         <div class="comment-body markdown bg-white">
-                            {!! $markdownService->handle($comment->text) !!}
+                            <x-markdown>{!! $comment->text !!}</x-markdown>
                         </div>
                     </div>
                 @endforeach

@@ -1,3 +1,1 @@
-<div>
-    {{$bdfbdbdbi}}
-</div>
+<div {{ $attributes }}>{!! $toHtml($slot) !!}</div>

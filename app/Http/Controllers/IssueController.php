@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Issue;
-use App\Services\MarkdownService;
 use Illuminate\Http\Request;
 
 class IssueController extends Controller
@@ -48,12 +47,7 @@ class IssueController extends Controller
      */
     public function show(Issue $issue)
     {
-        return view('issue.show',
-            [
-                'issue' => $issue,
-                'markdownService' => app(MarkdownService::class),
-            ]
-        );
+        return view('issue.show', ['issue' => $issue]);
     }
 
     /**

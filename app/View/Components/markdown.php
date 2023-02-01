@@ -3,6 +3,11 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use League\CommonMark\Environment\Environment;
+use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
+use League\CommonMark\MarkdownConverter;
+use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
 
 class markdown extends Component
 {
@@ -14,6 +19,35 @@ class markdown extends Component
     public function __construct()
     {
         //
+    }
+
+    /**
+     * Converts Markdown to HTML.
+     *
+     * @return \League\CommonMark\Output\RenderedContentInterface
+     *
+     * @throws \RuntimeException
+     */
+    public function toHtml(string $markdown, string $theme = 'one-dark-pro')
+    {
+        $markdownConverter = new MarkdownConverter($this->env($theme));
+
+        return $markdownConverter->convert($markdown);
+    }
+
+    /**
+     * Returns the environment.
+     *
+     * @return \League\CommonMark\Environment\Environment
+     */
+    private function env(string $theme)
+    {
+        $environment = app(Environment::class)
+            ->addExtension(new CommonMarkCoreExtension)
+            ->addExtension(new HighlightCodeExtension($theme))
+            ->addExtension(new GithubFlavoredMarkdownExtension);
+
+        return $environment;
     }
 
     /**

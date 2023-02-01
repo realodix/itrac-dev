@@ -10,6 +10,7 @@ use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
 use League\CommonMark\MarkdownConverter;
 use Spatie\CommonMarkHighlighter\FencedCodeRenderer;
 use Spatie\CommonMarkHighlighter\IndentedCodeRenderer;
+use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
 
 class MarkdownService
 {
@@ -20,9 +21,9 @@ class MarkdownService
      *
      * @throws \RuntimeException
      */
-    public function handle(string $markdown)
+    public function handle(string $markdown, string $theme = 'one-dark-pro')
     {
-        $markdownConverter = new MarkdownConverter($this->env());
+        $markdownConverter = new MarkdownConverter($this->env($theme));
 
         return $markdownConverter->convert($markdown);
     }
@@ -32,13 +33,12 @@ class MarkdownService
      *
      * @return \League\CommonMark\Environment\Environment
      */
-    private function env()
+    private function env(string $theme)
     {
-        $environment = new Environment;
-        $environment->addExtension(new CommonMarkCoreExtension);
-        $environment->addRenderer(FencedCode::class, new FencedCodeRenderer);
-        $environment->addRenderer(IndentedCode::class, new IndentedCodeRenderer);
-        $environment->addExtension(new GithubFlavoredMarkdownExtension);
+        $environment = app(Environment::class)
+            ->addExtension(new CommonMarkCoreExtension)
+            ->addExtension(new HighlightCodeExtension($theme))
+            ->addExtension(new GithubFlavoredMarkdownExtension);
 
         return $environment;
     }

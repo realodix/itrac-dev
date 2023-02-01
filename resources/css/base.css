@@ -4,10 +4,6 @@
 
 .markdown {
   @apply prose !max-w-fit;
-
-  .hljs {
-    @apply bg-inherit p-0;
-  }
 }
 
 /*

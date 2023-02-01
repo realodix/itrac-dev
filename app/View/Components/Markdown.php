@@ -8,7 +8,7 @@ use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension;
 use League\CommonMark\MarkdownConverter;
 
-class markdown extends Component
+class Markdown extends Component
 {
     /**
      * Create a new component instance.

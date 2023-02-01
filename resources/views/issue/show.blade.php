@@ -55,7 +55,7 @@
                                 @endif
                             @endauth
                         </div>
-                        <div class="comment-body markdown bg-white">
+                        <div class="comment-body markdown">
                             <x-markdown>{!! $comment->text !!}</x-markdown>
                         </div>
                     </div>

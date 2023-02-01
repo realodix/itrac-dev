@@ -16,7 +16,9 @@ class markdown extends Component
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(
+        public string $theme = 'one-dark-pro',
+    )
     {
         //
     }
@@ -28,9 +30,9 @@ class markdown extends Component
      *
      * @throws \RuntimeException
      */
-    public function toHtml(string $markdown, string $theme = 'one-dark-pro')
+    public function toHtml(string $markdown)
     {
-        $markdownConverter = new MarkdownConverter($this->env($theme));
+        $markdownConverter = new MarkdownConverter($this->env($this->theme));
 
         return $markdownConverter->convert($markdown);
     }

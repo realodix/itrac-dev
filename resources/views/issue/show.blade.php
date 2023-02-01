@@ -55,9 +55,9 @@
                                 @endif
                             @endauth
                         </div>
-                        <div class="comment-body markdown">
-                            <x-markdown>{!! $comment->text !!}</x-markdown>
-                        </div>
+                        {{-- <div class="comment-body markdown"> --}}
+                        <x-markdown class="comment-body markdown" theme="github-light">{!! $comment->text !!}</x-markdown>
+                        {{-- </div> --}}
                     </div>
                 @endforeach
 

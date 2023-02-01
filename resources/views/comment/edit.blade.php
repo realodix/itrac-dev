@@ -8,8 +8,8 @@
             <div class="md:w-8/12 justify-between">
                 <form method="post" action="{{ route('comment.update', $comment->id) }}">
                 @csrf
-                    <x-easymde name="comment_text" placeholder="Leave a comment">
-                        {{$comment->text}}
+                    <x-easymde name="comment_description" placeholder="Leave a comment">
+                        {{$comment->description}}
                     </x-easymde>
 
                     <button

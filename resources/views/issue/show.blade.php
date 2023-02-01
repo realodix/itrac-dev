@@ -53,7 +53,7 @@
                                 @endif
                             @endauth
                         </div>
-                        <x-markdown class="comment-body markdown">{!! $comment->text !!}</x-markdown>
+                        <x-markdown class="comment-body markdown">{!! $comment->description !!}</x-markdown>
                     </div>
                 @endforeach
 
@@ -62,7 +62,7 @@
                 @if (auth()->check())
                     <form method="post" action="{{ route('comment.store', $issue->id) }}">
                     @csrf
-                        <x-easymde name="comment_text" placeholder="Leave a comment"/>
+                        <x-easymde name="comment_description" placeholder="Leave a comment"/>
 
                         <button
                             class="bg-slate-900 hover:bg-slate-700 dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400

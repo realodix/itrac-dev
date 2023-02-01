@@ -27,9 +27,9 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'author_id' => User::factory(),
-            'issue_id'  => Issue::factory(),
-            'text'      => fake()->paragraph(),
+            'author_id'   => User::factory(),
+            'issue_id'    => Issue::factory(),
+            'description' => fake()->paragraph(),
         ];
     }
 }

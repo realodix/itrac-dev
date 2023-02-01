@@ -17,7 +17,6 @@ class markdown extends Component
     public function __construct(
         public string $theme = 'one-dark-pro',
     ) {
-        //
     }
 
     /**
@@ -29,9 +28,15 @@ class markdown extends Component
      */
     public function toHtml(string $markdown)
     {
-        $markdownConverter = new MarkdownConverter($this->env($this->theme));
+        $cacheKey = $this->getCacheKey($markdown);
 
-        return $markdownConverter->convert($markdown);
+        return cache()
+            ->store(null)
+            ->rememberForever($cacheKey, function () use ($markdown) {
+                $markdownConverter = new MarkdownConverter($this->env());
+
+                return $markdownConverter->convert($markdown);
+            });
     }
 
     /**
@@ -39,15 +44,24 @@ class markdown extends Component
      *
      * @return \League\CommonMark\Environment\Environment
      */
-    private function env(string $theme)
+    protected function env()
     {
         $environment = app(Environment::class)
             ->addExtension(new Extension\CommonMark\CommonMarkCoreExtension)
             ->addExtension(new \ElGigi\CommonMarkEmoji\EmojiExtension)
-            ->addExtension(new \Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension($theme))
+            ->addExtension(new \Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension($this->theme))
             ->addExtension(new Extension\GithubFlavoredMarkdownExtension);
 
         return $environment;
+    }
+
+    protected function getCacheKey(string $markdown): string
+    {
+        $options = json_encode([
+            'theme' => $this->theme,
+        ]);
+
+        return md5("markdown{$markdown}{$options}");
     }
 
     /**

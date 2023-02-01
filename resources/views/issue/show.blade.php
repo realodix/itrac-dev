@@ -31,9 +31,7 @@
                             @endif
                         @endauth
                     </div>
-                    <div class="comment-body markdown">
-                        <x-markdown>{!! $issue->description !!}</x-markdown>
-                    </div>
+                    <x-markdown class="comment-body markdown">{!! $issue->description !!}</x-markdown>
                 </div>
 
                 @foreach($issue->comments->sortBy('created_at') as $comment)
@@ -55,9 +53,7 @@
                                 @endif
                             @endauth
                         </div>
-                        {{-- <div class="comment-body markdown"> --}}
-                        <x-markdown class="comment-body markdown" theme="github-light">{!! $comment->text !!}</x-markdown>
-                        {{-- </div> --}}
+                        <x-markdown class="comment-body markdown">{!! $comment->text !!}</x-markdown>
                     </div>
                 @endforeach
 

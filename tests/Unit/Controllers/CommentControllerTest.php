@@ -23,9 +23,9 @@ class CommentControllerTest extends TestCase
         ]);
 
         $this->actingAs($user)
-            ->post(route('comment.store', $issue), ['comment_text' => 'test comment'])
+            ->post(route('comment.store', $issue), ['comment_description' => 'test comment'])
             ->assertRedirect(route('issue.show', $issue->id));
-        $this->assertDatabaseHas('comments', ['author_id' => $user->id, 'issue_id' => $issue->id, 'text' => 'test comment']);
+        $this->assertDatabaseHas('comments', ['author_id' => $user->id, 'issue_id' => $issue->id, 'description' => 'test comment']);
     }
 
     /**
@@ -53,9 +53,9 @@ class CommentControllerTest extends TestCase
         $comment = Comment::factory()->create();
 
         $this->actingAs($comment->author)
-            ->post(route('comment.update', $comment), ['comment_text' => 'new text'])
+            ->post(route('comment.update', $comment), ['comment_description' => 'new text'])
             ->assertRedirect(route('issue.show', $comment->issue));
-        $this->assertDatabaseHas('comments', ['id' => $comment->id, 'text' => 'new text']);
+        $this->assertDatabaseHas('comments', ['id' => $comment->id, 'description' => 'new text']);
     }
 
     /**

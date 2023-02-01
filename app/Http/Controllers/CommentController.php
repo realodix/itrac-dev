@@ -16,9 +16,9 @@ class CommentController extends Controller
     public function store(Request $request, Issue $issue)
     {
         Comment::create([
-            'author_id' => auth()->id(),
-            'issue_id'  => $issue->id,
-            'text'      => $request->comment_text,
+            'author_id'   => auth()->id(),
+            'issue_id'    => $issue->id,
+            'description' => $request->comment_description,
         ]);
 
         return redirect()->route('issue.show', $issue->id);
@@ -46,7 +46,7 @@ class CommentController extends Controller
         $this->authorize('update', $comment);
 
         $comment->update([
-            'text' => $request->comment_text,
+            'description' => $request->comment_description,
         ]);
 
         return redirect()->route('issue.show', $comment->issue->id);

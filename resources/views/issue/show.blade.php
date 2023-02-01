@@ -53,7 +53,7 @@
                                 @endif
                             @endauth
                         </div>
-                        <x-markdown class="comment-body markdown">{!! $comment->text !!}</x-markdown>
+                        <x-markdown class="comment-body markdown">{!! $comment->description !!}</x-markdown>
                     </div>
                 @endforeach
 

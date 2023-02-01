@@ -24,8 +24,8 @@ if (!mix.inProduction()) {
     .sourceMaps()
     .browserSync({
       open: 'external',
-      host: 'php-bugtracker-dev.test',
-      proxy: 'php-bugtracker-dev.test'
+      host: 'php-itrac-dev.test',
+      proxy: 'php-itrac-dev.test'
     })
 }
 

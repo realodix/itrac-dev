@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('issue_id')
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->longText('text');
+            $table->longText('description');
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\Component;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension;
@@ -30,8 +31,8 @@ class markdown extends Component
     {
         $cacheKey = $this->getCacheKey($markdown);
 
-        return cache()
-            ->store(null)
+        // If the Markdown is already cached, we'll return it.
+        return Cache::store(null)
             ->rememberForever($cacheKey, function () use ($markdown) {
                 $markdownConverter = new MarkdownConverter($this->env());
 
@@ -55,6 +56,9 @@ class markdown extends Component
         return $environment;
     }
 
+    /**
+     * Returns the cache key.
+     */
     protected function getCacheKey(string $markdown): string
     {
         $options = json_encode([

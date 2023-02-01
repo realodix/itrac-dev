@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class easymde extends Component
+class Easymde extends Component
 {
     public string $name;
 

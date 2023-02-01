@@ -22,31 +22,24 @@ jobs:
           tools: composer:v2
           coverage: xdebug
 
-      - name: Install Dependencies (Composer)
+      - name: Install Composer Dependencies
         uses: nick-invision/retry@v2
         with:
           timeout_minutes: 5
           max_attempts: 3
           command: composer update --no-interaction --no-progress
 
-      - name: Install Dependencies (NPM)
+      - name: Install NPM Dependencies
         uses: nick-invision/retry@v2
         with:
           timeout_minutes: 5
           max_attempts: 3
           command: npm install
 
-      - name: Prepare
+      - name: Setting up the application
         run: |
           php artisan config:clear
           npm run dev
 
       - name: Execute Tests
-        run: ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
-
-      - name: Upload Coverage Results To Coveralls
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          composer global require php-coveralls/php-coveralls
-          php-coveralls --coverage_clover=build/logs/clover.xml --verbose
+        run: ./vendor/bin/phpunit

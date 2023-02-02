@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts.layout')
 
 @section('css_class', 'frontend home')
 

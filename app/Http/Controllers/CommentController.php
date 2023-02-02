@@ -49,7 +49,7 @@ class CommentController extends Controller
             'description' => $request->comment_description,
         ]);
 
-        return redirect()->route('issue.show', $comment->issue->id);
+        return redirect()->route('issue.show.comment', [$comment->issue->id, $comment->id]);
     }
 
     /**

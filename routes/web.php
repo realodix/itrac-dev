@@ -21,6 +21,7 @@ Route::post('/issues/{issue}/comment', [CommentController::class, 'store'])->nam
 Route::get('/comment/{comment}/delete', [CommentController::class, 'destroy'])->name('comment.delete');
 Route::get('/comment/{comment}/edit', [CommentController::class, 'edit'])->name('comment.edit');
 Route::post('/comment/{comment}/edit', [CommentController::class, 'update'])->name('comment.update');
+Route::get('/issues/{issue}#comment-{id}', [CommentController::class])->name('issue.show.comment');
 
 Route::namespace('Dashboard')->prefix('admin')->group(function () {
     Route::middleware('auth')->group(function () {

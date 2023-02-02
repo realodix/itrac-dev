@@ -67,6 +67,6 @@ class Comment extends Model
      */
     public function userRole(): string
     {
-        return $this->isAuthor() ? 'Reporter' : '';
+        return 'Author';
     }
 }

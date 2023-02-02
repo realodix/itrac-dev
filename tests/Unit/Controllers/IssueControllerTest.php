@@ -130,6 +130,29 @@ class IssueControllerTest extends TestCase
             [
                 'id' => $issue->id,
                 'closed_by' => $issue->author->id,
+                'closed_at' => now()->format('Y-m-d H:i:s'),
+            ]
+        );
+    }
+
+    /**
+     * User can reopen a issue.
+     *
+     * @test
+     */
+    public function user_can_reopen_an_issue()
+    {
+        $issue = Issue::factory()->create();
+
+        $this->actingAs($issue->author)
+            ->get(route('issue.reopen', $issue))
+            ->assertRedirect(route('issue.show', $issue));
+        $this->assertDatabaseHas(
+            'issues',
+            [
+                'id' => $issue->id,
+                'closed_by' => null,
+                'closed_at' => null,
             ]
         );
     }

@@ -25,7 +25,7 @@ class Issue extends Model
         'title',
         'description',
         'closed_by',
-        'closed_date',
+        'closed_at',
     ];
 
     /*

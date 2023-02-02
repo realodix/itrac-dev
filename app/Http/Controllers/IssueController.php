@@ -99,7 +99,7 @@ class IssueController extends Controller
 
         $issue->update([
             'closed_by'   => auth()->id(),
-            'closed_date' => now(),
+            'closed_at' => now(),
         ]);
 
         return redirect()->route('issue.show', $issue);

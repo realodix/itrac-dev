@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\AuthPage\User;
+namespace Tests\Feature\AdminPage\User;
 
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;

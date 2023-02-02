@@ -36,28 +36,33 @@
 
                 @foreach($issue->comments->sortBy('created_at') as $comment)
                     <div class="comment">
-                        <div class="comment-header flex items-center space-x-4">
-                            <img class="w-10 h-10 rounded-full" src="{{ Avatar::create($comment->author->name)->toBase64() }}" alt="">
-                            <div class="font-medium dark:text-white">
-                                <div>
-                                    {{$comment->author->name}}
-                                    @if ($comment->isAuthor())
-                                        <span class="text-gray-900 text-xs bg-white border border-gray-300 rounded px-0.5 py-px">{{$comment->userRole()}}</span>
-                                    @endif
-                                </div>
-                                <div class="text-sm text-gray-500 dark:text-gray-400">
-                                    commented
-                                    <a id="comment-{{$comment->id}}"
-                                        href="#comment-{{$comment->id}}"
-                                        title="{{$comment->created_at->isoFormat('MMM DD, OY, HH:mm A zz')}}"
-                                        >{{$comment->created_at->diffForHumans()}}</a>
+                        <div class="comment-header grid grid-cols-2 content-center">
+                            <div class="flex items-center space-x-4">
+                                <img class="w-10 h-10 rounded-full" src="{{ Avatar::create($comment->author->name)->toBase64() }}" alt="">
+                                <div class="font-medium dark:text-white">
+                                    <div>
+                                        {{$comment->author->name}}
+                                        @if ($comment->isAuthor())
+                                            <span class="text-gray-900 text-xs bg-white border border-gray-300 rounded px-0.5 py-px">{{$comment->userRole()}}</span>
+                                        @endif
+                                    </div>
+                                    <div class="text-sm text-gray-500 dark:text-gray-400">
+                                        commented
+                                        <a id="comment-{{$comment->id}}"
+                                            href="#comment-{{$comment->id}}"
+                                            title="{{$comment->created_at->isoFormat('MMM DD, OY, HH:mm A zz')}}"
+                                            >{{$comment->created_at->diffForHumans()}}</a>
+                                    </div>
                                 </div>
                             </div>
+
                             @auth
-                                @if ($comment->isAuthor() || auth()->user()->hasRole('admin'))
-                                    <a href="{{route('comment.edit', $comment)}}" class="font-semibold">Edit</a>
-                                    <a href="{{route('comment.delete', $comment)}}" class="font-semibold">Delete</a>
-                                @endif
+                            @if ($comment->isAuthor() || auth()->user()->hasRole('admin'))
+                            <div class="flex justify-end flex-wrap content-center">
+                                <a href="{{route('comment.edit', $comment)}}" class="px-4 py-2 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">Edit</a>
+                                <a href="{{route('comment.delete', $comment)}}" class="px-4 py-2 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">Delete</a>
+                            </div>
+                            @endif
                             @endauth
                         </div>
                         <x-markdown class="comment-body markdown">{!! $comment->description !!}</x-markdown>

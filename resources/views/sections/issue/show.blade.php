@@ -11,8 +11,6 @@
                         'mr-4 py-1 px-2 border rounded-md text-md text-white',
                         'bg-green-600 border-green-600' => ! $issue->isClosed(),
                         'bg-violet-700 border-violet-700' => $issue->isClosed(),
-                        // 'text-gray-500' => ! $isActive,
-                        // 'bg-red' => $hasError,
                     ])>
                     @if ($issue->isClosed())
                        <x-go-issue-closed-24 />

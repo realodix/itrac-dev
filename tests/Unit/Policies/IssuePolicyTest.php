@@ -115,8 +115,8 @@ class IssuePolicyTest extends TestCase
     }
 
     /**
-     * Not author and not admin cannot delete the issue.
-     * Not author is the user who did not create the issue.
+     * Non-author and non-admin cannot delete the issue.
+     * Non-author is the user who did not create the issue.
      *
      * @test
      * @group u-policy

@@ -13,9 +13,9 @@
                         'bg-violet-700 border-violet-700' => $issue->isClosed(),
                     ])>
                     @if ($issue->isClosed())
-                       <x-go-issue-closed-24 />
+                       <x-go-issue-closed-16 />
                     @else
-                        <x-go-issue-opened-24 />
+                        <x-go-issue-opened-16 />
                     @endif
                     {{$issue->status()}}
                 </span>

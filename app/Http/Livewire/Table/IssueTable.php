@@ -82,8 +82,12 @@ final class IssueTable extends PowerGridComponent
     public function addColumns(): PowerGridEloquent
     {
         return PowerGrid::eloquent()
-            ->addColumn('ids', function () {
-                return Blade::render('@svg(\'icon-dashboard\')');
+            ->addColumn('ids', function (Issue $issue) {
+                $statusIcon = $issue->isClosed() ?
+                    '<x-go-issue-opened-16 class="text-green-600" />'
+                    : '<x-go-issue-closed-16 class="text-violet-700" />';
+
+                return Blade::render($statusIcon);
             })
             ->addColumn('title', function (Issue $issue) {
                 $timeForHumans = $issue->created_at->diffForHumans(['options' => Carbon::ONE_DAY_WORDS]);
@@ -95,7 +99,7 @@ final class IssueTable extends PowerGridComponent
             ->addColumn('comments', function (Issue $issue) {
                 $comment = $issue->commentCount();
 
-                return Blade::render('@svg(\'icon-dashboard\')').$comment;
+                return Blade::render('<x-go-comment-16 />').' '.$comment;
             });
     }
 

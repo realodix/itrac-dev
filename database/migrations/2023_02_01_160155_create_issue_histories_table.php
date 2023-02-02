@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('issue_history', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('author_id')
-                ->constrained('users')
-                ->cascadeOnDelete();
             $table->foreignId('issue_id')
                 ->constrained()
+                ->cascadeOnDelete();
+            $table->foreignId('author_id')
+                ->constrained('users')
                 ->cascadeOnDelete();
             $table->string('type');
             $table->string('action');

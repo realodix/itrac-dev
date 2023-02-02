@@ -62,7 +62,7 @@
 
 .form-input {
   @apply block w-full;
-  @apply border-slate-200 focus:ring-uh-indigo-400 focus:border-uh-indigo-400 rounded
+  @apply border-stone-300 focus:ring-uh-indigo-400 focus:border-uh-indigo-400 rounded
 }
 
 .common-card-style {

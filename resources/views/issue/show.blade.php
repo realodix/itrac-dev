@@ -37,11 +37,6 @@
                 @foreach($issue->comments->sortBy('created_at') as $comment)
                     <div class="comment">
                         <div class="comment-header flex items-center space-x-4">
-                            {{-- <img src="{{ Avatar::create($comment->author->name)->toBase64() }}" class="h-8 inline-block" />
-                            <b>{{$comment->author->name}}</b> commented
-                            <a id="comment-{{$comment->id}}" href="#comment-{{$comment->id}}" title="{{$comment->created_at->isoFormat('MMM DD, OY, HH:mm A zz')}}">
-                                {{$comment->created_at->diffForHumans()}}
-                            </a> --}}
                             <img class="w-10 h-10 rounded-full" src="{{ Avatar::create($comment->author->name)->toBase64() }}" alt="">
                             <div class="font-medium dark:text-white">
                                 <div>

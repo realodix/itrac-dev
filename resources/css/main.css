@@ -7,7 +7,7 @@ main {
 }
 
 .frontend, .backend, .auth {
-  @apply bg-slate-100 font-sans text-gray-900 antialiased;
+  @apply font-sans text-gray-900 antialiased;
 }
 
 .navbar {
@@ -70,10 +70,10 @@ main {
 
 .comment {
   @apply mt-4 rounded-t-md rounded-b-md;
-  @apply bg-white border border-gray-300;
+  @apply bg-white border border-gray-200;
 
   &-header {
-    @apply bg-slate-100 border-b border-gray-300;
+    @apply bg-gray-100 border-b border-gray-200;
     @apply px-4 py-2 rounded-t-md;
   }
 

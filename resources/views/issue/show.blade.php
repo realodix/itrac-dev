@@ -36,16 +36,28 @@
 
                 @foreach($issue->comments->sortBy('created_at') as $comment)
                     <div class="comment">
-                        <div class="comment-header">
-                            <img src="{{ Avatar::create($comment->author->name)->toBase64() }}" class="h-8 inline-block" />
+                        <div class="comment-header flex items-center space-x-4">
+                            {{-- <img src="{{ Avatar::create($comment->author->name)->toBase64() }}" class="h-8 inline-block" />
                             <b>{{$comment->author->name}}</b> commented
                             <a id="comment-{{$comment->id}}" href="#comment-{{$comment->id}}" title="{{$comment->created_at->isoFormat('MMM DD, OY, HH:mm A zz')}}">
                                 {{$comment->created_at->diffForHumans()}}
-                            </a>
-                            @if ($comment->isAuthor())
-                                <span class="py-px px-1 border border-gray-600 rounded text-sm text-gray-600">{{$comment->userRole()}}</span>
-                            @endif
-
+                            </a> --}}
+                            <img class="w-10 h-10 rounded-full" src="{{ Avatar::create($comment->author->name)->toBase64() }}" alt="">
+                            <div class="font-medium dark:text-white">
+                                <div>
+                                    {{$comment->author->name}}
+                                    @if ($comment->isAuthor())
+                                        <span class="text-gray-900 text-xs bg-white border border-gray-300 rounded px-0.5 py-px">{{$comment->userRole()}}</span>
+                                    @endif
+                                </div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">
+                                    commented
+                                    <a id="comment-{{$comment->id}}"
+                                        href="#comment-{{$comment->id}}"
+                                        title="{{$comment->created_at->isoFormat('MMM DD, OY, HH:mm A zz')}}"
+                                        >{{$comment->created_at->diffForHumans()}}</a>
+                                </div>
+                            </div>
                             @auth
                                 @if ($comment->isAuthor() || auth()->user()->hasRole('admin'))
                                     <a href="{{route('comment.edit', $comment)}}" class="font-semibold">Edit</a>

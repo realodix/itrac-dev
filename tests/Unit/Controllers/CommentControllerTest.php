@@ -15,17 +15,28 @@ class CommentControllerTest extends TestCase
      */
     public function user_can_create_a_comment()
     {
-        $user = User::factory()->create();
-        $issue = $user->issues()->create([
-            'author_id'   => $user->id,
-            'title'       => 'test issue',
-            'description' => 'test issue description',
+        // $user = User::factory()->create();
+        // $issue = $user->issues()->create([
+        //     'author_id'   => $user->id,
+        //     'title'       => 'test issue',
+        //     'description' => 'test issue description',
+        // ]);
+        $comment = Comment::factory()->create([
+            // 'author_id'   => $user->id,
+            'description' => 'test comment',
         ]);
 
-        $this->actingAs($user)
-            ->post(route('comment.store', $issue), ['comment_description' => 'test comment'])
-            ->assertRedirect(route('issue.show', $issue->id));
-        $this->assertDatabaseHas('comments', ['author_id' => $user->id, 'issue_id' => $issue->id, 'description' => 'test comment']);
+        $this->actingAs($comment->author)
+            ->post(route('comment.store', $comment->issue->id), ['comment_description' => 'test comment'])
+            ->assertRedirect(route('issue.show.comment', [
+                $comment->issue->id,
+                $comment->id + 1, // +1 because the comment is created before the test
+            ]));
+        $this->assertDatabaseHas('comments', [
+            // 'author_id' => $user->id,
+            'issue_id' => $comment->issue->id,
+            'description' => 'test comment',
+        ]);
     }
 
     /**

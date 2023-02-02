@@ -15,13 +15,16 @@ class CommentController extends Controller
      */
     public function store(Request $request, Issue $issue)
     {
-        Comment::create([
+        $comment = Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
             'description' => $request->comment_description,
         ]);
 
-        return redirect()->route('issue.show', $issue->id);
+        return redirect()->route('issue.show.comment', [
+            $comment->issue->id,
+            $comment->id,
+        ]);
     }
 
     /**
@@ -49,7 +52,10 @@ class CommentController extends Controller
             'description' => $request->comment_description,
         ]);
 
-        return redirect()->route('issue.show.comment', [$comment->issue->id, $comment->id]);
+        return redirect()->route('issue.show.comment', [
+            $comment->issue->id,
+            $comment->id,
+        ]);
     }
 
     /**

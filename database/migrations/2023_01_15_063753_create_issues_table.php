@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('title');
             $table->longText('description');
             $table->foreignId('closed_by')->nullable();
-            $table->dateTime('closed_date')->nullable();
+            $table->dateTime('closed_at')->nullable();
             $table->timestamps();
         });
     }

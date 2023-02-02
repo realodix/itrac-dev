@@ -65,8 +65,8 @@ class CommentPolicyTest extends TestCase
     }
 
     /**
-     * Not author and not admin cannot update the comment.
-     * Not author is the user who did not create the comment.
+     * Non-author and non-admin cannot update the comment.
+     * Non-author is the user who did not create the comment.
      *
      * @test
      * @group u-policy
@@ -153,8 +153,8 @@ class CommentPolicyTest extends TestCase
     }
 
     /**
-     * Not author and not admin cannot delete the comment.
-     * Not author is the user who did not create the comment.
+     * Non-author and non-admin cannot delete the comment.
+     * Non-author is the user who did not create the comment.
      *
      * @test
      * @group u-policy

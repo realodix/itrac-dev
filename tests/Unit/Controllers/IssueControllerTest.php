@@ -26,7 +26,7 @@ class IssueControllerTest extends TestCase
      *
      * @test
      */
-    public function user_can_create_a_issue()
+    public function user_can_create_an_issue()
     {
         $issue = Issue::factory()->make();
 
@@ -74,7 +74,7 @@ class IssueControllerTest extends TestCase
      *
      * @test
      */
-    public function user_can_update_a_issue()
+    public function user_can_update_an_issue()
     {
         $issue = Issue::factory()->create();
 
@@ -103,7 +103,7 @@ class IssueControllerTest extends TestCase
      *
      * @test
      */
-    public function user_can_delete_a_issue()
+    public function user_can_delete_an_issue()
     {
         $issue = Issue::factory()->create();
 
@@ -111,5 +111,49 @@ class IssueControllerTest extends TestCase
             ->get(route('issue.delete', $issue))
             ->assertRedirect(route('home'));
         $this->assertDatabaseMissing('issues', $issue->toArray());
+    }
+
+    /**
+     * User can close a issue.
+     *
+     * @test
+     */
+    public function user_can_close_an_issue()
+    {
+        $issue = Issue::factory()->create();
+
+        $this->actingAs($issue->author)
+            ->get(route('issue.close', $issue))
+            ->assertRedirect(route('issue.show', $issue));
+        $this->assertDatabaseHas(
+            'issues',
+            [
+                'id' => $issue->id,
+                'closed_by' => $issue->author->id,
+                'closed_at' => now()->format('Y-m-d H:i:s'),
+            ]
+        );
+    }
+
+    /**
+     * User can reopen a issue.
+     *
+     * @test
+     */
+    public function user_can_reopen_an_issue()
+    {
+        $issue = Issue::factory()->create();
+
+        $this->actingAs($issue->author)
+            ->get(route('issue.reopen', $issue))
+            ->assertRedirect(route('issue.show', $issue));
+        $this->assertDatabaseHas(
+            'issues',
+            [
+                'id' => $issue->id,
+                'closed_by' => null,
+                'closed_at' => null,
+            ]
+        );
     }
 }

@@ -7,8 +7,16 @@
         <div class="header-meta">
             <div class="text-3xl mb-2">#{{$issue->id}} - {{$issue->title}}</div>
             <div class="mb-2">
-                <span class="mr-4 py-1 px-2 border bg-green-600 border-green-600 rounded-md text-md text-white">
-                    @svg('icon-dashboard')
+                <span @class([
+                        'mr-4 py-1 px-2 border rounded-md text-md text-white',
+                        'bg-green-600 border-green-600' => ! $issue->isClosed(),
+                        'bg-violet-700 border-violet-700' => $issue->isClosed(),
+                    ])>
+                    @if ($issue->isClosed())
+                       <x-go-issue-closed-16 />
+                    @else
+                        <x-go-issue-opened-16 />
+                    @endif
                     {{$issue->status()}}
                 </span>
                 <b>{{$issue->author->name}}</b> opened this issue <span title="{{$issue->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}">{{$issue->created_at->diffForHumans()}}</span>
@@ -112,8 +120,20 @@
                 @auth
                     @if ($issue->isAuthor() || auth()->user()->hasRole('admin'))
                         <div class="participation discussion-sidebar-item">
-                            <div class="">
-                                <a href="{{route('issue.delete', $issue)}}" class="font-semibold">Delete issue</a>
+                            <div class="flex flex-col">
+                                <div>
+                                    @if ($issue->isClosed())
+                                        <x-go-issue-reopened-16 class="text-green-600" />
+                                        <a href="{{route('issue.reopen', $issue)}}" class="font-semibold">Reopen</a>
+                                    @else
+                                        <x-go-issue-closed-16 class="text-violet-700" />
+                                        <a href="{{route('issue.close', $issue)}}" class="font-semibold">Close</a>
+                                    @endif
+                                </div>
+                                <div class="mt-4 text-red-600">
+                                    <x-go-trash-16 />
+                                    <a href="{{route('issue.delete', $issue)}}" class="font-semibold">Delete issue</a>
+                                </div>
                             </div>
                         </div>
                     @endif

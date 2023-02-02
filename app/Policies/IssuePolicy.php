@@ -31,4 +31,26 @@ class IssuePolicy
         return $user->id === $issue->author_id
             || $user->hasRole('admin');
     }
+
+    /**
+     * Determine whether the user can close the issue.
+     *
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function close(User $user, Issue $issue)
+    {
+        return $user->id === $issue->author_id
+            || $user->hasRole('admin');
+    }
+
+    /**
+     * Determine whether the user can reopen the issue.
+     *
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function reopen(User $user, Issue $issue)
+    {
+        return $user->id === $issue->author_id
+            || $user->hasRole('admin');
+    }
 }

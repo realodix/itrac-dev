@@ -147,4 +147,146 @@ class IssuePolicyTest extends TestCase
         $response = $this->get(route('issue.delete', $issue));
         $response->assertForbidden();
     }
+
+    /**
+     * Issue author can close the issue.
+     * Author is the user who created the issue.
+     *
+     * @test
+     * @group u-policy
+     */
+    public function authorCanCloseIssue()
+    {
+        $issue = Issue::factory()->create();
+
+        $this->assertTrue($issue->author->can('close', $issue));
+
+        $response = $this->actingAs($issue->author)
+            ->get(route('issue.close', $issue));
+        $response->assertStatus(302);
+    }
+
+    /**
+     * Admin can close the issue.
+     * Admin is the user who has the admin role.
+     *
+     * @test
+     * @group u-policy
+     */
+    public function adminCanCloseIssue()
+    {
+        $issue = Issue::factory()->create();
+        $adminUser = $this->adminUser();
+
+        $this->assertTrue($adminUser->can('close', $issue));
+
+        $response = $this->actingAs($adminUser)
+            ->get(route('issue.close', $issue));
+        $response->assertStatus(302);
+    }
+
+    /**
+     * Non-author and non-admin cannot close the issue.
+     * Non-author is the user who did not create the issue.
+     *
+     * @test
+     * @group u-policy
+     */
+    public function nonAuthorCannotCloseIssue()
+    {
+        $user = User::factory()->create();
+        $issue = Issue::factory()->create();
+
+        $this->assertFalse($user->can('close', $issue));
+
+        $response = $this->actingAs($user)
+            ->get(route('issue.close', $issue));
+        $response->assertForbidden();
+    }
+
+    /**
+     * Guest cannot close the issue.
+     * Guest is the user who is not logged in.
+     *
+     * @test
+     * @group u-policy
+     */
+    public function guestCannotCloseIssue()
+    {
+        $issue = Issue::factory()->create();
+
+        $response = $this->get(route('issue.close', $issue));
+        $response->assertForbidden();
+    }
+
+    /**
+     * Issue author can reopen the issue.
+     * Author is the user who created the issue.
+     *
+     * @test
+     * @group u-policy
+     */
+    public function authorCanReopenIssue()
+    {
+        $issue = Issue::factory()->create();
+
+        $this->assertTrue($issue->author->can('reopen', $issue));
+
+        $response = $this->actingAs($issue->author)
+            ->get(route('issue.reopen', $issue));
+        $response->assertStatus(302);
+    }
+
+    /**
+     * Admin can reopen the issue.
+     * Admin is the user who has the admin role.
+     *
+     * @test
+     * @group u-policy
+     */
+    public function adminCanReopenIssue()
+    {
+        $issue = Issue::factory()->create();
+        $adminUser = $this->adminUser();
+
+        $this->assertTrue($adminUser->can('reopen', $issue));
+
+        $response = $this->actingAs($adminUser)
+            ->get(route('issue.reopen', $issue));
+        $response->assertStatus(302);
+    }
+
+    /**
+     * Non-author and non-admin cannot reopen the issue.
+     * Non-author is the user who did not create the issue.
+     *
+     * @test
+     * @group u-policy
+     */
+    public function nonAuthorCannotReopenIssue()
+    {
+        $user = User::factory()->create();
+        $issue = Issue::factory()->create();
+
+        $this->assertFalse($user->can('reopen', $issue));
+
+        $response = $this->actingAs($user)
+            ->get(route('issue.reopen', $issue));
+        $response->assertForbidden();
+    }
+
+    /**
+     * Guest cannot reopen the issue.
+     * Guest is the user who is not logged in.
+     *
+     * @test
+     * @group u-policy
+     */
+    public function guestCannotReopenIssue()
+    {
+        $issue = Issue::factory()->create();
+
+        $response = $this->get(route('issue.reopen', $issue));
+        $response->assertForbidden();
+    }
 }

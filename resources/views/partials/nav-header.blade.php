@@ -49,11 +49,11 @@
                                     </div>
 
                                     <a href="{{route('user.edit', auth()->user()->name)}}"
-                                        class="nav-item {{(request()->route()->getName() === 'user.edit') ? 'border-l-2 border-uh-indigo-400':''}}">
-                                        @svg('icon-user', 'mr-1') {{__('Profile')}}</a>
+                                        class="nav-item {{(request()->route()->getName() === 'user.edit') ? 'border-l-2 border-uh-indigo-400':''}}"
+                                        >@svg('icon-user', 'mr-1') {{__('Profile')}}</a>
                                     <a href="{{route('user.change-password', auth()->user()->name)}}"
-                                        class="nav-item {{(request()->route()->getName() === 'user.change-password') ? 'border-l-2 border-uh-indigo-400':''}}">
-                                        @svg('icon-key', 'mr-1') {{__('Change Password')}}</a>
+                                        class="nav-item {{(request()->route()->getName() === 'user.change-password') ? 'border-l-2 border-uh-indigo-400':''}}"
+                                        >@svg('icon-key', 'mr-1') {{__('Change Password')}}</a>
 
                                     <div class="border-t border-slate-100"></div>
 
@@ -63,9 +63,7 @@
                                         <a href="{{route('logout')}}"
                                             onclick="event.preventDefault(); this.closest('form').submit();"
                                             class="nav-item"
-                                        >
-                                            @svg('icon-sign-out', 'mr-1') {{__('Log Out')}}
-                                        </a>
+                                            >@svg('icon-sign-out', 'mr-1') {{__('Log Out')}}</a>
                                     </form>
                                 </div>
                             </div>
@@ -75,13 +73,12 @@
             @else
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                     <a href="{{route('login')}}"
-                        class="text-xl font-medium text-gray-500 hover:text-gray-900 mr-8">{{__('Log in')}}</a>
+                        class="text-xl font-medium text-gray-500 hover:text-gray-900 mr-8"
+                        >{{__('Log in')}}</a>
                     <a href="{{route('register')}}"
                         class="text-xl font-medium text-white bg-uh-indigo-600 hover:bg-uh-indigo-700 active:bg-uh-indigo-600
                             px-4 py-2 rounded-md transition ease-in-out duration-150"
-                    >
-                        {{__('Sign up')}}
-                    </a>
+                        >{{__('Sign up')}}</a>
                 </div>
             @endauth
             {{-- Hamburger --}}
@@ -108,13 +105,13 @@
             <div class="pt-2 pb-3 space-y-1">
                 @if (Route::currentRouteName() != 'dashboard')
                     <a href="{{route('dashboard')}}"
-                        class="nav-item {{(request()->route()->getName() === 'dashboard') ? 'border-l-2 border-uh-indigo-400':''}}">
-                        @svg('icon-dashboard', 'mr-1') {{__('Dashboard')}}</a>
+                        class="nav-item {{(request()->route()->getName() === 'dashboard') ? 'border-l-2 border-uh-indigo-400':''}}"
+                        >@svg('icon-dashboard', 'mr-1') {{__('Dashboard')}}</a>
                 @endif
 
                 <a href="{{route('user.index')}}"
-                    class="nav-item {{(request()->route()->getName() === 'user.index') ? 'border-l-2 border-uh-indigo-400':''}}">
-                    @svg('icon-users', 'mr-1') {{__('User List')}}</a>
+                    class="nav-item {{(request()->route()->getName() === 'user.index') ? 'border-l-2 border-uh-indigo-400':''}}"
+                    >@svg('icon-users', 'mr-1') {{__('User List')}}</a>
             </div>
 
             <!-- Responsive Settings Options -->
@@ -129,29 +126,26 @@
                 <div class="mt-3 space-y-1">
                     <!-- Account Management -->
                     <a href="{{route('user.edit', auth()->user()->name)}}"
-                        class="nav-item {{(request()->route()->getName() === 'user.edit') ? 'border-l-2 border-uh-indigo-400':''}}">
-                        @svg('icon-user', 'mr-1') {{__('Profile')}}</a>
+                        class="nav-item {{(request()->route()->getName() === 'user.edit') ? 'border-l-2 border-uh-indigo-400':''}}"
+                        >@svg('icon-user', 'mr-1') {{__('Profile')}}</a>
                     <a href="{{route('user.change-password', auth()->user()->name)}}"
-                        class="nav-item {{(request()->route()->getName() === 'user.change-password') ? 'border-l-2 border-uh-indigo-400':''}}">
-                        @svg('icon-key', 'mr-1') {{__('Change Password')}}</a>
+                        class="nav-item {{(request()->route()->getName() === 'user.change-password') ? 'border-l-2 border-uh-indigo-400':''}}"
+                        >@svg('icon-key', 'mr-1') {{__('Change Password')}}</a>
 
                     <!-- Authentication -->
                     <form method="POST" action="{{route('logout')}}">
                     @csrf
                         <a class="nav-item" href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">
-                            @svg('icon-sign-out', 'mr-1') {{__('Log Out')}}
-                        </a>
+                            @svg('icon-sign-out', 'mr-1') {{__('Log Out')}}</a>
                     </form>
                 </div>
             </div>
         @else
             <div class="pt-2 pb-3 space-y-1">
                 <a href="{{route('login')}}" class="block pl-3 pr-4 py-2 font-medium transition">
-                    {{__('Log in')}}
-                </a>
+                    {{__('Log in')}}</a>
                 <a href="{{route('register')}}" class="block pl-3 pr-4 py-2 font-medium transition">
-                    {{__('Sign up')}}
-                </a>
+                    {{__('Sign up')}}</a>
             </div>
         @endauth
     </div> {{-- End Responsive Navigation Menu --}}

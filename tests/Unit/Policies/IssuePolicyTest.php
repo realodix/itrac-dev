@@ -115,8 +115,8 @@ class IssuePolicyTest extends TestCase
     }
 
     /**
-     * Non author and non admin cannot delete the issue.
-     * Not author is the user who did not create the issue.
+     * Non-author and non-admin cannot delete the issue.
+     * Non-author is the user who did not create the issue.
      *
      * @test
      * @group u-policy
@@ -186,8 +186,8 @@ class IssuePolicyTest extends TestCase
     }
 
     /**
-     * Non author and non admin cannot close the issue.
-     * Not author is the user who did not create the issue.
+     * Non-author and non-admin cannot close the issue.
+     * Non-author is the user who did not create the issue.
      *
      * @test
      * @group u-policy
@@ -257,8 +257,8 @@ class IssuePolicyTest extends TestCase
     }
 
     /**
-     * Non author and non admin cannot reopen the issue.
-     * Not author is the user who did not create the issue.
+     * Non-author and non-admin cannot reopen the issue.
+     * Non-author is the user who did not create the issue.
      *
      * @test
      * @group u-policy

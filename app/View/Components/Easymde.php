@@ -30,12 +30,7 @@ class Easymde extends Component
                 '|', 'code', 'quote', 'unordered-list', 'ordered-list',
                 '|', 'link', 'image',
                 '|', 'preview', 'side-by-side', 'fullscreen',
-                '|',
-                [
-                    'title' => 'GitHub Flavored Markdown Guide',
-                    'action' => 'https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax',
-                    'className' => 'fa fa-question-circle',
-                ]
+                '|', 'guide',
             ],
         ], $this->options);
     }

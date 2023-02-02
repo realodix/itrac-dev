@@ -21,14 +21,15 @@
                 <div class="comment mb-8">
                     <div class="comment-header grid grid-cols-2 content-center">
                         <div class="flex items-center space-x-4">
-                            <img class="w-10 h-10 rounded-full" src="{{ Avatar::create($issue->author->name)->toBase64() }}"/>
+                            <img src="{{ Avatar::create($issue->author->name)->toBase64() }}" class="comment-header-avatar"/>
                             <div>
                                 <b>{{$issue->author->name}}</b>
                                 <div class="text-sm text-gray-500">
                                     commented
-                                    <a id="issue-{{$issue->id}}" href="#issue-{{$issue->id}}" title="{{$issue->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}">
-                                        {{$issue->created_at->diffForHumans()}}
-                                    </a>
+                                    <a href="#issue-{{$issue->id}}"
+                                        id="issue-{{$issue->id}}"
+                                        title="{{$issue->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}"
+                                        >{{$issue->created_at->diffForHumans()}}</a>
                                 </div>
                             </div>
                         </div>
@@ -36,7 +37,7 @@
                         @auth
                         @if ($issue->isAuthor() || auth()->user()->hasRole('admin'))
                             <div class="flex justify-end flex-wrap content-center">
-                                <a href="{{route('issue.edit', $issue)}}" class="px-4 py-2 mr-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">Edit</a>
+                                <a href="{{route('issue.edit', $issue)}}" class="comment-header-btn">Edit</a>
                             </div>
                         @endif
                         @endauth
@@ -48,16 +49,17 @@
                     <div class="comment">
                         <div class="comment-header grid grid-cols-2 content-center">
                             <div class="flex items-center space-x-4">
-                                <img class="w-10 h-10 rounded-full" src="{{ Avatar::create($comment->author->name)->toBase64() }}" alt="">
+                                <img src="{{ Avatar::create($comment->author->name)->toBase64() }}" class="comment-header-avatar"/>
                                 <div>
                                     <b>{{$comment->author->name}}</b>
                                     @if ($comment->isAuthor())
-                                        <span class="bg-green-100 text-green-800 text-xs mr-2 px-2.5 py-0.5 rounded border border-green-400">{{$comment->userRole()}}</span>
+                                        <span class="bg-green-100 text-green-800 text-xs mr-2 px-2.5 py-0.5 rounded border border-green-400">
+                                            {{$comment->userRole()}}</span>
                                     @endif
                                     <div class="text-sm text-gray-500">
                                         commented
-                                        <a id="comment-{{$comment->id}}"
-                                            href="#comment-{{$comment->id}}"
+                                        <a href="#comment-{{$comment->id}}"
+                                            id="comment-{{$comment->id}}"
                                             title="{{$comment->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}"
                                             >{{$comment->created_at->diffForHumans()}}</a>
                                     </div>
@@ -66,10 +68,10 @@
 
                             @auth
                             @if ($comment->isAuthor() || auth()->user()->hasRole('admin'))
-                            <div class="flex justify-end flex-wrap content-center">
-                                <a href="{{route('comment.edit', $comment)}}" class="px-4 py-2 mr-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">Edit</a>
-                                <a href="{{route('comment.delete', $comment)}}" class="px-4 py-2 mr-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">Delete</a>
-                            </div>
+                                <div class="flex justify-end flex-wrap content-center">
+                                    <a href="{{route('comment.edit', $comment)}}" class="comment-header-btn">Edit</a>
+                                    <a href="{{route('comment.delete', $comment)}}" class="comment-header-btn">Delete</a>
+                                </div>
                             @endif
                             @endauth
                         </div>
@@ -88,7 +90,7 @@
                             class="bg-slate-900 hover:bg-slate-700 dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400
                                 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50
                                 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto "
-                        >Submit</button>
+                            >Submit</button>
                     </form>
                 @else
                     You need to <a href="{{route('login')}}" class="text-blue-600">log in</a> before you can comment.

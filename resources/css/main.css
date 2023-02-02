@@ -75,6 +75,16 @@ main {
   &-header {
     @apply bg-gray-100 border-b border-gray-200;
     @apply px-4 py-2 rounded-t-md;
+
+    &-avatar {
+      @apply w-10 h-10 rounded-full;
+    }
+
+    &-btn {
+      @apply px-4 py-2 mr-2;
+      @apply bg-white hover:bg-gray-100 rounded-lg border border-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-200 focus:z-10;
+      @apply text-sm font-medium text-gray-900 hover:text-blue-700;
+    }
   }
 
   &-body {

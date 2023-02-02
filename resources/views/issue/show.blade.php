@@ -43,10 +43,10 @@
                                     <div>
                                         {{$comment->author->name}}
                                         @if ($comment->isAuthor())
-                                            <span class="text-gray-900 text-xs bg-white border border-gray-300 rounded px-0.5 py-px">{{$comment->userRole()}}</span>
+                                            <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded border border-green-400">{{$comment->userRole()}}</span>
                                         @endif
                                     </div>
-                                    <div class="text-sm text-gray-500 dark:text-gray-400">
+                                    <div class="text-sm text-gray-500">
                                         commented
                                         <a id="comment-{{$comment->id}}"
                                             href="#comment-{{$comment->id}}"

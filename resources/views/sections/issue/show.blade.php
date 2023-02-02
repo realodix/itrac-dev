@@ -121,12 +121,19 @@
                     @if ($issue->isAuthor() || auth()->user()->hasRole('admin'))
                         <div class="participation discussion-sidebar-item">
                             <div class="flex flex-col">
-                                <a href="{{route('issue.delete', $issue)}}" class="font-semibold">Delete issue</a>
-                                @if ($issue->isClosed())
-                                    <a href="{{route('issue.reopen', $issue)}}" class="font-semibold">Reopen</a>
-                                @else
-                                    <a href="{{route('issue.close', $issue)}}" class="font-semibold">Close</a>
-                                @endif
+                                <div>
+                                    @if ($issue->isClosed())
+                                        <x-go-issue-reopened-16 class="text-green-600" />
+                                        <a href="{{route('issue.reopen', $issue)}}" class="font-semibold">Reopen</a>
+                                    @else
+                                        <x-go-issue-closed-16 class="text-violet-700" />
+                                        <a href="{{route('issue.close', $issue)}}" class="font-semibold">Close</a>
+                                    @endif
+                                </div>
+                                <div class="mt-4 text-red-600">
+                                    <x-go-trash-16 />
+                                    <a href="{{route('issue.delete', $issue)}}" class="font-semibold">Delete issue</a>
+                                </div>
                             </div>
                         </div>
                     @endif

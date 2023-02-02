@@ -7,7 +7,7 @@ main {
 }
 
 .frontend, .backend, .auth {
-  @apply bg-slate-100 font-sans text-gray-900 antialiased;
+  @apply font-sans text-gray-900 antialiased bg-[#F9F9F9];
 }
 
 .navbar {
@@ -70,11 +70,21 @@ main {
 
 .comment {
   @apply mt-4 rounded-t-md rounded-b-md;
-  @apply bg-white border border-gray-300;
+  @apply bg-white border border-stone-300;
 
   &-header {
-    @apply bg-slate-100 border-b border-gray-300;
+    @apply bg-stone-100 border-b border-stone-300;
     @apply px-4 py-2 rounded-t-md;
+
+    &-avatar {
+      @apply w-10 h-10 rounded-full;
+    }
+
+    &-btn {
+      @apply px-4 py-2 mr-2;
+      @apply bg-white hover:bg-stone-100 rounded-lg border border-stone-300 focus:outline-none focus:ring-4 focus:ring-stone-200 focus:z-10;
+      @apply text-sm font-medium text-stone-900 hover:text-blue-700;
+    }
   }
 
   &-body {

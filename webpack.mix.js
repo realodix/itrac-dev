@@ -4,8 +4,7 @@ mix.postCss('resources/css/main.css', 'public/css', [
     require('tailwindcss/nesting'),
     require('tailwindcss'),
   ])
-  .sass('resources/sass/backend.scss', 'css/backend.css')
-  .sass('resources/sass/frontend.scss', 'css/frontend.css')
+  .sass('resources/sass/app.scss', 'css/app.css')
   .js('resources/js/main.js', 'js/main.js');
 
 mix.extract()

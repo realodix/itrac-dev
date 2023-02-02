@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function view()
     {
-        return view('backend.user.index');
+        return view('sections.admin.user.index');
     }
 
     /**
@@ -38,7 +38,7 @@ class UserController extends Controller
     {
         $this->authorize('view', $user);
 
-        return view('backend.user.profile', ['user' => $user]);
+        return view('sections.admin.user.profile', ['user' => $user]);
     }
 
     /**

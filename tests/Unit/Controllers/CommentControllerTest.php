@@ -39,7 +39,7 @@ class CommentControllerTest extends TestCase
 
         $this->actingAs($comment->author)
             ->get(route('comment.edit', $comment))
-            ->assertViewIs('comment.edit')
+            ->assertViewIs('sections.comment.edit')
             ->assertViewHas('comment', $comment);
     }
 

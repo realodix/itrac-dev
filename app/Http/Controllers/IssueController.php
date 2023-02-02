@@ -16,7 +16,7 @@ class IssueController extends Controller
      */
     public function create()
     {
-        return view('issue.create');
+        return view('sections.issue.create');
     }
 
     /**
@@ -47,7 +47,7 @@ class IssueController extends Controller
      */
     public function show(Issue $issue)
     {
-        return view('issue.show', ['issue' => $issue]);
+        return view('sections.issue.show', ['issue' => $issue]);
     }
 
     /**
@@ -59,7 +59,7 @@ class IssueController extends Controller
     {
         $this->authorize('update', $issue);
 
-        return view('issue.edit', compact('issue'));
+        return view('sections.issue.edit', compact('issue'));
     }
 
     /**

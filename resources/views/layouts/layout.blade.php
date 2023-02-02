@@ -11,7 +11,6 @@
     @livewireStyles
     {{-- @powerGridStyles --}}
     <link rel="stylesheet" media="all" href="{!! mix('css/main.css') !!}" />
-    <link rel="stylesheet" media="all" href="{!! mix('css/frontend.css') !!}" />
 </head>
 
 <body class="@yield('css_class')">

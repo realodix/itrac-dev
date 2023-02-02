@@ -8,7 +8,11 @@
             <div class="text-3xl mb-2">#{{$issue->id}} - {{$issue->title}}</div>
             <div class="mb-2">
                 <span class="mr-4 py-1 px-2 border bg-green-600 border-green-600 rounded-md text-md text-white">
-                    @svg('icon-dashboard')
+                    @if ($issue->isClosed())
+                       <x-go-issue-closed-24 />
+                    @else
+                        <x-go-issue-opened-24 />
+                    @endif
                     {{$issue->status()}}
                 </span>
                 <b>{{$issue->author->name}}</b> opened this issue <span title="{{$issue->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}">{{$issue->created_at->diffForHumans()}}</span>

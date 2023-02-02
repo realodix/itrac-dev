@@ -1,4 +1,4 @@
-@extends('layouts.backend')
+@extends('layouts.admin')
 
 @section('title', Str::title(auth()->user()->name) .' ‹ '. __('Change Password'))
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\AuthPage\User;
+namespace Tests\Feature\AdminPage\User;
 
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
@@ -18,6 +18,22 @@ class ChangePasswordTest extends TestCase
         $hashids = Hashids::connection(\App\Models\User::class);
 
         return route('user.change-password.post', $hashids->encode($value));
+    }
+
+    /**
+     * User can access the change password page.
+     *
+     * @test
+     * @group f-user
+     */
+    public function userCanAccessTheChangePasswordPage()
+    {
+        $user = $this->normalUser();
+
+        $response = $this->actingAs($user)
+            ->get($this->getRoute($user->name));
+
+        $response->assertOk();
     }
 
     /**

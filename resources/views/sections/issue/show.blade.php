@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts.layout')
 
 @section('css_class', 'frontend home')
 
@@ -11,7 +11,7 @@
                     @svg('icon-dashboard')
                     {{$issue->status()}}
                 </span>
-                <b>{{$issue->author->name}}</b> opened this issue <span title="{{$issue->created_at->isoFormat('MMM DD, OY, HH:mm A zz')}}">{{$issue->created_at->diffForHumans()}}</span>
+                <b>{{$issue->author->name}}</b> opened this issue <span title="{{$issue->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}">{{$issue->created_at->diffForHumans()}}</span>
                 &middot; {{$issue->comments->count()}} comments
             </div>
         </div>
@@ -19,16 +19,27 @@
         <div class="issue_bucket flex">
             <div class="md:w-8/12 justify-between">
                 <div class="comment mb-8">
-                    <div class="comment-header">
-                        <img src="{{ Avatar::create($issue->author->name)->toBase64() }}" class="h-8 inline-block" />
-                        <b>{{$issue->author->name}}</b> commented
-                        <a id="issue-{{$issue->id}}" href="#issue-{{$issue->id}}" title="{{$issue->created_at->isoFormat('MMM DD, OY, HH:mm A zz')}}">
-                            {{$issue->created_at->diffForHumans()}}
-                        </a>
+                    <div class="comment-header grid grid-cols-2 content-center">
+                        <div class="flex items-center space-x-4">
+                            <img src="{{ Avatar::create($issue->author->name)->toBase64() }}" class="comment-header-avatar"/>
+                            <div>
+                                <b>{{$issue->author->name}}</b>
+                                <div class="text-sm text-gray-500">
+                                    commented
+                                    <a href="#issue-{{$issue->id}}"
+                                        id="issue-{{$issue->id}}"
+                                        title="{{$issue->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}"
+                                        >{{$issue->created_at->diffForHumans()}}</a>
+                                </div>
+                            </div>
+                        </div>
+
                         @auth
-                            @if ($issue->isAuthor() || auth()->user()->hasRole('admin'))
-                                <a href="{{route('issue.edit', $issue)}}" class="font-semibold">Edit</a>
-                            @endif
+                        @if ($issue->isAuthor() || auth()->user()->hasRole('admin'))
+                            <div class="flex justify-end flex-wrap content-center">
+                                <a href="{{route('issue.edit', $issue)}}" class="comment-header-btn">Edit</a>
+                            </div>
+                        @endif
                         @endauth
                     </div>
                     <x-markdown class="comment-body markdown">{!! $issue->description !!}</x-markdown>
@@ -36,21 +47,32 @@
 
                 @foreach($issue->comments->sortBy('created_at') as $comment)
                     <div class="comment">
-                        <div class="comment-header">
-                            <img src="{{ Avatar::create($comment->author->name)->toBase64() }}" class="h-8 inline-block" />
-                            <b>{{$comment->author->name}}</b> commented
-                            <a id="comment-{{$comment->id}}" href="#comment-{{$comment->id}}" title="{{$comment->created_at->isoFormat('MMM DD, OY, HH:mm A zz')}}">
-                                {{$comment->created_at->diffForHumans()}}
-                            </a>
-                            @if ($comment->isAuthor())
-                                <span class="py-px px-1 border border-gray-600 rounded text-sm text-gray-600">{{$comment->userRole()}}</span>
-                            @endif
+                        <div class="comment-header grid grid-cols-2 content-center">
+                            <div class="flex items-center space-x-4">
+                                <img src="{{ Avatar::create($comment->author->name)->toBase64() }}" class="comment-header-avatar"/>
+                                <div>
+                                    <b>{{$comment->author->name}}</b>
+                                    @if ($comment->isAuthor())
+                                        <span class="bg-green-100 text-green-800 text-xs mr-2 px-2.5 py-0.5 rounded border border-green-400">
+                                            {{$comment->userRole()}}</span>
+                                    @endif
+                                    <div class="text-sm text-gray-500">
+                                        commented
+                                        <a href="#comment-{{$comment->id}}"
+                                            id="comment-{{$comment->id}}"
+                                            title="{{$comment->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}"
+                                            >{{$comment->created_at->diffForHumans()}}</a>
+                                    </div>
+                                </div>
+                            </div>
 
                             @auth
-                                @if ($comment->isAuthor() || auth()->user()->hasRole('admin'))
-                                    <a href="{{route('comment.edit', $comment)}}" class="font-semibold">Edit</a>
-                                    <a href="{{route('comment.delete', $comment)}}" class="font-semibold">Delete</a>
-                                @endif
+                            @if ($comment->isAuthor() || auth()->user()->hasRole('admin'))
+                                <div class="flex justify-end flex-wrap content-center">
+                                    <a href="{{route('comment.edit', $comment)}}" class="comment-header-btn">Edit</a>
+                                    <a href="{{route('comment.delete', $comment)}}" class="comment-header-btn">Delete</a>
+                                </div>
+                            @endif
                             @endauth
                         </div>
                         <x-markdown class="comment-body markdown">{!! $comment->description !!}</x-markdown>
@@ -68,7 +90,7 @@
                             class="bg-slate-900 hover:bg-slate-700 dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400
                                 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50
                                 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto "
-                        >Submit</button>
+                            >Submit</button>
                     </form>
                 @else
                     You need to <a href="{{route('login')}}" class="text-blue-600">log in</a> before you can comment.

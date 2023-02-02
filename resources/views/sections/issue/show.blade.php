@@ -60,10 +60,6 @@
                                 <img src="{{ Avatar::create($comment->author->name)->toBase64() }}" class="comment-header-avatar"/>
                                 <div>
                                     <b>{{$comment->author->name}}</b>
-                                    @if ($comment->isAuthor())
-                                        <span class="bg-green-100 text-green-800 text-xs mr-2 px-2.5 py-0.5 rounded border border-green-400">
-                                            {{$comment->userRole()}}</span>
-                                    @endif
                                     <div class="text-sm text-gray-500">
                                         commented
                                         <a href="#comment-{{$comment->id}}"
@@ -77,6 +73,10 @@
                             @auth
                             @if ($comment->isAuthor() || auth()->user()->hasRole('admin'))
                                 <div class="flex justify-end flex-wrap content-center">
+                                    @if ($comment->isAuthor())
+                                        <span class="bg-green-100 text-green-800 text-xs mr-2 px-2.5 py-0.5 rounded border border-green-400">
+                                            {{$comment->userRole()}}</span>
+                                    @endif
                                     <div
                                         x-data="{
                                             open: false,

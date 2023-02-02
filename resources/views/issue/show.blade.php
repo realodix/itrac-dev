@@ -11,7 +11,7 @@
                     @svg('icon-dashboard')
                     {{$issue->status()}}
                 </span>
-                <b>{{$issue->author->name}}</b> opened this issue <span title="{{$issue->created_at->isoFormat('MMM DD, OY, HH:mm A zz')}}">{{$issue->created_at->diffForHumans()}}</span>
+                <b>{{$issue->author->name}}</b> opened this issue <span title="{{$issue->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}">{{$issue->created_at->diffForHumans()}}</span>
                 &middot; {{$issue->comments->count()}} comments
             </div>
         </div>
@@ -26,7 +26,7 @@
                                 <b>{{$issue->author->name}}</b>
                                 <div class="text-sm text-gray-500">
                                     commented
-                                    <a id="issue-{{$issue->id}}" href="#issue-{{$issue->id}}" title="{{$issue->created_at->isoFormat('MMM DD, OY, HH:mm A zz')}}">
+                                    <a id="issue-{{$issue->id}}" href="#issue-{{$issue->id}}" title="{{$issue->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}">
                                         {{$issue->created_at->diffForHumans()}}
                                     </a>
                                 </div>
@@ -58,7 +58,7 @@
                                         commented
                                         <a id="comment-{{$comment->id}}"
                                             href="#comment-{{$comment->id}}"
-                                            title="{{$comment->created_at->isoFormat('MMM DD, OY, HH:mm A zz')}}"
+                                            title="{{$comment->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}"
                                             >{{$comment->created_at->diffForHumans()}}</a>
                                     </div>
                                 </div>

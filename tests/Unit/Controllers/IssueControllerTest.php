@@ -18,7 +18,7 @@ class IssueControllerTest extends TestCase
         $this->actingAs(User::factory()->create())
             ->get(route('home'))
             ->assertOk()
-            ->assertViewIs('issue.index');
+            ->assertViewIs('sections.issue.index');
     }
 
     /**
@@ -51,7 +51,7 @@ class IssueControllerTest extends TestCase
         $this->actingAs($issue->author)
             ->get(route('issue.show', $issue))
             ->assertOk()
-            ->assertViewIs('issue.show');
+            ->assertViewIs('sections.issue.show');
     }
 
     /**
@@ -66,7 +66,7 @@ class IssueControllerTest extends TestCase
         $this->actingAs($issue->author)
             ->get(route('issue.edit', $issue))
             ->assertOk()
-            ->assertViewIs('issue.edit');
+            ->assertViewIs('sections.issue.edit');
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\AuthPage;
+namespace Tests\Feature\AdminPage;
 
 use Tests\TestCase;
 

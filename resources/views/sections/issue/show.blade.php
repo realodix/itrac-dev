@@ -112,8 +112,13 @@
                 @auth
                     @if ($issue->isAuthor() || auth()->user()->hasRole('admin'))
                         <div class="participation discussion-sidebar-item">
-                            <div class="">
+                            <div class="flex flex-col">
                                 <a href="{{route('issue.delete', $issue)}}" class="font-semibold">Delete issue</a>
+                                @if ($issue->isClosed())
+                                    <a href="{{route('issue.reopen', $issue)}}" class="font-semibold">Reopen</a>
+                                @else
+                                    <a href="{{route('issue.close', $issue)}}" class="font-semibold">Close</a>
+                                @endif
                             </div>
                         </div>
                     @endif

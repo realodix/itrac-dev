@@ -89,4 +89,34 @@ class IssueController extends Controller
 
         return redirect()->route('home');
     }
+
+    /**
+     * Close the specified issue.
+     */
+    public function close(Issue $issue)
+    {
+        $this->authorize('close', $issue);
+
+        $issue->update([
+            'closed_by'   => auth()->id(),
+            'closed_date' => now(),
+        ]);
+
+        return redirect()->route('issue.show', $issue);
+    }
+
+    /**
+     * Reopen the specified issue.
+     */
+    public function reopen(Issue $issue)
+    {
+        $this->authorize('reopen', $issue);
+
+        $issue->update([
+            'closed_by'   => null,
+            'closed_date' => null,
+        ]);
+
+        return redirect()->route('issue.show', $issue);
+    }
 }

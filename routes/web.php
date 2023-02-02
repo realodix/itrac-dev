@@ -14,6 +14,9 @@ Route::get('/issues/{issue}', [IssueController::class, 'show'])->name('issue.sho
 Route::get('/issues/{issue}/edit', [IssueController::class, 'edit'])->name('issue.edit');
 Route::post('/issues/{issue}/edit', [IssueController::class, 'update'])->name('issue.update');
 Route::get('/issues/{issue}/delete', [IssueController::class, 'destroy'])->name('issue.delete');
+Route::get('/issues/{issue}/close', [IssueController::class, 'close'])->name('issue.close');
+Route::get('/issues/{issue}/reopen', [IssueController::class, 'reopen'])->name('issue.reopen');
+
 Route::post('/issues/{issue}/comment', [CommentController::class, 'store'])->name('comment.store');
 Route::get('/comment/{comment}/delete', [CommentController::class, 'destroy'])->name('comment.delete');
 Route::get('/comment/{comment}/edit', [CommentController::class, 'edit'])->name('comment.edit');

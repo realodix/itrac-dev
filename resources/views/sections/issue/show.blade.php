@@ -46,9 +46,9 @@
                         @if ($issue->isAuthor() || auth()->user()->hasRole('admin'))
                             <div class="flex justify-end flex-wrap content-center">
                                 <x-comment-action>
-                                    <a href="{{route('issue.edit', $issue)}}"
-                                        class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500"
-                                        >Edit</a>
+                                    <x-comment-action-item>
+                                        <a href="{{route('issue.edit', $issue)}}">Edit</a>
+                                    </x-comment-action-item>
                                 </x-comment-action>
                             </div>
                         @endif
@@ -82,12 +82,12 @@
                                             {{$comment->userRole()}}</span>
                                     @endif
                                     <x-comment-action>
-                                        <a href="{{route('comment.edit', $comment)}}"
-                                            class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500"
-                                            >Edit</a>
-                                        <a href="{{route('comment.delete', $comment)}}"
-                                            class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500"
-                                            ><span class="text-red-600">Delete</span></a>
+                                        <x-comment-action-item>
+                                            <a href="{{route('comment.edit', $comment)}}">Edit</a>
+                                        </x-comment-action-item>
+                                        <x-comment-action-item>
+                                            <a href="{{route('comment.delete', $comment)}}"><span class="text-red-600">Delete</span></a>
+                                        </x-comment-action-item>
                                     </x-comment-action>
                                 </div>
                             @endif

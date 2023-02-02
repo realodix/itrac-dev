@@ -92,6 +92,8 @@ class IssueController extends Controller
 
     /**
      * Close the specified issue.
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function close(Issue $issue)
     {
@@ -107,6 +109,8 @@ class IssueController extends Controller
 
     /**
      * Reopen the specified issue.
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function reopen(Issue $issue)
     {

@@ -37,7 +37,7 @@ class IssuePolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function close(User $user, Issue $issue): bool
+    public function close(User $user, Issue $issue)
     {
         return $user->id === $issue->author_id
             || $user->hasRole('admin');
@@ -48,7 +48,7 @@ class IssuePolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function reopen(User $user, Issue $issue): bool
+    public function reopen(User $user, Issue $issue)
     {
         return $user->id === $issue->author_id
             || $user->hasRole('admin');

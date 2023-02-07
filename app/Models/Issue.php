@@ -26,6 +26,8 @@ class Issue extends Model
         'description',
         'closed_by',
         'closed_at',
+        'locked_by',
+        'locked_at',
     ];
 
     /*
@@ -85,6 +87,14 @@ class Issue extends Model
     }
 
     /**
+     * Determine if the user is a participant of the issue.
+     */
+    public function isParticipant(): bool
+    {
+        return $this->participant()->where('author_id', auth()->id())->exists();
+    }
+
+    /**
      * Count the number of participants.
      */
     public function participantCount(): int
@@ -106,5 +116,13 @@ class Issue extends Model
     public function isClosed(): bool
     {
         return $this->closed_by !== null;
+    }
+
+    /**
+     * Determine if the issue is locked.
+     */
+    public function isLocked(): bool
+    {
+        return $this->locked_by !== null;
     }
 }

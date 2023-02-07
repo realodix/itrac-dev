@@ -100,6 +100,12 @@
                 <br>
 
                 @if (auth()->check())
+                    @if ($issue->isLocked() && ! $issue->isParticipant() && ! auth()->user()->hasRole('admin'))
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            <strong class="font-bold">Issue Locked!</strong>
+                            <span class="block sm:inline">This issue is locked and limited conversations to collaborators. You can't comment on it.</span>
+                        </div>
+                    @endif
                     <form method="post" action="{{ route('comment.store', $issue->id) }}">
                     @csrf
                         <x-easymde name="comment_description" placeholder="Leave a comment"/>
@@ -131,6 +137,15 @@
                     @if ($issue->isAuthor() || auth()->user()->hasRole('admin'))
                         <div class="participation discussion-sidebar-item">
                             <div class="flex flex-col">
+                                <div>
+                                    @if ($issue->isLocked())
+                                        <x-go-unlock-16 />
+                                        <a href="{{route('issue.unlock', $issue)}}" class="font-semibold">Unlock conversation</a>
+                                    @else
+                                        <x-go-lock-16 />
+                                        <a href="{{route('issue.lock', $issue)}}" class="font-semibold">Lock conversation</a>
+                                    @endif
+                                </div>
                                 <div>
                                     @if ($issue->isClosed())
                                         <x-go-issue-reopened-16 class="text-green-600" />

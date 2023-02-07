@@ -53,4 +53,26 @@ class IssuePolicy
         return $user->id === $issue->author_id
             || $user->hasRole('admin');
     }
+
+    /**
+     * Determine whether the user can lock the issue.
+     *
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function lock(User $user, Issue $issue)
+    {
+        return $user->id === $issue->author_id
+            || $user->hasRole('admin');
+    }
+
+    /**
+     * Determine whether the user can unlock the issue.
+     *
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function unlock(User $user, Issue $issue)
+    {
+        return $user->id === $issue->author_id
+            || $user->hasRole('admin');
+    }
 }

@@ -22,6 +22,8 @@ return new class extends Migration
             $table->longText('description');
             $table->foreignId('closed_by')->nullable();
             $table->dateTime('closed_at')->nullable();
+            $table->foreignId('locked_by')->nullable();
+            $table->dateTime('locked_at')->nullable();
             $table->timestamps();
         });
     }

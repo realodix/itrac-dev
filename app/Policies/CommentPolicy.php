@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Comment;
+use App\Models\Issue;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -17,8 +18,7 @@ class CommentPolicy
      */
     public function storeOnLockedIssue(User $user, Issue $issue)
     {
-        return $issue->isParticipant()
-            || $user->hasRole('admin');
+        return $user->hasRole('admin');
     }
 
     /**

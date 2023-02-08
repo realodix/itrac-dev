@@ -74,6 +74,9 @@ class Issue extends Model
         return $this->belongsTo(User::class, 'author_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function lockedBy()
     {
         return $this->belongsTo(User::class, 'locked_by');

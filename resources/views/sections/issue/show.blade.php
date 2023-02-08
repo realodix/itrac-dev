@@ -157,10 +157,10 @@
                             </div>
                             <div class="mt-4">
                                 @if ($issue->isClosed())
-                                    <x-go-issue-reopened-16 class="text-green-600" />
+                                    <x-go-issue-reopened-16 />
                                     <a href="{{route('issue.reopen', $issue)}}" class="font-semibold">Reopen</a>
                                 @else
-                                    <x-go-issue-closed-16 class="text-violet-700" />
+                                    <x-go-issue-closed-16 />
                                     <a href="{{route('issue.close', $issue)}}" class="font-semibold">Close</a>
                                 @endif
                             </div>

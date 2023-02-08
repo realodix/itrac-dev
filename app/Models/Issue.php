@@ -66,6 +66,11 @@ class Issue extends Model
         return $this->belongsTo(User::class, 'author_id');
     }
 
+    public function lockedBy()
+    {
+        return $this->belongsTo(User::class, 'locked_by');
+    }
+
     /*
     |---------------------------------------------------------------------------
     | General Functions

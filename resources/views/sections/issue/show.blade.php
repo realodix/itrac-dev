@@ -105,10 +105,9 @@
                 @if (auth()->check())
                     @if ($issue->isLocked() && ! $issue->isAuthor() && ! $issue->isParticipant() && ! auth()->user()->hasRole('admin'))
                         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                            <strong class="font-bold">Issue Locked!</strong>
-                            <span class="block sm:inline">
-                                This issue is locked and limited conversations to collaborators {{$issue->locked_at->diffForHumans()}}.
-                                You can't comment on it.</span>
+                            <x-go-lock-16 />
+
+                            <b>{{$issue->lockedBy->name}}</b> locked this issue and limited conversations to collaborators {{$issue->locked_at->diffForHumans()}}.
                         </div>
                     @else
                         <form method="post" action="{{ route('comment.store', $issue->id) }}">

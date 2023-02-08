@@ -23,6 +23,7 @@ class Comment extends Model
     protected $fillable = [
         'author_id',
         'issue_id',
+        'type',
         'description',
     ];
 

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\TimelineType;
 use App\Models\Comment;
 use App\Models\Issue;
 use App\Models\User;
@@ -29,6 +30,7 @@ class CommentFactory extends Factory
         return [
             'author_id'   => User::factory(),
             'issue_id'    => Issue::factory(),
+            'type'        => TimelineType::Comment,
             'description' => fake()->paragraph(),
         ];
     }

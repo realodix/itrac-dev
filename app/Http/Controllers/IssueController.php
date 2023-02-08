@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\TimelineType;
+use App\Models\Comment;
 use App\Models\Issue;
 use Illuminate\Http\Request;
 
@@ -34,6 +36,7 @@ class IssueController extends Controller
         $issue = Issue::create([
             'author_id'   => auth()->id(),
             'title'       => $request->issue_title,
+            'type'        => TimelineType::Comment,
             'description' => $request->issue_description,
         ]);
 
@@ -136,6 +139,13 @@ class IssueController extends Controller
         $issue->update([
             'locked_by' => auth()->id(),
             'locked_at' => now(),
+        ]);
+
+        Comment::create([
+            'author_id'   => auth()->id(),
+            'issue_id'    => $issue->id,
+            'type'        => TimelineType::Comment,
+            'description' => 'This issue has been locked.',
         ]);
 
         return redirect()->route('issue.show', $issue);

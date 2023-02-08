@@ -16,6 +16,8 @@ Route::post('/issues/{issue}/edit', [IssueController::class, 'update'])->name('i
 Route::get('/issues/{issue}/delete', [IssueController::class, 'destroy'])->name('issue.delete');
 Route::get('/issues/{issue}/close', [IssueController::class, 'close'])->name('issue.close');
 Route::get('/issues/{issue}/reopen', [IssueController::class, 'reopen'])->name('issue.reopen');
+Route::get('/issues/{issue}/lock', [IssueController::class, 'lock'])->name('issue.lock');
+Route::get('/issues/{issue}/unlock', [IssueController::class, 'unlock'])->name('issue.unlock');
 
 Route::post('/issues/{issue}/comment', [CommentController::class, 'store'])->name('comment.store');
 Route::get('/comment/{comment}/delete', [CommentController::class, 'destroy'])->name('comment.delete');

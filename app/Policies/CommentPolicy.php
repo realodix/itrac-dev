@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Comment;
+use App\Models\Issue;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 

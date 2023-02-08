@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property User           $author
  * @property Comment        $comments
+ * @property int            $closed_by
+ * @property \Carbon\Carbon $closed_at
+ * @property int            $locked_by
+ * @property \Carbon\Carbon $locked_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
@@ -26,6 +30,18 @@ class Issue extends Model
         'description',
         'closed_by',
         'closed_at',
+        'locked_by',
+        'locked_at',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'closed_at' => 'datetime',
+        'locked_at' => 'datetime',
     ];
 
     /*
@@ -56,6 +72,11 @@ class Issue extends Model
     public function author()
     {
         return $this->belongsTo(User::class, 'author_id');
+    }
+
+    public function lockedBy()
+    {
+        return $this->belongsTo(User::class, 'locked_by');
     }
 
     /*
@@ -93,6 +114,14 @@ class Issue extends Model
     }
 
     /**
+     * Determine if the user is a participant of the issue.
+     */
+    public function isParticipant(): bool
+    {
+        return $this->participant()->where('author_id', auth()->id())->exists();
+    }
+
+    /**
      * Count the number of participants.
      */
     public function participantCount(): int
@@ -105,7 +134,7 @@ class Issue extends Model
      */
     public function isAuthor(): bool
     {
-        return auth()->id() === $this->author_id;
+        return $this->author_id === auth()->user()->id;
     }
 
     /**
@@ -114,5 +143,13 @@ class Issue extends Model
     public function isClosed(): bool
     {
         return $this->closed_by !== null;
+    }
+
+    /**
+     * Determine if the issue is locked.
+     */
+    public function isLocked(): bool
+    {
+        return $this->locked_by !== null;
     }
 }

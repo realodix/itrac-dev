@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         // Multiple with factory
         Issue::factory(3)
             ->for(User::factory()->create(), 'author')
-            ->has(Comment::factory(25))
+            ->has(Comment::factory(5))
             ->create();
     }
 }

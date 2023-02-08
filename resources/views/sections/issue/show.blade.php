@@ -130,7 +130,11 @@
             <div class="md:w-4/12 px-4 py-2">
                 <div class="participation discussion-sidebar-item">
                     <div class="mb-2">
-                        {{$issue->participantCount()}} participants
+                        @php
+                            use Illuminate\Support\Str;
+                            $participants = $issue->participantCount();
+                        @endphp
+                        {{$participants}} {{Str::plural('participant', $participants)}}
                     </div>
                     <div class="">
                         @foreach ($issue->participant()->get() as $participant)

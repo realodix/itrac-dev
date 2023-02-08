@@ -15,6 +15,8 @@ class CommentController extends Controller
      */
     public function store(Request $request, Issue $issue)
     {
+        $this->authorize('create', $issue);
+
         $comment = Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,

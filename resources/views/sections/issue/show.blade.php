@@ -108,19 +108,20 @@
                             <strong class="font-bold">Issue Locked!</strong>
                             <span class="block sm:inline">This issue is locked and limited conversations to collaborators. You can't comment on it.</span>
                         </div>
-                    @endif
-                    <form method="post" action="{{ route('comment.store', $issue->id) }}">
-                    @csrf
-                        <x-easymde name="comment_description" placeholder="Leave a comment"/>
+                    @else
+                        <form method="post" action="{{ route('comment.store', $issue->id) }}">
+                        @csrf
+                            <x-easymde name="comment_description" placeholder="Leave a comment"/>
 
-                        <div class="flex justify-end mt-2">
-                            <button
-                                class="px-4 py-2 rounded-lg w-full flex items-center justify-center sm:w-auto
-                                    text-white font-semibold bg-slate-900 hover:bg-slate-700
-                                    focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
-                                >Submit</button>
-                        </div>
-                    </form>
+                            <div class="flex justify-end mt-2">
+                                <button
+                                    class="px-4 py-2 rounded-lg w-full flex items-center justify-center sm:w-auto
+                                        text-white font-semibold bg-slate-900 hover:bg-slate-700
+                                        focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+                                    >Submit</button>
+                            </div>
+                        </form>
+                    @endif
                 @else
                     You need to <a href="{{route('login')}}" class="text-blue-600">log in</a> before you can comment.
                 @endif

@@ -57,9 +57,9 @@ class Comment extends Model
     /**
      * Determine if the comment was written by the issue author.
      */
-    public function isAuthor(): bool
+    public function isIssueAuthor(): bool
     {
-        return $this->author_id === auth()->user()->id;
+        return $this->author_id === $this->issue->author_id;
     }
 
     /**

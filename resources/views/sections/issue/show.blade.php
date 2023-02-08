@@ -111,7 +111,7 @@
                     @else
                         <form method="post" action="{{ route('comment.store', $issue->id) }}">
                         @csrf
-                            <x-easymde name="comment_description" placeholder="Leave a comment"/>
+                            <x-easymde name="comment_description" placeholder="Leave a comment" required/>
 
                             <div class="flex justify-end mt-2">
                                 <button

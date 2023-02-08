@@ -3,7 +3,6 @@
 namespace Tests\Unit\Policies;
 
 use App\Models\Comment;
-use App\Models\Issue;
 use App\Models\User;
 use Tests\TestCase;
 

@@ -12,14 +12,13 @@ class CommentController extends Controller
      * Store a newly created comment in storage.
      *
      * @return \Illuminate\Http\RedirectResponse
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(Request $request, Issue $issue)
     {
-        if ($issue->isLocked()
-            && ! $issue->isAuthor() && ! $issue->isParticipant()
-            && ! auth()->user()->hasRole('admin')
-        ) {
-            abort(403);
+        if ($issue->isLocked()) {
+            $this->authorize('createCommentLockedIssues', $issue);
         }
 
         $comment = Comment::create([

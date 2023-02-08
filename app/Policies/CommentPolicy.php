@@ -12,16 +12,6 @@ class CommentPolicy
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can create models when the issue is locked.
-     *
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function storeOnLockedIssue(User $user, Issue $issue)
-    {
-        return $user->hasRole('admin');
-    }
-
-    /**
      * Determine whether the user can update the model.
      *
      * @return \Illuminate\Auth\Access\Response|bool

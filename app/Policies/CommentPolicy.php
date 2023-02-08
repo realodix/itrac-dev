@@ -10,8 +10,6 @@ class CommentPolicy
 {
     use HandlesAuthorization;
 
-
-
     /**
      * Determine whether the user can update the model.
      *

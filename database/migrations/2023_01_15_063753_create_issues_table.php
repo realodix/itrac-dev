@@ -20,7 +20,8 @@ return new class extends Migration
                 ->cascadeOnDelete();
             $table->string('title');
             $table->longText('description');
-            $table->foreignId('closed_by')->nullable();
+            $table->foreignId('closed_by')->nullable()
+                ->constrained('users');
             $table->dateTime('closed_at')->nullable();
             $table->timestamps();
         });

@@ -16,7 +16,7 @@ class CommentController extends Controller
     public function store(Request $request, Issue $issue)
     {
         if ($issue->isLocked()) {
-            $this->authorize('storeLockedIssue', $issue);
+            $this->authorize('storeOnLockedIssue', $issue);
         }
 
         $comment = Comment::create([

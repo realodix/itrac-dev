@@ -15,7 +15,7 @@ class CommentPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function storeLockedIssue(User $user, Issue $issue)
+    public function storeOnLockedIssue(User $user, Issue $issue)
     {
         return $issue->isParticipant()
             || $user->hasRole('admin');

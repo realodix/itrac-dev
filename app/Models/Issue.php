@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property User           $author
  * @property Comment        $comments
+ * @property int            $closed_by
+ * @property \Carbon\Carbon $closed_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
@@ -26,6 +28,15 @@ class Issue extends Model
         'description',
         'closed_by',
         'closed_at',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'closed_at' => 'datetime',
     ];
 
     /*

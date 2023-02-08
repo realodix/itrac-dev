@@ -83,13 +83,13 @@
 
                                     @if ($comment->isAuthor() || auth()->user()->hasRole('admin'))
                                         <x-comment-action>
-                                        <x-comment-action-item>
-                                            <a href="{{route('comment.edit', $comment)}}">Edit</a>
-                                        </x-comment-action-item>
-                                        <x-comment-action-item>
-                                            <a href="{{route('comment.delete', $comment)}}"><span class="text-red-600">Delete</span></a>
-                                        </x-comment-action-item>
-                                    </x-comment-action>
+                                            <x-comment-action-item>
+                                                <a href="{{route('comment.edit', $comment)}}">Edit</a>
+                                            </x-comment-action-item>
+                                            <x-comment-action-item>
+                                                <a href="{{route('comment.delete', $comment)}}"><span class="text-red-600">Delete</span></a>
+                                            </x-comment-action-item>
+                                        </x-comment-action>
                                     @endif
 
                                 </div>

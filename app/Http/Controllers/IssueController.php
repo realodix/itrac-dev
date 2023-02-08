@@ -123,4 +123,38 @@ class IssueController extends Controller
 
         return redirect()->route('issue.show', $issue);
     }
+
+    /**
+     * Lock the specified issue.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function lock(Issue $issue)
+    {
+        $this->authorize('lock', $issue);
+
+        $issue->update([
+            'locked_by' => auth()->id(),
+            'locked_at' => now(),
+        ]);
+
+        return redirect()->route('issue.show', $issue);
+    }
+
+    /**
+     * Unlock the specified issue.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function unlock(Issue $issue)
+    {
+        $this->authorize('unlock', $issue);
+
+        $issue->update([
+            'locked_by' => null,
+            'locked_at' => null,
+        ]);
+
+        return redirect()->route('issue.show', $issue);
+    }
 }

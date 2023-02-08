@@ -103,18 +103,26 @@
                 <br>
 
                 @if (auth()->check())
-                    <form method="post" action="{{ route('comment.store', $issue->id) }}">
-                    @csrf
-                        <x-easymde name="comment_description" placeholder="Leave a comment" required/>
+                    @if ($issue->isLocked() && ! $issue->isAuthor() && ! $issue->isParticipant() && ! auth()->user()->hasRole('admin'))
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            <x-go-lock-16 />
 
-                        <div class="flex justify-end mt-2">
-                            <button
-                                class="px-4 py-2 rounded-lg w-full flex items-center justify-center sm:w-auto
-                                    text-white font-semibold bg-slate-900 hover:bg-slate-700
-                                    focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
-                                >Submit</button>
+                            <b>{{$issue->lockedBy->name}}</b> locked this issue and limited conversations to collaborators {{$issue->locked_at->diffForHumans()}}.
                         </div>
-                    </form>
+                    @else
+                        <form method="post" action="{{ route('comment.store', $issue->id) }}">
+                        @csrf
+                            <x-easymde name="comment_description" placeholder="Leave a comment" required/>
+
+                            <div class="flex justify-end mt-2">
+                                <button
+                                    class="px-4 py-2 rounded-lg w-full flex items-center justify-center sm:w-auto
+                                        text-white font-semibold bg-slate-900 hover:bg-slate-700
+                                        focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+                                    >Submit</button>
+                            </div>
+                        </form>
+                    @endif
                 @else
                     You need to <a href="{{route('login')}}" class="text-blue-600">log in</a> before you can comment.
                 @endif
@@ -134,6 +142,15 @@
                     @if ($issue->isAuthor() || auth()->user()->hasRole('admin'))
                         <div class="participation discussion-sidebar-item">
                             <div class="flex flex-col">
+                                <div>
+                                    @if ($issue->isLocked())
+                                        <x-go-unlock-16 />
+                                        <a href="{{route('issue.unlock', $issue)}}" class="font-semibold">Unlock conversation</a>
+                                    @else
+                                        <x-go-lock-16 />
+                                        <a href="{{route('issue.lock', $issue)}}" class="font-semibold">Lock conversation</a>
+                                    @endif
+                                </div>
                                 <div>
                                     @if ($issue->isClosed())
                                         <x-go-issue-reopened-16 class="text-green-600" />

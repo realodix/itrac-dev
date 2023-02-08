@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Issue;
 use Illuminate\Http\Request;
 
@@ -138,6 +139,12 @@ class IssueController extends Controller
             'locked_at' => now(),
         ]);
 
+        Comment::create([
+            'author_id'   => auth()->id(),
+            'issue_id'    => $issue->id,
+            'description' => auth()->user()->name.' locked this issue.',
+        ]);
+
         return redirect()->route('issue.show', $issue);
     }
 
@@ -153,6 +160,12 @@ class IssueController extends Controller
         $issue->update([
             'locked_by' => null,
             'locked_at' => null,
+        ]);
+
+        Comment::create([
+            'author_id'   => auth()->id(),
+            'issue_id'    => $issue->id,
+            'description' => auth()->user()->name.' unlocked this issue.',
         ]);
 
         return redirect()->route('issue.show', $issue);

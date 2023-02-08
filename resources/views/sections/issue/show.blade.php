@@ -103,7 +103,7 @@
                 <br>
 
                 @if (auth()->check())
-                    @if ($issue->isLocked() && ! $issue->isParticipant() && ! auth()->user()->hasRole('admin'))
+                    @if ($issue->isLocked() && ! $issue->isAuthor() && ! $issue->isParticipant() && ! auth()->user()->hasRole('admin'))
                         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                             <strong class="font-bold">Issue Locked!</strong>
                             <span class="block sm:inline">This issue is locked and limited conversations to collaborators. You can't comment on it.</span>

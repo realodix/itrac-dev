@@ -103,10 +103,16 @@
                 <br>
 
                 @if (auth()->check())
-                    @if ($issue->isLocked() && ! $issue->isAuthor() && ! $issue->isParticipant() && ! auth()->user()->hasRole('admin'))
-                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                            <strong class="font-bold">Issue Locked!</strong>
-                            <span class="block sm:inline">This issue is locked and limited conversations to collaborators. You can't comment on it.</span>
+                    <form method="post" action="{{ route('comment.store', $issue->id) }}">
+                    @csrf
+                        <x-easymde name="comment_description" placeholder="Leave a comment" required/>
+
+                        <div class="flex justify-end mt-2">
+                            <button
+                                class="px-4 py-2 rounded-lg w-full flex items-center justify-center sm:w-auto
+                                    text-white font-semibold bg-slate-900 hover:bg-slate-700
+                                    focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+                                >Submit</button>
                         </div>
                     @else
                         <form method="post" action="{{ route('comment.store', $issue->id) }}">

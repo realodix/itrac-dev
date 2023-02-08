@@ -10,16 +10,7 @@ class CommentPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * Determine whether the user can create models.
-     *
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function create(User $user, Issue $issue)
-    {
-        return $issue->isParticipant()
-            || $user->hasRole('admin');
-    }
+
 
     /**
      * Determine whether the user can update the model.
@@ -42,6 +33,17 @@ class CommentPolicy
     {
         return $user->id === $comment->author_id // Comment author
             || $user->id === $comment->issue->author_id // Issue author
+            || $user->hasRole('admin');
+    }
+
+    /**
+     * Determine whether the user can create models when the issue is locked.
+     *
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function lockedIssue(User $user, Issue $issue)
+    {
+        return $issue->isParticipant()
             || $user->hasRole('admin');
     }
 }

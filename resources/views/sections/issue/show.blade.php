@@ -75,13 +75,14 @@
                             </div>
 
                             @auth
-                            @if ($comment->isIssueAuthor() || auth()->user()->hasRole('admin'))
                                 <div class="flex justify-end flex-wrap content-center">
                                     @if ($comment->isIssueAuthor())
                                         <span class="bg-green-100 text-green-800 text-xs mr-2 px-2.5 py-0.5 rounded border border-green-400">
                                             {{$comment->userRole()}}</span>
                                     @endif
-                                    <x-comment-action>
+
+                                    @if ($comment->isAuthor() || auth()->user()->hasRole('admin'))
+                                        <x-comment-action>
                                         <x-comment-action-item>
                                             <a href="{{route('comment.edit', $comment)}}">Edit</a>
                                         </x-comment-action-item>
@@ -89,8 +90,9 @@
                                             <a href="{{route('comment.delete', $comment)}}"><span class="text-red-600">Delete</span></a>
                                         </x-comment-action-item>
                                     </x-comment-action>
+                                    @endif
+
                                 </div>
-                            @endif
                             @endauth
                         </div>
                         <x-markdown class="comment-body markdown">{!! $comment->description !!}</x-markdown>

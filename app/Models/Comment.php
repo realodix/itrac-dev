@@ -59,7 +59,7 @@ class Comment extends Model
      */
     public function isAuthor(): bool
     {
-        return $this->author->id === $this->issue->author_id;
+        return $this->author_id === auth()->user()->id;
     }
 
     /**

@@ -1,6 +1,9 @@
 [![LaravelVersion](https://img.shields.io/badge/Laravel-9-f56857.svg?style=flat-square)](https://laravel.com/docs/9.x)
 ![PHPVersion](https://img.shields.io/badge/PHP-8.1-777BB4.svg?style=flat-square)
 
+GIT Size: 3.40 MB <br>
+GIT Size on disk: 7.75 MB
+
 > **Warning: This project is still in development**, constantly being optimized and isn't still stable enough to be used in production environments.
 
 This project was created, and is maintained by [Budi Hermawan](https://github.com/realodix), and is an open-source issue tracking system for software development projects.

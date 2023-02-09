@@ -26,152 +26,16 @@
 
         <div class="issue_bucket flex">
             <div class="md:w-8/12 justify-between">
-                <div class="comment mb-8">
-                    <div class="comment-header grid grid-cols-2 content-center">
-                        <div class="flex items-center space-x-4">
-                            <img src="{{ Avatar::create($issue->author->name)->toBase64() }}" class="comment-header-avatar"/>
-                            <div>
-                                <b>{{$issue->author->name}}</b>
-                                <div class="text-sm text-gray-500">
-                                    commented
-                                    <a href="#issue-{{$issue->id}}"
-                                        id="issue-{{$issue->id}}"
-                                        title="{{$issue->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}"
-                                        >{{$issue->created_at->diffForHumans()}}</a>
-                                </div>
-                            </div>
-                        </div>
+                @include('sections.issue.subviews.summary')
 
-                        @auth
-                        @if ($issue->isAuthor() || auth()->user()->hasRole('admin'))
-                            <div class="flex justify-end flex-wrap content-center">
-                                <x-comment-action>
-                                    <x-comment-action-item>
-                                        <a href="{{route('issue.edit', $issue)}}">Edit</a>
-                                    </x-comment-action-item>
-                                </x-comment-action>
-                            </div>
-                        @endif
-                        @endauth
-                    </div>
-                    <x-markdown class="comment-body markdown">{!! $issue->description !!}</x-markdown>
-                </div>
-
-                @foreach($issue->comments->sortBy('created_at') as $comment)
-                    <div class="comment">
-                        <div class="comment-header grid grid-cols-2 content-center">
-                            <div class="flex items-center space-x-4">
-                                <img src="{{ Avatar::create($comment->author->name)->toBase64() }}" class="comment-header-avatar"/>
-                                <div>
-                                    <b>{{$comment->author->name}}</b>
-                                    <div class="text-sm text-gray-500">
-                                        commented
-                                        <a href="#comment-{{$comment->id}}"
-                                            id="comment-{{$comment->id}}"
-                                            title="{{$comment->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}"
-                                            >{{$comment->created_at->diffForHumans()}}</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            @auth
-                                <div class="flex justify-end flex-wrap content-center">
-                                    @if ($comment->isIssueAuthor())
-                                        <span class="bg-green-100 text-green-800 text-xs mr-2 px-2.5 py-0.5 rounded border border-green-400">
-                                            {{$comment->userRole()}}</span>
-                                    @endif
-
-                                    @if ($comment->isAuthor() || auth()->user()->hasRole('admin'))
-                                        <x-comment-action>
-                                            <x-comment-action-item>
-                                                <a href="{{route('comment.edit', $comment)}}">Edit</a>
-                                            </x-comment-action-item>
-                                            <x-comment-action-item>
-                                                <a href="{{route('comment.delete', $comment)}}">
-                                                    <span class="text-red-600">Delete</span></a>
-                                            </x-comment-action-item>
-                                        </x-comment-action>
-                                    @endif
-
-                                </div>
-                            @endauth
-                        </div>
-                        <x-markdown class="comment-body markdown">{!! $comment->description !!}</x-markdown>
-                    </div>
-                @endforeach
+                @include('sections.issue.subviews.timeline')
 
                 <br>
 
-                @if (auth()->check())
-                    @if ($issue->isLocked() && ! $issue->isAuthor() && ! $issue->isParticipant() && ! auth()->user()->hasRole('admin'))
-                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                            <x-go-lock-16 />
-
-                            <b>{{$issue->lockedBy->name}}</b> locked this issue and limited conversations to collaborators {{$issue->locked_at->diffForHumans()}}.
-                        </div>
-                    @else
-                        <form method="post" action="{{ route('comment.store', $issue->id) }}">
-                        @csrf
-                            <x-easymde name="comment_description" placeholder="Leave a comment" required/>
-
-                            <div class="flex justify-end mt-2">
-                                <button
-                                    class="px-4 py-2 rounded-lg w-full flex items-center justify-center sm:w-auto
-                                        text-white font-semibold bg-slate-900 hover:bg-slate-700
-                                        focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
-                                    >Submit</button>
-                            </div>
-                        </form>
-                    @endif
-                @else
-                    You need to <a href="{{route('login')}}" class="text-blue-600">log in</a> before you can comment.
-                @endif
+                @include('sections.issue.subviews.comment-form')
             </div>
             <div class="md:w-4/12 px-4 py-2">
-                <div class="participation discussion-sidebar-item">
-                    <div class="mb-2">
-                        @php
-                            use Illuminate\Support\Str;
-                            $participants = $issue->participantCount();
-                        @endphp
-                        {{$participants}} {{Str::plural('participant', $participants)}}
-                    </div>
-                    <div class="">
-                        @foreach ($issue->participant()->get() as $participant)
-                            <img src="{{ Avatar::create($participant->author->name)->toBase64() }}" class="inline-block w-7 h-7 mb-1" title="{{$participant->author->name}}"/>
-                        @endforeach
-                    </div>
-                </div>
-                @auth
-                @if ($issue->isAuthor() || auth()->user()->hasRole('admin'))
-                    <div class="participation discussion-sidebar-item text-sm">
-                        <div class="flex flex-col">
-                            <div>
-                                @if ($issue->isLocked())
-                                    <x-go-unlock-16 />
-                                    <a href="{{route('issue.unlock', $issue)}}" class="font-semibold">Unlock conversation</a>
-                                @else
-                                    <x-go-lock-16 />
-                                    <a href="{{route('issue.lock', $issue)}}" class="font-semibold">Lock conversation</a>
-                                @endif
-                            </div>
-                            <div class="mt-4">
-                                @if ($issue->isClosed())
-                                    <x-go-issue-reopened-16 />
-                                    <a href="{{route('issue.reopen', $issue)}}" class="font-semibold">Reopen</a>
-                                @else
-                                    <x-go-issue-closed-16 />
-                                    <a href="{{route('issue.close', $issue)}}" class="font-semibold">Close</a>
-                                @endif
-                            </div>
-                            <div class="mt-4 text-red-600">
-                                <x-go-trash-16 />
-                                <a href="{{route('issue.delete', $issue)}}" class="font-semibold">Delete issue</a>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-                @endauth
+                @include('sections.issue.subviews.sidebar')
             </div>
         </div>
     </div>

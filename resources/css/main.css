@@ -90,7 +90,7 @@ main {
 
                     &-btn {
                         @apply px-4 py-2 mr-2;
-                        @apply bg-white hover:bg-stone-100
+                        @apply bg-white hover:bg-stone-100;
                         @apply rounded-lg border border-stone-300 focus:outline-none focus:ring-4 focus:ring-stone-200 focus:z-10;
                         @apply text-sm font-medium text-stone-900 hover:text-blue-700;
                     }

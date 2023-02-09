@@ -69,6 +69,14 @@ class Issue extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+    public function closedBy()
+    {
+        return $this->belongsTo(User::class, 'closed_by');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function lockedBy()
     {
         return $this->belongsTo(User::class, 'locked_by');
@@ -89,7 +97,7 @@ class Issue extends Model
     }
 
     /**
-     * Get the number of comments.
+     * Get the number of comments of the specified issue.
      */
     public function commentCount(): int
     {
@@ -97,7 +105,7 @@ class Issue extends Model
     }
 
     /**
-     * Get the participants of the issue.
+     * Get the participants list of the specified issue.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment>
      */

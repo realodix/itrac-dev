@@ -91,8 +91,8 @@ class Comment extends Model
     /**
      * Determine if the type of the comment is a status update.
      */
-    public function isStatusUpdate(): bool
+    public function isStatus(): bool
     {
-        return $this->type === TimelineType::StatusUpdate;
+        return $this->type === TimelineType::Status;
     }
 }

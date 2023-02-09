@@ -20,7 +20,7 @@
                     {{$issue->status()}}
                 </span>
                 <b>{{$issue->author->name}}</b> opened this issue <span title="{{$issue->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}">{{$issue->created_at->diffForHumans()}}</span>
-                &middot; {{$issue->comments->count()}} comments
+                &middot; {{ $issue->commentCount(); }} comments
             </div>
         </div>
 

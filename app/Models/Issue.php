@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TimelineType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -93,7 +94,9 @@ class Issue extends Model
      */
     public function commentCount(): int
     {
-        return $this->comments()->count();
+        $type = TimelineType::Comment->value;
+
+        return $this->comments->where('type', $type)->count();
     }
 
     /**

@@ -1,122 +1,121 @@
-@import 'base.css';
-@import '~easymde/dist/easymde.min.css';
-
+@import "base.css";
+@import "~easymde/dist/easymde.min.css";
 
 main {
-  @apply sm:mt-10;
+    @apply sm:mt-10;
 }
 
 .frontend, .backend, .auth {
-  @apply font-sans text-gray-900 antialiased bg-[#F9F9F9];
+    @apply font-sans text-gray-900 antialiased bg-[#F9F9F9];
 }
 
 .navbar {
-  @apply bg-white text-uh-blue;
+    @apply bg-white text-uh-blue;
 
-  &-brand {
-    @apply font-serif text-4xl font-bold;
-    @apply flex items-center;
-  }
-
-  &-toggler {
-    @apply text-uh-indigo-500;
-  }
-
-  .nav-item {
-    @apply text-sm text-gray-700 hover:bg-slate-50 focus:bg-slate-100 leading-5;
-    @apply block px-4 py-2 focus:outline-none transition;
-  }
-
-  &-mobile {
-    .nav-item {
-      @apply text-gray-700;
-      @apply block pl-3 pr-4 py-2 font-medium transition;
-
-      &-username {
-        @apply font-semibold;
-      }
-
-      &-email {
-        @apply text-gray-500 font-medium text-sm;
-      }
+    &-brand {
+        @apply font-serif text-4xl font-bold;
+        @apply flex items-center;
     }
-  }
+
+    &-toggler {
+        @apply text-uh-indigo-500;
+    }
+
+    .nav-item {
+        @apply text-sm text-gray-700 hover:bg-slate-50 focus:bg-slate-100 leading-5;
+        @apply block px-4 py-2 focus:outline-none transition;
+    }
+
+    &-mobile {
+        .nav-item {
+            @apply text-gray-700;
+            @apply block pl-3 pr-4 py-2 font-medium transition;
+
+            &-username {
+                @apply font-semibold;
+            }
+
+            &-email {
+                @apply text-gray-500 font-medium text-sm;
+            }
+        }
+    }
 }
 
 .power-grid {
-  .pg-header {
-    input {
-      @apply bg-white focus:ring-uh-indigo-400 focus:border-uh-indigo-400;
-    }
-  }
-
-  .pg-footer {
-    select {
-      @apply bg-white focus:border-gray-300;
+    .pg-header {
+        input {
+            @apply bg-white focus:ring-uh-indigo-400 focus:border-uh-indigo-400;
+        }
     }
 
-    nav {
-      a {
-        @apply bg-uh-indigo-600 hover:bg-uh-indigo-700 active:bg-uh-indigo-600;
-      }
+    .pg-footer {
+        select {
+            @apply bg-white focus:border-gray-300;
+        }
+
+        nav {
+            a {
+                @apply bg-uh-indigo-600 hover:bg-uh-indigo-700 active:bg-uh-indigo-600;
+            }
+        }
     }
-  }
 }
 
 .issue {
-  @apply max-w-7xl mx-auto sm:pt-10 mb-12;
+    @apply max-w-7xl mx-auto sm:pt-10 mb-12;
 
-  .header {
-    @apply border-b border-slate-300;
-    @apply mb-4 pb-2;
-  }
-
-  .bucket {
-    @apply flex;
-
-    .layout-main {
-      @apply md:w-8/12 justify-between;
-
-      .comment {
-        @apply mt-4 rounded-t-md rounded-b-md;
-        @apply bg-white border border-stone-300;
-
-        &-header {
-          @apply bg-stone-100 border-b border-stone-300;
-          @apply px-4 py-2 rounded-t-md;
-
-          &-avatar {
-            @apply w-10 h-10 rounded-full;
-          }
-
-          &-btn {
-            @apply px-4 py-2 mr-2;
-            @apply bg-white hover:bg-stone-100 rounded-lg border border-stone-300 focus:outline-none focus:ring-4 focus:ring-stone-200 focus:z-10;
-            @apply text-sm font-medium text-stone-900 hover:text-blue-700;
-          }
-        }
-
-        &-body {
-          @apply px-4 py-2 rounded-b-md;
-        }
-      }
-
-      .timeline {
-        @apply relative border-l-2 border-gray-300 ml-6;
-      }
+    .header {
+        @apply border-b border-slate-300;
+        @apply mb-4 pb-2;
     }
 
-    .layout-sidebar {
-      @apply md:w-4/12 px-4 py-2;
+    .bucket {
+        @apply flex;
 
-      .sidebar-item {
-        @apply pt-4;
+        .layout-main {
+            @apply md:w-8/12 justify-between;
 
-        & + .sidebar-item {
-          @apply mt-4;
-          @apply border-t border-slate-300;
+            .comment {
+                @apply mt-4 rounded-t-md rounded-b-md;
+                @apply bg-white border border-stone-300;
+
+                &-header {
+                    @apply bg-stone-100 border-b border-stone-300;
+                    @apply px-4 py-2 rounded-t-md;
+
+                    &-avatar {
+                        @apply w-10 h-10 rounded-full;
+                    }
+
+                    &-btn {
+                        @apply px-4 py-2 mr-2;
+                        @apply bg-white hover:bg-stone-100 rounded-lg border border-stone-300 focus:outline-none focus:ring-4 focus:ring-stone-200 focus:z-10;
+                        @apply text-sm font-medium text-stone-900 hover:text-blue-700;
+                    }
+                }
+
+                &-body {
+                    @apply px-4 py-2 rounded-b-md;
+                }
+            }
+
+            .timeline {
+                @apply relative border-l-2 border-gray-300 ml-6;
+            }
         }
-      }
+
+        .layout-sidebar {
+            @apply md:w-4/12 px-4 py-2;
+
+            .sidebar-item {
+                @apply pt-4;
+
+                & + .sidebar-item {
+                    @apply mt-4;
+                    @apply border-t border-slate-300;
+                }
+            }
+        }
     }
-  }
 }

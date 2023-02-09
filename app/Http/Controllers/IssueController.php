@@ -107,6 +107,13 @@ class IssueController extends Controller
             'closed_at' => now(),
         ]);
 
+        Comment::create([
+            'author_id'   => auth()->id(),
+            'issue_id'    => $issue->id,
+            'type'        => TimelineType::Status,
+            'description' => 'closed this issue',
+        ]);
+
         return redirect()->route('issue.show', $issue);
     }
 
@@ -122,6 +129,13 @@ class IssueController extends Controller
         $issue->update([
             'closed_by'   => null,
             'closed_date' => null,
+        ]);
+
+        Comment::create([
+            'author_id'   => auth()->id(),
+            'issue_id'    => $issue->id,
+            'type'        => TimelineType::Status,
+            'description' => 'reopened this issue',
         ]);
 
         return redirect()->route('issue.show', $issue);
@@ -144,8 +158,8 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => TimelineType::Comment,
-            'description' => 'This issue has been locked.',
+            'type'        => TimelineType::Status,
+            'description' => 'locked and limited conversation to collaborators',
         ]);
 
         return redirect()->route('issue.show', $issue);
@@ -163,6 +177,13 @@ class IssueController extends Controller
         $issue->update([
             'locked_by' => null,
             'locked_at' => null,
+        ]);
+
+        Comment::create([
+            'author_id'   => auth()->id(),
+            'issue_id'    => $issue->id,
+            'type'        => TimelineType::Status,
+            'description' => 'unlocked this conversation',
         ]);
 
         return redirect()->route('issue.show', $issue);

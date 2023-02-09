@@ -1,9 +1,9 @@
 {{-- https://tailwind-elements.com/docs/standard/components/timeline/ --}}
 {{-- https://flowbite.com/docs/components/timeline/#vertical-timeline --}}
-<ol class="relative border-l border-gray-200 dark:border-gray-700">
+<ol class="relative border-l border-gray-200 ml-6">
 @foreach($issue->comments->sortBy('created_at') as $comment)
     @if ($comment->isComment())
-        <li class="mb-10 ml-6">
+        <li class="mb-10 -ml-6">
             <div class="comment">
                 <div class="comment-header grid grid-cols-2 content-center">
                     <div class="flex items-center space-x-4">
@@ -46,9 +46,9 @@
             </div>
         </li>
     @else
-        <li class="mb-10 ml-6">
-            <span class="absolute flex items-center justify-center w-8 h-8 bg-[#24292f] rounded-full -left-4">
-                <x-go-info-16 class="w-7 h-7 text-white" />
+        <li class="mb-6 ml-6">
+            <span class="absolute flex items-center justify-center w-7 h-7 bg-teal-600 rounded-full -left-4">
+                <x-go-info-16 class="w-6 h-6 text-white" />
             </span>
             <p class="text-base font-normal text-gray-500 dark:text-gray-400">
                 <b class="text-[#1F2937]">{!! $comment->author->name !!}</b> {!! $comment->description !!} {!! $comment->created_at->diffForHumans() !!}

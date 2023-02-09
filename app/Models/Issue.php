@@ -43,6 +43,7 @@ class Issue extends Model
     protected $casts = [
         'closed_at' => 'datetime',
         'locked_at' => 'datetime',
+        'type'      => TimelineType::class,
     ];
 
     /*
@@ -65,6 +66,14 @@ class Issue extends Model
     public function author()
     {
         return $this->belongsTo(User::class, 'author_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function closedBy()
+    {
+        return $this->belongsTo(User::class, 'closed_by');
     }
 
     /**

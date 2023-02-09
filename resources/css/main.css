@@ -66,13 +66,23 @@ main {
 .issue {
   @apply max-w-7xl mx-auto sm:pt-10 mb-12;
 
-  .header-meta {
+  .header {
     @apply border-b border-slate-300;
     @apply mb-4 pb-2;
   }
+
+  .bucket {
+    @apply flex;
+
+    .layout-main {
+      @apply md:w-8/12 justify-between;
+    }
+
+    .layout-sidebar {
+      @apply md:w-4/12 px-4 py-2;
+    }
+  }
 }
-
-
 
 .comment {
   @apply mt-4 rounded-t-md rounded-b-md;

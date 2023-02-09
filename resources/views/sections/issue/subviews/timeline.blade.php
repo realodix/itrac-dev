@@ -1,5 +1,5 @@
 @foreach($issue->comments->sortBy('created_at') as $comment)
-<div class="comment">
+<div class="comment shadow">
     <div class="comment-header grid grid-cols-2 content-center">
         <div class="flex items-center space-x-4">
             <img src="{{ Avatar::create($comment->author->name)->toBase64() }}" class="comment-header-avatar"/>

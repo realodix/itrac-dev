@@ -1,4 +1,4 @@
-<div class="box mb-8 shadow">
+<div class="box mb-8">
     <div class="box-header grid grid-cols-2 content-center">
         <div class="flex items-center space-x-4">
             <img src="{{ Avatar::create($issue->author->name)->toBase64() }}" class="box-header-avatar"/>

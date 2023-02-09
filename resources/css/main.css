@@ -79,6 +79,7 @@ main {
             .box {
                 @apply mt-4 rounded-t-md rounded-b-md;
                 @apply bg-white border border-stone-300;
+                @apply shadow;
 
                 &-header {
                     @apply bg-stone-100 border-b border-stone-300;

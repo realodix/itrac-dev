@@ -16,7 +16,7 @@
 
         @auth
         @if ($issue->isAuthor() || auth()->user()->hasRole('admin'))
-            <div class="flex justify-end flex-wrap content-center">
+            <div class="box-header-actions">
                 <x-comment-action>
                     <x-comment-action-item>
                         <a href="{{route('issue.edit', $issue)}}">Edit</a>

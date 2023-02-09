@@ -63,10 +63,16 @@ main {
   }
 }
 
-.header-meta {
-  @apply border-b border-slate-300;
-  @apply mb-4 pb-2;
+.issue {
+  @apply max-w-7xl mx-auto sm:pt-10 mb-12;
+
+  .header-meta {
+    @apply border-b border-slate-300;
+    @apply mb-4 pb-2;
+  }
 }
+
+
 
 .comment {
   @apply mt-4 rounded-t-md rounded-b-md;
@@ -90,6 +96,10 @@ main {
   &-body {
     @apply px-4 py-2 rounded-b-md;
   }
+}
+
+.timeline {
+  @apply relative border-l-2 border-gray-300 ml-6;
 }
 
 .discussion-sidebar-item {

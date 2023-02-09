@@ -3,7 +3,7 @@
 @section('css_class', 'frontend home')
 
 @section('content')
-    <div class="max-w-7xl mx-auto sm:pt-10 mb-12">
+    <div class="issue">
         <div class="header-meta">
             <div class="text-3xl mb-2">#{{$issue->id}} - {{$issue->title}}</div>
             <div class="mb-2">

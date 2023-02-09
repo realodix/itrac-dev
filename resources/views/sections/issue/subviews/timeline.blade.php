@@ -1,6 +1,6 @@
 {{-- https://tailwind-elements.com/docs/standard/components/timeline/ --}}
 {{-- https://flowbite.com/docs/components/timeline/#vertical-timeline --}}
-<ol class="relative border-l-2 border-gray-300 ml-6">
+<ol class="timeline">
 @foreach($issue->comments->sortBy('created_at') as $comment)
     @if ($comment->isComment())
         <li class="mb-10 -ml-6">

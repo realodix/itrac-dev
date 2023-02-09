@@ -47,7 +47,7 @@
         </li>
     @else
         <li class="mb-10 ml-6">
-            <span class="absolute flex items-center justify-center w-8 h-8 bg-[#24292f] rounded-full -left-4">
+            <span class="absolute flex items-center justify-center w-8 h-8 bg-stone-600 rounded-full -left-4">
                 <x-go-info-16 class="w-7 h-7 text-white" />
             </span>
             <p class="text-base font-normal text-gray-500 dark:text-gray-400">

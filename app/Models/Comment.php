@@ -69,7 +69,7 @@ class Comment extends Model
      */
     public function isStatus(): bool
     {
-        return $this->type === TimelineType::Status->value;
+        return $this->type === TimelineType::Event->value;
     }
 
     /**

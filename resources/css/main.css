@@ -76,7 +76,7 @@ main {
         .layout-main {
             @apply md:w-8/12 justify-between;
 
-            .comment {
+            .box {
                 @apply mt-4 rounded-t-md rounded-b-md;
                 @apply bg-white border border-stone-300;
 

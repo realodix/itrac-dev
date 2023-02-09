@@ -1,7 +1,7 @@
-<div class="comment mb-8 shadow">
-    <div class="comment-header grid grid-cols-2 content-center">
+<div class="box mb-8 shadow">
+    <div class="box-header grid grid-cols-2 content-center">
         <div class="flex items-center space-x-4">
-            <img src="{{ Avatar::create($issue->author->name)->toBase64() }}" class="comment-header-avatar"/>
+            <img src="{{ Avatar::create($issue->author->name)->toBase64() }}" class="box-header-avatar"/>
             <div>
                 <b>{{$issue->author->name}}</b>
                 <div class="text-sm text-gray-500">
@@ -27,5 +27,5 @@
         @endauth
     </div>
 
-    <x-markdown class="comment-body markdown">{!! $issue->description !!}</x-markdown>
+    <x-markdown class="box-body markdown">{!! $issue->description !!}</x-markdown>
 </div>

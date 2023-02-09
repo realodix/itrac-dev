@@ -4,10 +4,10 @@
 @foreach($issue->comments->sortBy('created_at') as $comment)
 @if ($comment->isComment())
     <li class="mb-10 -ml-6">
-        <div class="comment shadow">
-            <div class="comment-header grid grid-cols-2 content-center">
+        <div class="box shadow">
+            <div class="box-header grid grid-cols-2 content-center">
                 <div class="flex items-center space-x-4">
-                    <img src="{{ Avatar::create($comment->author->name)->toBase64() }}" class="comment-header-avatar"/>
+                    <img src="{{ Avatar::create($comment->author->name)->toBase64() }}" class="box-header-avatar"/>
                     <div>
                         <b>{{$comment->author->name}}</b>
                         <div class="text-sm text-gray-500">
@@ -42,7 +42,7 @@
                 </div>
                 @endauth
             </div>
-            <x-markdown class="comment-body markdown">{!! $comment->description !!}</x-markdown>
+            <x-markdown class="box-body markdown">{!! $comment->description !!}</x-markdown>
         </div>
     </li>
 @else

@@ -71,6 +71,14 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class, 'author_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function timelines()
+    {
+        return $this->hasMany(Timeline::class, 'author_id');
+    }
+
     /*
     |---------------------------------------------------------------------------
     | General Functions

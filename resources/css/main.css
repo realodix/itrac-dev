@@ -76,47 +76,47 @@ main {
 
     .layout-main {
       @apply md:w-8/12 justify-between;
+
+      .comment {
+        @apply mt-4 rounded-t-md rounded-b-md;
+        @apply bg-white border border-stone-300;
+
+        &-header {
+          @apply bg-stone-100 border-b border-stone-300;
+          @apply px-4 py-2 rounded-t-md;
+
+          &-avatar {
+            @apply w-10 h-10 rounded-full;
+          }
+
+          &-btn {
+            @apply px-4 py-2 mr-2;
+            @apply bg-white hover:bg-stone-100 rounded-lg border border-stone-300 focus:outline-none focus:ring-4 focus:ring-stone-200 focus:z-10;
+            @apply text-sm font-medium text-stone-900 hover:text-blue-700;
+          }
+        }
+
+        &-body {
+          @apply px-4 py-2 rounded-b-md;
+        }
+      }
+
+      .timeline {
+        @apply relative border-l-2 border-gray-300 ml-6;
+      }
     }
 
     .layout-sidebar {
       @apply md:w-4/12 px-4 py-2;
+
+      .sidebar-item {
+        @apply pt-4;
+
+        & + .sidebar-item {
+          @apply mt-4;
+          @apply border-t border-slate-300;
+        }
+      }
     }
-  }
-}
-
-.comment {
-  @apply mt-4 rounded-t-md rounded-b-md;
-  @apply bg-white border border-stone-300;
-
-  &-header {
-    @apply bg-stone-100 border-b border-stone-300;
-    @apply px-4 py-2 rounded-t-md;
-
-    &-avatar {
-      @apply w-10 h-10 rounded-full;
-    }
-
-    &-btn {
-      @apply px-4 py-2 mr-2;
-      @apply bg-white hover:bg-stone-100 rounded-lg border border-stone-300 focus:outline-none focus:ring-4 focus:ring-stone-200 focus:z-10;
-      @apply text-sm font-medium text-stone-900 hover:text-blue-700;
-    }
-  }
-
-  &-body {
-    @apply px-4 py-2 rounded-b-md;
-  }
-}
-
-.timeline {
-  @apply relative border-l-2 border-gray-300 ml-6;
-}
-
-.discussion-sidebar-item {
-	@apply pt-4;
-
-  & + .discussion-sidebar-item {
-    @apply mt-4;
-    @apply border-t border-slate-300;
   }
 }

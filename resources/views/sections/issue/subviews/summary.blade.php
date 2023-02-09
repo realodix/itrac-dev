@@ -1,4 +1,4 @@
-<div class="comment mb-8">
+<div class="comment mb-8 shadow">
     <div class="comment-header grid grid-cols-2 content-center">
         <div class="flex items-center space-x-4">
             <img src="{{ Avatar::create($issue->author->name)->toBase64() }}" class="comment-header-avatar"/>

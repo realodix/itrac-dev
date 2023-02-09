@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Comment;
 use App\Models\Issue;
+use App\Models\Timeline;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -22,12 +22,13 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             IssueSeeder::class,
             CommentSeeder::class,
+            TimelineSeeder::class,
         ]);
 
         // Multiple with factory
         Issue::factory(3)
             ->for(User::factory()->create(), 'author')
-            ->has(Comment::factory(5))
+            ->has(Timeline::factory(5))
             ->create();
     }
 }

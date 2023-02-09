@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-
 use App\Enums\TimelineType;
 use App\Models\Timeline;
 use Illuminate\Database\Seeder;

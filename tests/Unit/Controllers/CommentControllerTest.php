@@ -27,7 +27,7 @@ class CommentControllerTest extends TestCase
         ]);
 
         $this->actingAs($comment->author)
-            ->post(route('comment.store', $comment->issue->id), ['comment_description' => 'test comment'])
+            ->post(route('comment.store', $comment->issue->id), ['comment_summary' => 'test comment'])
             ->assertRedirect(route('issue.show.comment', [
                 $comment->issue->id,
                 $comment->id + 1, // +1 because the comment is created before the test
@@ -64,7 +64,7 @@ class CommentControllerTest extends TestCase
         $comment = Comment::factory()->create();
 
         $this->actingAs($comment->author)
-            ->post(route('comment.update', $comment), ['comment_description' => 'new text'])
+            ->post(route('comment.update', $comment), ['comment_summary' => 'new text'])
             ->assertRedirect(route('issue.show.comment', [$comment->issue->id, $comment->id]));
         $this->assertDatabaseHas('comments', ['id' => $comment->id, 'description' => 'new text']);
     }

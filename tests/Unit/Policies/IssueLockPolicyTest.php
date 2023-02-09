@@ -167,7 +167,7 @@ class IssueLockPolicyTest extends TestCase
 
         $response = $this->actingAs($issue->author)
             ->post(route('comment.store', $issue), [
-                'comment_description' => 'Test comment',
+                'comment_summary' => 'Test comment',
             ]);
         $response->assertStatus(302);
     }
@@ -189,7 +189,7 @@ class IssueLockPolicyTest extends TestCase
 
         $response = $this->actingAs($this->adminUser())
             ->post(route('comment.store', $issue), [
-                'comment_description' => 'Test comment',
+                'comment_summary' => 'Test comment',
             ]);
         $response->assertStatus(302);
     }
@@ -216,7 +216,7 @@ class IssueLockPolicyTest extends TestCase
 
         $response = $this->actingAs($comment->author)
             ->post(route('comment.store', $issue), [
-                'comment_description' => 'Test comment',
+                'comment_summary' => 'Test comment',
             ]);
         $response->assertStatus(302);
     }
@@ -242,7 +242,7 @@ class IssueLockPolicyTest extends TestCase
 
         $response = $this->actingAs(User::factory()->create())
             ->post(route('comment.store', $issue), [
-                'comment_description' => 'Test comment',
+                'comment_summary' => 'Test comment',
             ]);
         $response->assertForbidden();
     }

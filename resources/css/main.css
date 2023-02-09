@@ -84,6 +84,7 @@ main {
                 &-header {
                     @apply bg-stone-100 border-b border-stone-300;
                     @apply px-4 py-2 rounded-t-md;
+                    @apply grid grid-cols-2 content-center;
 
                     &-avatar {
                         @apply w-10 h-10 rounded-full;

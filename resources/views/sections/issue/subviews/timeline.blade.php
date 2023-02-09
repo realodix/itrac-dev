@@ -5,7 +5,7 @@
 @if ($comment->isComment())
     <li class="mb-10 -ml-6">
         <div class="box">
-            <div class="box-header grid grid-cols-2 content-center">
+            <div class="box-header">
                 <div class="flex items-center space-x-4">
                     <img src="{{ Avatar::create($comment->author->name)->toBase64() }}" class="box-header-avatar"/>
                     <div>

@@ -112,6 +112,7 @@ main {
         }
 
         .layout-sidebar {
+            @apply col-span-3;
             /* @apply md:w-4/12 px-4 py-2; */
 
             .sidebar-item {

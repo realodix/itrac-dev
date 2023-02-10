@@ -4,6 +4,6 @@ namespace App\Enums;
 
 enum TimelineType: int
 {
-    case Comment = 1;
-    case Status = 2;
+    case COMMENT = 1;
+    case EVENT = 2;
 }

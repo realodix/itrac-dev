@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TimelineType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -77,6 +78,14 @@ class Issue extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+    public function closedBy()
+    {
+        return $this->belongsTo(User::class, 'closed_by');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function lockedBy()
     {
         return $this->belongsTo(User::class, 'locked_by');
@@ -97,15 +106,17 @@ class Issue extends Model
     }
 
     /**
-     * Get the number of comments.
+     * Get the number of comments of the specified issue.
      */
     public function commentCount(): int
     {
-        return $this->comments()->count();
+        $type = TimelineType::COMMENT->value;
+
+        return $this->comments->where('type', $type)->count();
     }
 
     /**
-     * Get the participants of the issue.
+     * Get the participants list of the specified issue.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment>
      */
@@ -137,7 +148,11 @@ class Issue extends Model
      */
     public function isAuthor(): bool
     {
-        return $this->author_id === auth()->user()->id;
+        if (auth()->guest()) {
+            return $this->author_id === $this->author->id;
+        }
+
+        return $this->author->id === auth()->id();
     }
 
     /**

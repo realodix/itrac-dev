@@ -25,7 +25,7 @@ class CommentController extends Controller
         $comment = Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => TimelineType::Comment,
+            'type'        => TimelineType::COMMENT,
             'description' => $request->comment_description,
         ]);
 

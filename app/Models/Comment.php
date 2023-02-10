@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\TimelineType;
+use App\Enums\EventType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,6 +26,7 @@ class Comment extends Model
         'author_id',
         'issue_id',
         'type',
+        'event_type',
         'description',
     ];
 
@@ -61,7 +63,7 @@ class Comment extends Model
      */
     public function isComment(): bool
     {
-        return $this->type === TimelineType::Comment->value;
+        return $this->type === TimelineType::COMMENT->value;
     }
 
     /**
@@ -69,7 +71,7 @@ class Comment extends Model
      */
     public function isStatus(): bool
     {
-        return $this->type === TimelineType::Status->value;
+        return $this->type === TimelineType::EVENT->value;
     }
 
     /**
@@ -77,15 +79,11 @@ class Comment extends Model
      */
     public function isAuthor(): bool
     {
-        return $this->author_id === auth()->user()->id;
-    }
+        if (auth()->guest()) {
+            return $this->author_id === $this->author->id;
+        }
 
-    /**
-     * Determine if the comment was written by the issue author.
-     */
-    public function isIssueAuthor(): bool
-    {
-        return $this->author_id === $this->issue->author_id;
+        return $this->author->id === auth()->id();
     }
 
     /**

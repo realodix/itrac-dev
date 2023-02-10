@@ -1,22 +1,22 @@
-<div class="comment mb-8">
-    <div class="comment-header grid grid-cols-2 content-center">
-        <div class="flex items-center space-x-4">
-            <img src="{{ Avatar::create($issue->author->name)->toBase64() }}" class="comment-header-avatar"/>
-            <div>
+<div class="box mb-8 -ml-6">
+    <div class="box-header">
+        <div class="box-header-meta">
+            <img src="{{ Avatar::create($issue->author->name)->toBase64() }}" class="box-header-meta-avatar"/>
+            <div class="!ml-0">
                 <b>{{$issue->author->name}}</b>
-                <div class="text-sm text-gray-500">
+                <span class="text-sm text-gray-500">
                     commented
                     <a href="#issue-{{$issue->id}}"
                         id="issue-{{$issue->id}}"
                         title="{{$issue->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}"
                         >{{$issue->created_at->diffForHumans()}}</a>
-                </div>
+                </span>
             </div>
         </div>
 
         @auth
         @if ($issue->isAuthor() || auth()->user()->hasRole('admin'))
-            <div class="flex justify-end flex-wrap content-center">
+            <div class="box-header-actions">
                 <x-comment-action>
                     <x-comment-action-item>
                         <a href="{{route('issue.edit', $issue)}}">Edit</a>
@@ -27,5 +27,5 @@
         @endauth
     </div>
 
-    <x-markdown class="comment-body markdown">{!! $issue->description !!}</x-markdown>
+    <x-markdown class="box-body markdown">{!! $issue->description !!}</x-markdown>
 </div>

@@ -43,7 +43,6 @@ class Issue extends Model
     protected $casts = [
         'closed_at' => 'datetime',
         'locked_at' => 'datetime',
-        'type'      => TimelineType::class,
     ];
 
     /*

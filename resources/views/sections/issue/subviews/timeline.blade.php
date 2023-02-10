@@ -47,7 +47,15 @@
 @else
     <li class="mb-6 ml-6">
         <span class="absolute flex items-center justify-center w-7 h-7 bg-teal-600 rounded-full -left-4">
-            <x-go-info-16 class="w-6 h-6 text-white" />
+            @if ($comment->event_type == \App\Enums\EventType::CLOSED->value)
+                <x-go-issue-closed-16 class="w-6 h-6 text-white"/>
+            @elseif ($comment->event_type == \App\Enums\EventType::REOPENED->value)
+                <x-go-issue-reopened-16 class="w-6 h-6 text-white"/>
+            @elseif ($comment->event_type == \App\Enums\EventType::LOCKED->value)
+                <x-go-lock-16 class="w-6 h-6 text-white"/>
+            @elseif ($comment->event_type == \App\Enums\EventType::UNLOCKED->value)
+                <x-go-unlock-16 class="w-6 h-6 text-white"/>
+            @endif
         </span>
         <p class="text-sm font-normal text-gray-500">
             <b class="text-[#1F2937]">{!! $comment->author->name !!}</b>

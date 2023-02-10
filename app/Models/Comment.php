@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\TimelineType;
+use App\Enums\EventType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,7 +26,18 @@ class Comment extends Model
         'author_id',
         'issue_id',
         'type',
+        'event_type',
         'description',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'type'       => TimelineType::class,
+        'event_type' => EventType::class,
     ];
 
     /*

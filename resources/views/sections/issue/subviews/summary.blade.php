@@ -1,4 +1,3 @@
-<div class="relative ml-6">
 <div class="box mb-8 -ml-6">
     <div class="box-header">
         <div class="box-header-meta">
@@ -29,5 +28,4 @@
     </div>
 
     <x-markdown class="box-body markdown">{!! $issue->description !!}</x-markdown>
-</div>
 </div>

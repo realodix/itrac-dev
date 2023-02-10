@@ -1,7 +1,5 @@
 {{-- https://tailwind-elements.com/docs/standard/components/timeline/ --}}
 {{-- https://flowbite.com/docs/components/timeline/#vertical-timeline --}}
-<div class="timeline">
-<ol>
 @foreach($issue->comments->sortBy('created_at') as $comment)
 @if ($comment->isComment())
     <li class="mb-10 -ml-6">
@@ -67,5 +65,3 @@
     </li>
 @endif
 @endforeach
-</ol>
-</div>

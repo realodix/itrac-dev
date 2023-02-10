@@ -26,9 +26,11 @@
 
     <div class="bucket">
         <div class="layout-main">
-            @include('sections.issue.subviews.summary')
+            <ol class="timeline">
+                @include('sections.issue.subviews.summary')
 
-            @include('sections.issue.subviews.timeline')
+                @include('sections.issue.subviews.timeline')
+            </ol>
 
             <br>
 

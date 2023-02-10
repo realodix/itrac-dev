@@ -1,6 +1,7 @@
 {{-- https://tailwind-elements.com/docs/standard/components/timeline/ --}}
 {{-- https://flowbite.com/docs/components/timeline/#vertical-timeline --}}
-<ol class="timeline">
+<div class="timeline">
+<ol>
 @foreach($issue->comments->sortBy('created_at') as $comment)
 @if ($comment->isComment())
     <li class="mb-10 -ml-6">
@@ -8,15 +9,15 @@
             <div class="box-header">
                 <div class="box-header-meta">
                     <img src="{{ Avatar::create($comment->author->name)->toBase64() }}" class="box-header-meta-avatar"/>
-                    <div>
+                    <div class="!ml-0">
                         <b>{{$comment->author->name}}</b>
-                        <div class="text-sm text-gray-500">
+                        <span class="text-sm text-gray-500">
                             commented
                             <a href="#comment-{{$comment->id}}"
                                 id="comment-{{$comment->id}}"
                                 title="{{$comment->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}"
                                 >{{$comment->created_at->diffForHumans()}}</a>
-                        </div>
+                        </span>
                     </div>
                 </div>
 
@@ -63,3 +64,4 @@
 @endif
 @endforeach
 </ol>
+</div>

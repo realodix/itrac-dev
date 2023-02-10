@@ -30,16 +30,6 @@ class Comment extends Model
         'description',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'type'       => TimelineType::class,
-        'event_type' => EventType::class,
-    ];
-
     /*
     |---------------------------------------------------------------------------
     | Eloquent: Relationships

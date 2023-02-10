@@ -61,7 +61,7 @@ class Comment extends Model
      */
     public function isComment(): bool
     {
-        return $this->type === TimelineType::Comment->value;
+        return $this->type === TimelineType::COMMENT->value;
     }
 
     /**
@@ -69,7 +69,7 @@ class Comment extends Model
      */
     public function isStatus(): bool
     {
-        return $this->type === TimelineType::Event->value;
+        return $this->type === TimelineType::EVENT->value;
     }
 
     /**

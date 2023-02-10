@@ -36,7 +36,7 @@ class IssueController extends Controller
         $issue = Issue::create([
             'author_id'   => auth()->id(),
             'title'       => $request->issue_title,
-            'type'        => TimelineType::Comment,
+            'type'        => TimelineType::COMMENT,
             'description' => $request->issue_description,
         ]);
 
@@ -110,7 +110,7 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => TimelineType::Event,
+            'type'        => TimelineType::EVENT,
             'description' => 'closed this issue',
         ]);
 
@@ -134,7 +134,7 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => TimelineType::Event,
+            'type'        => TimelineType::EVENT,
             'description' => 'reopened this issue',
         ]);
 
@@ -158,7 +158,7 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => TimelineType::Event,
+            'type'        => TimelineType::EVENT,
             'description' => 'locked and limited conversation to collaborators',
         ]);
 
@@ -182,7 +182,7 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => TimelineType::Event,
+            'type'        => TimelineType::EVENT,
             'description' => 'unlocked this conversation',
         ]);
 

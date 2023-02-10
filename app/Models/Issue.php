@@ -103,7 +103,7 @@ class Issue extends Model
      */
     public function commentCount(): int
     {
-        $type = TimelineType::Comment->value;
+        $type = TimelineType::COMMENT->value;
 
         return $this->comments->where('type', $type)->count();
     }

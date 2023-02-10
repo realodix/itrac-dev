@@ -77,15 +77,11 @@ class Comment extends Model
      */
     public function isAuthor(): bool
     {
-        return $this->author_id === $this->author->id;
-    }
+        if (auth()->guest()) {
+            return $this->author_id === $this->author->id;
+        }
 
-    /**
-     * Determine if the comment was written by the issue author.
-     */
-    public function isIssueAuthor(): bool
-    {
-        return $this->author_id === $this->issue->author_id;
+        return $this->author->id === auth()->id();
     }
 
     /**

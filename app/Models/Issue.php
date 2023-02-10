@@ -141,7 +141,11 @@ class Issue extends Model
      */
     public function isAuthor(): bool
     {
-        return $this->author_id === $this->author->id;
+        if (auth()->guest()) {
+            return $this->author_id === $this->author->id;
+        }
+
+        return $this->author->id === auth()->id();
     }
 
     /**

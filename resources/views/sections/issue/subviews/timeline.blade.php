@@ -22,7 +22,6 @@
                 </div>
 
                 @auth
-
                 <div class="box-header-actions">
                     @if ($comment->isIssueAuthor())
                     <span class="bg-green-100 text-green-800 text-xs mr-2 px-2.5 py-0.5 rounded border border-green-400">

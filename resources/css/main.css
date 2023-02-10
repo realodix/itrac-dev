@@ -86,10 +86,10 @@ main {
                 &-header {
                     @apply bg-stone-100 border-b border-stone-300;
                     @apply px-4 py-2 rounded-t-md;
-                    @apply grid grid-cols-2 content-center;
+                    @apply flex;
 
                     &-meta {
-                        @apply flex items-center space-x-4;
+                        @apply flex flex-auto items-center space-x-4;
 
                         &-avatar {
                             @apply w-10 h-10 rounded-full absolute left-[-75px];
@@ -97,7 +97,7 @@ main {
                     }
 
                     &-actions {
-                        @apply flex justify-end flex-wrap content-center;
+                        @apply justify-end flex-wrap content-center;
                     }
                 }
 

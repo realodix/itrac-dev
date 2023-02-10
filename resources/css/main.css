@@ -71,10 +71,12 @@ main {
     }
 
     .bucket {
-        @apply flex;
+        @apply grid grid-cols-12 gap-4;
+        /* @apply flex; */
 
         .layout-main {
-            @apply md:w-8/12 justify-between;
+            @apply col-span-9;
+            /* @apply md:w-8/12 justify-between; */
 
             .box {
                 @apply mt-4 rounded-t-md rounded-b-md;
@@ -110,7 +112,7 @@ main {
         }
 
         .layout-sidebar {
-            @apply md:w-4/12 px-4 py-2;
+            /* @apply md:w-4/12 px-4 py-2; */
 
             .sidebar-item {
                 @apply pt-4;

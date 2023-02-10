@@ -8,10 +8,10 @@
         <div class="text-3xl mb-2">#{{$issue->id}} - {{$issue->title}}</div>
         <div class="mb-2">
             <span @class([
-                    'mr-4 py-1 px-2 border rounded-md text-md text-white',
-                    'bg-green-600 border-green-600' => ! $issue->isClosed(),
-                    'bg-violet-700 border-violet-700' => $issue->isClosed(),
-                ])>
+                'mr-4 py-1 px-2 border rounded-md text-md text-white',
+                'bg-green-600 border-green-600' => ! $issue->isClosed(),
+                'bg-violet-700 border-violet-700' => $issue->isClosed(),
+            ])>
                 @if ($issue->isClosed())
                     <x-go-issue-closed-16 />
                 @else

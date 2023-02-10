@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\TimelineType;
+use App\Enums\EventType;
 use App\Models\Comment;
 use App\Models\Issue;
 use Illuminate\Http\Request;
@@ -111,6 +112,7 @@ class IssueController extends Controller
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
             'type'        => TimelineType::Event,
+            'event_type'  => EventType::CLOSED,
             'description' => 'closed this issue',
         ]);
 
@@ -135,6 +137,7 @@ class IssueController extends Controller
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
             'type'        => TimelineType::Event,
+            'event_type'  => EventType::REOPENED,
             'description' => 'reopened this issue',
         ]);
 
@@ -159,6 +162,7 @@ class IssueController extends Controller
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
             'type'        => TimelineType::Event,
+            'event_type'  => EventType::LOCKED,
             'description' => 'locked and limited conversation to collaborators',
         ]);
 
@@ -183,6 +187,7 @@ class IssueController extends Controller
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
             'type'        => TimelineType::Event,
+            'event_type'  => EventType::UNLOCKED,
             'description' => 'unlocked this conversation',
         ]);
 

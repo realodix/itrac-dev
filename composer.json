@@ -27,7 +27,7 @@
         "vinkla/hashids": "^10.0"
     },
     "require-dev": {
-        "brianium/paratest": "^6.8",
+        "brianium/paratest": "^6.8|^7.0",
         "fakerphp/faker": "^1.20",
         "laravel/dusk": "^7.4",
         "mockery/mockery": "^1.5",

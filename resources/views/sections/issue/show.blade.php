@@ -32,7 +32,7 @@
                 @include('sections.issue.subviews.timeline')
             </ol>
 
-            <br>
+
 
             @include('sections.issue.subviews.comment-form')
         </div>

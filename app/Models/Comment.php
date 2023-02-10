@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Enums\TimelineType;
-use App\Enums\EventType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -59,6 +58,7 @@ class Comment extends Model
     */
 
     /**
+     * BELUM DITEST
      * Determine if the type of the comment is a comment.
      */
     public function isComment(): bool
@@ -67,23 +67,21 @@ class Comment extends Model
     }
 
     /**
-     * Determine if the type of the comment is a status update.
-     */
-    public function isStatus(): bool
-    {
-        return $this->type === TimelineType::EVENT->value;
-    }
-
-    /**
+     * BELUM DITEST
      * Determine if the comment was written by the current user.
      */
     public function isAuthor(): bool
     {
-        if (auth()->guest()) {
-            return $this->author_id === $this->author->id;
-        }
+        return $this->author_id === $this->author->id;
+    }
 
-        return $this->author->id === auth()->id();
+    /**
+     * BELUM DITEST
+     * Determine if the comment was written by the issue author.
+     */
+    public function isIssueAuthor(): bool
+    {
+        return $this->author_id === $this->issue->author_id;
     }
 
     /**

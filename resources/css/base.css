@@ -2,67 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-.markdown {
-    @apply prose !max-w-fit;
+@import "~easymde/dist/easymde.min.css";
+@import "components/button";
+@import "components/navbar";
+@import "components/power-grid";
+
+main {
+    @apply sm:mt-10;
 }
+
+.frontend, .backend, .auth {
+    @apply font-sans text-gray-900 antialiased bg-[#F9F9F9];
+}
+
 
 /*
  * Components
+ * -----------------------------------------------------------------------------
  */
-
-.blade-icon {
-    display: inline-block;
-    height: 1em;
-    overflow: visible;
-    box-sizing: content-box;
-    vertical-align: -0.125em;
-}
-
-.btn {
-    @apply inline-flex items-center px-3 py-1.5;
-    @apply bg-stone-50 hover:bg-stone-200 active:bg-stone-50 text-gray-500 hover:text-gray-600 active:text-gray-500;
-    @apply text-base font-normal leading-6 text-center no-underline align-middle tracking-wide;
-    @apply rounded disabled:opacity-25;
-    @apply cursor-pointer select-none;
-    box-shadow: 0px 1.6px 2px rgba(0, 0, 0, 0.13),
-        0px 0px 2px rgba(0, 0, 0, 0.11) !important;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-
-    &-sm {
-        @apply text-sm leading-6;
-        @apply px-2 py-1;
-    }
-
-    &-primary {
-        @apply text-base font-normal text-white bg-[#0078d4] border-[#0078d4];
-        @apply hover:text-[#0078d4] hover:bg-white active:bg-[#0078d4] hover:border-white;
-    }
-
-    &-secondary {
-        @apply text-base font-normal text-[#0078d4] bg-white;
-        @apply hover:text-white hover:bg-[#0078d4] active:bg-white hover:border-[#0078d4];
-    }
-}
-
-.btn-icon {
-    @apply px-2 py-1 rounded-md;
-    @apply text-gray-500 hover:text-gray-600 active:text-gray-500;
-    @apply bg-stone-50 hover:bg-stone-200 active:bg-stone-50;
-    box-shadow: 0px 1.6px 2px rgba(0, 0, 0, 0.13),
-        0px 0px 2px rgba(0, 0, 0, 0.11);
-
-    &-table-delete {
-        @apply text-red-700 hover:text-red-800 active:text-red-700;
-    }
-}
-
-.btn-icon-detail {
-    @apply px-2 py-1 rounded mr-4;
-    @apply text-[#273144];
-    @apply bg-[#e8ebf2] hover:bg-[#dbe0eb] active:bg-[#e8ebf2];
-}
-
 .form-input {
     @apply block w-full;
     @apply border-stone-300 focus:ring-uh-indigo-400 focus:border-uh-indigo-400 rounded;
@@ -71,4 +28,81 @@
 .common-card-style {
     @apply bg-white sm:rounded-md;
     @apply sm:shadow-[0px_1px_2px_rgba(25,39,52,0.05),0px_0px_4px_rgba(25,39,52,0.1)];
+}
+
+.markdown {
+    @apply prose !max-w-fit;
+}
+
+
+/*
+ * Pages
+ * -----------------------------------------------------------------------------
+ */
+.issue {
+    @apply max-w-7xl mx-auto sm:pt-10 mb-12;
+
+    .header {
+        @apply border-b border-slate-300;
+        @apply mb-4 pb-2;
+    }
+
+    .bucket {
+        @apply grid grid-cols-12 gap-4;
+        /* @apply flex; */
+
+        .layout-main {
+            @apply col-span-9 pl-20;
+            /* @apply md:w-8/12 justify-between; */
+
+            .box {
+                @apply mt-4 rounded-t-md rounded-b-md;
+                @apply bg-white border border-stone-300;
+                @apply shadow;
+
+                &-header {
+                    @apply bg-stone-100 border-b border-stone-300;
+                    @apply px-4 py-2 rounded-t-md;
+                    @apply flex;
+
+                    &-meta {
+                        @apply flex flex-auto items-center space-x-4;
+
+                        &-avatar {
+                            @apply w-10 h-10 p-1 rounded-full ring-2 ring-stone-300 shadow shadow-stone-300 bg-white;
+                            @apply absolute -left-20;
+                        }
+                    }
+
+                    &-actions {
+                        @apply justify-end flex-wrap content-center;
+                    }
+                }
+
+                &-body {
+                    @apply px-4 py-2 rounded-b-md;
+                }
+            }
+
+            .timeline {
+                @apply relative border-l-2 border-gray-300 ml-6;
+
+
+            }
+        }
+
+        .layout-sidebar {
+            @apply col-span-3;
+            /* @apply md:w-4/12 px-4 py-2; */
+
+            .sidebar-item {
+                @apply pt-4;
+
+                & + .sidebar-item {
+                    @apply mt-4;
+                    @apply border-t border-slate-300;
+                }
+            }
+        }
+    }
 }

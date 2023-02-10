@@ -40,4 +40,49 @@ class IssueTest extends TestCase
         $this->assertEquals($issue->author_id, $issue->author->id);
         $this->assertEquals(1, $issue->author->count());
     }
+
+    /**
+     * Cooment count
+     *
+     * @test
+     * @group u-model
+     */
+    public function commentCount()
+    {
+        $issue = Issue::factory()
+            ->has(Comment::factory()->count(3))
+            ->create();
+
+        $this->assertEquals(3, $issue->commentCount());
+    }
+
+    /**
+     * Get the participants of the issue.
+     *
+     * @test
+     * @group u-model
+     */
+    public function participants()
+    {
+        $issue = Issue::factory()
+            ->has(Comment::factory()->count(3))
+            ->create();
+
+        $this->assertEquals(3, $issue->participants()->count());
+    }
+
+    /**
+     * Count the number of participants of the issue.
+     *
+     * @test
+     * @group u-model
+     */
+    public function participantCount()
+    {
+        $issue = Issue::factory()
+            ->has(Comment::factory()->count(3))
+            ->create();
+
+        $this->assertEquals(3, $issue->participantCount());
+    }
 }

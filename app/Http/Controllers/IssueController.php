@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\TimelineType;
 use App\Enums\EventType;
+use App\Enums\TimelineType;
 use App\Models\Comment;
 use App\Models\Issue;
 use Illuminate\Http\Request;

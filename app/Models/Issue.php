@@ -112,7 +112,7 @@ class Issue extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment>
      */
-    public function participant()
+    public function participants()
     {
         return $this->comments()
             ->select('author_id')
@@ -120,34 +120,33 @@ class Issue extends Model
     }
 
     /**
+     * BELUM DITEST
      * Determine if the user is a participant of the issue.
      */
     public function isParticipant(): bool
     {
-        return $this->participant()->where('author_id', auth()->id())->exists();
+        return $this->participants()->where('author_id', auth()->id())->exists();
     }
 
     /**
-     * Count the number of participants.
+     * Count the number of participants of the issue.
      */
     public function participantCount(): int
     {
-        return $this->participant()->count('author_id');
+        return $this->participants()->count('author_id');
     }
 
     /**
+     * BELUM DITEST
      * Determine if the issue is authored by the current user.
      */
     public function isAuthor(): bool
     {
-        if (auth()->guest()) {
-            return $this->author_id === $this->author->id;
-        }
-
         return $this->author->id === auth()->id();
     }
 
     /**
+     * BELUM DITEST
      * Determine if the issue is closed.
      */
     public function isClosed(): bool
@@ -156,6 +155,7 @@ class Issue extends Model
     }
 
     /**
+     * BELUM DITEST
      * Determine if the issue is locked.
      */
     public function isLocked(): bool

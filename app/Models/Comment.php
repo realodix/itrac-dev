@@ -25,6 +25,7 @@ class Comment extends Model
         'author_id',
         'issue_id',
         'type',
+        'event_type',
         'description',
     ];
 

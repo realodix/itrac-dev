@@ -113,7 +113,10 @@ class Issue extends Model
      */
     public function participants()
     {
-        return $this->comments()->select('author_id')->distinct();
+        return $this->comments()
+            ->select('author_id')
+            ->where('type', TimelineType::COMMENT->value)
+            ->distinct();
     }
 
     /**

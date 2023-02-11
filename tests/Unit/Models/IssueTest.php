@@ -6,9 +6,18 @@ use App\Models\Comment;
 use App\Models\Issue;
 use App\Models\User;
 use Tests\TestCase;
-
+use App\Enums\TimelineType;
 class IssueTest extends TestCase
 {
+    public Issue $issue;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->issue = app(Issue::class);
+    }
+
     /**
      * @test
      * @group u-model
@@ -51,6 +60,9 @@ class IssueTest extends TestCase
     {
         $issue = Issue::factory()
             ->has(Comment::factory()->count(3))
+            ->has(Comment::factory([
+                'type' => TimelineType::EVENT->value,
+            ])->count(3))
             ->create();
 
         $this->assertEquals(3, $issue->commentCount());
@@ -66,6 +78,9 @@ class IssueTest extends TestCase
     {
         $issue = Issue::factory()
             ->has(Comment::factory()->count(3))
+            ->has(Comment::factory([
+                'type' => TimelineType::EVENT->value,
+            ])->count(3))
             ->create();
 
         $this->assertEquals(3, $issue->participants()->count());
@@ -81,6 +96,9 @@ class IssueTest extends TestCase
     {
         $issue = Issue::factory()
             ->has(Comment::factory()->count(3))
+            ->has(Comment::factory([
+                'type' => TimelineType::EVENT->value,
+            ])->count(3))
             ->create();
 
         $this->assertEquals(3, $issue->participantCount());

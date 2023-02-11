@@ -38,6 +38,7 @@ class CommentTest extends TestCase
 
     /**
      * Is the comment a comment?
+     *
      * @test
      * @group u-model
      */

@@ -57,7 +57,6 @@ class Comment extends Model
     */
 
     /**
-     * BELUM DITEST
      * Determine if the type of the comment is a comment.
      */
     public function isComment(): bool
@@ -66,7 +65,6 @@ class Comment extends Model
     }
 
     /**
-     * BELUM DITEST
      * Determine if the comment was written by the current user.
      */
     public function isAuthor(): bool
@@ -75,7 +73,6 @@ class Comment extends Model
     }
 
     /**
-     * BELUM DITEST
      * Determine if the comment was written by the issue author.
      */
     public function isIssueAuthor(): bool

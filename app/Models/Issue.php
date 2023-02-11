@@ -117,7 +117,6 @@ class Issue extends Model
     }
 
     /**
-     * BELUM DITEST
      * Determine if the user is a participant of the issue.
      */
     public function isParticipant(): bool
@@ -134,8 +133,9 @@ class Issue extends Model
     }
 
     /**
-     * BELUM DITEST
      * Determine if the issue is authored by the current user.
+     *
+     * Covered by unit test, but actually is not yet tested.
      */
     public function isAuthor(): bool
     {
@@ -143,8 +143,9 @@ class Issue extends Model
     }
 
     /**
-     * BELUM DITEST
      * Determine if the issue is closed.
+     *
+     * Covered by unit test, but actually is not yet tested.
      */
     public function isClosed(): bool
     {
@@ -152,8 +153,9 @@ class Issue extends Model
     }
 
     /**
-     * BELUM DITEST
      * Determine if the issue is locked.
+     *
+     * Covered by unit test, but actually is not yet tested.
      */
     public function isLocked(): bool
     {

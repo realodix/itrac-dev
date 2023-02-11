@@ -18,25 +18,25 @@ class CommentSeeder extends Seeder
         Comment::factory()->create([
             'author_id' => 1,
             'issue_id'  => 1,
-            'type'      => TimelineType::COMMENT,
+            'type'      => TimelineType::COMMENT->value,
         ]);
 
         Comment::factory()->create([
             'author_id' => 2,
             'issue_id'  => 1,
-            'type'      => TimelineType::COMMENT,
+            'type'      => TimelineType::COMMENT->value,
         ]);
 
         Comment::factory()->create([
             'author_id' => 1,
             'issue_id'  => 2,
-            'type'      => TimelineType::COMMENT,
+            'type'      => TimelineType::COMMENT->value,
         ]);
 
         Comment::factory()->create([
             'author_id' => 2,
             'issue_id'  => 2,
-            'type'      => TimelineType::COMMENT,
+            'type'      => TimelineType::COMMENT->value,
         ]);
     }
 }

@@ -37,7 +37,7 @@ class IssueController extends Controller
         $issue = Issue::create([
             'author_id'   => auth()->id(),
             'title'       => $request->issue_title,
-            'type'        => TimelineType::COMMENT,
+            'type'        => TimelineType::COMMENT->value,
             'description' => $request->issue_description,
         ]);
 

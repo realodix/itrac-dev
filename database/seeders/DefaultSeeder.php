@@ -65,5 +65,6 @@ class DefaultSeeder extends Seeder
             'author_id'   => $user->id,
             'title'       => 'Issue by '.$user->name,
             'description' => fake()->paragraphs(nb: 3, asText: true),
-        ]);}
+        ]);
+    }
 }

@@ -44,12 +44,12 @@ class DefaultSeeder extends Seeder
         ]);
     }
 
-    public function user(string $user, bool $isAdmin = false): User
+    public function user(string $username, bool $isAdmin = false): User
     {
         $user = User::factory()->create([
-            'name'       => $user,
-            'email'      => $user.'@realodix.test',
-            'password'   => Hash::make($user),
+            'name'       => $username,
+            'email'      => $username.'@realodix.test',
+            'password'   => Hash::make($username),
         ]);
 
         if ($isAdmin) {

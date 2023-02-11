@@ -44,10 +44,7 @@ class DefaultSeeder extends Seeder
         ]);
     }
 
-    /**
-     * @return User
-     */
-    public function userAdmin()
+    public function userAdmin(): User
     {
         return User::factory()->create([
             'name'       => 'admin',
@@ -56,10 +53,8 @@ class DefaultSeeder extends Seeder
         ])->assignRole('admin');
     }
 
-    /**
-     * @return User
-     */
-    public function user()
+
+    public function user(): User
     {
         return User::factory()->create([
             'name'       => 'user',
@@ -68,7 +63,7 @@ class DefaultSeeder extends Seeder
         ]);
     }
 
-    public function issue(User $user)
+    public function issue(User $user): Issue
     {
         return Issue::factory()->create([
             'author_id'   => $user->id,

@@ -17,38 +17,19 @@ class DefaultSeeder extends Seeder
      */
     public function run()
     {
-        $now = now();
-
-        $admin = User::factory()->create([
-            'name'       => 'admin',
-            'email'      => 'admin@realodix.test',
-            'password'   => Hash::make('admin'),
-            'created_at' => $now,
-            'updated_at' => $now,
-        ])->assignRole('admin');
-
-        $user = User::factory()->create([
-            'name'       => 'user',
-            'email'      => 'user@realodix.test',
-            'password'   => Hash::make('user'),
-            'created_at' => $now,
-            'updated_at' => $now,
-        ]);
+        $admin = $this->userAdmin();
+        $user = $this->user();
 
         $issueByAdmin = Issue::factory()->create([
             'author_id'   => $admin->id,
             'title'       => 'Issue by admin',
             'description' => fake()->paragraphs(nb: 3, asText: true),
-            'created_at'  => $now,
-            'updated_at'  => $now,
         ]);
 
         $issueByUser =  Issue::factory()->create([
             'author_id'   => $user->id,
             'title'       => 'Issue by user',
             'description' => fake()->paragraphs(nb: 3, asText: true),
-            'created_at'  => $now,
-            'updated_at'  => $now,
         ]);
 
         Comment::factory()->create([
@@ -69,6 +50,30 @@ class DefaultSeeder extends Seeder
         Comment::factory()->create([
             'author_id' => $user->id,
             'issue_id'  => $issueByUser->id,
+        ]);
+    }
+
+    /**
+     * @return User
+     */
+    public function userAdmin()
+    {
+        return User::factory()->create([
+            'name'       => 'admin',
+            'email'      => 'admin@realodix.test',
+            'password'   => Hash::make('admin'),
+        ])->assignRole('admin');
+    }
+
+    /**
+     * @return User
+     */
+    public function user()
+    {
+        return User::factory()->create([
+            'name'       => 'user',
+            'email'      => 'user@realodix.test',
+            'password'   => Hash::make('user'),
         ]);
     }
 }

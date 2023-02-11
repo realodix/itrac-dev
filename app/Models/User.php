@@ -81,14 +81,4 @@ class User extends Authenticatable
     {
         return self::count();
     }
-
-    /**
-     * Assign the given role to the user.
-     *
-     * @return self
-     */
-    public function assignRoleAsAdmin()
-    {
-        return $this->assignRole('admin');
-    }
 }

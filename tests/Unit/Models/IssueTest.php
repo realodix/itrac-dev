@@ -85,4 +85,46 @@ class IssueTest extends TestCase
 
         $this->assertEquals(3, $issue->participantCount());
     }
+
+    /**
+     * Test if the issue is closed or not.
+     *
+     * @test
+     * @group u-model
+     */
+    public function isClosed()
+    {
+        $issue = Issue::factory(
+            ['closed_by' => $this->adminUser()->id]
+        )->create();
+
+        $this->assertTrue($issue->isClosed());
+
+        $issue = Issue::factory(
+            ['closed_by' => null]
+        )->create();
+
+        $this->assertFalse($issue->isClosed());
+    }
+
+    /**
+     * Test if the issue is locked or not.
+     *
+     * @test
+     * @group u-model
+     */
+    public function isLocked()
+    {
+        $issue = Issue::factory(
+            ['locked_by' => $this->adminUser()->id]
+        )->create();
+
+        $this->assertTrue($issue->isLocked());
+
+        $issue = Issue::factory(
+            ['locked_by' => null]
+        )->create();
+
+        $this->assertFalse($issue->isLocked());
+    }
 }

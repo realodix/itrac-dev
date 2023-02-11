@@ -144,8 +144,6 @@ class Issue extends Model
 
     /**
      * Determine if the issue is closed.
-     *
-     * Covered by unit test, but actually is not yet tested.
      */
     public function isClosed(): bool
     {
@@ -154,8 +152,6 @@ class Issue extends Model
 
     /**
      * Determine if the issue is locked.
-     *
-     * Covered by unit test, but actually is not yet tested.
      */
     public function isLocked(): bool
     {

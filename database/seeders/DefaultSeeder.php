@@ -39,16 +39,16 @@ class DefaultSeeder extends Seeder
             'author_id'   => $admin->id,
             'title'       => 'Issue by admin',
             'description' => fake()->paragraphs(nb: 3, asText: true),
-            'created_at' => $now,
-            'updated_at' => $now,
+            'created_at'  => $now,
+            'updated_at'  => $now,
         ]);
 
         $issueByUser =  Issue::factory()->create([
             'author_id'   => $user->id,
             'title'       => 'Issue by user',
             'description' => fake()->paragraphs(nb: 3, asText: true),
-            'created_at' => $now,
-            'updated_at' => $now,
+            'created_at'  => $now,
+            'updated_at'  => $now,
         ]);
 
         Comment::factory()->create([

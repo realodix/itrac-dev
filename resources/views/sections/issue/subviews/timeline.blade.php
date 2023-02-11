@@ -56,11 +56,11 @@
             </span>
             @elseif ($comment->event_type == \App\Enums\EventType::LOCKED->value)
             <span class="absolute flex items-center justify-center w-7 h-7 bg-gray-800 rounded-full -left-4">
-                <x-go-lock-16 class="w-6 h-6 text-white"/>
+                <x-go-lock-16 class="w-6 h-6 text-red-500"/>
             </span>
             @elseif ($comment->event_type == \App\Enums\EventType::UNLOCKED->value)
             <span class="absolute flex items-center justify-center w-7 h-7 bg-gray-800 rounded-full -left-4">
-                <x-go-unlock-16 class="w-6 h-6 text-white"/>
+                <x-go-unlock-16 class="w-6 h-6 text-green-500"/>
             </span>
             @endif
         <p class="text-sm font-normal text-gray-500">

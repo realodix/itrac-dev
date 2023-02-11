@@ -17,8 +17,8 @@ class DefaultSeeder extends Seeder
      */
     public function run()
     {
-        $admin = $this->userAdmin();
-        $user = $this->user();
+        $admin = $this->user('admin', true);
+        $user = $this->user('user');
 
         $issueByAdmin = $this->issue($admin);
         $issueByUser =  $this->issue($user);
@@ -44,23 +44,19 @@ class DefaultSeeder extends Seeder
         ]);
     }
 
-    public function userAdmin(): User
+    public function user(string $user, bool $isAdmin = false): User
     {
-        return User::factory()->create([
-            'name'       => 'admin',
-            'email'      => 'admin@realodix.test',
-            'password'   => Hash::make('admin'),
-        ])->assignRole('admin');
-    }
-
-
-    public function user(): User
-    {
-        return User::factory()->create([
-            'name'       => 'user',
-            'email'      => 'user@realodix.test',
-            'password'   => Hash::make('user'),
+        $user = User::factory()->create([
+            'name'       => $user,
+            'email'      => $user.'@realodix.test',
+            'password'   => Hash::make($user),
         ]);
+
+        if ($isAdmin) {
+            $user->assignRole('admin');
+        }
+
+        return $user;
     }
 
     public function issue(User $user): Issue

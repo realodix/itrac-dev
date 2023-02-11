@@ -2,11 +2,12 @@
 
 namespace Tests\Unit\Models;
 
+use App\Enums\TimelineType;
 use App\Models\Comment;
 use App\Models\Issue;
 use App\Models\User;
 use Tests\TestCase;
-use App\Enums\TimelineType;
+
 class IssueTest extends TestCase
 {
     public Issue $issue;

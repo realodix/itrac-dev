@@ -135,7 +135,7 @@ class Issue extends Model
     /**
      * Determine if the issue is authored by the current user.
      *
-     * Covered by unit test, but actually is not yet tested.
+     * Covered by unit test, but actually is not yet tested by PHPUnit.
      */
     public function isAuthor(): bool
     {

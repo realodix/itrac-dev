@@ -35,4 +35,20 @@ class CommentTest extends TestCase
         $this->assertEquals($c->author_id, $c->author->id);
         $this->assertEquals(1, $c->author()->count());
     }
+
+    /**
+     * Is the comment a comment?
+     * @test
+     * @group u-model
+     */
+    public function isComment()
+    {
+        $c = Comment::factory()->create();
+        $this->assertTrue($c->isComment());
+
+        $c = Comment::factory()->create([
+            'type' => false,
+        ]);
+        $this->assertFalse($c->isComment());
+    }
 }

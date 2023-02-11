@@ -13,8 +13,10 @@ This project was created, and is maintained by [Budi Hermawan](https://github.co
 - **Modern and simple interface.**
 - **Made with :heart: &amp; :coffee:.**
 
+
 ## Requirements
 * All requirements by [Laravel](https://laravel.com/docs/installation#server-requirements) & dependencies - PHP >= 8.0, [Composer](https://getcomposer.org/) and such.
+
 
 ## Quick Start
 ### Installation Instructions

@@ -5,7 +5,7 @@
 @section('content')
 <div class="issue">
     <div class="header">
-        <div class="text-3xl mb-2">#{{$issue->id}} - {{$issue->title}}</div>
+        <div class="text-3xl mb-2"><span class="text-stone-500">#{{$issue->id}}</span> - {{$issue->title}}</div>
         <div class="mb-2">
             <span @class([
                 'mr-4 py-1 px-2 border rounded-md text-md text-white',
@@ -19,8 +19,11 @@
                 @endif
                 {{$issue->status()}}
             </span>
-            <b>{{$issue->author->name}}</b> opened this issue <span title="{{$issue->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}">{{$issue->created_at->diffForHumans()}}</span>
-            &middot; {{ $issue->commentCount(); }} comments
+            <b>{{$issue->author->name}}</b>
+            <span class="text-gray-500">
+                opened this issue <span title="{{$issue->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}">
+                    {{$issue->created_at->diffForHumans()}}</span>
+                &middot; {{ $issue->commentCount(); }} comments</span>
         </div>
     </div>
 

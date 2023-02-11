@@ -26,83 +26,19 @@ main {
 }
 
 .common-card-style {
-    @apply bg-white sm:rounded-md;
-    @apply sm:shadow-[0px_1px_2px_rgba(25,39,52,0.05),0px_0px_4px_rgba(25,39,52,0.1)];
+    @apply rounded-t-md rounded-b-md;
+    @apply bg-white border border-stone-300;
+    @apply shadow;
 }
 
 .markdown {
     @apply prose !max-w-fit;
 }
 
-
-/*
- * Pages
- * -----------------------------------------------------------------------------
- */
-.issue {
-    @apply max-w-7xl mx-auto sm:pt-10 mb-12;
-
-    .header {
-        @apply border-b border-slate-300;
-        @apply mb-4 pb-2;
-    }
-
-    .bucket {
-        @apply grid grid-cols-12 gap-4;
-        /* @apply flex; */
-
-        .layout-main {
-            @apply col-span-9 pl-20;
-            /* @apply md:w-8/12 justify-between; */
-
-            .box {
-                @apply mt-4 rounded-t-md rounded-b-md;
-                @apply bg-white border border-stone-300;
-                @apply shadow;
-
-                &-header {
-                    @apply bg-stone-100 border-b border-stone-300;
-                    @apply px-4 py-2 rounded-t-md;
-                    @apply flex;
-
-                    &-meta {
-                        @apply flex flex-auto items-center space-x-4;
-
-                        &-avatar {
-                            @apply w-10 h-10 p-1 rounded-full ring-2 ring-stone-300 shadow shadow-stone-300 bg-white;
-                            @apply absolute -left-20;
-                        }
-                    }
-
-                    &-actions {
-                        @apply justify-end flex-wrap content-center;
-                    }
-                }
-
-                &-body {
-                    @apply px-4 py-2 rounded-b-md;
-                }
-            }
-
-            .timeline {
-                @apply relative border-l-2 border-gray-300 ml-6;
-
-
-            }
-        }
-
-        .layout-sidebar {
-            @apply col-span-3;
-            /* @apply md:w-4/12 px-4 py-2; */
-
-            .sidebar-item {
-                @apply pt-4;
-
-                & + .sidebar-item {
-                    @apply mt-4;
-                    @apply border-t border-slate-300;
-                }
-            }
-        }
-    }
+.blade-icon {
+    display: inline-block;
+    height: 1em;
+    overflow: visible;
+    box-sizing: content-box;
+    vertical-align: -0.125em;
 }

@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Enums\TimelineType;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -18,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Issue extends Model
 {
-    use HasFactory;
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -114,9 +113,7 @@ class Issue extends Model
      */
     public function participants()
     {
-        return $this->comments()
-            ->select('author_id')
-            ->distinct();
+        return $this->comments()->select('author_id')->distinct();
     }
 
     /**
@@ -142,7 +139,7 @@ class Issue extends Model
      */
     public function isAuthor(): bool
     {
-        return $this->author->id === auth()->id();
+        return $this->author_id === auth()->id();
     }
 
     /**

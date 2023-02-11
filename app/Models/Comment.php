@@ -65,7 +65,7 @@ class Comment extends Model
     }
 
     /**
-     * Determine if the comment was written by the current user.
+     * Determine if the comment was written by the current authenticated user.
      */
     public function isAuthor(): bool
     {

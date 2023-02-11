@@ -121,6 +121,7 @@ class Issue extends Model
 
     /**
      * Determine if the user is a participant of the issue.
+     * https://github.com/syofyanzuhad/Laravel-Trik-Indonesia#menuliskan-query-where-menggunakan-localqueryscope
      */
     public function isParticipant(): bool
     {
@@ -136,9 +137,10 @@ class Issue extends Model
     }
 
     /**
-     * Determine if the issue is authored by the current user.
+     * Determine if the issue is authored by the current authenticated user.
      *
      * Covered by unit test, but actually is not yet tested by PHPUnit.
+     * https://github.com/syofyanzuhad/Laravel-Trik-Indonesia#menuliskan-query-where-menggunakan-localqueryscope
      */
     public function isAuthor(): bool
     {
@@ -147,6 +149,7 @@ class Issue extends Model
 
     /**
      * Determine if the issue is closed.
+     * https://github.com/syofyanzuhad/Laravel-Trik-Indonesia#menuliskan-query-where-menggunakan-localqueryscope
      */
     public function isClosed(): bool
     {
@@ -155,6 +158,7 @@ class Issue extends Model
 
     /**
      * Determine if the issue is locked.
+     * https://github.com/syofyanzuhad/Laravel-Trik-Indonesia#menuliskan-query-where-menggunakan-localqueryscope
      */
     public function isLocked(): bool
     {

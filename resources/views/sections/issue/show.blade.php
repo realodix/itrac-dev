@@ -36,8 +36,6 @@
                 @include('sections.issue.subviews.timeline')
             </ol>
 
-
-
             @include('sections.issue.subviews.comment-form')
         </div>
         <div class="layout-sidebar">

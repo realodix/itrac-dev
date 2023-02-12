@@ -73,7 +73,7 @@ class Issue extends Model
     */
 
     /**
-     * Get the number of comments of the specified issue.
+     * Get the number of comments of the issue.
      */
     public function commentCount(): int
     {

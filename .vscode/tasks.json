@@ -42,7 +42,7 @@
         {
             "label": "[GIT] (skip ci) Commit",
             "type": "shell",
-            "command": "git add -A && git commit -m \"[skip%20ci]%20U-$(Get-Date -UFormat +'%y%m%d%H%M%S')\"",
+            "command": "git add -A && git commit -m \"['skip ci']U-$(Get-Date -UFormat +'%y%m%d%H%M%S')\"",
             "problemMatcher": []
         },
         {

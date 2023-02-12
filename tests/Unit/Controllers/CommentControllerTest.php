@@ -3,7 +3,6 @@
 namespace Tests\Unit\Controllers;
 
 use App\Models\Comment;
-use App\Models\User;
 use Tests\TestCase;
 
 class CommentControllerTest extends TestCase

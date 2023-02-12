@@ -1,66 +1,4 @@
-@import "base.css";
-@import "~easymde/dist/easymde.min.css";
-
-main {
-    @apply sm:mt-10;
-}
-
-.frontend, .backend, .auth {
-    @apply font-sans text-gray-900 antialiased bg-[#F9F9F9];
-}
-
-.navbar {
-    @apply bg-white text-uh-blue;
-
-    &-brand {
-        @apply font-serif text-4xl font-bold;
-        @apply flex items-center;
-    }
-
-    &-toggler {
-        @apply text-uh-indigo-500;
-    }
-
-    .nav-item {
-        @apply text-sm text-gray-700 hover:bg-slate-50 focus:bg-slate-100 leading-5;
-        @apply block px-4 py-2 focus:outline-none transition;
-    }
-
-    &-mobile {
-        .nav-item {
-            @apply text-gray-700;
-            @apply block pl-3 pr-4 py-2 font-medium transition;
-
-            &-username {
-                @apply font-semibold;
-            }
-
-            &-email {
-                @apply text-gray-500 font-medium text-sm;
-            }
-        }
-    }
-}
-
-.power-grid {
-    .pg-header {
-        input {
-            @apply bg-white focus:ring-uh-indigo-400 focus:border-uh-indigo-400;
-        }
-    }
-
-    .pg-footer {
-        select {
-            @apply bg-white focus:border-gray-300;
-        }
-
-        nav {
-            a {
-                @apply bg-uh-indigo-600 hover:bg-uh-indigo-700 active:bg-uh-indigo-600;
-            }
-        }
-    }
-}
+@import "base";
 
 .issue {
     @apply max-w-7xl mx-auto sm:pt-10 mb-12;
@@ -92,7 +30,8 @@ main {
                         @apply flex flex-auto items-center space-x-4;
 
                         &-avatar {
-                            @apply w-10 h-10 rounded-full absolute left-[-75px];
+                            @apply w-10 h-10 p-1 rounded-full ring-2 ring-stone-300 shadow shadow-stone-300 bg-white;
+                            @apply absolute -left-20;
                         }
                     }
 
@@ -108,6 +47,8 @@ main {
 
             .timeline {
                 @apply relative border-l-2 border-gray-300 ml-6;
+
+
             }
         }
 

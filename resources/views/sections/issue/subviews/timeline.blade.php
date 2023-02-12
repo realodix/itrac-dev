@@ -2,7 +2,7 @@
 {{-- https://flowbite.com/docs/components/timeline/#vertical-timeline --}}
 @foreach($issue->comments->sortBy('created_at') as $comment)
 @if ($comment->isComment())
-    <li class="mb-10 -ml-6">
+    <li class="mb-8 -ml-6">
         <div class="box">
             <div class="box-header">
                 <div class="box-header-meta">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
 
-                @if ($comment->issue->isAuthor())
+                @if ($comment->isIssueAuthor())
                 <span class="bg-green-100 text-green-800 text-xs mr-2 px-2.5 py-0.5 rounded border border-green-400">
                     {{$comment->userRole()}}</span>
                 @endif
@@ -45,24 +45,24 @@
         </div>
     </li>
 @else
-    <li class="mb-6 ml-6">
-            @if ($comment->event_type == \App\Enums\EventType::CLOSED->value)
-            <span class="absolute flex items-center justify-center w-7 h-7 bg-violet-700 rounded-full -left-4">
-                <x-go-issue-closed-16 class="w-6 h-6 text-white"/>
-            </span>
-            @elseif ($comment->event_type == \App\Enums\EventType::REOPENED->value)
-            <span class="absolute flex items-center justify-center w-7 h-7 bg-green-600 rounded-full -left-4">
-                <x-go-issue-reopened-16 class="w-6 h-6 text-white"/>
-            </span>
-            @elseif ($comment->event_type == \App\Enums\EventType::LOCKED->value)
-            <span class="absolute flex items-center justify-center w-7 h-7 bg-gray-800 rounded-full -left-4">
-                <x-go-lock-16 class="w-6 h-6 text-white"/>
-            </span>
-            @elseif ($comment->event_type == \App\Enums\EventType::UNLOCKED->value)
-            <span class="absolute flex items-center justify-center w-7 h-7 bg-gray-800 rounded-full -left-4">
-                <x-go-unlock-16 class="w-6 h-6 text-white"/>
-            </span>
-            @endif
+    <li class="mt-8 mb-8 ml-6">
+        @if ($comment->event_type == \App\Enums\EventType::CLOSED->value)
+        <span class="absolute flex items-center justify-center w-7 h-7 bg-violet-700 rounded-full -left-4">
+            <x-go-issue-closed-16 class="w-6 h-6 text-white"/>
+        </span>
+        @elseif ($comment->event_type == \App\Enums\EventType::REOPENED->value)
+        <span class="absolute flex items-center justify-center w-7 h-7 bg-green-600 rounded-full -left-4">
+            <x-go-issue-reopened-16 class="w-6 h-6 text-white"/>
+        </span>
+        @elseif ($comment->event_type == \App\Enums\EventType::LOCKED->value)
+        <span class="absolute flex items-center justify-center w-7 h-7 bg-gray-800 rounded-full -left-4">
+            <x-go-lock-16 class="w-6 h-6 text-red-500"/>
+        </span>
+        @elseif ($comment->event_type == \App\Enums\EventType::UNLOCKED->value)
+        <span class="absolute flex items-center justify-center w-7 h-7 bg-gray-800 rounded-full -left-4">
+            <x-go-unlock-16 class="w-6 h-6 text-green-500"/>
+        </span>
+        @endif
         <p class="text-sm font-normal text-gray-500">
             <b class="text-[#1F2937]">{!! $comment->author->name !!}</b>
             {!! $comment->description !!}

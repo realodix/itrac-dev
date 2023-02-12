@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\TimelineType;
 use App\Enums\EventType;
+use App\Enums\TimelineType;
 use App\Models\Comment;
 use App\Models\Issue;
 use Illuminate\Http\Request;
@@ -37,7 +37,7 @@ class IssueController extends Controller
         $issue = Issue::create([
             'author_id'   => auth()->id(),
             'title'       => $request->issue_title,
-            'type'        => TimelineType::COMMENT,
+            'type'        => TimelineType::COMMENT->value,
             'description' => $request->issue_description,
         ]);
 

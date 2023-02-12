@@ -7,7 +7,7 @@
         {{$participants}} {{Str::plural('participant', $participants)}}
     </div>
     <div class="">
-        @foreach ($issue->participant()->get() as $participant)
+        @foreach ($issue->participants()->get() as $participant)
             <img src="{{ Avatar::create($participant->author->name)->toBase64() }}" class="inline-block w-7 h-7 mb-1" title="{{$participant->author->name}}"/>
         @endforeach
     </div>

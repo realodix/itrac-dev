@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Enums\TimelineType;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -18,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Issue extends Model
 {
-    use HasFactory;
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -120,43 +119,45 @@ class Issue extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment>
      */
-    public function participant()
+    public function participants()
     {
         return $this->comments()
             ->select('author_id')
+            ->where('type', TimelineType::COMMENT->value)
             ->distinct();
     }
 
     /**
      * Determine if the user is a participant of the issue.
+     * https://github.com/syofyanzuhad/Laravel-Trik-Indonesia#menuliskan-query-where-menggunakan-localqueryscope
      */
     public function isParticipant(): bool
     {
-        return $this->participant()->where('author_id', auth()->id())->exists();
+        return $this->participants()->where('author_id', auth()->id())->exists();
     }
 
     /**
-     * Count the number of participants.
+     * Count the number of participants of the issue.
      */
     public function participantCount(): int
     {
-        return $this->participant()->count('author_id');
+        return $this->participants()->count('author_id');
     }
 
     /**
-     * Determine if the issue is authored by the current user.
+     * Determine if the issue is authored by the current authenticated user.
+     *
+     * Covered by unit test, but actually is not yet tested by PHPUnit.
+     * https://github.com/syofyanzuhad/Laravel-Trik-Indonesia#menuliskan-query-where-menggunakan-localqueryscope
      */
     public function isAuthor(): bool
     {
-        if (auth()->guest()) {
-            return $this->author_id === $this->author->id;
-        }
-
-        return $this->author->id === auth()->id();
+        return $this->author_id === auth()->id();
     }
 
     /**
      * Determine if the issue is closed.
+     * https://github.com/syofyanzuhad/Laravel-Trik-Indonesia#menuliskan-query-where-menggunakan-localqueryscope
      */
     public function isClosed(): bool
     {
@@ -165,6 +166,7 @@ class Issue extends Model
 
     /**
      * Determine if the issue is locked.
+     * https://github.com/syofyanzuhad/Laravel-Trik-Indonesia#menuliskan-query-where-menggunakan-localqueryscope
      */
     public function isLocked(): bool
     {

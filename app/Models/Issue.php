@@ -105,7 +105,7 @@ class Issue extends Model
     }
 
     /**
-     * Count the number of participants of the issue.
+     * Count the number of participants of the specified issue.
      */
     public function participantCount(): int
     {

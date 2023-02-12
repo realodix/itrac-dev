@@ -40,9 +40,21 @@
             "problemMatcher": []
         },
         {
+            "label": "[GIT] (skip ci) Commit",
+            "type": "shell",
+            "command": "git add -A && git commit -m \"['skip ci']' 'U-$(Get-Date -UFormat +'%y%m%d%H%M%S')\"",
+            "problemMatcher": []
+        },
+        {
             "label": "[GIT] Commit & Push",
             "type": "shell",
             "command": "git add -A && git commit -m \"U-$(Get-Date -UFormat +'%y%m%d%H%M%S')\" && git push",
+            "problemMatcher": []
+        },
+        {
+            "label": "[GIT] (skip ci) Commit & Push",
+            "type": "shell",
+            "command": "git add -A && git commit -m \"['skip ci']' 'U-$(Get-Date -UFormat +'%y%m%d%H%M%S')\" && git push",
             "problemMatcher": []
         },
         {

@@ -66,22 +66,6 @@ class Issue extends Model
         return $this->belongsTo(User::class, 'author_id');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function closedBy()
-    {
-        return $this->belongsTo(User::class, 'closed_by');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function lockedBy()
-    {
-        return $this->belongsTo(User::class, 'locked_by');
-    }
-
     /*
     |---------------------------------------------------------------------------
     | General Functions
@@ -107,7 +91,8 @@ class Issue extends Model
     }
 
     /**
-     * Get the participants list of the specified issue.
+     * Get the participants list of the specified issue. The participants are the
+     * users who have commented on the issue.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment>
      */
@@ -121,7 +106,6 @@ class Issue extends Model
 
     /**
      * Determine if the user is a participant of the issue.
-     * https://github.com/syofyanzuhad/Laravel-Trik-Indonesia#menuliskan-query-where-menggunakan-localqueryscope
      */
     public function isParticipant(): bool
     {
@@ -140,7 +124,6 @@ class Issue extends Model
      * Determine if the issue is authored by the current authenticated user.
      *
      * Covered by unit test, but actually is not yet tested by PHPUnit.
-     * https://github.com/syofyanzuhad/Laravel-Trik-Indonesia#menuliskan-query-where-menggunakan-localqueryscope
      */
     public function isAuthor(): bool
     {
@@ -149,7 +132,6 @@ class Issue extends Model
 
     /**
      * Determine if the issue is closed.
-     * https://github.com/syofyanzuhad/Laravel-Trik-Indonesia#menuliskan-query-where-menggunakan-localqueryscope
      */
     public function isClosed(): bool
     {
@@ -158,7 +140,6 @@ class Issue extends Model
 
     /**
      * Determine if the issue is locked.
-     * https://github.com/syofyanzuhad/Laravel-Trik-Indonesia#menuliskan-query-where-menggunakan-localqueryscope
      */
     public function isLocked(): bool
     {

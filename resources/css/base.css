@@ -12,7 +12,8 @@ main {
 }
 
 .frontend, .backend, .auth {
-    @apply font-sans text-gray-900 antialiased bg-[#F9F9F9];
+    @apply bg-zinc-800;
+    @apply font-sans text-white antialiased bg-zinc-800;
 }
 
 

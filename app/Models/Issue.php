@@ -73,14 +73,6 @@ class Issue extends Model
     */
 
     /**
-     * Get the status of the issue.
-     */
-    public function status(): string
-    {
-        return $this->isClosed() ? 'Closed' : 'Open';
-    }
-
-    /**
      * Get the number of comments of the specified issue.
      */
     public function commentCount(): int

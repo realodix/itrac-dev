@@ -17,7 +17,8 @@
                 @else
                     <x-go-issue-opened-16 />
                 @endif
-                {{$issue->status()}}
+
+                @if ($issue->isClosed()) Closed @else Open @endif
             </span>
             <b>{{$issue->author->name}}</b>
             <span class="text-gray-500">

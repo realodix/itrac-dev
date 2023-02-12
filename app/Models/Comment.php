@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Enums\TimelineType;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Comment extends Model
 {
-    use HasFactory;
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -23,6 +23,8 @@ class Comment extends Model
     protected $fillable = [
         'author_id',
         'issue_id',
+        'type',
+        'event_type',
         'description',
     ];
 
@@ -55,11 +57,19 @@ class Comment extends Model
     */
 
     /**
-     * Determine if the comment was written by the current user.
+     * Determine if the type of the comment is a comment.
+     */
+    public function isComment(): bool
+    {
+        return $this->type === TimelineType::COMMENT->value;
+    }
+
+    /**
+     * Determine if the comment was written by the current authenticated user.
      */
     public function isAuthor(): bool
     {
-        return $this->author_id === auth()->user()->id;
+        return $this->author_id === auth()->id();
     }
 
     /**

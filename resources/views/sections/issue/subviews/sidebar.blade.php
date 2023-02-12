@@ -1,4 +1,4 @@
-<div class="participation discussion-sidebar-item">
+<div class="participation sidebar-item">
     <div class="mb-2">
         @php
             use Illuminate\Support\Str;
@@ -7,7 +7,7 @@
         {{$participants}} {{Str::plural('participant', $participants)}}
     </div>
     <div class="">
-        @foreach ($issue->participant()->get() as $participant)
+        @foreach ($issue->participants()->get() as $participant)
             <img src="{{ Avatar::create($participant->author->name)->toBase64() }}" class="inline-block w-7 h-7 mb-1" title="{{$participant->author->name}}"/>
         @endforeach
     </div>
@@ -15,7 +15,7 @@
 
 @auth
 @if ($issue->isAuthor() || auth()->user()->hasRole('admin'))
-<div class="participation discussion-sidebar-item text-sm">
+<div class="participation sidebar-item text-sm">
     <div class="flex flex-col">
         <div>
             @if ($issue->isLocked())

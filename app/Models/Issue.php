@@ -123,7 +123,7 @@ class Issue extends Model
     }
 
     /**
-     * Determine if the issue is closed.
+     * Determine if the status of the specified issue is closed.
      */
     public function isClosed(): bool
     {
@@ -131,7 +131,7 @@ class Issue extends Model
     }
 
     /**
-     * Determine if the issue is locked.
+     * Determine if the conversation of the specified issue is locked.
      */
     public function isLocked(): bool
     {

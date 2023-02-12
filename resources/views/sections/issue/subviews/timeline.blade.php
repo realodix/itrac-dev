@@ -63,8 +63,9 @@
             <x-go-unlock-16 class="w-6 h-6 text-green-500"/>
         </span>
         @endif
-        <p class="text-sm font-normal text-gray-500">
-            <b class="text-[#1F2937]">{!! $comment->author->name !!}</b>
+
+        <p class="text-sm font-normal color-muted">
+            <b class="color-white">{!! $comment->author->name !!}</b>
             {!! $comment->description !!}
             <a href="#event-{{crc32($comment->id)}}"
                 id="event-{{crc32($comment->id)}}"

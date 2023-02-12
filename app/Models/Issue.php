@@ -83,8 +83,8 @@ class Issue extends Model
     }
 
     /**
-     * Get the participants list of the specified issue. The participants are the
-     * users who have commented on the issue.
+     * Get the participants list of the issue. The participants are the users who
+     * have commented on the issue.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment>
      */
@@ -97,7 +97,7 @@ class Issue extends Model
     }
 
     /**
-     * Determine if the user is a participant of the specified issue.
+     * Determine if the user is a participant of the issue.
      */
     public function isParticipant(): bool
     {
@@ -105,7 +105,7 @@ class Issue extends Model
     }
 
     /**
-     * Count the number of participants of the specified issue.
+     * Count the number of participants of the issue.
      */
     public function participantCount(): int
     {
@@ -123,7 +123,7 @@ class Issue extends Model
     }
 
     /**
-     * Determine if the status of the specified issue is closed.
+     * Determine if the status of the issue is closed.
      */
     public function isClosed(): bool
     {
@@ -131,7 +131,7 @@ class Issue extends Model
     }
 
     /**
-     * Determine if the conversation of the specified issue is locked.
+     * Determine if the conversation of the issue is locked.
      */
     public function isLocked(): bool
     {

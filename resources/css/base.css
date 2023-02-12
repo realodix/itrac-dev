@@ -13,7 +13,7 @@ main {
 
 .frontend, .backend, .auth {
     @apply bg-zinc-800;
-    @apply font-sans text-white antialiased bg-zinc-800;
+    @apply font-sans text-gray-200 antialiased;
 }
 
 
@@ -42,4 +42,8 @@ main {
     overflow: visible;
     box-sizing: content-box;
     vertical-align: -0.125em;
+}
+
+.text-muted {
+    @apply text-zinc-400;
 }

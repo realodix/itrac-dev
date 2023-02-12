@@ -97,7 +97,7 @@ class Issue extends Model
     }
 
     /**
-     * Determine if the user is a participant of the issue.
+     * Determine if the user is a participant of the specified issue.
      */
     public function isParticipant(): bool
     {

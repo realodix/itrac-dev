@@ -13,7 +13,7 @@ main {
 
 .frontend, .backend, .auth {
     @apply bg-zinc-800;
-    @apply font-sans color-white antialiased;
+    @apply font-sans color-normal antialiased;
 }
 
 
@@ -21,7 +21,7 @@ main {
  * Components
  * -----------------------------------------------------------------------------
  */
-.color-white {
+.color-normal {
     @apply text-zinc-200;
 }
 

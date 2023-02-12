@@ -52,7 +52,7 @@
         </span>
         @elseif ($comment->event_type == \App\Enums\EventType::REOPENED->value)
         <span class="absolute flex items-center justify-center w-7 h-7 bg-green-600 rounded-full -left-4">
-            <x-go-issue-reopened-16 class="w-6 h-6 text-white"/>
+            <x-go-issue-reopened-16 class="w-6 h-6 text-white"/>white
         </span>
         @elseif ($comment->event_type == \App\Enums\EventType::LOCKED->value)
         <span class="absolute flex items-center justify-center w-7 h-7 bg-gray-800 rounded-full -left-4">
@@ -65,7 +65,7 @@
         @endif
 
         <p class="text-sm font-normal color-muted">
-            <b class="color-white">{!! $comment->author->name !!}</b>
+            <b class="color-normal">{!! $comment->author->name !!}</b>
             {!! $comment->description !!}
             <a href="#event-{{crc32($comment->id)}}"
                 id="event-{{crc32($comment->id)}}"

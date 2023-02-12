@@ -21,6 +21,10 @@ main {
  * Components
  * -----------------------------------------------------------------------------
  */
+ .text-muted {
+    @apply text-zinc-400;
+}
+
 .form-input {
     @apply block w-full;
     @apply border-stone-300 focus:ring-uh-indigo-400 focus:border-uh-indigo-400 rounded;
@@ -42,8 +46,4 @@ main {
     overflow: visible;
     box-sizing: content-box;
     vertical-align: -0.125em;
-}
-
-.text-muted {
-    @apply text-zinc-400;
 }

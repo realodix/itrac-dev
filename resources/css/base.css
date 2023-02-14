@@ -32,7 +32,7 @@ main {
 }
 
 .markdown {
-    @apply prose !max-w-fit;
+    @apply prose max-w-full;
 }
 
 .blade-icon {

@@ -22,7 +22,7 @@
                 @apply shadow;
 
                 &-header {
-                    @apply bg-stone-100 border-b border-stone-300;
+                    @apply bg-[#333333] border-b border-stone-300;
                     @apply px-4 py-2 rounded-t-md;
                     @apply flex;
 
@@ -42,6 +42,7 @@
 
                 &-body {
                     @apply px-4 py-2 rounded-b-md;
+                    @apply bg-[#444444];
                 }
             }
 

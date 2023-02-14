@@ -1,6 +1,7 @@
 const mix = require('laravel-mix');
 
 mix.postCss('resources/css/main.css', 'public/css', [
+    require('postcss-import'),
     require('tailwindcss/nesting'),
     require('tailwindcss'),
   ])

@@ -69,9 +69,9 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('user_hashId', function (string $routeKey) {
-            $id = app(HashidsService::class)->decode($routeKey);
+            $id = app(HashidsService::class)->decode($routeKey)[0] ?? null;
 
-            return resolve(User::class)->findOrFail($id);
+            return User::findOrFail($id);
         });
     }
 }

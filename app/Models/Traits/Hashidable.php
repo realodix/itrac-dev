@@ -2,15 +2,17 @@
 
 namespace App\Models\Traits;
 
-use Vinkla\Hashids\Facades\Hashids;
+use App\Services\HashidsService;
 
 trait Hashidable
 {
+    /**
+     * Get the value of the model's route key.
+     *
+     * @return string
+     */
     public function getRouteKey()
     {
-        /** @var \Vinkla\Hashids\Facades\Hashids */
-        $hashids = Hashids::connection(get_called_class());
-
-        return $hashids->encode($this->getKey());
+        return app(HashidsService::class)->encode($this->getKey());
     }
 }

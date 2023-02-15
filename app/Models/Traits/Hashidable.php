@@ -2,17 +2,19 @@
 
 namespace App\Models\Traits;
 
-use App\Services\HashidsService;
+use Hashids\Hashids;
 
 trait Hashidable
 {
     /**
-     * Get the value of the model's route key.
+     * Get the encoded value of the model's route key.
      *
      * @return string
      */
-    public function getRouteKey()
+    public function encodedId()
     {
-        return app(HashidsService::class)->encode($this->getKey());
+        $hashids = new Hashids('', 16);
+
+        return $hashids->encode($this->getKey());
     }
 }

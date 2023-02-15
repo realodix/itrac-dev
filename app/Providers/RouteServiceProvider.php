@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 use Vinkla\Hashids\Facades\Hashids;
+use App\Services\HashidsService;
 
 class RouteServiceProvider extends ServiceProvider
 {

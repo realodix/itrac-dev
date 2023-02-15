@@ -8,9 +8,9 @@ class HashidsService
 {
     public Hashids $hashids;
 
-    public function __construct(string $salt, int $minHashLength, string $alphabet)
+    public function __construct()
     {
-        $this->hashids = new Hashids($salt, $minHashLength, $alphabet);
+        $this->hashids = new Hashids(minHashLength: 6);
     }
 
     /**

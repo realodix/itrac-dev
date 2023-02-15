@@ -68,18 +68,10 @@ class RouteServiceProvider extends ServiceProvider
             return User::whereName($value)->firstOrFail();
         });
 
-        Route::bind('user_hashId', function (string $value) {
-            return $this->hashidsDecoder(User::class, $value);
+        Route::bind('user_hashId', function (string $routeKey) {
+            $id = app(HashidsService::class)->decode($routeKey);
+
+            return resolve(User::class)->findOrFail($id);
         });
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection
-     */
-    private function hashidsDecoder(string $model, string $routeKey)
-    {
-        $id = app(HashidsService::class)->decode($routeKey);
-
-        return resolve($model)->findOrFail($id);
     }
 }

@@ -13,7 +13,7 @@ trait Hashidable
      */
     public function encodedId()
     {
-        $hashids = new Hashids('', 16);
+        $hashids = new Hashids(env('APP_KEY'), 16);
 
         return $hashids->encode($this->getKey());
     }

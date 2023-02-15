@@ -2,18 +2,14 @@
 
 namespace App\Models\Traits;
 
-use Hashids\Hashids;
+use Vinkla\Hashids\Facades\Hashids;
 
 trait Hashidable
 {
-    /**
-     * Get the encoded value of the model's route key.
-     *
-     * @return string
-     */
-    public function encodedId()
+    public function getRouteKey()
     {
-        $hashids = new Hashids(env('APP_KEY'), 16);
+        /** @var \Vinkla\Hashids\Facades\Hashids */
+        $hashids = Hashids::connection(get_called_class());
 
         return $hashids->encode($this->getKey());
     }

@@ -6,7 +6,6 @@
     "keywords": ["laravel", "tracker", "issue-tracker"],
     "require": {
         "php": "^8.1",
-        "actb/blade-github-octicons": "^4.1",
         "blade-ui-kit/blade-icons": "^1.5",
         "doctrine/dbal": "^3.5",
         "elgigi/commonmark-emoji": "^2.0",

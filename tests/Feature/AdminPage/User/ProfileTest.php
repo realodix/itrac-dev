@@ -3,7 +3,7 @@
 namespace Tests\Feature\AdminPage\User;
 
 use App\Models\User;
-use App\Services\HashidsService;
+use Illuminate\Support\Facades\Crypt;
 use Tests\TestCase;
 
 class ProfileTest extends TestCase
@@ -15,7 +15,7 @@ class ProfileTest extends TestCase
 
     protected function postRoute($value)
     {
-        return route('user.update', app(HashidsService::class)->encode($value));
+        return route('user.update', Crypt::encryptString($value));
     }
 
     /**

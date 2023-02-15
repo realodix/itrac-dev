@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\AdminPage\User;
 
-use App\Services\HashidsService;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
@@ -15,7 +15,7 @@ class ChangePasswordTest extends TestCase
 
     protected function postRoute($value)
     {
-        return route('user.change-password.post', app(HashidsService::class)->encode($value));
+        return route('user.change-password.post', Crypt::encryptString($value));
     }
 
     /**

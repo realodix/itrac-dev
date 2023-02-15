@@ -2,7 +2,7 @@
 
 namespace App\Models\Traits;
 
-use Hashids\Hashids;
+use Illuminate\Support\Facades\Crypt;
 
 trait Hashidable
 {
@@ -11,10 +11,8 @@ trait Hashidable
      *
      * @return string
      */
-    public function encodedId()
+    public function getRouteKey()
     {
-        $hashids = new Hashids(env('APP_KEY'), 16);
-
-        return $hashids->encode($this->getKey());
+        return Crypt::encryptString($this->getKey());
     }
 }

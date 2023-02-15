@@ -10,7 +10,7 @@ class HashidsService
 
     public function __construct()
     {
-        $this->hashids = new Hashids(minHashLength: 6);
+        $this->hashids = new Hashids(minHashLength: 16);
     }
 
     /**

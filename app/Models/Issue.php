@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Enums\TimelineType;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Issue extends Model
 {
-    use HasFactory;
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -66,22 +66,6 @@ class Issue extends Model
         return $this->belongsTo(User::class, 'author_id');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function closedBy()
-    {
-        return $this->belongsTo(User::class, 'closed_by');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function lockedBy()
-    {
-        return $this->belongsTo(User::class, 'locked_by');
-    }
-
     /*
     |---------------------------------------------------------------------------
     | General Functions
@@ -89,30 +73,26 @@ class Issue extends Model
     */
 
     /**
-     * Get the status of the issue.
-     */
-    public function status(): string
-    {
-        return $this->isClosed() ? 'Closed' : 'Open';
-    }
-
-    /**
-     * Get the number of comments of the specified issue.
+     * Get the number of comments of the issue.
      */
     public function commentCount(): int
     {
-        return $this->comments()->count();
+        $type = TimelineType::COMMENT->value;
+
+        return $this->comments->where('type', $type)->count();
     }
 
     /**
-     * Get the participants list of the specified issue.
+     * Get the participants list of the issue. The participants are the users who
+     * have commented on the issue.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment>
      */
-    public function participant()
+    public function participants()
     {
         return $this->comments()
             ->select('author_id')
+            ->where('type', TimelineType::COMMENT->value)
             ->distinct();
     }
 
@@ -121,27 +101,29 @@ class Issue extends Model
      */
     public function isParticipant(): bool
     {
-        return $this->participant()->where('author_id', auth()->id())->exists();
+        return $this->participants()->where('author_id', auth()->id())->exists();
     }
 
     /**
-     * Count the number of participants.
+     * Count the number of participants of the issue.
      */
     public function participantCount(): int
     {
-        return $this->participant()->count('author_id');
+        return $this->participants()->count('author_id');
     }
 
     /**
-     * Determine if the issue is authored by the current user.
+     * Determine if the issue is authored by the current authenticated user.
+     *
+     * Covered by unit test, but actually is not yet tested by PHPUnit.
      */
     public function isAuthor(): bool
     {
-        return $this->author_id === auth()->user()->id;
+        return $this->author_id === auth()->id();
     }
 
     /**
-     * Determine if the issue is closed.
+     * Determine if the status of the issue is closed.
      */
     public function isClosed(): bool
     {
@@ -149,7 +131,7 @@ class Issue extends Model
     }
 
     /**
-     * Determine if the issue is locked.
+     * Determine if the conversation of the issue is locked.
      */
     public function isLocked(): bool
     {

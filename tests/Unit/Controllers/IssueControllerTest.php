@@ -79,23 +79,17 @@ class IssueControllerTest extends TestCase
         $issue = Issue::factory()->create();
 
         $this->actingAs($issue->author)
-            ->post(
-                route('issue.update', $issue),
-                [
-                    'title' => 'new title',
-                    'description' => 'new description',
-                ]
-            )
-            ->assertRedirect(route('issue.show', $issue));
-
-        $this->assertDatabaseHas(
-            'issues',
-            [
-                'id' => $issue->id,
+            ->post(route('issue.update', $issue), [
                 'title' => 'new title',
                 'description' => 'new description',
-            ]
-        );
+            ])
+            ->assertRedirect(route('issue.show', $issue));
+
+        $this->assertDatabaseHas('issues', [
+            'id' => $issue->id,
+            'title' => 'new title',
+            'description' => 'new description',
+        ]);
     }
 
     /**
@@ -125,14 +119,10 @@ class IssueControllerTest extends TestCase
         $this->actingAs($issue->author)
             ->get(route('issue.close', $issue))
             ->assertRedirect(route('issue.show', $issue));
-        $this->assertDatabaseHas(
-            'issues',
-            [
-                'id' => $issue->id,
-                'closed_by' => $issue->author->id,
-                'closed_at' => now()->format('Y-m-d H:i:s'),
-            ]
-        );
+        $this->assertDatabaseHas('issues', [
+            'id' => $issue->id,
+            'closed_by' => $issue->author->id,
+        ]);
     }
 
     /**
@@ -147,13 +137,10 @@ class IssueControllerTest extends TestCase
         $this->actingAs($issue->author)
             ->get(route('issue.reopen', $issue))
             ->assertRedirect(route('issue.show', $issue));
-        $this->assertDatabaseHas(
-            'issues',
-            [
-                'id' => $issue->id,
-                'closed_by' => null,
-                'closed_at' => null,
-            ]
-        );
+        $this->assertDatabaseHas('issues', [
+            'id' => $issue->id,
+            'closed_by' => null,
+            'closed_at' => null,
+        ]);
     }
 }

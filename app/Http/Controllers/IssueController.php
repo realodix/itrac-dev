@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\EventType;
+use App\Enums\TimelineType;
+use App\Models\Comment;
 use App\Models\Issue;
 use Illuminate\Http\Request;
 
@@ -34,6 +37,7 @@ class IssueController extends Controller
         $issue = Issue::create([
             'author_id'   => auth()->id(),
             'title'       => $request->issue_title,
+            'type'        => TimelineType::COMMENT->value,
             'description' => $request->issue_description,
         ]);
 
@@ -104,6 +108,14 @@ class IssueController extends Controller
             'closed_at' => now(),
         ]);
 
+        Comment::create([
+            'author_id'   => auth()->id(),
+            'issue_id'    => $issue->id,
+            'type'        => TimelineType::EVENT,
+            'event_type'  => EventType::CLOSED,
+            'description' => 'closed this issue',
+        ]);
+
         return redirect()->route('issue.show', $issue);
     }
 
@@ -119,6 +131,14 @@ class IssueController extends Controller
         $issue->update([
             'closed_by'   => null,
             'closed_date' => null,
+        ]);
+
+        Comment::create([
+            'author_id'   => auth()->id(),
+            'issue_id'    => $issue->id,
+            'type'        => TimelineType::EVENT,
+            'event_type'  => EventType::REOPENED,
+            'description' => 'reopened this issue',
         ]);
 
         return redirect()->route('issue.show', $issue);
@@ -138,6 +158,14 @@ class IssueController extends Controller
             'locked_at' => now(),
         ]);
 
+        Comment::create([
+            'author_id'   => auth()->id(),
+            'issue_id'    => $issue->id,
+            'type'        => TimelineType::EVENT,
+            'event_type'  => EventType::LOCKED,
+            'description' => 'locked and limited conversation to collaborators',
+        ]);
+
         return redirect()->route('issue.show', $issue);
     }
 
@@ -153,6 +181,14 @@ class IssueController extends Controller
         $issue->update([
             'locked_by' => null,
             'locked_at' => null,
+        ]);
+
+        Comment::create([
+            'author_id'   => auth()->id(),
+            'issue_id'    => $issue->id,
+            'type'        => TimelineType::EVENT,
+            'event_type'  => EventType::UNLOCKED,
+            'description' => 'unlocked this conversation',
         ]);
 
         return redirect()->route('issue.show', $issue);

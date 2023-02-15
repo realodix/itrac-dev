@@ -12,7 +12,6 @@
         "elgigi/commonmark-emoji": "^2.0",
         "filament/forms": "^2.16",
         "guzzlehttp/guzzle": "^7.5",
-        "hashids/hashids": "^5.0",
         "laravel/fortify": "^1.16",
         "laravel/framework": "^9.51",
         "laravel/sanctum": "^3.0",

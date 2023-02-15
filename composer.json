@@ -13,7 +13,7 @@
         "filament/forms": "^2.16",
         "guzzlehttp/guzzle": "^7.5",
         "laravel/fortify": "^1.16",
-        "laravel/framework": "^9.51",
+        "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.8",
         "laravolt/avatar": "^4.1",
@@ -33,7 +33,7 @@
         "nunomaduro/larastan": "^2.4",
         "phpunit/phpunit": "^9.6",
         "realodix/relax": "dev-main",
-        "spatie/laravel-ignition": "^1.6"
+        "spatie/laravel-ignition": "^2.0"
     },
     "suggest": {
         "doctrine/dbal": "Required to rename columns and drop SQLite columns.",

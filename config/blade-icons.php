@@ -30,7 +30,10 @@ return [
             |
             */
 
-            'path' => 'resources/svg',
+            'path' => [
+                'resources/svg',
+                'resources/svg/github-octicons',
+            ],
 
             //     /*
             //     |-----------------------------------------------------------------

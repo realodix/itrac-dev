@@ -83,8 +83,8 @@ final class IssueTable extends PowerGridComponent
     {
         return PowerGrid::eloquent()
             ->addColumn('ids', function (Issue $issue) {
-                $openIssueIcon = '<x-go-issue-opened-16 class="text-green-600" />';
-                $closedIssueIcon = '<x-go-issue-closed-16 class="text-violet-700" />';
+                $openIssueIcon = '<x-icon-issue-opened-16 class="text-green-600" />';
+                $closedIssueIcon = '<x-icon-issue-closed-16 class="text-violet-700" />';
 
                 $statusIcon = $issue->isClosed() ? $closedIssueIcon : $openIssueIcon;
 
@@ -100,7 +100,7 @@ final class IssueTable extends PowerGridComponent
             ->addColumn('comments', function (Issue $issue) {
                 $comment = $issue->commentCount();
 
-                return Blade::render('<x-go-comment-16 />').' '.$comment;
+                return Blade::render('<x-icon-comment-16 />').' '.$comment;
             });
     }
 

@@ -1,7 +1,6 @@
 <div class="box mb-8 -ml-6">
     <div class="box-header">
         <div class="box-header-meta">
-            <img src="{{ Avatar::create($issue->author->name)->toBase64() }}" class="box-header-meta-avatar"/>
             <div class="!ml-0">
                 <b>{{$issue->author->name}}</b>
                 <span class="text-sm text-gray-500">

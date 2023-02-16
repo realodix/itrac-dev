@@ -27,7 +27,7 @@
                     @apply flex;
 
                     &-meta {
-                        @apply flex-auto items-center space-x-4;
+                        @apply flex-auto space-x-4;
                     }
 
                     &-actions {

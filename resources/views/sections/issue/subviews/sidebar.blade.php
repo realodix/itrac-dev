@@ -1,15 +1,14 @@
 <div class="participation sidebar-item">
-    <div class="mb-2">
-        @php
-            use Illuminate\Support\Str;
-            $participants = $issue->participantCount();
-        @endphp
-        {{$participants}} {{Str::plural('participant', $participants)}}
+    @php
+        use Illuminate\Support\Str;
+        $participants = $issue->participantCount();
+        $comments = $issue->commentCount();
+    @endphp
+    <div>
+        {{$comments}} {{Str::plural('comment', $comments)}}
     </div>
-    <div class="">
-        @foreach ($issue->participants()->get() as $participant)
-            <img src="{{ Avatar::create($participant->author->name)->toBase64() }}" class="inline-block w-7 h-7 mb-1" title="{{$participant->author->name}}"/>
-        @endforeach
+    <div class="mb-2">
+        {{$participants}} {{Str::plural('participant', $participants)}}
     </div>
 </div>
 

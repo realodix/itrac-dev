@@ -138,7 +138,7 @@ class ChangePasswordTest extends TestCase
         );
     }
 
-    public function newPasswordFailProvider()
+    public static function newPasswordFailProvider()
     {
         return [
             ['', ''], // required

@@ -6,7 +6,6 @@
         <div class="box">
             <div class="box-header">
                 <div class="box-header-meta">
-                    <img src="{{ Avatar::create($comment->author->name)->toBase64() }}" class="box-header-meta-avatar"/>
                     <div class="!ml-0">
                         <b>{{$comment->author->name}}</b>
                         <span class="text-sm text-gray-500">

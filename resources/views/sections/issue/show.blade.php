@@ -21,10 +21,15 @@
                 @if ($issue->isClosed()) Closed @else Open @endif
             </span>
             <b>{{$issue->author->name}}</b>
+            @php
+                use Illuminate\Support\Str;
+                $participants = $issue->participantCount();
+            @endphp
+
             <span class="text-gray-500">
                 opened this issue <span title="{{$issue->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}">
                     {{$issue->created_at->diffForHumans()}}</span>
-                &middot; {{ $issue->commentCount(); }} comments</span>
+            </span>
         </div>
     </div>
 

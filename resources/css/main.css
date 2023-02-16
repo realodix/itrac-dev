@@ -13,7 +13,7 @@
         /* @apply flex; */
 
         .layout-main {
-            @apply col-span-9 pl-20;
+            @apply col-span-9 pl-8 pr-8;
             /* @apply md:w-8/12 justify-between; */
 
             .box {
@@ -28,11 +28,6 @@
 
                     &-meta {
                         @apply flex flex-auto items-center space-x-4;
-
-                        &-avatar {
-                            @apply w-10 h-10 p-1 rounded-full ring-2 ring-stone-300 shadow shadow-stone-300 bg-white;
-                            @apply absolute -left-20;
-                        }
                     }
 
                     &-actions {

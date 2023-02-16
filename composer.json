@@ -23,13 +23,13 @@
         "spatie/laravel-permission": "^5.9"
     },
     "require-dev": {
-        "brianium/paratest": "^6.8",
+        "brianium/paratest": "^7.0",
         "fakerphp/faker": "^1.20",
         "laravel/dusk": "^7.4",
         "mockery/mockery": "^1.5",
-        "nunomaduro/collision": "^6.3",
+        "nunomaduro/collision": "^7.0",
         "nunomaduro/larastan": "^2.4",
-        "phpunit/phpunit": "^9.6",
+        "phpunit/phpunit": "^10.0",
         "realodix/relax": "dev-main",
         "spatie/laravel-ignition": "^2.0"
     },
@@ -41,7 +41,6 @@
         "nyholm/psr7": "Required to use PSR-7 bridging features."
     },
     "minimum-stability": "stable",
-    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "App\\": "app/",

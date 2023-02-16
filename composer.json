@@ -15,7 +15,6 @@
         "laravel/framework": "^9.51",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.8",
-        "laravolt/avatar": "^4.1",
         "league/commonmark": "^2.3",
         "livewire/livewire": "^2.11",
         "power-components/livewire-powergrid": "^3.7",

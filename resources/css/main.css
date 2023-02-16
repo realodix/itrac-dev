@@ -42,8 +42,6 @@
 
             .timeline {
                 @apply relative border-l-2 border-gray-300 ml-6;
-
-
             }
         }
 

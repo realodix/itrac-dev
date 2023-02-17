@@ -1,4 +1,4 @@
-[![LaravelVersion](https://img.shields.io/badge/Laravel-9-f56857.svg?style=flat-square)](https://laravel.com/docs/9.x)
+[![LaravelVersion](https://img.shields.io/badge/Laravel-10-f56857.svg?style=flat-square)](https://laravel.com/docs/10.x)
 ![PHPVersion](https://img.shields.io/badge/PHP-8.1-777BB4.svg?style=flat-square)
 
 GIT Size: 1.11 MB <br>
@@ -9,13 +9,13 @@ GIT Size on disk: 1.25 MB
 This project was created, and is maintained by [Budi Hermawan](https://github.com/realodix), and is an open-source issue tracking system for software development projects.
 
 ### Features
-- **Written in [PHP](https://www.php.net/) and [Laravel 9](https://laravel.com/docs/9.x).**
+- **Written in [PHP](https://www.php.net/) and [Laravel 10](https://laravel.com/docs/10.x).**
 - **Modern and simple interface.**
 - **Made with :heart: &amp; :coffee:.**
 
 
 ## Requirements
-* All requirements by [Laravel](https://laravel.com/docs/installation#server-requirements) & dependencies - PHP >= 8.0, [Composer](https://getcomposer.org/) and such.
+* All requirements by [Laravel](https://laravel.com/docs/installation#server-requirements) & dependencies - PHP >= 8.1, [Composer](https://getcomposer.org/) and such.
 
 
 ## Quick Start

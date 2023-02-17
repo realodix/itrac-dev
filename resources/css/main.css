@@ -19,7 +19,7 @@
             .box {
                 @apply mt-4 rounded-t-md rounded-b-md;
                 @apply bg-white border border-stone-300;
-                @apply shadow;
+                @apply shadow-sm;
 
                 &-header {
                     @apply bg-[#333333] border-b border-stone-300;

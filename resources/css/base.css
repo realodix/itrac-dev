@@ -41,9 +41,20 @@ main {
 }
 
 .common-card-style {
-    @apply rounded-t-md rounded-b-md;
-    @apply bg-white border border-stone-300;
-    @apply shadow;
+    @apply sm:rounded-md;
+    @apply border-t sm:border sm:border-stone-300;
+    @apply sm:shadow-sm;
+
+    &-body {
+        @apply px-4 py-5 sm:p-6;
+        @apply bg-white border-b-stone-300 rounded-t-md;
+    }
+
+    &-footer {
+        @apply flex items-center justify-end px-4 py-3 sm:px-6;
+        @apply sm:bg-stone-100 rounded-b-md;
+        @apply text-right border-t;
+    }
 }
 
 .markdown {

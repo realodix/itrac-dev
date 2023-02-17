@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -54,17 +55,17 @@ class User extends Authenticatable
     */
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * Get the issues for the user.
      */
-    public function issues()
+    public function issues(): HasMany
     {
         return $this->hasMany(Issue::class, 'author_id');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * Get the comments for the user.
      */
-    public function comments()
+    public function comments(): HasMany
     {
         return $this->hasMany(Comment::class, 'author_id');
     }
@@ -75,6 +76,9 @@ class User extends Authenticatable
     |---------------------------------------------------------------------------
     */
 
+    /**
+     * Get the total number of users.
+     */
     public function totalUsers(): int
     {
         return self::count();

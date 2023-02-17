@@ -29,7 +29,7 @@ class CommentController extends Controller
             'description' => $request->comment_description,
         ]);
 
-        return redirect()->route('issue.show.comment', [
+        return to_route('issue.show.comment', [
             $comment->issue->id,
             $comment->id,
         ]);
@@ -38,7 +38,7 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified comment.
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\View
      */
     public function edit(Comment $comment)
     {
@@ -60,7 +60,7 @@ class CommentController extends Controller
             'description' => $request->comment_description,
         ]);
 
-        return redirect()->route('issue.show.comment', [
+        return to_route('issue.show.comment', [
             $comment->issue->id,
             $comment->id,
         ]);
@@ -77,6 +77,6 @@ class CommentController extends Controller
 
         Comment::destroy($comment->id);
 
-        return redirect()->route('issue.show', $comment->issue->id);
+        return to_route('issue.show', $comment->issue->id);
     }
 }

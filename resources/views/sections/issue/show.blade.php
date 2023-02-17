@@ -13,18 +13,23 @@
                 'bg-violet-700 border-violet-700' => $issue->isClosed(),
             ])>
                 @if ($issue->isClosed())
-                    <x-go-issue-closed-16 />
+                    <x-icon-issue-closed-16 />
                 @else
-                    <x-go-issue-opened-16 />
+                    <x-icon-issue-opened-16 />
                 @endif
 
                 @if ($issue->isClosed()) Closed @else Open @endif
             </span>
             <b>{{$issue->author->name}}</b>
-            <span class="color-muted">
+            @php
+                use Illuminate\Support\Str;
+                $participants = $issue->participantCount();
+            @endphp
+
+            <span class="text-gray-500">
                 opened this issue <span title="{{$issue->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}">
                     {{$issue->created_at->diffForHumans()}}</span>
-                &middot; {{ $issue->commentCount(); }} comments</span>
+            </span>
         </div>
     </div>
 

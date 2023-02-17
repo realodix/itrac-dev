@@ -38,7 +38,7 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified comment.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return \Illuminate\View\View
      */
     public function edit(Comment $comment)
     {

@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\AdminPage\User;
 
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
-use Vinkla\Hashids\Facades\Hashids;
 
 class ChangePasswordTest extends TestCase
 {
@@ -15,9 +15,7 @@ class ChangePasswordTest extends TestCase
 
     protected function postRoute($value)
     {
-        $hashids = Hashids::connection(\App\Models\User::class);
-
-        return route('user.change-password.post', $hashids->encode($value));
+        return route('user.change-password.post', Crypt::encryptString($value));
     }
 
     /**
@@ -47,7 +45,7 @@ class ChangePasswordTest extends TestCase
         $response = $this->actingAs($user)
             ->from($this->getRoute($user->name))
             ->post($this->postRoute($user->id), [
-                'current-password'          => $this->adminPass,
+                'current-password'          => self::$adminPass,
                 'new-password'              => 'new-awesome-password',
                 'new-password_confirmation' => 'new-awesome-password',
             ]);
@@ -72,7 +70,7 @@ class ChangePasswordTest extends TestCase
         $response = $this->actingAs($this->adminUser())
             ->from($this->getRoute($user->name))
             ->post($this->postRoute($user->id), [
-                'current-password'          => $this->adminPass,
+                'current-password'          => self::$adminPass,
                 'new-password'              => 'new-awesome-password',
                 'new-password_confirmation' => 'new-awesome-password',
             ]);
@@ -126,7 +124,7 @@ class ChangePasswordTest extends TestCase
         $response = $this->actingAs($user)
             ->from($this->getRoute($user->name))
             ->post($this->postRoute($user->id), [
-                'current-password'          => $this->adminPass,
+                'current-password'          => self::$adminPass,
                 'new-password'              => $data1,
                 'new-password_confirmation' => $data2,
             ]);
@@ -140,11 +138,11 @@ class ChangePasswordTest extends TestCase
         );
     }
 
-    public function newPasswordFailProvider()
+    public static function newPasswordFailProvider()
     {
         return [
             ['', ''], // required
-            [$this->adminPass, $this->adminPass], // different
+            [self::$adminPass, self::$adminPass], // different
             [null, null], // string
             ['new-password', 'new-pass-word'], // confirmed
 

@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import Alpine from 'alpinejs';
 import axios from 'axios';
 import EasyMDE from 'easymde';

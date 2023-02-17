@@ -15,7 +15,7 @@ class IssueController extends Controller
      *
      * User must be logged in to create an issue.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return \Illuminate\View\View
      */
     public function create()
     {
@@ -47,7 +47,7 @@ class IssueController extends Controller
     /**
      * Display the specified resource.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return \Illuminate\View\View
      */
     public function show(Issue $issue)
     {
@@ -57,7 +57,7 @@ class IssueController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return \Illuminate\View\View
      */
     public function edit(Issue $issue)
     {

@@ -9,6 +9,8 @@ class Helper
      * 1B+ etc.
      *
      * Based on https://gist.github.com/RadGH/84edff0cc81e6326029c
+     *
+     * @param int $number The number to convert.
      */
     public static function compactNumber(int $number): int|string
     {
@@ -56,6 +58,9 @@ class Helper
      * Alternative to make number_format() not to round numbers up.
      *
      * Based on https://stackoverflow.com/q/3833137
+     *
+     * @param float $number    The number to format.
+     * @param int   $precision The number of decimal points to round to.
      */
     public static function numberFormatPrecision(float $number, int $precision = 2): float
     {

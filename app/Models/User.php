@@ -76,6 +76,9 @@ class User extends Authenticatable
     |---------------------------------------------------------------------------
     */
 
+    /**
+     * Get the total number of users.
+     */
     public function totalUsers(): int
     {
         return self::count();

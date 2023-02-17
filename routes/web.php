@@ -7,6 +7,17 @@ use App\Http\Controllers\Dashboard\User\UserController;
 use App\Http\Controllers\IssueController;
 use Illuminate\Support\Facades\Route;
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
 Route::view('/', 'sections.issue.index')->name('home');
 Route::get('/issues/create', [IssueController::class, 'create'])->name('issue.create')->middleware('auth');
 Route::post('/issues/create', [IssueController::class, 'store'])->name('issue.store');

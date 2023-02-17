@@ -3,19 +3,18 @@
 namespace Tests\Feature\AdminPage\User;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Crypt;
 use Tests\TestCase;
 
 class ProfileTest extends TestCase
 {
-    protected function getRoute($value)
+    protected function getRoute($value): string
     {
         return route('user.edit', $value);
     }
 
-    protected function postRoute($value)
+    protected function postRoute($value): string
     {
-        return route('user.update', Crypt::encryptString($value));
+        return $this->secureRoute('user.update', $value);
     }
 
     /**

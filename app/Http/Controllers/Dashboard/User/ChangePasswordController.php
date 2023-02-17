@@ -40,7 +40,6 @@ class ChangePasswordController extends Controller
         $user->password = Hash::make($request['new-password']);
         $user->save();
 
-        return redirect()->back()
-            ->withFlashSuccess(__('Password changed successfully !'));
+        return back()->withFlashSuccess(__('Password changed successfully !'));
     }
 }

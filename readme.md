@@ -33,8 +33,6 @@ This project was created, and is maintained by [Budi Hermawan](https://github.co
 
 5. Run `php artisan serve`.
 
-   After installed, you can access `http://localhost:8000` in your browser.
-
 6. Login
 
    | Email               | Username | Password | Access       |

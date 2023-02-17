@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\TimelineType;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property User           $author
@@ -35,17 +36,17 @@ class Comment extends Model
     */
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * Get the author that owns the comment.
      */
-    public function author()
+    public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'author_id');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * Get the issue that owns the issue.
      */
-    public function issue()
+    public function issue(): BelongsTo
     {
         return $this->belongsTo(Issue::class);
     }

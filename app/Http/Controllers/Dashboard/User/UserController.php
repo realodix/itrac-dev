@@ -57,7 +57,6 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->save();
 
-        return redirect()->back()
-            ->withFlashSuccess(__('Profile updated.'));
+        return back()->withFlashSuccess(__('Profile updated.'));
     }
 }

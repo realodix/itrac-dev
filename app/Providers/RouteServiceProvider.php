@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
@@ -64,7 +63,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('user_hashId', function (string $routeKey) {
-            $id = Crypt::decryptString($routeKey);
+            $id = decrypt($routeKey);
 
             return User::findOrFail($id);
         });

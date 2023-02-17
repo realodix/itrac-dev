@@ -44,7 +44,7 @@ class Comment extends Model
     }
 
     /**
-     * Get the issue that owns the issue.
+     * Get the issue that owns the comment.
      */
     public function issue(): BelongsTo
     {

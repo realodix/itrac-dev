@@ -76,8 +76,10 @@ class Issue extends Model
 
     /**
      * Get the number of comments of the issue.
+     *
+     * @return int
      */
-    public function commentCount(): int
+    public function commentCount()
     {
         $type = TimelineType::COMMENT->value;
 

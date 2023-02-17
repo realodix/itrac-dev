@@ -15,7 +15,7 @@ class DashboardController extends Controller
     /**
      * Show all user short URLs.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return \Illuminate\View\View
      */
     public function view()
     {

@@ -41,7 +41,7 @@ class IssueController extends Controller
             'description' => $request->issue_description,
         ]);
 
-        return redirect()->route('issue.show', $issue);
+        return to_route('issue.show', $issue);
     }
 
     /**
@@ -77,7 +77,7 @@ class IssueController extends Controller
 
         $issue->update($request->all());
 
-        return redirect()->route('issue.show', $issue);
+        return to_route('issue.show', $issue);
     }
 
     /**
@@ -91,7 +91,7 @@ class IssueController extends Controller
 
         Issue::destroy($issue->id);
 
-        return redirect()->route('home');
+        return to_route('home');
     }
 
     /**
@@ -116,7 +116,7 @@ class IssueController extends Controller
             'description' => 'closed this issue',
         ]);
 
-        return redirect()->route('issue.show', $issue);
+        return to_route('issue.show', $issue);
     }
 
     /**
@@ -141,7 +141,7 @@ class IssueController extends Controller
             'description' => 'reopened this issue',
         ]);
 
-        return redirect()->route('issue.show', $issue);
+        return to_route('issue.show', $issue);
     }
 
     /**
@@ -166,7 +166,7 @@ class IssueController extends Controller
             'description' => 'locked and limited conversation to collaborators',
         ]);
 
-        return redirect()->route('issue.show', $issue);
+        return to_route('issue.show', $issue);
     }
 
     /**
@@ -191,6 +191,6 @@ class IssueController extends Controller
             'description' => 'unlocked this conversation',
         ]);
 
-        return redirect()->route('issue.show', $issue);
+        return to_route('issue.show', $issue);
     }
 }

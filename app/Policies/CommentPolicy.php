@@ -12,10 +12,8 @@ class CommentPolicy
 
     /**
      * Determine whether the user can update the model.
-     *
-     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Comment $comment)
+    public function update(User $user, Comment $comment): bool
     {
         return $user->id === $comment->author_id // Comment author
             || $user->id === $comment->issue->author_id // Issue author
@@ -24,10 +22,8 @@ class CommentPolicy
 
     /**
      * Determine whether the user can permanently delete the model.
-     *
-     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Comment $comment)
+    public function forceDelete(User $user, Comment $comment): bool
     {
         return $user->id === $comment->author_id // Comment author
             || $user->id === $comment->issue->author_id // Issue author

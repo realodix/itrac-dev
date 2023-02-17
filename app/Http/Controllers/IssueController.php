@@ -17,7 +17,7 @@ class IssueController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create(): \Illuminate\View\View
+    public function create()
     {
         return view('sections.issue.create');
     }

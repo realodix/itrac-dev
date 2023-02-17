@@ -8,7 +8,7 @@
 <div class="flex flex-col min-h-screen sm:justify-center items-center pt-6 sm:pt-0">
     <div class="text-uh-blue font-bold text-4xl sm:text-6xl">{{config('app.name')}}</div>
 
-    <div class="common-card-style w-full sm:max-w-md mt-6 px-12 py-8 overflow-hidden">
+    <div class="common-card-style bg-white w-full sm:max-w-md mt-6 px-12 py-8 overflow-hidden">
         <form method="post" action="{{ route('register') }}" aria-label="{{__('Register')}}">
         @csrf
             <label class="text-slate-700">{{__('Username')}}</label>

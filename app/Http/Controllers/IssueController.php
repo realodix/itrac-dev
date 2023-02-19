@@ -154,7 +154,7 @@ class IssueController extends Controller
         $this->authorize('lock', $issue);
 
         $issue->update([
-            'locked_by' => auth()->id(),
+            'is_locked' => true,
         ]);
 
         Comment::create([
@@ -178,7 +178,7 @@ class IssueController extends Controller
         $this->authorize('unlock', $issue);
 
         $issue->update([
-            'locked_by' => null,
+            'is_locked' => false,
         ]);
 
         Comment::create([

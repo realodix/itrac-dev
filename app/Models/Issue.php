@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\EventType;
 use App\Enums\TimelineType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property Comment        $comments
  * @property int            $closed_by
  * @property \Carbon\Carbon $closed_at
- * @property int            $locked_by
+ * @property bool           $is_locked
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
@@ -32,7 +33,7 @@ class Issue extends Model
         'description',
         'closed_by',
         'closed_at',
-        'locked_by',
+        'is_locked',
     ];
 
     /**
@@ -42,6 +43,16 @@ class Issue extends Model
      */
     protected $casts = [
         'closed_at' => 'datetime',
+        'is_locked' => 'boolean',
+    ];
+
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'is_locked' => false,
     ];
 
     /*
@@ -71,6 +82,18 @@ class Issue extends Model
     | General Functions
     |---------------------------------------------------------------------------
     */
+
+    /**
+     * Responsible user locks conversation in an issue
+     */
+    public function lockedBy(): string
+    {
+        return $this->comments()
+            ->where('type', TimelineType::EVENT->value)
+            ->where('event_type', EventType::LOCKED->value)
+            ->latest()->first()
+            ->author->name;
+    }
 
     /**
      * Get the number of comments of the issue.
@@ -137,6 +160,6 @@ class Issue extends Model
      */
     public function isLocked(): bool
     {
-        return $this->locked_by !== null;
+        return $this->is_locked === true;
     }
 }

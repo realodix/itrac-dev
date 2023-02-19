@@ -135,13 +135,13 @@ class IssueTest extends TestCase
     public function isLocked()
     {
         $issue = Issue::factory(
-            ['locked_by' => $this->adminUser()->id]
+            ['is_locked' => true]
         )->create();
 
         $this->assertTrue($issue->isLocked());
 
         $issue = Issue::factory(
-            ['locked_by' => null]
+            ['is_locked' => false]
         )->create();
 
         $this->assertFalse($issue->isLocked());

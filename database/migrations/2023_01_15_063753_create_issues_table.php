@@ -23,7 +23,6 @@ return new class extends Migration
             $table->dateTime('closed_at')->nullable();
             $table->foreignId('locked_by')->nullable()
                 ->constrained('users');
-            $table->dateTime('locked_at')->nullable();
             $table->timestamps();
         });
     }

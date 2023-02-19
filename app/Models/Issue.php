@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int            $closed_by
  * @property \Carbon\Carbon $closed_at
  * @property int            $locked_by
- * @property \Carbon\Carbon $locked_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
@@ -34,7 +33,6 @@ class Issue extends Model
         'closed_by',
         'closed_at',
         'locked_by',
-        'locked_at',
     ];
 
     /**
@@ -44,7 +42,6 @@ class Issue extends Model
      */
     protected $casts = [
         'closed_at' => 'datetime',
-        'locked_at' => 'datetime',
     ];
 
     /*

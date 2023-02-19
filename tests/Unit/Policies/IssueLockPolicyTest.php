@@ -162,7 +162,6 @@ class IssueLockPolicyTest extends TestCase
     {
         $issue = Issue::factory()->create([
             'locked_by' => $this->adminUser()->id,
-            'locked_at' => now(),
         ]);
 
         $response = $this->actingAs($issue->author)
@@ -184,7 +183,6 @@ class IssueLockPolicyTest extends TestCase
         $user = User::factory()->create();
         $issue = Issue::factory()->create([
             'locked_by' => $user->id,
-            'locked_at' => now(),
         ]);
 
         $response = $this->actingAs($this->adminUser())
@@ -208,7 +206,6 @@ class IssueLockPolicyTest extends TestCase
     {
         $issue = Issue::factory()->create([
             'locked_by' => $this->adminUser()->id,
-            'locked_at' => now(),
         ]);
         $comment = Comment::factory()->create([
             'issue_id' => $issue->id,
@@ -237,7 +234,6 @@ class IssueLockPolicyTest extends TestCase
         $user = User::factory()->create();
         $issue = Issue::factory()->create([
             'locked_by' => $user->id,
-            'locked_at' => now(),
         ]);
 
         $response = $this->actingAs(User::factory()->create())

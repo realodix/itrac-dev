@@ -155,7 +155,6 @@ class IssueController extends Controller
 
         $issue->update([
             'locked_by' => auth()->id(),
-            'locked_at' => now(),
         ]);
 
         Comment::create([
@@ -180,7 +179,6 @@ class IssueController extends Controller
 
         $issue->update([
             'locked_by' => null,
-            'locked_at' => null,
         ]);
 
         Comment::create([

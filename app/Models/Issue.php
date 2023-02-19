@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Issue extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+    use \Venturecraft\Revisionable\RevisionableTrait;
 
     /**
      * The attributes that are mass assignable.

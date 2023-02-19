@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Comment extends Model
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+    use \Venturecraft\Revisionable\RevisionableTrait;
 
     /**
      * The attributes that are mass assignable.

@@ -11,8 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * @property User           $author
  * @property Comment        $comments
- * @property int            $closed_by
- * @property \Carbon\Carbon $closed_at
+ * @property bool           $is_closed
  * @property bool           $is_locked
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -31,8 +30,7 @@ class Issue extends Model
         'author_id',
         'title',
         'description',
-        'closed_by',
-        'closed_at',
+        'is_closed',
         'is_locked',
     ];
 
@@ -43,6 +41,7 @@ class Issue extends Model
      */
     protected $casts = [
         'closed_at' => 'datetime',
+        'is_closed' => 'boolean',
         'is_locked' => 'boolean',
     ];
 
@@ -52,6 +51,7 @@ class Issue extends Model
      * @var array
      */
     protected $attributes = [
+        'is_closed' => false,
         'is_locked' => false,
     ];
 
@@ -152,7 +152,7 @@ class Issue extends Model
      */
     public function isClosed(): bool
     {
-        return $this->closed_by !== null;
+        return $this->is_closed === true;
     }
 
     /**

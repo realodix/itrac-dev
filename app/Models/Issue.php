@@ -7,6 +7,7 @@ use App\Enums\TimelineType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use OwenIt\Auditing\Contracts\Auditable;
 
 /**
  * @property User           $author
@@ -16,10 +17,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
-class Issue extends Model
+class Issue extends Model implements Auditable
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
-    use \Venturecraft\Revisionable\RevisionableTrait;
+    use \OwenIt\Auditing\Auditable;
 
     /**
      * The attributes that are mass assignable.

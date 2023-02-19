@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\TimelineType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use OwenIt\Auditing\Contracts\Auditable;
 
 /**
  * @property User           $author
@@ -12,10 +13,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
-class Comment extends Model
+class Comment extends Model implements Auditable
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
-    use \Venturecraft\Revisionable\RevisionableTrait;
+    use \OwenIt\Auditing\Auditable;
 
     /**
      * The attributes that are mass assignable.

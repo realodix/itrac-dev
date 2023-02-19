@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.8",
         "league/commonmark": "^2.3",
         "livewire/livewire": "^2.11",
+        "owen-it/laravel-auditing": "^13.1",
         "power-components/livewire-powergrid": "^3.7",
         "sofa/revisionable": "^5.7",
         "spatie/commonmark-highlighter": "^3.0",

@@ -12,18 +12,6 @@
                 </span>
             </div>
         </div>
-
-        @auth
-        @if ($issue->isAuthor() || auth()->user()->hasRole('admin'))
-            <div class="box-header-actions">
-                <x-comment-action>
-                    <x-comment-action-item>
-                        <a href="{{route('issue.edit', $issue)}}">Edit</a>
-                    </x-comment-action-item>
-                </x-comment-action>
-            </div>
-        @endif
-        @endauth
     </div>
 
     <x-markdown class="box-body markdown">{!! $issue->description !!}</x-markdown>

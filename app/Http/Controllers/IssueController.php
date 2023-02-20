@@ -75,7 +75,10 @@ class IssueController extends Controller
     {
         $this->authorize('update', $issue);
 
-        $issue->update($request->all());
+        $issue->update([
+            'title'       => $request->title,
+            'description' => $request->description,
+        ]);
 
         return to_route('issue.show', $issue);
     }

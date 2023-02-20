@@ -55,6 +55,18 @@ class IssueController extends Controller
     }
 
     /**
+     * Show the form for editing the title of issue.
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function editTitle(Issue $issue)
+    {
+        $this->authorize('update', $issue);
+
+        return view('sections.issue.edit', compact('issue'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @return \Illuminate\Contracts\View\View

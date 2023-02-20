@@ -25,7 +25,7 @@ return [
     */
 
     'user'      => [
-        'morph_prefix' => 'user',
+        'morph_prefix' => 'author',
         'guards'       => [
             'web',
             'api',
@@ -42,9 +42,9 @@ return [
     |
     */
     'resolvers' => [
-        'ip_address' => OwenIt\Auditing\Resolvers\IpAddressResolver::class,
-        'user_agent' => OwenIt\Auditing\Resolvers\UserAgentResolver::class,
-        'url'        => OwenIt\Auditing\Resolvers\UrlResolver::class,
+        // 'ip_address' => OwenIt\Auditing\Resolvers\IpAddressResolver::class,
+        // 'user_agent' => OwenIt\Auditing\Resolvers\UserAgentResolver::class,
+        // 'url'        => OwenIt\Auditing\Resolvers\UrlResolver::class,
     ],
 
     /*
@@ -84,10 +84,7 @@ return [
     |
     */
 
-    'exclude' => [
-        'ip_address',
-        'user_agent',
-    ],
+    'exclude' => [],
 
     /*
     |--------------------------------------------------------------------------

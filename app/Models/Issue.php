@@ -85,6 +85,23 @@ class Issue extends Model implements Auditable
     */
 
     /**
+     * If the is_locked column is modified, pass the is_locked tag
+     * If the is_closed column is modified, pass the is_closed tag
+     */
+    public function generateTags(): array
+    {
+        $tags = [];
+
+        if ($this->isDirty('is_closed')) {
+            $tags[] = 'is_closed';
+        } elseif ($this->isDirty('is_locked')) {
+            $tags[] = 'is_locked';
+        }
+
+        return $tags;
+    }
+
+    /**
      * Responsible user locks conversation in an issue
      */
     public function lockedBy(): string

@@ -75,7 +75,17 @@ class IssueController extends Controller
     {
         $this->authorize('update', $issue);
 
-        $issue->update($request->all());
+        if ($request->title !== $issue->title && $request->description === $issue->description) {
+            $issue->update([
+                'title' => $request->title,
+            ]);
+        } elseif ($request->title === $issue->title && $request->description !== $issue->description) {
+            $issue->update([
+                'description' => $request->description,
+            ]);
+        } else {
+            $issue->update($request->all());
+        }
 
         return to_route('issue.show', $issue);
     }

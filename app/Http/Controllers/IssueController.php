@@ -11,9 +11,7 @@ use Illuminate\Http\Request;
 class IssueController extends Controller
 {
     /**
-     * Show the form for creating a new resource.
-     *
-     * User must be logged in to create an issue.
+     * Show the form for creating a new issue.
      *
      * @return \Illuminate\Contracts\View\View
      */
@@ -23,7 +21,7 @@ class IssueController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created issue in storage.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -45,7 +43,7 @@ class IssueController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified issue.
      *
      * @return \Illuminate\Contracts\View\View
      */
@@ -55,7 +53,7 @@ class IssueController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified issue.
      *
      * @return \Illuminate\Contracts\View\View
      */
@@ -67,7 +65,7 @@ class IssueController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified issue in storage.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -84,7 +82,7 @@ class IssueController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified issue from storage.
      *
      * @return \Illuminate\Http\RedirectResponse
      */

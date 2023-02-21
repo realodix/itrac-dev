@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\HistoryEvent;
+use App\Enums\HistoryTag;
 use App\Enums\TimelineType;
 use App\Models\Comment;
 use App\Models\Issue;

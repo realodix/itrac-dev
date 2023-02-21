@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\EventType;
+
+use App\Enums\HistoryEvent;
 use App\Enums\HistoryTag;
 use App\Enums\TimelineType;
 use App\Models\Comment;
@@ -73,6 +76,21 @@ class IssueController extends Controller
     {
         $this->authorize('update', $issue);
 
+        if ($issue->title !== $request->title) {
+            IssueHistory::create([
+                'author_id'  => auth()->id(),
+                'event'      => HistoryEvent::UPDATED,
+                'issue_id'   => $issue->id,
+                'old_values' => [
+                    'title' => $issue->getOriginal('title'),
+                ],
+                'new_values' => [
+                    'title' => $request->title,
+                ],
+                'tag'       => HistoryTag::ISSUE_TITLE,
+            ]);
+        }
+
         $issue->update([
             'title'       => $request->title,
             'description' => $request->description,
@@ -113,8 +131,21 @@ class IssueController extends Controller
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
             'type'        => TimelineType::EVENT,
-            'event_type'  => HistoryTag::CLOSED,
+            'event_type'  => EventType::CLOSED,
             'description' => 'closed this issue',
+        ]);
+
+        $history = IssueHistory::where('issue_id', $issue->id)
+            ->where('tag', HistoryTag::ISSUE_STATUS)
+            ->latest()
+            ->first();
+        IssueHistory::create([
+            'author_id'  => auth()->id(),
+            'event'      => HistoryEvent::UPDATED,
+            'issue_id'   => $issue->id,
+            'old_values' => $history ? $history->new_values : [],
+            'new_values' => ['closed' => true],
+            'tag'        => HistoryTag::ISSUE_STATUS,
         ]);
 
         return to_route('issue.show', $issue);
@@ -138,8 +169,21 @@ class IssueController extends Controller
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
             'type'        => TimelineType::EVENT,
-            'event_type'  => HistoryTag::REOPENED,
+            'event_type'  => EventType::REOPENED,
             'description' => 'reopened this issue',
+        ]);
+
+        $history = IssueHistory::where('issue_id', $issue->id)
+            ->where('tag', HistoryTag::ISSUE_STATUS)
+            ->latest()
+            ->first();
+        IssueHistory::create([
+            'author_id'  => auth()->id(),
+            'event'      => HistoryEvent::UPDATED,
+            'old_values' => $history ? $history->new_values : [],
+            'issue_id'   => $issue->id,
+            'new_values' => ['closed' => false],
+            'tag'        => HistoryTag::ISSUE_STATUS,
         ]);
 
         return to_route('issue.show', $issue);
@@ -163,8 +207,21 @@ class IssueController extends Controller
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
             'type'        => TimelineType::EVENT,
-            'event_type'  => HistoryTag::LOCKED,
+            'event_type'  => EventType::LOCKED,
             'description' => 'locked and limited conversation to collaborators',
+        ]);
+
+        $history = IssueHistory::where('issue_id', $issue->id)
+            ->where('tag', HistoryTag::ISSUE_STATUS)
+            ->latest()
+            ->first();
+        IssueHistory::create([
+            'author_id'  => auth()->id(),
+            'event'      => HistoryEvent::UPDATED,
+            'issue_id'   => $issue->id,
+            'old_values' => $history ? $history->new_values : [],
+            'new_values' => ['locked' => true],
+            'tag'        => HistoryTag::COMMENT_STATUS,
         ]);
 
         return to_route('issue.show', $issue);
@@ -188,8 +245,21 @@ class IssueController extends Controller
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
             'type'        => TimelineType::EVENT,
-            'event_type'  => HistoryTag::UNLOCKED,
+            'event_type'  => EventType::UNLOCKED,
             'description' => 'unlocked this conversation',
+        ]);
+
+        $history = IssueHistory::where('issue_id', $issue->id)
+            ->where('tag', HistoryTag::COMMENT_STATUS)
+            ->latest()
+            ->first();
+        IssueHistory::create([
+            'author_id'  => auth()->id(),
+            'event'      => HistoryEvent::UPDATED,
+            'issue_id'   => $issue->id,
+            'old_values' => $history ? $history->new_values : [],
+            'new_values' => ['locked' => false],
+            'tag'        => HistoryTag::COMMENT_STATUS,
         ]);
 
         return to_route('issue.show', $issue);

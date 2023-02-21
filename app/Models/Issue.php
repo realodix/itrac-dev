@@ -61,6 +61,14 @@ class Issue extends Model
     }
 
     /**
+     * Get the histories for the issue.
+     */
+    public function histories(): HasMany
+    {
+        return $this->hasMany(IssueHistory::class);
+    }
+
+    /**
      * Get the author that owns the issue.
      */
     public function author(): BelongsTo

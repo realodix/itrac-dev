@@ -11,16 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('history', function (Blueprint $table) {
+        Schema::create('issue_histories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('author_id')
                 ->constrained('users')
                 ->cascadeOnDelete();
             $table->string('event');
-            $table->morphs('auditable');
+            $table->foreignId('issue_id')
+                ->constrained()
+                ->cascadeOnDelete();
             $table->text('old_values')->nullable();
             $table->text('new_values')->nullable();
-            $table->string('tags')->nullable();
+            $table->string('tag')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('history');
+        Schema::dropIfExists('issue_histories');
     }
 };

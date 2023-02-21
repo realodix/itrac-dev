@@ -64,7 +64,7 @@ class IssueController extends Controller
     {
         $this->authorize('update', $issue);
 
-        return view('sections.issue.edit', compact('issue'));
+        return view('sections.issue.edit', ['issue' => $issue]);
     }
 
     /**

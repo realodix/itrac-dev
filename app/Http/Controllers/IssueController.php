@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Enums\EventType;
-
 use App\Enums\HistoryEvent;
 use App\Enums\HistoryTag;
 use App\Enums\TimelineType;
 use App\Models\Comment;
 use App\Models\Issue;
+use App\Models\IssueHistory;
 use Illuminate\Http\Request;
 
 class IssueController extends Controller
@@ -123,7 +123,7 @@ class IssueController extends Controller
         $this->authorize('close', $issue);
 
         $issue->update([
-            'closed_by'   => auth()->id(),
+            'closed_by' => auth()->id(),
             'closed_at' => now(),
         ]);
 
@@ -212,7 +212,7 @@ class IssueController extends Controller
         ]);
 
         $history = IssueHistory::where('issue_id', $issue->id)
-            ->where('tag', HistoryTag::ISSUE_STATUS)
+            ->where('tag', HistoryTag::COMMENT_STATUS)
             ->latest()
             ->first();
         IssueHistory::create([

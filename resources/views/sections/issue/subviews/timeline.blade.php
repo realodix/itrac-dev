@@ -45,19 +45,19 @@
     </li>
 @else
     <li class="mt-8 mb-8 ml-6">
-        @if ($comment->event_type == \App\Enums\EventType::CLOSED->value)
+        @if ($comment->event_type == \App\Enums\HistoryTag::CLOSED->value)
         <span class="absolute flex items-center justify-center w-7 h-7 bg-violet-700 rounded-full -left-4">
             <x-icon-issue-closed-16 class="w-6 h-6 text-white"/>
         </span>
-        @elseif ($comment->event_type == \App\Enums\EventType::REOPENED->value)
+        @elseif ($comment->event_type == \App\Enums\HistoryTag::REOPENED->value)
         <span class="absolute flex items-center justify-center w-7 h-7 bg-green-600 rounded-full -left-4">
             <x-icon-issue-reopened-16 class="w-6 h-6 text-white"/>
         </span>
-        @elseif ($comment->event_type == \App\Enums\EventType::LOCKED->value)
+        @elseif ($comment->event_type == \App\Enums\HistoryTag::LOCKED->value)
         <span class="absolute flex items-center justify-center w-7 h-7 bg-gray-800 rounded-full -left-4">
             <x-icon-lock-16 class="w-6 h-6 text-red-500"/>
         </span>
-        @elseif ($comment->event_type == \App\Enums\EventType::UNLOCKED->value)
+        @elseif ($comment->event_type == \App\Enums\HistoryTag::UNLOCKED->value)
         <span class="absolute flex items-center justify-center w-7 h-7 bg-gray-800 rounded-full -left-4">
             <x-icon-unlock-16 class="w-6 h-6 text-green-500"/>
         </span>

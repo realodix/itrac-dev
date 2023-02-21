@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum EventType: int
+enum HistoryTag: int
 {
     case CLOSED = 1;
     case REOPENED = 2;

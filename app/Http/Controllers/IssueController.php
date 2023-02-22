@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Enums\CommentType;
-use App\Enums\EventType;
 use App\Enums\HistoryEvent;
 use App\Enums\HistoryTag;
 use App\Models\Comment;
@@ -130,7 +129,6 @@ class IssueController extends Controller
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
             'type'        => CommentType::Revision,
-            'event_type'  => EventType::Reopened,
             'description' => 'closed this issue',
             'tag'         => HistoryTag::Closed->value,
         ]);
@@ -169,7 +167,6 @@ class IssueController extends Controller
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
             'type'        => CommentType::Revision,
-            'event_type'  => EventType::Reopened,
             'description' => 'reopened this issue',
             'tag'         => HistoryTag::Reopened->value,
         ]);
@@ -208,7 +205,6 @@ class IssueController extends Controller
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
             'type'        => CommentType::Revision,
-            'event_type'  => EventType::Locked,
             'description' => 'locked and limited conversation to collaborators',
             'tag'         => HistoryTag::Locked->value,
         ]);
@@ -247,7 +243,6 @@ class IssueController extends Controller
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
             'type'        => CommentType::Revision,
-            'event_type'  => EventType::Unlocked,
             'description' => 'unlocked this conversation',
             'tag'         => HistoryTag::Unlocked->value,
         ]);

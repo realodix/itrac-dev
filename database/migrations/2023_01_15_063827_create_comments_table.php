@@ -20,7 +20,6 @@ return new class extends Migration
                 ->constrained('users')
                 ->cascadeOnDelete();
             $table->integer('type');
-            $table->integer('event_type')->nullable();
             $table->longText('description');
             $table->string('tag')->nullable();
             $table->timestamps();

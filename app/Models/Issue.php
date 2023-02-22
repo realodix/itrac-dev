@@ -30,10 +30,8 @@ class Issue extends Model
         'author_id',
         'title',
         'description',
-        'closed_by',
-        'closed_at',
-        'locked_by',
-        'locked_at',
+        'is_closed',
+        'is_locked',
     ];
 
     /**
@@ -43,7 +41,18 @@ class Issue extends Model
      */
     protected $casts = [
         'closed_at' => 'datetime',
-        'locked_at' => 'datetime',
+        'is_closed' => 'boolean',
+        'is_locked' => 'boolean',
+    ];
+
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'is_closed' => false,
+        'is_locked' => false,
     ];
 
     /*

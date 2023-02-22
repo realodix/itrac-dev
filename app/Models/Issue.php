@@ -11,8 +11,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * @property User           $author
  * @property Comment        $comments
- * @property bool           $is_closed
- * @property bool           $is_locked
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
@@ -84,7 +82,7 @@ class Issue extends Model
     /**
      * Responsible user locks conversation in an issue
      */
-    public function lockedBy()
+    public function lockedBy(): string
     {
         return $this->comments()
             ->where('type', CommentType::Revision->value)

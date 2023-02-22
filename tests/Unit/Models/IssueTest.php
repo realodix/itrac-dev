@@ -62,7 +62,7 @@ class IssueTest extends TestCase
         $issue = Issue::factory()
             ->has(Comment::factory()->count(3))
             ->has(Comment::factory([
-                'type' => CommentType::EVENT->value,
+                'type' => CommentType::REVISION->value,
             ])->count(3))
             ->create();
 
@@ -80,7 +80,7 @@ class IssueTest extends TestCase
         $issue = Issue::factory()
             ->has(Comment::factory()->count(3))
             ->has(Comment::factory([
-                'type' => CommentType::EVENT->value,
+                'type' => CommentType::REVISION->value,
             ])->count(3))
             ->create();
 
@@ -98,7 +98,7 @@ class IssueTest extends TestCase
         $issue = Issue::factory()
             ->has(Comment::factory()->count(3))
             ->has(Comment::factory([
-                'type' => CommentType::EVENT->value,
+                'type' => CommentType::REVISION->value,
             ])->count(3))
             ->create();
 

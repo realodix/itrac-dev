@@ -111,7 +111,7 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::EVENT,
+            'type'        => CommentType::REVISION,
             'event_type'  => EventType::CLOSED,
             'description' => 'closed this issue',
         ]);
@@ -136,7 +136,7 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::EVENT,
+            'type'        => CommentType::REVISION,
             'event_type'  => EventType::REOPENED,
             'description' => 'reopened this issue',
         ]);
@@ -161,7 +161,7 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::EVENT,
+            'type'        => CommentType::REVISION,
             'event_type'  => EventType::LOCKED,
             'description' => 'locked and limited conversation to collaborators',
         ]);
@@ -186,7 +186,7 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::EVENT,
+            'type'        => CommentType::REVISION,
             'event_type'  => EventType::UNLOCKED,
             'description' => 'unlocked this conversation',
         ]);

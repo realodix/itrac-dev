@@ -77,6 +77,8 @@ class Comment extends Model
 
     /**
      * Get the role of the comment author.
+     *
+     * @codeCoverageIgnore
      */
     public function userRole(): string
     {

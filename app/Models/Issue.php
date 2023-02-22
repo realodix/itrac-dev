@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Enums\CommentType;
-use App\Enums\EventType;
+use App\Enums\HistoryTag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -12,8 +12,6 @@ use OwenIt\Auditing\Contracts\Auditable;
 /**
  * @property User           $author
  * @property Comment        $comments
- * @property bool           $is_closed
- * @property bool           $is_locked
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
@@ -89,8 +87,8 @@ class Issue extends Model implements Auditable
     public function lockedBy(): string
     {
         return $this->comments()
-            ->where('type', TimelineType::EVENT->value)
-            ->where('event_type', EventType::LOCKED->value)
+            ->where('type', CommentType::Revision->value)
+            ->where('tag', HistoryTag::Lock->value)
             ->latest()->first()
             ->author->name;
     }

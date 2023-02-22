@@ -116,7 +116,7 @@ class IssueTest extends TestCase
         $issue = Issue::factory(['is_closed' => true])->create();
         $this->assertTrue($issue->isClosed());
 
-        $issue = Issue::factory(['is_closed' => false])->create();
+        $issue = Issue::factory()->create();
         $this->assertFalse($issue->isClosed());
     }
 
@@ -131,7 +131,7 @@ class IssueTest extends TestCase
         $issue = Issue::factory(['is_locked' => true])->create();
         $this->assertTrue($issue->isLocked());
 
-        $issue = Issue::factory(['is_locked' => false])->create();
+        $issue = Issue::factory()->create();
         $this->assertFalse($issue->isLocked());
     }
 }

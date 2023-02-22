@@ -3,7 +3,7 @@
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
             <x-icon-lock-16 />
 
-            <b>{{$issue->lockedBy()}}</b> locked this issue and limited conversations to collaborators {{-- {{$issue->locked_at->diffForHumans()}}. --}}
+            <b>{{$issue->lockedBy()}}</b> locked this issue and limited conversations to collaborators {{$issue->created_at->diffForHumans()}}.
         </div>
     @else
         <form method="post" action="{{ route('comment.store', $issue->id) }}">

@@ -129,7 +129,7 @@ class IssueController extends Controller
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
             'type'        => CommentType::Revision->value,
-            'description' => 'issue: closed',
+            'description' => 'issue: close',
             'tag'         => HistoryTag::Close->value,
         ]);
 

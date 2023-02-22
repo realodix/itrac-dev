@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\CommentType;
 use App\Enums\HistoryEvent;
 use App\Enums\HistoryTag;
-use App\Enums\TimelineType;
 use App\Models\Comment;
 use App\Models\Issue;
 use App\Models\IssueHistory;
@@ -28,7 +28,7 @@ class CommentController extends Controller
         $comment = Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => TimelineType::COMMENT->value,
+            'type'        => CommentType::Comment->value,
             'description' => $request->comment_description,
             'tag'         => HistoryTag::COMMENT,
         ]);

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\CommentType;
 use App\Enums\EventType;
 use App\Enums\HistoryEvent;
 use App\Enums\HistoryTag;
-use App\Enums\TimelineType;
 use App\Models\Comment;
 use App\Models\Issue;
 use App\Models\IssueHistory;
@@ -37,7 +37,7 @@ class IssueController extends Controller
         $issue = Issue::create([
             'author_id'   => auth()->id(),
             'title'       => $request->issue_title,
-            'type'        => TimelineType::COMMENT->value,
+            'type'        => CommentType::Comment->value,
             'description' => $request->issue_description,
         ]);
 
@@ -129,8 +129,8 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => TimelineType::EVENT,
-            'event_type'  => EventType::CLOSED,
+            'type'        => CommentType::Revision,
+            'event_type'  => EventType::Reopened,
             'description' => 'closed this issue',
         ]);
 
@@ -167,8 +167,8 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => TimelineType::EVENT,
-            'event_type'  => EventType::REOPENED,
+            'type'        => CommentType::Revision,
+            'event_type'  => EventType::Reopened,
             'description' => 'reopened this issue',
         ]);
 
@@ -205,8 +205,8 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => TimelineType::EVENT,
-            'event_type'  => EventType::LOCKED,
+            'type'        => CommentType::Revision,
+            'event_type'  => EventType::Locked,
             'description' => 'locked and limited conversation to collaborators',
         ]);
 
@@ -243,8 +243,8 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => TimelineType::EVENT,
-            'event_type'  => EventType::UNLOCKED,
+            'type'        => CommentType::Revision,
+            'event_type'  => EventType::Unlocked,
             'description' => 'unlocked this conversation',
         ]);
 

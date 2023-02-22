@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\TimelineType;
+use App\Enums\CommentType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -56,7 +56,7 @@ class Comment extends Model
      */
     public function isComment(): bool
     {
-        return $this->type === TimelineType::COMMENT->value;
+        return $this->type === CommentType::Comment->value;
     }
 
     /**

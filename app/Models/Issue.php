@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\CommentType;
+use App\Enums\HistoryTag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -80,6 +81,18 @@ class Issue extends Model
     | General Functions
     |---------------------------------------------------------------------------
     */
+
+    /**
+     * Responsible user locks conversation in an issue
+     */
+    public function lockedBy()
+    {
+        return $this->comments()
+            ->where('type', CommentType::Revision->value)
+            ->where('tag', HistoryTag::Lock->value)
+            ->latest()->first()
+            ->author->name;
+    }
 
     /**
      * Get the number of comments of the issue.

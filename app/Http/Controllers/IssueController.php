@@ -129,7 +129,7 @@ class IssueController extends Controller
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
             'type'        => CommentType::Revision->value,
-            'description' => 'closed this issue',
+            'description' => 'issue: closed',
             'tag'         => HistoryTag::Close->value,
         ]);
 
@@ -167,7 +167,7 @@ class IssueController extends Controller
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
             'type'        => CommentType::Revision->value,
-            'description' => 'reopened this issue',
+            'description' => 'issue: open',
             'tag'         => HistoryTag::Open->value,
         ]);
 
@@ -205,7 +205,7 @@ class IssueController extends Controller
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
             'type'        => CommentType::Revision->value,
-            'description' => 'locked and limited conversation to collaborators',
+            'description' => 'comment: lock',
             'tag'         => HistoryTag::Lock->value,
         ]);
 
@@ -243,7 +243,7 @@ class IssueController extends Controller
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
             'type'        => CommentType::Revision->value,
-            'description' => 'unlocked this conversation',
+            'description' => 'comment: unlock',
             'tag'         => HistoryTag::Unlock->value,
         ]);
 

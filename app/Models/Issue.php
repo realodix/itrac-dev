@@ -23,17 +23,11 @@ class Issue extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that aren't mass assignable.
      *
-     * @var list<string>
+     * @var array<string>|bool
      */
-    protected $fillable = [
-        'author_id',
-        'title',
-        'description',
-        'is_closed',
-        'is_locked',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be cast.

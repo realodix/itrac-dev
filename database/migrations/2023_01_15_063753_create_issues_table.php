@@ -18,12 +18,8 @@ return new class extends Migration
                 ->cascadeOnDelete();
             $table->string('title');
             $table->longText('description');
-            $table->foreignId('closed_by')->nullable()
-                ->constrained('users');
-            $table->dateTime('closed_at')->nullable();
-            $table->foreignId('locked_by')->nullable()
-                ->constrained('users');
-            $table->dateTime('locked_at')->nullable();
+            $table->boolean('is_closed');
+            $table->boolean('is_locked');
             $table->timestamps();
         });
     }

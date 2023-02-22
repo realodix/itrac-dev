@@ -65,7 +65,9 @@
 
         <p class="text-sm font-normal text-gray-500">
             <b class="text-[#1F2937]">{!! $comment->author->name !!}</b>
+
             {!! $comment->description !!}
+
             <a href="#event-{{crc32($comment->id)}}"
                 id="event-{{crc32($comment->id)}}"
                 title="{{$comment->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}"

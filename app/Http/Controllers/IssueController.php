@@ -34,7 +34,7 @@ class IssueController extends Controller
         $issue = Issue::create([
             'author_id'   => auth()->id(),
             'title'       => $request->issue_title,
-            'type'        => CommentType::COMMENT->value,
+            'type'        => CommentType::Comment->value,
             'description' => $request->issue_description,
         ]);
 
@@ -111,8 +111,8 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::REVISION,
-            'event_type'  => EventType::CLOSED,
+            'type'        => CommentType::Revision,
+            'event_type'  => EventType::Reopened,
             'description' => 'closed this issue',
         ]);
 
@@ -136,8 +136,8 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::REVISION,
-            'event_type'  => EventType::REOPENED,
+            'type'        => CommentType::Revision,
+            'event_type'  => EventType::Reopened,
             'description' => 'reopened this issue',
         ]);
 
@@ -161,8 +161,8 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::REVISION,
-            'event_type'  => EventType::LOCKED,
+            'type'        => CommentType::Revision,
+            'event_type'  => EventType::Locked,
             'description' => 'locked and limited conversation to collaborators',
         ]);
 
@@ -186,8 +186,8 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::REVISION,
-            'event_type'  => EventType::UNLOCKED,
+            'type'        => CommentType::Revision,
+            'event_type'  => EventType::Unlocked,
             'description' => 'unlocked this conversation',
         ]);
 

@@ -4,6 +4,6 @@ namespace App\Enums;
 
 enum CommentType: int
 {
-    case COMMENT = 1;
-    case REVISION = 2;
+    case Comment = 1;
+    case Revision = 2;
 }

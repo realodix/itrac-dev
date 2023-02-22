@@ -62,7 +62,7 @@ class Comment extends Model
      */
     public function isComment(): bool
     {
-        return $this->type === CommentType::COMMENT->value;
+        return $this->type === CommentType::Comment->value;
     }
 
     /**

@@ -81,7 +81,7 @@ class Issue extends Model
      */
     public function commentCount()
     {
-        $type = CommentType::COMMENT->value;
+        $type = CommentType::Comment->value;
 
         return $this->comments->where('type', $type)->count();
     }
@@ -96,7 +96,7 @@ class Issue extends Model
     {
         return $this->comments()
             ->select('author_id')
-            ->where('type', CommentType::COMMENT->value)
+            ->where('type', CommentType::Comment->value)
             ->distinct();
     }
 

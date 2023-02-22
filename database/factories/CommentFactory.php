@@ -30,7 +30,7 @@ class CommentFactory extends Factory
         return [
             'author_id'   => User::factory(),
             'issue_id'    => Issue::factory(),
-            'type'        => CommentType::COMMENT->value,
+            'type'        => CommentType::Comment->value,
             'description' => fake()->paragraph(),
         ];
     }

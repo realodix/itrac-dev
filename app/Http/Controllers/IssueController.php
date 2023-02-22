@@ -104,7 +104,7 @@ class IssueController extends Controller
         $this->authorize('close', $issue);
 
         $issue->update([
-            'closed_by'   => auth()->id(),
+            'closed_by' => auth()->id(),
             'closed_at' => now(),
         ]);
 

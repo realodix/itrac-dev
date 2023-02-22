@@ -33,7 +33,7 @@ class IssueControllerTest extends TestCase
         $response = $this->actingAs($issue->author)
             ->post(route('issue.store'), [
                 'issue_title'       => $issue->title,
-                'issue_description' => $issue->description
+                'issue_description' => $issue->description,
             ]);
         $i = Issue::where('title', $issue->title)->latest()->firstOrFail();
         $response->assertRedirectToRoute('issue.show', $i->id);

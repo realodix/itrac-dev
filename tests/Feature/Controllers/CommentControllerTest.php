@@ -66,7 +66,7 @@ class CommentControllerTest extends TestCase
             ->post(route('comment.update', $comment), ['comment_description' => 'new text'])
             ->assertRedirect(route('issue.show.comment', [
                 $comment->issue->id,
-                $comment->id
+                $comment->id,
             ]));
         $this->assertDatabaseHas('comments', ['id' => $comment->id, 'description' => 'new text']);
     }

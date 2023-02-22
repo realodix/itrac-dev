@@ -26,19 +26,19 @@ class CommentController extends Controller
         }
 
         $comment = Comment::create([
-                'author_id'   => auth()->id(),
-                'issue_id'    => $issue->id,
-                'type'        => CommentType::Comment->value,
-                'description' => $request->comment_description,
-                'tag'         => HistoryTag::COMMENT,
-            ]);
+            'author_id'   => auth()->id(),
+            'issue_id'    => $issue->id,
+            'type'        => CommentType::Comment->value,
+            'description' => $request->comment_description,
+            'tag'         => HistoryTag::Comment,
+        ]);
 
         IssueHistory::create([
             'author_id'  => auth()->id(),
-            'event'      => HistoryEvent::CREATED,
+            'event'      => HistoryEvent::Created,
             'issue_id'   => $issue->id,
             'new_values' => ['comment' => $comment->description],
-            'tag'        => HistoryTag::COMMENT,
+            'tag'        => HistoryTag::Comment,
         ]);
 
         return to_route('issue.show.comment', [

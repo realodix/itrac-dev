@@ -4,6 +4,6 @@ namespace App\Enums;
 
 enum HistoryEvent: int
 {
-    case CREATED = 1;
-    case UPDATED = 2;
+    case Created = 1;
+    case Updated = 2;
 }

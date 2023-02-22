@@ -33,7 +33,7 @@ class CommentFactory extends Factory
             'issue_id'    => Issue::factory(),
             'type'        => CommentType::Comment->value,
             'description' => fake()->paragraph(),
-            'tag'         => HistoryTag::COMMENT,
+            'tag'         => HistoryTag::Comment,
         ];
     }
 }

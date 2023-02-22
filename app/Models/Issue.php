@@ -41,7 +41,6 @@ class Issue extends Model implements Auditable
      * @var array<string, string>
      */
     protected $casts = [
-        'closed_at' => 'datetime',
         'is_closed' => 'boolean',
         'is_locked' => 'boolean',
     ];

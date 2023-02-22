@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\CommentType;
+use App\Enums\HistoryTag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -10,10 +11,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * @property User           $author
  * @property Comment        $comments
- * @property int            $closed_by
- * @property \Carbon\Carbon $closed_at
- * @property int            $locked_by
- * @property \Carbon\Carbon $locked_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
@@ -30,10 +27,8 @@ class Issue extends Model
         'author_id',
         'title',
         'description',
-        'closed_by',
-        'closed_at',
-        'locked_by',
-        'locked_at',
+        'is_closed',
+        'is_locked',
     ];
 
     /**
@@ -42,8 +37,18 @@ class Issue extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'closed_at' => 'datetime',
-        'locked_at' => 'datetime',
+        'is_closed' => 'boolean',
+        'is_locked' => 'boolean',
+    ];
+
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'is_closed' => false,
+        'is_locked' => false,
     ];
 
     /*
@@ -81,6 +86,18 @@ class Issue extends Model
     | General Functions
     |---------------------------------------------------------------------------
     */
+
+    /**
+     * Responsible user locks conversation in an issue
+     */
+    public function lockedBy(): string
+    {
+        return $this->comments()
+            ->where('type', CommentType::Revision->value)
+            ->where('tag', HistoryTag::Lock->value)
+            ->latest()->first()
+            ->author->name;
+    }
 
     /**
      * Get the number of comments of the issue.
@@ -139,7 +156,7 @@ class Issue extends Model
      */
     public function isClosed(): bool
     {
-        return $this->closed_by !== null;
+        return $this->is_closed === true;
     }
 
     /**
@@ -147,6 +164,6 @@ class Issue extends Model
      */
     public function isLocked(): bool
     {
-        return $this->locked_by !== null;
+        return $this->is_locked === true;
     }
 }

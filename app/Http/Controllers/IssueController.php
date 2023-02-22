@@ -121,8 +121,7 @@ class IssueController extends Controller
         $this->authorize('close', $issue);
 
         $issue->update([
-            'closed_by' => auth()->id(),
-            'closed_at' => now(),
+            'is_closed' => true,
         ]);
 
         Comment::create([
@@ -159,8 +158,7 @@ class IssueController extends Controller
         $this->authorize('reopen', $issue);
 
         $issue->update([
-            'closed_by'   => null,
-            'closed_date' => null,
+            'is_closed' => false,
         ]);
 
         Comment::create([
@@ -197,8 +195,7 @@ class IssueController extends Controller
         $this->authorize('lock', $issue);
 
         $issue->update([
-            'locked_by' => auth()->id(),
-            'locked_at' => now(),
+            'is_locked' => true,
         ]);
 
         Comment::create([
@@ -235,8 +232,7 @@ class IssueController extends Controller
         $this->authorize('unlock', $issue);
 
         $issue->update([
-            'locked_by' => null,
-            'locked_at' => null,
+            'is_locked' => false,
         ]);
 
         Comment::create([

@@ -22,9 +22,9 @@ class Issue extends Model
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
 
     /**
-     * The attributes that aren't mass assignable.
+     * The attributes that are mass assignable.
      *
-     * @var array<string>|bool
+     * @var list<string>
      */
     protected $fillable = [
         'author_id',

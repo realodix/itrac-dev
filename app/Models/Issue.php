@@ -22,19 +22,11 @@ class Issue extends Model
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that aren't mass assignable.
      *
-     * @var list<string>
+     * @var array<string>|bool
      */
-    protected $fillable = [
-        'author_id',
-        'title',
-        'description',
-        'closed_by',
-        'closed_at',
-        'locked_by',
-        'locked_at',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be cast.

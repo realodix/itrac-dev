@@ -2,8 +2,8 @@
 
 namespace App\Enums;
 
-enum CommentType: int
+enum CommentType: string
 {
-    case Comment = 1;
-    case Revision = 2;
+    case Comment = 'comment';
+    case Revision = 'revision';
 }

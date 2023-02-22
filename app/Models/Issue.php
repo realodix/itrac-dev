@@ -90,9 +90,9 @@ class Issue extends Model
      * Get the participants list of the issue. The participants are the users who
      * have commented on the issue.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment>
+     * @return HasMany<Comment>
      */
-    public function participants()
+    public function participants(): HasMany
     {
         return $this->comments()
             ->select('author_id')

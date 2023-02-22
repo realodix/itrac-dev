@@ -95,7 +95,7 @@ class IssueController extends Controller
     }
 
     /**
-     * Close the specified issue.
+     * Close issue and add a comment.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -120,7 +120,7 @@ class IssueController extends Controller
     }
 
     /**
-     * Reopen the specified issue.
+     * Reopen the issue and add a comment.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -145,7 +145,7 @@ class IssueController extends Controller
     }
 
     /**
-     * Lock the specified issue.
+     * Lock the conversation on the specified issue and add a comment.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -170,7 +170,7 @@ class IssueController extends Controller
     }
 
     /**
-     * Unlock the specified issue.
+     * Unlock the conversation on the specified issue and add a comment.
      *
      * @return \Illuminate\Http\RedirectResponse
      */

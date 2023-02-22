@@ -48,7 +48,7 @@ class CommentController extends Controller
     }
 
     /**
-     * Update the specified comment in storage.
+     * Update the specified comment on the specified issue in storage.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -67,7 +67,7 @@ class CommentController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified comment on the specified issue from storage.
      *
      * @return \Illuminate\Http\RedirectResponse
      */

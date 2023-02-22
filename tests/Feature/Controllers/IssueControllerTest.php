@@ -31,10 +31,10 @@ class IssueControllerTest extends TestCase
         $issue = Issue::factory()->make();
 
         $response = $this->actingAs($issue->author)
-            ->post(
-                route('issue.store'),
-                ['issue_title' => $issue->title, 'issue_description' => $issue->description]
-            );
+            ->post(route('issue.store'), [
+                'issue_title'       => $issue->title,
+                'issue_description' => $issue->description
+            ]);
         $i = Issue::where('title', $issue->title)->latest()->firstOrFail();
         $response->assertRedirectToRoute('issue.show', $i->id);
     }
@@ -80,14 +80,14 @@ class IssueControllerTest extends TestCase
 
         $this->actingAs($issue->author)
             ->post(route('issue.update', $issue), [
-                'title' => 'new title',
+                'title'       => 'new title',
                 'description' => 'new description',
             ])
             ->assertRedirect(route('issue.show', $issue));
 
         $this->assertDatabaseHas('issues', [
-            'id' => $issue->id,
-            'title' => 'new title',
+            'id'          => $issue->id,
+            'title'       => 'new title',
             'description' => 'new description',
         ]);
     }
@@ -120,7 +120,7 @@ class IssueControllerTest extends TestCase
             ->get(route('issue.close', $issue))
             ->assertRedirect(route('issue.show', $issue));
         $this->assertDatabaseHas('issues', [
-            'id' => $issue->id,
+            'id'        => $issue->id,
             'closed_by' => $issue->author->id,
         ]);
     }
@@ -138,7 +138,7 @@ class IssueControllerTest extends TestCase
             ->get(route('issue.reopen', $issue))
             ->assertRedirect(route('issue.show', $issue));
         $this->assertDatabaseHas('issues', [
-            'id' => $issue->id,
+            'id'        => $issue->id,
             'closed_by' => null,
             'closed_at' => null,
         ]);

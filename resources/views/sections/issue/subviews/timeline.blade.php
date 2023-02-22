@@ -64,7 +64,7 @@
         @endif
 
         <p class="text-sm font-normal text-gray-500">
-            <b class="text-[#1F2937]">{!! $comment->author->name !!}</b>
+            <b class="text-[#1F2937]">{{ $comment->author->name }}</b>
 
             @if ($comment->tag == \App\Enums\HistoryTag::Close->value)
                 closed this issue

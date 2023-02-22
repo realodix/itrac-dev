@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Enums\CommentType;
-use App\Enums\EventType;
 use App\Enums\HistoryTag;
 use App\Models\Comment;
 use App\Models\Issue;
@@ -112,8 +111,7 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::Revision,
-            'event_type'  => EventType::Reopened,
+            'type'        => CommentType::Revision->value,
             'description' => 'issue: closed',
             'tag'         => HistoryTag::Close->value,
         ]);
@@ -138,8 +136,7 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::Revision,
-            'event_type'  => EventType::Reopened,
+            'type'        => CommentType::Revision->value,
             'description' => 'issue: open',
             'tag'         => HistoryTag::Open->value,
         ]);
@@ -164,8 +161,7 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::Revision,
-            'event_type'  => EventType::Locked,
+            'type'        => CommentType::Revision->value,
             'description' => 'comment: lock',
             'tag'         => HistoryTag::Lock->value,
         ]);
@@ -190,8 +186,7 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::Revision,
-            'event_type'  => EventType::Unlocked,
+            'type'        => CommentType::Revision->value,
             'description' => 'comment: unlock',
             'tag'         => HistoryTag::Unlock->value,
         ]);

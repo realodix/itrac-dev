@@ -22,21 +22,48 @@ class IssueControllerTest extends TestCase
     }
 
     /**
+     * User can see the create issue page.
+     *
+     * @test
+     */
+    public function user_can_see_the_create_issue_page()
+    {
+        $this->actingAs(User::factory()->create())
+            ->get(route('issue.create'))
+            ->assertOk()
+            ->assertViewIs('sections.issue.create');
+    }
+
+    /**
      * User can create a issue.
      *
      * @test
      */
     public function user_can_create_an_issue()
     {
-        $issue = Issue::factory()->make();
-
-        $response = $this->actingAs($issue->author)
+        $response = $this->actingAs($this->adminUser())
             ->post(route('issue.store'), [
-                'issue_title'       => $issue->title,
-                'issue_description' => $issue->description,
+                'issue_title'       => 'foo',
+                'issue_description' => 'bar',
             ]);
-        $i = Issue::where('title', $issue->title)->latest()->firstOrFail();
+        $i = Issue::where('title', 'foo')->latest()->firstOrFail();
         $response->assertRedirectToRoute('issue.show', $i->id);
+    }
+
+    /**
+     * User can create a issue with blank title.
+     *
+     * @test
+     */
+    public function user_can_create_an_issue_with_blank_title()
+    {
+        $response = $this->actingAs($this->adminUser())
+            ->post(route('issue.store'), [
+                'issue_description' => 'foo',
+            ]);
+        $i = Issue::where('description', 'foo')->latest()->firstOrFail();
+        $response->assertRedirectToRoute('issue.show', $i->id);
+        $this->assertSame('No title', $i->title);
     }
 
     /**

@@ -6,6 +6,8 @@ if (! function_exists('compactNumber')) {
     /**
      * \App\Helpers\Helper::compactNumber()
      *
+     * @codeCoverageIgnore
+     *
      * @param int $value
      * @return int|string
      */

@@ -4,8 +4,8 @@ namespace App\Enums;
 
 enum EventType: int
 {
-    case CLOSED = 1;
-    case REOPENED = 2;
-    case LOCKED = 3;
-    case UNLOCKED = 4;
+    case Closed = 1;
+    case Reopened = 2;
+    case Locked = 3;
+    case Unlocked = 4;
 }

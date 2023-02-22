@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\TimelineType;
+use App\Enums\CommentType;
 use App\Models\Comment;
 use App\Models\Issue;
 use Illuminate\Http\Request;
@@ -25,7 +25,7 @@ class CommentController extends Controller
         $comment = Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => TimelineType::COMMENT->value,
+            'type'        => CommentType::Comment->value,
             'description' => $request->comment_description,
         ]);
 
@@ -48,7 +48,7 @@ class CommentController extends Controller
     }
 
     /**
-     * Update the specified comment in storage.
+     * Update the specified comment on the specified issue in storage.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -67,7 +67,7 @@ class CommentController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified comment on the specified issue from storage.
      *
      * @return \Illuminate\Http\RedirectResponse
      */

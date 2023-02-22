@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\CommentType;
 use App\Enums\EventType;
-use App\Enums\TimelineType;
 use App\Models\Comment;
 use App\Models\Issue;
 use Illuminate\Http\Request;
@@ -34,7 +34,7 @@ class IssueController extends Controller
         $issue = Issue::create([
             'author_id'   => auth()->id(),
             'title'       => $request->issue_title,
-            'type'        => TimelineType::COMMENT->value,
+            'type'        => CommentType::Comment->value,
             'description' => $request->issue_description,
         ]);
 
@@ -95,7 +95,7 @@ class IssueController extends Controller
     }
 
     /**
-     * Close the specified issue.
+     * Close issue and add a comment.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -110,8 +110,8 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => TimelineType::EVENT,
-            'event_type'  => EventType::CLOSED,
+            'type'        => CommentType::Revision,
+            'event_type'  => EventType::Reopened,
             'description' => 'closed this issue',
         ]);
 
@@ -119,7 +119,7 @@ class IssueController extends Controller
     }
 
     /**
-     * Reopen the specified issue.
+     * Reopen the issue and add a comment.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -134,8 +134,8 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => TimelineType::EVENT,
-            'event_type'  => EventType::REOPENED,
+            'type'        => CommentType::Revision,
+            'event_type'  => EventType::Reopened,
             'description' => 'reopened this issue',
         ]);
 
@@ -143,7 +143,7 @@ class IssueController extends Controller
     }
 
     /**
-     * Lock the specified issue.
+     * Lock the conversation on the specified issue and add a comment.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -158,8 +158,8 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => TimelineType::EVENT,
-            'event_type'  => EventType::LOCKED,
+            'type'        => CommentType::Revision,
+            'event_type'  => EventType::Locked,
             'description' => 'locked and limited conversation to collaborators',
         ]);
 
@@ -167,7 +167,7 @@ class IssueController extends Controller
     }
 
     /**
-     * Unlock the specified issue.
+     * Unlock the conversation on the specified issue and add a comment.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -182,8 +182,8 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => TimelineType::EVENT,
-            'event_type'  => EventType::UNLOCKED,
+            'type'        => CommentType::Revision,
+            'event_type'  => EventType::Unlocked,
             'description' => 'unlocked this conversation',
         ]);
 

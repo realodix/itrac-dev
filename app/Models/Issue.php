@@ -39,7 +39,6 @@ class Issue extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'closed_at' => 'datetime',
         'is_closed' => 'boolean',
         'is_locked' => 'boolean',
     ];

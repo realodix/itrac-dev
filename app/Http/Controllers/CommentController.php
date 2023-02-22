@@ -23,11 +23,11 @@ class CommentController extends Controller
         }
 
         $comment = Comment::create([
-            'author_id'   => auth()->id(),
-            'issue_id'    => $issue->id,
-            'type'        => CommentType::Comment->value,
-            'description' => $request->comment_description,
-        ]);
+                'author_id'   => auth()->id(),
+                'issue_id'    => $issue->id,
+                'type'        => CommentType::Comment->value,
+                'description' => $request->comment_description,
+            ]);
 
         return to_route('issue.show.comment', [
             $comment->issue->id,

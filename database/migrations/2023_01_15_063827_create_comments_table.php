@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('author_id')
                 ->constrained('users')
                 ->cascadeOnDelete();
-            $table->integer('type');
+            $table->string('type');
             $table->longText('description');
             $table->string('tag')->nullable();
             $table->timestamps();

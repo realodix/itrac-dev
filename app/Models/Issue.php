@@ -31,10 +31,8 @@ class Issue extends Model implements Auditable
         'author_id',
         'title',
         'description',
-        'closed_by',
-        'closed_at',
-        'locked_by',
-        'locked_at',
+        'is_closed',
+        'is_locked',
     ];
 
     /**

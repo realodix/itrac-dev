@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models;
 
-use App\Enums\TimelineType;
+use App\Enums\CommentType;
 use App\Models\Comment;
 use App\Models\Issue;
 use App\Models\User;
@@ -62,7 +62,7 @@ class IssueTest extends TestCase
         $issue = Issue::factory()
             ->has(Comment::factory()->count(3))
             ->has(Comment::factory([
-                'type' => TimelineType::EVENT->value,
+                'type' => CommentType::Revision->value,
             ])->count(3))
             ->create();
 
@@ -80,7 +80,7 @@ class IssueTest extends TestCase
         $issue = Issue::factory()
             ->has(Comment::factory()->count(3))
             ->has(Comment::factory([
-                'type' => TimelineType::EVENT->value,
+                'type' => CommentType::Revision->value,
             ])->count(3))
             ->create();
 
@@ -98,7 +98,7 @@ class IssueTest extends TestCase
         $issue = Issue::factory()
             ->has(Comment::factory()->count(3))
             ->has(Comment::factory([
-                'type' => TimelineType::EVENT->value,
+                'type' => CommentType::Revision->value,
             ])->count(3))
             ->create();
 

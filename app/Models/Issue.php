@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\TimelineType;
+use App\Enums\CommentType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -81,7 +81,7 @@ class Issue extends Model
      */
     public function commentCount()
     {
-        $type = TimelineType::COMMENT->value;
+        $type = CommentType::Comment->value;
 
         return $this->comments->where('type', $type)->count();
     }
@@ -90,13 +90,13 @@ class Issue extends Model
      * Get the participants list of the issue. The participants are the users who
      * have commented on the issue.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment>
+     * @return HasMany<Comment>
      */
-    public function participants()
+    public function participants(): HasMany
     {
         return $this->comments()
             ->select('author_id')
-            ->where('type', TimelineType::COMMENT->value)
+            ->where('type', CommentType::Comment->value)
             ->distinct();
     }
 

@@ -77,7 +77,7 @@ class IssueController extends Controller
         if ($issue->title !== $request->title) {
             IssueHistory::create([
                 'author_id'  => auth()->id(),
-                'event'      => HistoryEvent::Updated,
+                'event'      => HistoryEvent::Updated->value,
                 'issue_id'   => $issue->id,
                 'old_values' => [
                     'title' => $issue->getOriginal('title'),
@@ -85,7 +85,7 @@ class IssueController extends Controller
                 'new_values' => [
                     'title' => $request->title,
                 ],
-                'tag'       => HistoryTag::IssueTitle,
+                'tag'       => HistoryTag::IssueTitle->value,
             ]);
         }
 
@@ -128,22 +128,22 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::Revision,
+            'type'        => CommentType::Revision->value,
             'description' => 'closed this issue',
             'tag'         => HistoryTag::Closed->value,
         ]);
 
         $history = IssueHistory::where('issue_id', $issue->id)
-            ->where('tag', HistoryTag::IssueStatus)
+            ->where('tag', HistoryTag::IssueStatus->value)
             ->latest()
             ->first();
         IssueHistory::create([
             'author_id'  => auth()->id(),
-            'event'      => HistoryEvent::Updated,
+            'event'      => HistoryEvent::Updated->value,
             'issue_id'   => $issue->id,
             'old_values' => $history ? $history->new_values : [],
             'new_values' => ['closed' => true],
-            'tag'        => HistoryTag::IssueStatus,
+            'tag'        => HistoryTag::IssueStatus->value,
         ]);
 
         return to_route('issue.show', $issue);
@@ -166,22 +166,22 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::Revision,
+            'type'        => CommentType::Revision->value,
             'description' => 'reopened this issue',
             'tag'         => HistoryTag::Reopened->value,
         ]);
 
         $history = IssueHistory::where('issue_id', $issue->id)
-            ->where('tag', HistoryTag::IssueStatus)
+            ->where('tag', HistoryTag::IssueStatus->value)
             ->latest()
             ->first();
         IssueHistory::create([
             'author_id'  => auth()->id(),
-            'event'      => HistoryEvent::Updated,
+            'event'      => HistoryEvent::Updated->value,
             'old_values' => $history ? $history->new_values : [],
             'issue_id'   => $issue->id,
             'new_values' => ['closed' => false],
-            'tag'        => HistoryTag::IssueStatus,
+            'tag'        => HistoryTag::IssueStatus->value,
         ]);
 
         return to_route('issue.show', $issue);
@@ -204,22 +204,22 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::Revision,
+            'type'        => CommentType::Revision->value,
             'description' => 'locked and limited conversation to collaborators',
             'tag'         => HistoryTag::Locked->value,
         ]);
 
         $history = IssueHistory::where('issue_id', $issue->id)
-            ->where('tag', HistoryTag::CommentStatus)
+            ->where('tag', HistoryTag::CommentStatus->value)
             ->latest()
             ->first();
         IssueHistory::create([
             'author_id'  => auth()->id(),
-            'event'      => HistoryEvent::Updated,
+            'event'      => HistoryEvent::Updated->value,
             'issue_id'   => $issue->id,
             'old_values' => $history ? $history->new_values : [],
             'new_values' => ['locked' => true],
-            'tag'        => HistoryTag::CommentStatus,
+            'tag'        => HistoryTag::CommentStatus->value,
         ]);
 
         return to_route('issue.show', $issue);
@@ -242,22 +242,22 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::Revision,
+            'type'        => CommentType::Revision->value,
             'description' => 'unlocked this conversation',
             'tag'         => HistoryTag::Unlocked->value,
         ]);
 
         $history = IssueHistory::where('issue_id', $issue->id)
-            ->where('tag', HistoryTag::CommentStatus)
+            ->where('tag', HistoryTag::CommentStatus->value)
             ->latest()
             ->first();
         IssueHistory::create([
             'author_id'  => auth()->id(),
-            'event'      => HistoryEvent::Updated,
+            'event'      => HistoryEvent::Updated->value,
             'issue_id'   => $issue->id,
             'old_values' => $history ? $history->new_values : [],
             'new_values' => ['locked' => false],
-            'tag'        => HistoryTag::CommentStatus,
+            'tag'        => HistoryTag::CommentStatus->value,
         ]);
 
         return to_route('issue.show', $issue);

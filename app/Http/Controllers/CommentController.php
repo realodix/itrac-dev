@@ -35,7 +35,7 @@ class CommentController extends Controller
 
         IssueHistory::create([
             'author_id'  => auth()->id(),
-            'event'      => HistoryEvent::Created,
+            'event'      => HistoryEvent::Created->value,
             'issue_id'   => $issue->id,
             'new_values' => ['comment' => $comment->description],
             'tag'        => HistoryTag::Comment->value,

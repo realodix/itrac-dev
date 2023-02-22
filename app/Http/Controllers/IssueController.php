@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Enums\CommentType;
+use App\Enums\HistoryEvent;
 use App\Enums\HistoryTag;
 use App\Models\Comment;
 use App\Models\Issue;
+use App\Models\IssueHistory;
 use Illuminate\Http\Request;
 
 class IssueController extends Controller
@@ -72,6 +74,21 @@ class IssueController extends Controller
     {
         $this->authorize('update', $issue);
 
+        if ($issue->title !== $request->title) {
+            IssueHistory::create([
+                'author_id'  => auth()->id(),
+                'event'      => HistoryEvent::Updated->value,
+                'issue_id'   => $issue->id,
+                'old_values' => [
+                    'title' => $issue->getOriginal('title'),
+                ],
+                'new_values' => [
+                    'title' => $request->title,
+                ],
+                'tag'       => HistoryTag::IssueTitle->value,
+            ]);
+        }
+
         $issue->update([
             'title'       => $request->title,
             'description' => $request->description,
@@ -115,6 +132,19 @@ class IssueController extends Controller
             'tag'         => HistoryTag::Close->value,
         ]);
 
+        $history = IssueHistory::where('issue_id', $issue->id)
+            ->where('tag', HistoryTag::IssueStatus->value)
+            ->latest()
+            ->first();
+        IssueHistory::create([
+            'author_id'  => auth()->id(),
+            'event'      => HistoryEvent::Updated->value,
+            'issue_id'   => $issue->id,
+            'old_values' => $history ? $history->new_values : [],
+            'new_values' => ['closed' => true],
+            'tag'        => HistoryTag::IssueStatus->value,
+        ]);
+
         return to_route('issue.show', $issue);
     }
 
@@ -137,6 +167,19 @@ class IssueController extends Controller
             'type'        => CommentType::Revision->value,
             'description' => 'issue: open',
             'tag'         => HistoryTag::Open->value,
+        ]);
+
+        $history = IssueHistory::where('issue_id', $issue->id)
+            ->where('tag', HistoryTag::IssueStatus->value)
+            ->latest()
+            ->first();
+        IssueHistory::create([
+            'author_id'  => auth()->id(),
+            'event'      => HistoryEvent::Updated->value,
+            'old_values' => $history ? $history->new_values : [],
+            'issue_id'   => $issue->id,
+            'new_values' => ['closed' => false],
+            'tag'        => HistoryTag::IssueStatus->value,
         ]);
 
         return to_route('issue.show', $issue);
@@ -163,6 +206,19 @@ class IssueController extends Controller
             'tag'         => HistoryTag::Lock->value,
         ]);
 
+        $history = IssueHistory::where('issue_id', $issue->id)
+            ->where('tag', HistoryTag::CommentStatus->value)
+            ->latest()
+            ->first();
+        IssueHistory::create([
+            'author_id'  => auth()->id(),
+            'event'      => HistoryEvent::Updated->value,
+            'issue_id'   => $issue->id,
+            'old_values' => $history ? $history->new_values : [],
+            'new_values' => ['locked' => true],
+            'tag'        => HistoryTag::CommentStatus->value,
+        ]);
+
         return to_route('issue.show', $issue);
     }
 
@@ -185,6 +241,19 @@ class IssueController extends Controller
             'type'        => CommentType::Revision->value,
             'description' => 'comment: unlock',
             'tag'         => HistoryTag::Unlock->value,
+        ]);
+
+        $history = IssueHistory::where('issue_id', $issue->id)
+            ->where('tag', HistoryTag::CommentStatus->value)
+            ->latest()
+            ->first();
+        IssueHistory::create([
+            'author_id'  => auth()->id(),
+            'event'      => HistoryEvent::Updated->value,
+            'issue_id'   => $issue->id,
+            'old_values' => $history ? $history->new_values : [],
+            'new_values' => ['locked' => false],
+            'tag'        => HistoryTag::CommentStatus->value,
         ]);
 
         return to_route('issue.show', $issue);

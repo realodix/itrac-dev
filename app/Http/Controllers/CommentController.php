@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Enums\CommentType;
+use App\Enums\HistoryEvent;
 use App\Enums\HistoryTag;
 use App\Models\Comment;
 use App\Models\Issue;
+use App\Models\IssueHistory;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -29,6 +31,14 @@ class CommentController extends Controller
             'type'        => CommentType::Comment->value,
             'description' => $request->comment_description,
             'tag'         => HistoryTag::Comment->value,
+        ]);
+
+        IssueHistory::create([
+            'author_id'  => auth()->id(),
+            'event'      => HistoryEvent::Created->value,
+            'issue_id'   => $issue->id,
+            'new_values' => ['comment' => $comment->description],
+            'tag'        => HistoryTag::Comment->value,
         ]);
 
         return to_route('issue.show.comment', [

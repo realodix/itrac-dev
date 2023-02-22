@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\TimelineType;
+use App\Enums\CommentType;
 use App\Models\Comment;
 use App\Models\Issue;
 use Illuminate\Http\Request;
@@ -25,7 +25,7 @@ class CommentController extends Controller
         $comment = Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => TimelineType::COMMENT->value,
+            'type'        => CommentType::COMMENT->value,
             'description' => $request->comment_description,
         ]);
 

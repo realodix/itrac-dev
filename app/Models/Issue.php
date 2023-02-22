@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\TimelineType;
+use App\Enums\CommentType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -81,7 +81,7 @@ class Issue extends Model
      */
     public function commentCount()
     {
-        $type = TimelineType::COMMENT->value;
+        $type = CommentType::COMMENT->value;
 
         return $this->comments->where('type', $type)->count();
     }
@@ -96,7 +96,7 @@ class Issue extends Model
     {
         return $this->comments()
             ->select('author_id')
-            ->where('type', TimelineType::COMMENT->value)
+            ->where('type', CommentType::COMMENT->value)
             ->distinct();
     }
 

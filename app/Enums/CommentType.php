@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum TimelineType: int
+enum CommentType: int
 {
     case COMMENT = 1;
     case EVENT = 2;

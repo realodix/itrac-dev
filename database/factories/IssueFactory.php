@@ -29,7 +29,6 @@ class IssueFactory extends Factory
             'author_id'   => User::factory(),
             'title'       => fake()->words(3, true),
             'description' => fake()->paragraphs(nb: 3, asText: true),
-            'is_locked'   => false,
         ];
     }
 }

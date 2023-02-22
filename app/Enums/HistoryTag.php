@@ -9,8 +9,8 @@ enum HistoryTag: string
     case Comment = 'comment';
     case CommentStatus = 'comment_status';
 
-    case Closed = 'closed';
-    case Reopened = 'reopened';
-    case Locked = 'locked';
-    case Unlocked = 'unlocked';
+    case Close = 'close';
+    case Open = 'open';
+    case Lock = 'lock';
+    case Unlock = 'unlock';
 }

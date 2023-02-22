@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('issue_histories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('issue_id')
+                ->constrained()
+                ->cascadeOnDelete();
             $table->foreignId('author_id')
                 ->constrained('users')
                 ->cascadeOnDelete();
             $table->string('event');
-            $table->foreignId('issue_id')
-                ->constrained()
-                ->cascadeOnDelete();
             $table->text('old_values')->nullable();
             $table->text('new_values')->nullable();
             $table->string('tag')->nullable();

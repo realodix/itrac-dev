@@ -10,10 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * @property User           $author
  * @property Comment        $comments
- * @property int            $closed_by
- * @property \Carbon\Carbon $closed_at
- * @property int            $locked_by
- * @property \Carbon\Carbon $locked_at
+ * @property bool           $is_closed
+ * @property bool           $is_locked
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */

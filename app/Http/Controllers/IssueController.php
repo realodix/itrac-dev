@@ -32,11 +32,11 @@ class IssueController extends Controller
         }
 
         $issue = Issue::create([
-            'author_id'   => auth()->id(),
-            'title'       => $request->issue_title,
-            'type'        => CommentType::Comment->value,
-            'description' => $request->issue_description,
-        ]);
+                'author_id'   => auth()->id(),
+                'title'       => $request->issue_title,
+                'type'        => CommentType::Comment->value,
+                'description' => $request->issue_description,
+            ]);
 
         return to_route('issue.show', $issue);
     }

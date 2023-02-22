@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\CommentType;
+use App\Enums\HistoryTag;
 use App\Models\Comment;
 use App\Models\Issue;
 use Illuminate\Http\Request;
@@ -27,6 +28,7 @@ class CommentController extends Controller
             'issue_id'    => $issue->id,
             'type'        => CommentType::Comment->value,
             'description' => $request->comment_description,
+            'tag'         => HistoryTag::Comment->value,
         ]);
 
         return to_route('issue.show.comment', [

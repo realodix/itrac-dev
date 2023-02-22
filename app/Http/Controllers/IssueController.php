@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\CommentType;
-use App\Enums\EventType;
+use App\Enums\HistoryTag;
 use App\Models\Comment;
 use App\Models\Issue;
 use Illuminate\Http\Request;
@@ -110,9 +110,9 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::Revision,
-            'event_type'  => EventType::Reopened,
-            'description' => 'closed this issue',
+            'type'        => CommentType::Revision->value,
+            'description' => 'issue: close',
+            'tag'         => HistoryTag::Close->value,
         ]);
 
         return to_route('issue.show', $issue);
@@ -134,9 +134,9 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::Revision,
-            'event_type'  => EventType::Reopened,
-            'description' => 'reopened this issue',
+            'type'        => CommentType::Revision->value,
+            'description' => 'issue: open',
+            'tag'         => HistoryTag::Open->value,
         ]);
 
         return to_route('issue.show', $issue);
@@ -158,9 +158,9 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::Revision,
-            'event_type'  => EventType::Locked,
-            'description' => 'locked and limited conversation to collaborators',
+            'type'        => CommentType::Revision->value,
+            'description' => 'comment: lock',
+            'tag'         => HistoryTag::Lock->value,
         ]);
 
         return to_route('issue.show', $issue);
@@ -182,9 +182,9 @@ class IssueController extends Controller
         Comment::create([
             'author_id'   => auth()->id(),
             'issue_id'    => $issue->id,
-            'type'        => CommentType::Revision,
-            'event_type'  => EventType::Unlocked,
-            'description' => 'unlocked this conversation',
+            'type'        => CommentType::Revision->value,
+            'description' => 'comment: unlock',
+            'tag'         => HistoryTag::Unlock->value,
         ]);
 
         return to_route('issue.show', $issue);

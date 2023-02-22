@@ -19,17 +19,11 @@ class Comment extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that aren't mass assignable.
      *
-     * @var list<string>
+     * @var array<string>|bool
      */
-    protected $fillable = [
-        'author_id',
-        'issue_id',
-        'type',
-        'event_type',
-        'description',
-    ];
+    protected $guarded = [];
 
     /*
     |---------------------------------------------------------------------------

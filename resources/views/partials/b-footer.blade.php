@@ -5,7 +5,7 @@
             <div class="w-full sm:w-1/2">
                 <a class="" href="#">{{config('app.name')}}</a> {{config('app.version')}}
                 <span>
-                    &copy; 2023-present
+                    &copy; 2023
                     <a href="https://github.com/realodix">Budi Hermawan</a>
                 </span>
             </div>

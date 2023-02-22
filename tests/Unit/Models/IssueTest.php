@@ -3,6 +3,7 @@
 namespace Tests\Unit\Models;
 
 use App\Enums\CommentType;
+use App\Enums\HistoryTag;
 use App\Models\Comment;
 use App\Models\Issue;
 use App\Models\User;
@@ -49,6 +50,22 @@ class IssueTest extends TestCase
         $this->assertTrue($issue->author()->exists());
         $this->assertEquals($issue->author_id, $issue->author->id);
         $this->assertEquals(1, $issue->author->count());
+    }
+
+    /**
+     * @test
+     * @group u-model
+     */
+    public function lockedBy()
+    {
+        $issue = Issue::factory()
+            ->has(Comment::factory([
+                'type' => CommentType::Revision->value,
+                'tag'  => HistoryTag::Lock->value,
+            ]))
+            ->create();
+
+        $this->assertSame($issue->lockedBy(), $issue->comments->first()->author->name);
     }
 
     /**

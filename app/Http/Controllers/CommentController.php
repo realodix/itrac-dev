@@ -30,7 +30,7 @@ class CommentController extends Controller
             'issue_id'    => $issue->id,
             'type'        => CommentType::Comment->value,
             'description' => $request->comment_description,
-            'tag'         => HistoryTag::Comment,
+            'tag'         => HistoryTag::Comment->value,
         ]);
 
         IssueHistory::create([
@@ -38,7 +38,7 @@ class CommentController extends Controller
             'event'      => HistoryEvent::Created,
             'issue_id'   => $issue->id,
             'new_values' => ['comment' => $comment->description],
-            'tag'        => HistoryTag::Comment,
+            'tag'        => HistoryTag::Comment->value,
         ]);
 
         return to_route('issue.show.comment', [

@@ -132,7 +132,7 @@ class IssueController extends Controller
             'type'        => CommentType::Revision,
             'event_type'  => EventType::Reopened,
             'description' => 'closed this issue',
-            'tag'         => HistoryTag::IssueStatus,
+            'tag'         => HistoryTag::Closed->value,
         ]);
 
         $history = IssueHistory::where('issue_id', $issue->id)
@@ -171,7 +171,7 @@ class IssueController extends Controller
             'type'        => CommentType::Revision,
             'event_type'  => EventType::Reopened,
             'description' => 'reopened this issue',
-            'tag'         => HistoryTag::IssueStatus,
+            'tag'         => HistoryTag::Reopened->value,
         ]);
 
         $history = IssueHistory::where('issue_id', $issue->id)
@@ -210,7 +210,7 @@ class IssueController extends Controller
             'type'        => CommentType::Revision,
             'event_type'  => EventType::Locked,
             'description' => 'locked and limited conversation to collaborators',
-            'tag'         => HistoryTag::IssueStatus,
+            'tag'         => HistoryTag::Locked->value,
         ]);
 
         $history = IssueHistory::where('issue_id', $issue->id)
@@ -249,7 +249,7 @@ class IssueController extends Controller
             'type'        => CommentType::Revision,
             'event_type'  => EventType::Unlocked,
             'description' => 'unlocked this conversation',
-            'tag'         => HistoryTag::IssueStatus,
+            'tag'         => HistoryTag::Unlocked->value,
         ]);
 
         $history = IssueHistory::where('issue_id', $issue->id)

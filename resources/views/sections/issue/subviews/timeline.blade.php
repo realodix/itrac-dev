@@ -45,27 +45,37 @@
     </li>
 @else
     <li class="mt-8 mb-8 ml-6">
-        @if ($comment->event_type == \App\Enums\EventType::Reopened->value)
-        <span class="absolute flex items-center justify-center w-7 h-7 bg-violet-700 rounded-full -left-4">
-            <x-icon-issue-closed-16 class="w-6 h-6 text-white"/>
-        </span>
-        @elseif ($comment->event_type == \App\Enums\EventType::Reopened->value)
-        <span class="absolute flex items-center justify-center w-7 h-7 bg-green-600 rounded-full -left-4">
-            <x-icon-issue-reopened-16 class="w-6 h-6 text-white"/>
-        </span>
-        @elseif ($comment->event_type == \App\Enums\EventType::Locked->value)
-        <span class="absolute flex items-center justify-center w-7 h-7 bg-gray-800 rounded-full -left-4">
-            <x-icon-lock-16 class="w-6 h-6 text-red-500"/>
-        </span>
-        @elseif ($comment->event_type == \App\Enums\EventType::Unlocked->value)
-        <span class="absolute flex items-center justify-center w-7 h-7 bg-gray-800 rounded-full -left-4">
-            <x-icon-unlock-16 class="w-6 h-6 text-green-500"/>
-        </span>
+        @if ($comment->tag == \App\Enums\HistoryTag::Close->value)
+            <span class="absolute flex items-center justify-center w-7 h-7 bg-violet-700 rounded-full -left-4">
+                <x-icon-issue-closed-16 class="w-6 h-6 text-white"/>
+            </span>
+        @elseif ($comment->tag == \App\Enums\HistoryTag::Open->value)
+            <span class="absolute flex items-center justify-center w-7 h-7 bg-green-600 rounded-full -left-4">
+                <x-icon-issue-reopened-16 class="w-6 h-6 text-white"/>
+            </span>
+        @elseif ($comment->tag == \App\Enums\HistoryTag::Lock->value)
+            <span class="absolute flex items-center justify-center w-7 h-7 bg-gray-800 rounded-full -left-4">
+                <x-icon-lock-16 class="w-6 h-6 text-red-500"/>
+            </span>
+        @elseif ($comment->tag == \App\Enums\HistoryTag::Unlock->value)
+            <span class="absolute flex items-center justify-center w-7 h-7 bg-gray-800 rounded-full -left-4">
+                <x-icon-unlock-16 class="w-6 h-6 text-green-500"/>
+            </span>
         @endif
 
-        <p class="text-sm font-normal color-muted">
-            <b class="color-normal">{!! $comment->author->name !!}</b>
-            {!! $comment->description !!}
+        <p class="text-sm font-normal text-gray-500">
+            <b class="text-[#1F2937]">{{ $comment->author->name }}</b>
+
+            @if ($comment->tag == \App\Enums\HistoryTag::Close->value)
+                closed this issue
+            @elseif ($comment->tag == \App\Enums\HistoryTag::Open->value)
+                reopened this issue
+            @elseif ($comment->tag == \App\Enums\HistoryTag::Lock->value)
+                locked and limited conversation to collaborators
+            @elseif ($comment->tag == \App\Enums\HistoryTag::Unlock->value)
+                unlocked this conversation
+            @endif
+
             <a href="#event-{{crc32($comment->id)}}"
                 id="event-{{crc32($comment->id)}}"
                 title="{{$comment->created_at->isoFormat('MMM DD, OY, hh:mm A zz')}}"

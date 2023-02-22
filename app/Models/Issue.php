@@ -138,7 +138,7 @@ class Issue extends Model
      */
     public function isClosed(): bool
     {
-        return $this->closed_by !== null;
+        return $this->is_closed === true;
     }
 
     /**
@@ -146,6 +146,6 @@ class Issue extends Model
      */
     public function isLocked(): bool
     {
-        return $this->locked_by !== null;
+        return $this->is_locked === true;
     }
 }

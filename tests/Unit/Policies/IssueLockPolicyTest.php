@@ -161,8 +161,7 @@ class IssueLockPolicyTest extends TestCase
     public function issueAuthorCanCreateCommentWhenIssueIsLocked()
     {
         $issue = Issue::factory()->create([
-            'locked_by' => $this->adminUser()->id,
-            'locked_at' => now(),
+            'is_locked' => true,
         ]);
 
         $response = $this->actingAs($issue->author)
@@ -183,8 +182,7 @@ class IssueLockPolicyTest extends TestCase
     {
         $user = User::factory()->create();
         $issue = Issue::factory()->create([
-            'locked_by' => $user->id,
-            'locked_at' => now(),
+            'is_locked' => true,
         ]);
 
         $response = $this->actingAs($this->adminUser())
@@ -207,8 +205,7 @@ class IssueLockPolicyTest extends TestCase
     public function userParticipantCanCreateCommentWhenIssueIsLocked()
     {
         $issue = Issue::factory()->create([
-            'locked_by' => $this->adminUser()->id,
-            'locked_at' => now(),
+            'is_locked' => true,
         ]);
         $comment = Comment::factory()->create([
             'issue_id' => $issue->id,
@@ -236,8 +233,7 @@ class IssueLockPolicyTest extends TestCase
     {
         $user = User::factory()->create();
         $issue = Issue::factory()->create([
-            'locked_by' => $user->id,
-            'locked_at' => now(),
+            'is_locked' => true,
         ]);
 
         $response = $this->actingAs(User::factory()->create())

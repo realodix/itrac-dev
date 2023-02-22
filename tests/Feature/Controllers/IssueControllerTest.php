@@ -121,7 +121,7 @@ class IssueControllerTest extends TestCase
             ->assertRedirect(route('issue.show', $issue));
         $this->assertDatabaseHas('issues', [
             'id'        => $issue->id,
-            'closed_by' => $issue->author->id,
+            'is_closed' => true,
         ]);
     }
 
@@ -139,8 +139,7 @@ class IssueControllerTest extends TestCase
             ->assertRedirect(route('issue.show', $issue));
         $this->assertDatabaseHas('issues', [
             'id'        => $issue->id,
-            'closed_by' => null,
-            'closed_at' => null,
+            'is_closed' => false,
         ]);
     }
 }

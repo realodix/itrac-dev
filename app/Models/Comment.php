@@ -79,6 +79,8 @@ class Comment extends Model implements Auditable
 
     /**
      * Get the role of the comment author.
+     *
+     * @codeCoverageIgnore
      */
     public function userRole(): string
     {

@@ -30,6 +30,7 @@ class CommentController extends Controller
             'issue_id'    => $issue->id,
             'type'        => TimelineType::COMMENT->value,
             'description' => $request->comment_description,
+            'tag'         => HistoryTag::COMMENT,
         ]);
 
         IssueHistory::create([

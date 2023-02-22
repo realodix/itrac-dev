@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\HistoryTag;
 use App\Enums\TimelineType;
 use App\Models\Comment;
 use App\Models\Issue;
@@ -32,6 +33,7 @@ class CommentFactory extends Factory
             'issue_id'    => Issue::factory(),
             'type'        => TimelineType::COMMENT->value,
             'description' => fake()->paragraph(),
+            'tag'         => HistoryTag::COMMENT,
         ];
     }
 }

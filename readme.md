@@ -2,7 +2,7 @@
 ![PHPVersion](https://img.shields.io/badge/PHP-8.1-777BB4.svg?style=flat-square)
 
 GIT Size: 3.13 MB <br>
-Objects: 3.416 files
+Objects: 3.426 files
 
 > **Warning: This project is still in development**, constantly being optimized and isn't still stable enough to be used in production environments.
 

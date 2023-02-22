@@ -29,7 +29,7 @@ class IssueHistoryFactory extends Factory
     {
         return [
             'author_id' => User::factory(),
-            'event'     => HistoryEvent::Created,
+            'event'     => HistoryEvent::Created->value,
             'issue_id'  => Issue::factory(),
         ];
     }

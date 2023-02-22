@@ -27,7 +27,15 @@ class Issue extends Model implements Auditable
      *
      * @var array<string>|bool
      */
-    protected $guarded = [];
+    protected $fillable = [
+        'author_id',
+        'title',
+        'description',
+        'closed_by',
+        'closed_at',
+        'locked_by',
+        'locked_at',
+    ];
 
     /**
      * The attributes that should be cast.

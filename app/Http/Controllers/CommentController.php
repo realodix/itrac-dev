@@ -26,12 +26,12 @@ class CommentController extends Controller
         }
 
         $comment = Comment::create([
-            'author_id'   => auth()->id(),
-            'issue_id'    => $issue->id,
-            'type'        => CommentType::Comment->value,
-            'description' => $request->comment_description,
-            'tag'         => HistoryTag::COMMENT,
-        ]);
+                'author_id'   => auth()->id(),
+                'issue_id'    => $issue->id,
+                'type'        => CommentType::Comment->value,
+                'description' => $request->comment_description,
+                'tag'         => HistoryTag::COMMENT,
+            ]);
 
         IssueHistory::create([
             'author_id'  => auth()->id(),

@@ -77,6 +77,7 @@ class ChangePasswordTest extends TestCase
         $response = $this->actingAs($this->adminUser())
             ->from($this->getRoute($this->user->name))
             ->post($this->postRoute($this->user->id), [
+                // An Admin will enter their own password, not the password of a User
                 'current-password'          => self::$adminPass,
                 'new-password'              => 'new-awesome-password',
                 'new-password_confirmation' => 'new-awesome-password',

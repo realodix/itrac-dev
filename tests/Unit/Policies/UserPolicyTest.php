@@ -161,6 +161,7 @@ class UserPolicyTest extends TestCase
 
     /**
      * @test
+     * @group u-policy
      */
     public function normalUserCantAccessAllUsersPage()
     {

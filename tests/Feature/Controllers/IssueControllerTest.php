@@ -41,7 +41,7 @@ class IssueControllerTest extends TestCase
      */
     public function user_can_create_an_issue()
     {
-        $response = $this->actingAs($this->adminUser())
+        $response = $this->actingAs($this->normalUser())
             ->post(route('issue.store'), [
                 'issue_title'       => 'foo',
                 'issue_description' => 'bar',
@@ -57,7 +57,7 @@ class IssueControllerTest extends TestCase
      */
     public function user_can_create_an_issue_with_blank_title()
     {
-        $response = $this->actingAs($this->adminUser())
+        $response = $this->actingAs($this->normalUser())
             ->post(route('issue.store'), [
                 'issue_description' => 'foo',
             ]);

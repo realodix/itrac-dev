@@ -100,10 +100,28 @@ class UserPolicyTest extends TestCase
     }
 
     /**
+     * User can access change password page.
+     *
      * @test
      * @group u-policy
      */
-    public function adminCanAccessChangePasswordPage()
+    public function userCanAccessChangePasswordPage()
+    {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)
+            ->get($this->getCPRoute($user->name));
+
+        $response->assertOk();
+    }
+
+    /**
+     * Admin can access another user's change password page.
+     *
+     * @test
+     * @group u-policy
+     */
+    public function adminCanAccessOtherUsersChangePasswordPage()
     {
         $response = $this->actingAs($this->adminUser())
             ->get($this->getCPRoute($this->normalUser()->name));
@@ -123,15 +141,6 @@ class UserPolicyTest extends TestCase
             ->get($this->getCPRoute($this->adminUser()->name));
 
         $response->assertForbidden();
-    }
-
-    /** @test */
-    public function normalUserCanAccessTheirOwnChangePasswordPage()
-    {
-        $response =$this->actingAs($this->adminUser())
-            ->get($this->getCPRoute($this->adminUser()->name));
-
-        $response->assertOk();
     }
 
     //

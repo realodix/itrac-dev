@@ -17,8 +17,8 @@ use Laravel\Sanctum\HasApiTokens;
  */
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
     use \App\Models\Traits\Hashidable;
+    use HasApiTokens, HasFactory, Notifiable;
     use \Spatie\Permission\Traits\HasRoles;
 
     /**

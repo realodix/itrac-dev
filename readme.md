@@ -1,8 +1,8 @@
 [![LaravelVersion](https://img.shields.io/badge/Laravel-10-f56857.svg?style=flat-square)](https://laravel.com/docs/10.x/releases#laravel-10)
 ![PHPVersion](https://img.shields.io/badge/PHP-8.1-777BB4.svg?style=flat-square)
 
-GIT Size: 3.20 MB <br>
-Objects: 3.551 files
+- https://github.com/laravel/laravel/commit/e0a5b0efbaf51e79158aaaa46683ced815684551
+- https://github.com/laravel/laravel/compare/e0a5b0efbaf51e79158aaaa46683ced815684551...master
 
 > **Warning: This project is still in development**, constantly being optimized and isn't still stable enough to be used in production environments.
 

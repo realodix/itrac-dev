@@ -1,9 +1,6 @@
 [![LaravelVersion](https://img.shields.io/badge/Laravel-10-f56857.svg?style=flat-square)](https://laravel.com/docs/10.x/releases#laravel-10)
 ![PHPVersion](https://img.shields.io/badge/PHP-8.1-777BB4.svg?style=flat-square)
 
-GIT Size: 3.20 MB <br>
-Objects: 3.551 files
-
 > **Warning: This project is still in development**, constantly being optimized and isn't still stable enough to be used in production environments.
 
 This project was created, and is maintained by [Budi Hermawan](https://github.com/realodix), and is an open-source issue tracking system for software development projects.
@@ -62,6 +59,11 @@ From the projects root folder run
 - `php artisan test`
 - or `composer test`
 - or `./vendor/bin/phpunit`
+
+
+## laravel/laravel
+
+- https://github.com/laravel/laravel/compare/25070a3ffb175c15b59cd7f12289a9648165bba3...10.x
 
 
 ## License

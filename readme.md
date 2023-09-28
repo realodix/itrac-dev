@@ -63,7 +63,7 @@ From the projects root folder run
 
 ## laravel/laravel
 
-- https://github.com/laravel/laravel/compare/e0a5b0efbaf51e79158aaaa46683ced815684551...10.x
+- https://github.com/laravel/laravel/compare/25070a3ffb175c15b59cd7f12289a9648165bba3...10.x
 
 
 ## License

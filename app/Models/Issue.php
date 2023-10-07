@@ -7,6 +7,7 @@ use App\Enums\HistoryTag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use OwenIt\Auditing\Contracts\Auditable;
 
 /**
  * @property User           $author
@@ -14,9 +15,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
-class Issue extends Model
+class Issue extends Model implements Auditable
 {
     use \Illuminate\Database\Eloquent\Factories\HasFactory;
+    use \OwenIt\Auditing\Auditable;
 
     /**
      * The attributes that are mass assignable.
@@ -157,5 +159,28 @@ class Issue extends Model
     public function isLocked(): bool
     {
         return $this->is_locked === true;
+    }
+
+    /*
+    |---------------------------------------------------------------------------
+    | Laravel Audits
+    |---------------------------------------------------------------------------
+    */
+
+    /**
+     * If the is_locked column is modified, pass the is_locked tag
+     * If the is_closed column is modified, pass the is_closed tag
+     */
+    public function generateTags(): array
+    {
+        $tags = [];
+
+        if ($this->isDirty('is_closed')) {
+            $tags[] = 'is_closed';
+        } elseif ($this->isDirty('is_locked')) {
+            $tags[] = 'is_locked';
+        }
+
+        return $tags;
     }
 }

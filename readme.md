@@ -1,5 +1,5 @@
 [![LaravelVersion](https://img.shields.io/badge/Laravel-10-f56857.svg?style=flat-square)](https://laravel.com/docs/10.x/releases#laravel-10)
-![PHPVersion](https://img.shields.io/badge/PHP-8.1-777BB4.svg?style=flat-square)
+![PHPVersion](https://img.shields.io/badge/PHP-8.2-777BB4.svg?style=flat-square)
 
 > **Warning: This project is still in development**, constantly being optimized and isn't still stable enough to be used in production environments.
 
@@ -12,7 +12,7 @@ This project was created, and is maintained by [Budi Hermawan](https://github.co
 
 
 ## Requirements
-* All requirements by [Laravel](https://laravel.com/docs/installation#server-requirements) & dependencies - PHP >= 8.1, [Composer](https://getcomposer.org/) and such.
+* All requirements by [Laravel](https://laravel.com/docs/installation#server-requirements) & dependencies - PHP >= 8.2, [Composer](https://getcomposer.org/) and such.
 
 
 ## Quick Start

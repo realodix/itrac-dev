@@ -1,22 +1,23 @@
 <?php
 
-namespace App\Http\Livewire\Table;
+namespace App\Livewire\Table;
 
 use App\Models\Issue;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Blade;
-use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
-use PowerComponents\LivewirePowerGrid\{
-    Column, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
+use PowerComponents\LivewirePowerGrid\Column;
+use PowerComponents\LivewirePowerGrid\Footer;
+use PowerComponents\LivewirePowerGrid\Header;
+use PowerComponents\LivewirePowerGrid\PowerGrid;
+use PowerComponents\LivewirePowerGrid\PowerGridColumns;
+use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 
 /**
  * @codeCoverageIgnore
  */
 final class IssueTable extends PowerGridComponent
 {
-    use ActionButton;
-
     const STR_LIMIT = 60;
 
     public bool $showUpdateMessages = true;
@@ -79,9 +80,9 @@ final class IssueTable extends PowerGridComponent
     | You can pass a closure to transform/modify the data.
     |
     */
-    public function addColumns(): PowerGridEloquent
+    public function addColumns(): PowerGridColumns
     {
-        return PowerGrid::eloquent()
+        return PowerGrid::columns()
             ->addColumn('ids', function (Issue $issue) {
                 $openIssueIcon = '<x-icon-issue-opened-16 class="text-green-600" />';
                 $closedIssueIcon = '<x-icon-issue-closed-16 class="text-violet-700" />';

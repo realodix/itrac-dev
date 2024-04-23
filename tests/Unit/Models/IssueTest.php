@@ -6,6 +6,7 @@ use App\Enums\CommentType;
 use App\Enums\HistoryTag;
 use App\Models\Comment;
 use App\Models\Issue;
+use App\Models\IssueHistory;
 use App\Models\User;
 use Tests\TestCase;
 
@@ -35,6 +36,19 @@ class IssueTest extends TestCase
         $this->assertTrue($issue->comments()->exists());
         $this->assertEquals($issue->id, $comment->issue_id);
         $this->assertEquals(1, $issue->comments->count());
+    }
+
+    /**
+     * @test
+     * @group u-model
+     */
+    public function hasManyIssueHistories()
+    {
+        $issue = Issue::factory()
+            ->has(IssueHistory::factory(), 'histories')
+            ->create();
+
+        $this->assertTrue($issue->histories()->exists());
     }
 
     /**

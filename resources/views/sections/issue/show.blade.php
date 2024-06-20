@@ -5,7 +5,7 @@
 @section('content')
 <div class="issue">
     <div class="header">
-        <div class="text-3xl mb-2"><span class="text-stone-500">#{{$issue->id}}</span> - {{$issue->title}}</div>
+        <div class="text-3xl mb-2"><span class="color-muted">#{{$issue->id}}</span> - {{$issue->title}}</div>
         <div class="mb-2">
             <span @class([
                 'mr-4 py-1 px-2 border rounded-md text-md text-white',

@@ -12,7 +12,9 @@ main {
 }
 
 .frontend, .backend, .auth {
-    @apply font-sans text-gray-900 antialiased bg-slate-100;
+    @apply bg-zinc-800;
+    @apply font-sans antialiased;
+    @extend .color-normal;
 }
 
 
@@ -20,6 +22,19 @@ main {
  * Components
  * -----------------------------------------------------------------------------
  */
+
+%color-normal {
+    @apply text-zinc-200;
+}
+
+.color-normal {
+    @apply text-zinc-200;
+}
+
+.color-muted {
+    @apply text-zinc-400;
+}
+
 .form-input {
     @apply block w-full;
     @apply border-stone-300 focus:ring-uh-indigo-400 focus:border-uh-indigo-400 rounded;

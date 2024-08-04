@@ -28,7 +28,7 @@ class PowerGridTheme extends ThemeBase
     public function footer(): Footer
     {
         return Theme::footer()
-            ->view($this->root().'.footer')
+            ->view($this->root() . '.footer')
             ->select('block appearance-none bg-slate-50 border border-slate-300 text-slate-700 py-2 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-slate-500  dark:bg-slate-600 dark:text-slate-200 dark:placeholder-slate-200 dark:border-slate-500');
     }
 
@@ -49,7 +49,7 @@ class PowerGridTheme extends ThemeBase
     public function editable(): Editable
     {
         return Theme::editable()
-            ->view($this->root().'.editable')
+            ->view($this->root() . '.editable')
             ->span('flex justify-between')
             ->input('dark:bg-slate-700 bg-slate-50 text-black-700 border border-slate-200 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-slate-200 dark:bg-slate-500 dark:text-slate-200 dark:placeholder-slate-200 dark:border-slate-500 shadow-md');
     }
@@ -71,7 +71,7 @@ class PowerGridTheme extends ThemeBase
     public function filterBoolean(): FilterBoolean
     {
         return Theme::filterBoolean()
-            ->view($this->root().'.filters.boolean')
+            ->view($this->root() . '.filters.boolean')
             ->base('min-w-[5rem]')
             ->select('appearance-none block mt-1 mb-1 bg-white border border-slate-300 text-slate-700 py-2 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-slate-500 w-full active dark:bg-slate-600 dark:text-slate-200 dark:placeholder-slate-200 dark:border-slate-500', 'max-width: 370px');
     }
@@ -80,7 +80,7 @@ class PowerGridTheme extends ThemeBase
     {
         return Theme::filterDatePicker()
             ->base('p-2')
-            ->view($this->root().'.filters.date-picker')
+            ->view($this->root() . '.filters.date-picker')
             ->input('flatpickr flatpickr-input block my-1 bg-white border border-slate-300 text-slate-700 py-2 px-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-slate-500 w-full active dark:bg-slate-600 dark:text-slate-200 dark:placeholder-slate-200 dark:border-slate-500', 'min-width: 12rem');
     }
 
@@ -88,20 +88,20 @@ class PowerGridTheme extends ThemeBase
     {
         return Theme::filterMultiSelect()
             ->base('inline-block relative w-full p-2 min-w-[180px]')
-            ->view($this->root().'.filters.multi-select');
+            ->view($this->root() . '.filters.multi-select');
     }
 
     public function filterNumber(): FilterNumber
     {
         return Theme::filterNumber()
-            ->view($this->root().'.filters.number')
+            ->view($this->root() . '.filters.number')
             ->input('block bg-white border border-slate-300 text-slate-700 py-2 px-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-slate-500 w-full active dark:bg-slate-600 dark:text-slate-200 dark:placeholder-slate-200 dark:border-slate-500 min-w-[5rem]');
     }
 
     public function filterSelect(): FilterSelect
     {
         return Theme::filterSelect()
-            ->view($this->root().'.filters.select')
+            ->view($this->root() . '.filters.select')
             ->base('min-w-[9.5rem]')
             ->select('appearance-none block bg-white border border-slate-300 text-slate-700 py-2 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-slate-500 w-full active dark:bg-slate-600 dark:text-slate-200 dark:placeholder-slate-200 dark:border-slate-500');
     }
@@ -109,7 +109,7 @@ class PowerGridTheme extends ThemeBase
     public function filterInputText(): FilterInputText
     {
         return Theme::filterInputText()
-            ->view($this->root().'.filters.input-text')
+            ->view($this->root() . '.filters.input-text')
             ->base('min-w-[9.5rem]')
             ->select('appearance-none block bg-white border border-slate-300 text-slate-700 py-2 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-slate-500 w-full active dark:bg-slate-600 dark:text-slate-200 dark:placeholder-slate-200 dark:border-slate-500')
             ->input('w-full block bg-white text-slate-700 border border-slate-300 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-slate-500 dark:bg-slate-600 dark:text-slate-200 dark:placeholder-slate-200 dark:border-slate-500');

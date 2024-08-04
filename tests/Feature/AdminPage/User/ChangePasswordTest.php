@@ -64,7 +64,7 @@ class ChangePasswordTest extends TestCase
             ->assertSessionHas('flash_success');
 
         $this->assertTrue(
-            Hash::check('new-awesome-password', $this->user->fresh()->password)
+            Hash::check('new-awesome-password', $this->user->fresh()->password),
         );
     }
 
@@ -88,7 +88,7 @@ class ChangePasswordTest extends TestCase
             ->assertSessionHas('flash_success');
 
         $this->assertTrue(
-            Hash::check('new-awesome-password', $this->user->fresh()->password)
+            Hash::check('new-awesome-password', $this->user->fresh()->password),
         );
     }
 
@@ -111,7 +111,7 @@ class ChangePasswordTest extends TestCase
             ->assertSessionHasErrors('current-password');
 
         $this->assertFalse(
-            Hash::check('new-awesome-password', $this->user->fresh()->password)
+            Hash::check('new-awesome-password', $this->user->fresh()->password),
         );
     }
 
@@ -138,7 +138,7 @@ class ChangePasswordTest extends TestCase
             ->assertSessionHasErrors('new-password');
 
         $this->assertFalse(
-            Hash::check($data1, $this->user->fresh()->password)
+            Hash::check($data1, $this->user->fresh()->password),
         );
     }
 
@@ -178,7 +178,7 @@ class ChangePasswordTest extends TestCase
             ->assertSessionHasErrors('new-password');
 
         $this->assertTrue(
-            Hash::check(self::$password, $this->user->fresh()->password)
+            Hash::check(self::$password, $this->user->fresh()->password),
         );
     }
 }

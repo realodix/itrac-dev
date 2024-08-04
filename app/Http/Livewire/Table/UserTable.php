@@ -86,21 +86,21 @@ final class UserTable extends PowerGridComponent
             ->addColumn('email')
             ->addColumn('created_at_formatted', function (User $user) {
                 return
-                    '<span title="'.$user->created_at->toDayDateTimeString().'">'
-                        .$user->created_at->shortRelativeDiffForHumans().
+                    '<span title="' . $user->created_at->toDayDateTimeString() . '">'
+                        . $user->created_at->shortRelativeDiffForHumans() .
                     '</span>';
             })
             ->addColumn('action', function (User $user) {
                 return
-                    '<a role="button" href="'.route('user.edit', $user->name).'" title="'.__('Details').'"
+                    '<a role="button" href="' . route('user.edit', $user->name) . '" title="' . __('Details') . '"
                         class="btn-icon btn-icon-table"
                     >'
-                        .Blade::render('@svg(\'icon-user-edit\')').
+                        . Blade::render('@svg(\'icon-user-edit\')') .
                     '</a>
-                    <a role="button" href="'.route('user.change-password', $user->name).'" title="'.__('Change Password').'"
+                    <a role="button" href="' . route('user.change-password', $user->name) . '" title="' . __('Change Password') . '"
                         class="btn-icon btn-icon-table"
                     >'
-                        .Blade::render('@svg(\'icon-key\')').
+                        . Blade::render('@svg(\'icon-key\')') .
                     '</a>';
             });
     }

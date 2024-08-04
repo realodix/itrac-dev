@@ -179,7 +179,7 @@ class RegisterTest extends TestCase
     public function emailShouldNotBeTooLong()
     {
         $response = $this->post('/register', [
-            'email' => str_repeat('a', 247).'@test.com', // 256
+            'email' => str_repeat('a', 247) . '@test.com', // 256
         ]);
 
         $response->assertStatus(302);

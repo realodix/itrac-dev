@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * @property User           $author
- * @property Issue          $issue
+ * @property User $author
+ * @property Issue $issue
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */

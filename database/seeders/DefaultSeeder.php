@@ -21,7 +21,7 @@ class DefaultSeeder extends Seeder
         $user = $this->user('user');
 
         $issueByAdmin = $this->issue($admin);
-        $issueByUser =  $this->issue($user);
+        $issueByUser = $this->issue($user);
 
         Comment::factory()->create([
             'author_id' => $admin->id,
@@ -48,7 +48,7 @@ class DefaultSeeder extends Seeder
     {
         $user = User::factory()->create([
             'name'       => $username,
-            'email'      => $username.'@realodix.test',
+            'email'      => $username . '@realodix.test',
             'password'   => Hash::make($username),
         ]);
 
@@ -63,7 +63,7 @@ class DefaultSeeder extends Seeder
     {
         return Issue::factory()->create([
             'author_id'   => $user->id,
-            'title'       => 'Issue by '.$user->name,
+            'title'       => 'Issue by ' . $user->name,
             'description' => fake()->paragraphs(nb: 3, asText: true),
         ]);
     }

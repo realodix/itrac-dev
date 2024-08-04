@@ -94,13 +94,13 @@ final class IssueTable extends PowerGridComponent
                 $timeForHumans = $issue->created_at->diffForHumans(['options' => Carbon::ONE_DAY_WORDS]);
 
                 return
-                    '<a href="'.route('issue.show', $issue->id).'" class="block font-semibold">'.$issue->title.'</a>'
-                    .'#'.$issue->id.' opened on '.$timeForHumans.' by <a href="#">'.$issue->author->name.'</a>';
+                    '<a href="' . route('issue.show', $issue->id) . '" class="block font-semibold">' . $issue->title . '</a>'
+                    . '#' . $issue->id . ' opened on ' . $timeForHumans . ' by <a href="#">' . $issue->author->name . '</a>';
             })
             ->addColumn('comments', function (Issue $issue) {
                 $comment = $issue->commentCount();
 
-                return Blade::render('<x-icon-comment-16 />').' '.$comment;
+                return Blade::render('<x-icon-comment-16 />') . ' ' . $comment;
             });
     }
 

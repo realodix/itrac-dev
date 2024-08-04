@@ -51,7 +51,7 @@ class Helper
             }
         }
 
-        return ! empty($nFormat.$suffix) ? $nFormat.$suffix : 0;
+        return ! empty($nFormat . $suffix) ? $nFormat . $suffix : 0;
     }
 
     /**
@@ -59,8 +59,8 @@ class Helper
      *
      * Based on https://stackoverflow.com/q/3833137
      *
-     * @param float $number    The number to format.
-     * @param int   $precision The number of decimal points to round to.
+     * @param float $number The number to format.
+     * @param int $precision The number of decimal points to round to.
      */
     public static function numberFormatPrecision(float $number, int $precision = 2): float
     {

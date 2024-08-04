@@ -12,7 +12,7 @@ class Easymde extends Component
 
     public array $options;
 
-    public function __construct(string $name, string $id = null, array $options = [])
+    public function __construct(string $name, ?string $id = null, array $options = [])
     {
         $this->name = $name;
         $this->id = $id ?? $name;
@@ -41,7 +41,7 @@ class Easymde extends Component
             return '';
         }
 
-        return ', ...'.json_encode((object) $this->options());
+        return ', ...' . json_encode((object) $this->options());
     }
 
     /**

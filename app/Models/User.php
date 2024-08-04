@@ -10,8 +10,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
- * @property Issue          $issues
- * @property Comment        $comments
+ * @property Issue $issues
+ * @property Comment $comments
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */

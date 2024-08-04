@@ -17,8 +17,7 @@ class Markdown extends Component
      */
     public function __construct(
         public string $theme = 'one-dark-pro',
-    ) {
-    }
+    ) {}
 
     /**
      * Converts Markdown to HTML.

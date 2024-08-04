@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * @property User           $author
- * @property Comment        $comments
+ * @property User $author
+ * @property Comment $comments
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */

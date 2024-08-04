@@ -9,8 +9,7 @@ class DashboardController extends Controller
 {
     public function __construct(
         public User $user,
-    ) {
-    }
+    ) {}
 
     /**
      * Show all user short URLs.
